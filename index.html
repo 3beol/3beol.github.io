@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta http-equiv = "content-type" content = "text/html; charset=UTF-8">
+    <meta charset = "utf-8">
+    <title>
+        온라인 한글 입력기
+    </title>
+		<meta name = "generator" content = "Bootply" />
+		<meta name = "viewport" content = "width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css">
+		<link href = "css/keyboard.css" rel = "stylesheet">
+		<link href = "css/ohi.css" rel = "stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+
+    <!-- http://dmauro.github.io/Keypress/ -->
+    <script src = "js/keypress.js"  charset="UTF-8"></script>
+    <script src = "js/keypress_def_taja.js"  charset="UTF-8"></script>
+    <script src = "js/keypress_def.js"  charset="UTF-8"></script>
+
+    <script src = "js/keyboard_table_english.js"  charset="UTF-8"></script>
+    <script src = "js/keyboard_table_hangeul.js"  charset="UTF-8"></script>
+    <script src = "js/keyboard_table_combination.js"  charset="UTF-8"></script>
+    <script src = "js/keyboard_table_galmadeuli.js"  charset="UTF-8"></script>
+    <script src = "js/keyboard_table_extension.js"  charset="UTF-8"></script>
+    <script src = "js/keyboard_mapping_layout_html.js"  charset="UTF-8"></script>
+    <script src = "js/ohi.js"  charset="UTF-8"></script>
+
+    <!-- https://highlightjs.org/ -->
+    <!--script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script-->
+    <!--script charset="UTF-8">
+        hljs.initHighlightingOnLoad();
+    </script-->
+
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">3Beol</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="https://github.com/3beol" target="_blank">Github</a></li>
+                    <li><a href="http://cafe.daum.net/3bulsik" target="_blank">세벌식사랑모임</a>
+                    <li><a href="http://sebul.sarang.net/" target="_blank">세벌사랑넷</a>
+                    <li><a href="http://pat.im/" target="_blank">팥알글걸이</a>
+                    <li><a href="http://sebeol.org" target="_blank">세벌.org</a>
+                    <li><a href="http://dmauro.github.io/Keypress" target="_blank">Keypress</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="title">
+            <p>
+                <span class="emph">오</span>라인 <span class="emph">하</span>글 <span class="emph">이</span>력 -
+                <span class="emph">O</span>nline <span class="emph">h</span>angeul <span class="emph">i</span>nput
+                <br />ㄴ　　ㄴ　 ㅂ
+            </p>
+        </div>
+    </div>
+</div><!-- class="row" -->
+<!-- -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview ">
+                <ul>
+                    <li><a class="demo_link active" data-demo="demo_1">한글 쓰기</a></li>
+                    <li><a class="demo_link" data-demo="demo_2">한글 찾기</a></li>
+                    <li><a class="demo_link" data-demo="demo_3">글쇠 익히기</a></li>
+                </ul>
+        </div><!-- class="overview" -->
+    </div>
+</div><!-- class="row" -->
+<!-- -->
+<div class="row">
+    <div class="col-md-12">
+            <div class="examples">
+                <div class="example_window">
+                    <div class="demo" data-demo="demo_1">
+                        <textarea id="inputText" class="form-control" rows="5"></textarea>
+                    </div>
+                    <div class="demo" data-demo="demo_2">
+                        <form class="form-horizontal" role="form" target="_blank" action="http://www.google.co.kr/search">
+                            <div class="input-group">
+                                <span class="input-group-addon">구글</span>
+                                <input class="form-control" id="searchText" name="query" placeholder="찾을 단어나 문장을 넣으시오">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">찾기</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="form-horizontal" role="form" target="_blank" action="http://search.naver.com/search.naver">
+                            <div class="input-group">
+                                <span class="input-group-addon">네이버</span>
+                                <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">찾기</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="form-horizontal" role="form" target="_blank" action="http://search.daum.net/search">
+                            <div class="input-group">
+                                <span class="input-group-addon">다음</span>
+                                <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">찾기</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="demo" data-demo="demo_3">
+                        <div class="jamo_panel" id="jamo_panel"></div>
+                    </div>
+                </div><!-- class="example_window" -->
+            </div><!-- class="examples" -->
+    </div>
+</div><!-- class="row" -->
+<!-- -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="layout_list" >
+            <select name="layout_select" class="layout_select selectpicker" multiple data-max-options="3" data-width="520px">
+                <optgroup class="ke_status" label="한/영" data-max-options="1"></optgroup>
+                <optgroup class="en_type" label="영문 글판" data-max-options="1"></optgroup>
+                <optgroup class="ko_type" label="한글 글판" data-max-options="1"></optgroup>
+            </select>
+        </div>
+        <div class="layout_link"><a href="" target="_blank">ⓘ</a></div>
+    </div>
+</div><!-- class="row" -->
+<!-- -->
+
+<div class="row">
+    <div class="clearfix col-md-12">
+        <div class="keyboard">
+            <section>
+                <div class="key_row">
+                    <div id="key_accent" class="key">
+                        <em class="up_key"><div class="en_key">~</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">`</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_one" class="key">
+                        <em class="up_key"><div class="en_key">!</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">1</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_two" class="key">
+                        <em class="up_key"><div class="en_key">@</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">2</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_three" class="key">
+                        <em class="up_key"><div class="en_key">#</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">3</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_four" class="key">
+                        <em class="up_key"><div class="en_key">$</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">4</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_five" class="key">
+                        <em class="up_key"><div class="en_key">%</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">5</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_six" class="key">
+                        <em class="up_key"><div class="en_key">^</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">6</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_seven" class="key">
+                        <em class="up_key"><div class="en_key">&amp;</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">7</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_eight" class="key">
+                        <em class="up_key"><div class="en_key">*</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">8</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_nine" class="key">
+                        <em class="up_key"><div class="en_key">(</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">9</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_zero" class="key">
+                        <em class="up_key"><div class="en_key">)</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">0</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_hyphen" class="key">
+                        <em class="up_key"><div class="en_key">_</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">-</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_equals" class="key">
+                        <em class="up_key"><div class="en_key">+</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">=</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_backspace" class="key wide_2"><span class="right"><strong>backspace</strong></span></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_tab" class="key wide_2"><span class="left"><strong>tab</strong></span></div>
+                    <div id="key_q" class="key">
+                        <em class="up_key"><div class="en_key">Q</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_w" class="key">
+                        <em class="up_key"><div class="en_key">W</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_e" class="key">
+                        <em class="up_key"><div class="en_key">E</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_r" class="key">
+                        <em class="up_key"><div class="en_key">R</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_t" class="key">
+                        <em class="up_key"><div class="en_key">T</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_y" class="key">
+                        <em class="up_key"><div class="en_key">Y</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_u" class="key">
+                        <em class="up_key"><div class="en_key">U</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_i" class="key">
+                        <em class="up_key"><div class="en_key">I</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_o" class="key">
+                        <em class="up_key"><div class="en_key">O</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_p" class="key">
+                        <em class="up_key"><div class="en_key">P</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_left_bracket" class="key">
+                        <em class="up_key"><div class="en_key">{</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">[</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_right_bracket" class="key">
+                        <em class="up_key"><div class="en_key">}</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">]</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_backslash" class="key">
+                        <em class="up_key"><div class="en_key">|</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">\</div><div class="han_key"></div></strong>
+                    </div>
+                </div>
+                <div class="key_row">
+                    <div id="key_caps_lock" class="key wide_3"><span class="left"><strong>caps lock</strong></span></div>
+                    <div id="key_a" class="key">
+                        <em class="up_key"><div class="en_key">A</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_s" class="key">
+                        <em class="up_key"><div class="en_key">S</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_d" class="key">
+                        <em class="up_key"><div class="en_key">D</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_f" class="key">
+                        <em class="up_key"><div class="en_key">F</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_g" class="key">
+                        <em class="up_key"><div class="en_key">G</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_h" class="key">
+                        <em class="up_key"><div class="en_key">H</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_j" class="key">
+                        <em class="up_key"><div class="en_key">J</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_k" class="key">
+                        <em class="up_key"><div class="en_key">K</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_l" class="key">
+                        <em class="up_key"><div class="en_key">L</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_semicolon" class="key">
+                        <em class="up_key"><div class="en_key">:</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">;</div><div class="han_key"></div></strong>
+                        </div>
+                    <div id="key_apostrophe" class="key">
+                        <em class="up_key"><div class="en_key">"</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">'</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_enter" class="key wide_3"><span class="right"><strong>enter</strong></span></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_left_shift" class="key wide_4"><span class="left"><strong>shift</strong></span></div>
+                    <div id="key_z" class="key">
+                        <em class="up_key"><div class="en_key">Z</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_x" class="key">
+                        <em class="up_key"><div class="en_key">X</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_c" class="key">
+                        <em class="up_key"><div class="en_key">C</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_v" class="key">
+                        <em class="up_key"><div class="en_key">V</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_b" class="key">
+                        <em class="up_key"><div class="en_key">B</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_n" class="key">
+                        <em class="up_key"><div class="en_key">N</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_m" class="key">
+                        <em class="up_key"><div class="en_key">M</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key"></div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_comma" class="key">
+                        <em class="up_key"><div class="en_key">&lt;</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">,</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_period" class="key">
+                        <em class="up_key"><div class="en_key">&gt;</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">.</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_forwardslash" class="key">
+                        <em class="up_key"><div class="en_key">?</div><div class="han_key"></div></em><br>
+                        <strong class="down_key"><div class="en_key">/</div><div class="han_key"></div></strong>
+                    </div>
+                    <div id="key_right_shift" class="key wide_4"><span class="right"><strong>shift</strong></span></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_left_ctrl" class="key wide_1"><span class="left"><strong>ctrl</strong></span></div>
+                    <div id="key_left_alt" class="key wide_1"><span class="left"><strong>alt</strong></span></div>
+                    <div id="key_left_cmd" class="key wide_1"><span class="left"><strong>cmd</strong></span></div>
+                    <div id="key_space" class="key wide_5"></div>
+                    <div id="key_right_cmd" class="key wide_1"><span class="right"><strong>cmd</strong></span></div>
+                    <div id="key_right_alt" class="key wide_1"><span class="right"><strong>alt</strong></span></div>
+                    <div id="key_right_ctrl" class="key wide_1"><span class="right"><strong>ctrl</strong></span></div>
+                </div>
+
+	            <p class="message">
+	                &nbsp;
+	            </p>
+            </section><!-- section -->
+<!--
+            <section>
+                <div class="key_row">
+                    <div id="key_print" class="key"><span><strong>print</strong></span></div>
+                    <div id="key_scroll_lock" class="key"><span><strong>scroll lock</strong></span></div>
+                    <div id="key_pause_break" class="key"><span><strong>pause break</strong></span></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_insert" class="key"><span><strong>insert</strong></span></div>
+                    <div id="key_home" class="key"><span><strong>home</strong></span></div>
+                    <div id="key_page_up" class="key"><span><strong>page up</strong></span></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_delete" class="key"><span><strong>delete</strong></span></div>
+                    <div id="key_end" class="key"><span><strong>end</strong></span></div>
+                    <div id="key_page_down" class="key"><span><strong>page down</strong></span></div>
+                </div>
+                <div class="key_row">
+                    <div class="key_filler"></div>
+                    <div id="key_up" class="key"><div class="triangle up"></div></div>
+                    <div class="key_filler"></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_left" class="key"><div class="triangle left"></div></div>
+                    <div id="key_down" class="key"><div class="triangle down"></div></div>
+                    <div id="key_right" class="key"><div class="triangle right"></div></div>
+                </div>
+            </section>
+-->
+
+<!--
+            <section>
+                <div class="key_row">
+                    <div id="key_num_lock" class="key"><span><strong>num lock</strong></span></div>
+                    <div id="key_divide" class="key single"><strong>/</strong></div>
+                    <div id="key_multiply" class="key single"><strong>*</strong></div>
+                    <div id="key_subtract" class="key single"><strong>-</strong></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_num_7" class="key"><strong>7</strong><span>home</span></div>
+                    <div id="key_num_8" class="key"><strong>8</strong><br><div class="triangle up"></div></div>
+                    <div id="key_num_9" class="key"><strong>9</strong><span>pgup</span></div>
+                    <div id="key_add" class="key tall"><strong>+</strong></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_num_4" class="key"><strong>4</strong><br><div class="triangle left"></div></div>
+                    <div id="key_num_5" class="key"><strong>5</strong></div>
+                    <div id="key_num_6" class="key"><strong>6</strong><br><div class="triangle right"></div></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_num_1" class="key"><strong>1</strong><span>end</span></div>
+                    <div id="key_num_2" class="key"><strong>2</strong><br><div class="triangle down"></div></div>
+                    <div id="key_num_3" class="key"><strong>3</strong><span>pgdn</span></div>
+                    <div id="key_num_enter" class="key tall"><span><strong>enter</strong></span></div>
+                </div>
+                <div class="key_row">
+                    <div id="key_num_0" class="key wide_6"><strong>0</strong><span class="right">insert</span></div>
+                    <div id="key_num_decimal" class="key"><strong>.</strong><br>del</div>
+                </div>
+                <p class="note">
+                    Some browsers do not distinguish some or all of the numpad keys.
+                </p>
+            </section>
+-->
+        </div><!-- keyboard -->
+    </div>
+</div><!-- class="row" -->
+<!-- -->
+<div class="row">
+    <div class="col-md-12">
+        <figure>
+            <img class="hand" id = "hand" src = "images/taja/hands.png" />
+        </figure>
+    </div>
+</div><!-- class="row" -->
+<!-- -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="documentation advanced_documentation">
+            <h1 class="blue">Great! So how do I use it?</h1>
+        </div>
+    </div>
+</div><!-- class="row" -->
+
+
+
+        </div><!--div class="col-md-8 col-md-offset-2"-->
+    </div><!-- class = "container" -->
+
+</body>
+
+</html>
