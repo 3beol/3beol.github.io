@@ -294,7 +294,7 @@ function get_taja_hangeul(type) {
         '<strong class="cheot">ㅋ</strong>':  ['/', 10, "key_forwardslash"],
         '<strong class="cheot">ㅌ</strong>':  ['\'', 10, "key_apostrophe"],
         '<strong class="cheot">ㅍ</strong>':  ['p', 10, "key_p"],
-        '<strong class="cheot">ㅎ</strong>':  ['m', 7, "key_m"],
+        '<strong class="cheot">ㅎ</strong>':  ['m', 8, "key_m"],
         '<strong class="gawit">ㅏ</strong>': ['f', 2, "key_f"],
         '<strong class="gawit">ㅐ</strong>': ['r', 2, "key_r"],
         '<strong class="gawit">ㅒ</strong>': ['q', 5, "key_q"],

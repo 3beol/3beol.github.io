@@ -45,6 +45,19 @@ var galmadeuli_3_2015_patal = [
     [0x11c2, 0x11b2] /* jongseong hieuh (ㅎ):   jongseong rieul-pieup (ㄼ)  */
 ];
 
+var galmadeuli_3moa_2014 = [
+    [0x11a8, 0x11bf],  /* jongseong kiyeok (ㄱ) -> (ㅋ) */
+    [0x11ab, 0x11ad],  /* jongseong nieun (ㄴ) -> <ㄶ> */
+    [0x11ae, 0x11c0],  /* jongseong tikeut (ㄷ) -> (ㅌ) */
+    [0x11af, 0x11bd],  /* jongseong rieul (ㄹ) -> (ㅈ) */
+    [0x11b7, 0x11ae],  /* jongseong mieum  (ㅁ) -> (ㄷ) */
+    [0x11b8, 0x11c1],  /* jongseong pieup  (ㅂ) -> (ㅍ) */
+    [0x11b9, 0x11b3],  /* jongseong pieup-sios (ㅄ) -> rieul-sios (ㄽ) */
+    [0x11ba, 0x11be],  /* jongseong sios (ㅅ) -> (ㅊ) */
+    [0x11bc, 0x11b8],  /* jongseong ieung (ㅇ) -> (ㅂ) */
+    [0x11c2, 0x11b6],  /* jongseong hieuh (ㅎ) -> (ㅀ) */
+];
+
 var galmadeuli_3shin_2003 = [
     /* choseong -> jungseong */
     [0x1106, 0x1174],  /* choseong mieum <ㅁ> */     /* jungseong yi <ㅢ> */
@@ -147,22 +160,6 @@ var galmadeuli_3shin_2015 = [
     [0x1173, 0x11ae],     /*ㅡ*/     /* <ㄷ> */
     [0x1174, 0x11ab],     /*ㅢ*/     /* <ㄴ> */
     [0x1175, 0x11af],     /*ㅣ*/     /* <ㄹ> */
-    /* jongseong -> jungseong */
-    [0x11a8, 0x11a9],  /* jongseong kiyeok (ㄱ) -> (ㄲ) */
-    [0x11ab, 0x11ad],  /* jongseong nieun (ㄴ) -> (ㄶ) */
-    //[0x11ae, 0x1162],  /* jongseong tikeut (ㄷ) -> jungseong ae  (ㅐ) */
-    [0x11af, 0x11b0],  /* jongseong rieul (ㄹ) -> (ㄺ) */
-    [0x11b7, 0x11b1],  /* jongseong mieum  (ㅁ) -> (ㄻ) */
-    [0x11b8, 0x11b2],  /* jongseong pieup  (ㅂ) -> (ㄼ) */
-    [0x11ba, 0x11aa],  /* jongseong sios (ㅅ) -> (ㄳ) */
-    [0x11bb, 0x11b9], /* jongseong ssangsios (ㅆ) -> (ㅄ) */
-    [0x11bc, 0x11b3],  /* jongseong ieung (ㅇ) -> (ㄽ) */
-    [0x11bd, 0x11ac],  /* jongseong cieuc (ㅈ) -> (ㄵ) */
-    //[0x11be, 0x11b5],  /* jongseong chieuch (ㅊ) -> (ㄿ)    */
-    //[0x11bf, 0x1166],  /* jongseong khieukh (ㅋ) -> jungseong e  (ㅔ) */
-    [0x11c0, 0x11b4],  /* jongseong thieuth (ㅌ) -> (ㄾ) */
-    [0x11c1, 0x11b5],  /* jongseong phieuph (ㅍ) -> (ㄿ) */
-    [0x11c2, 0x11b6]  /* jongseong hieuh (ㅎ) -> (ㅀ)     */
 ];
 
     // array
@@ -175,6 +172,8 @@ var galmadeuli_3shin_2015 = [
             } else {
                 return [];
             }
+        } else if (type.substr(0, 4) === '3moa') {
+            return galmadeuli_3moa_2014;
         } else if (type.substr(0, 5) === '3shin') {
             if (type === '3shin-2003') {
                 return galmadeuli_3shin_2003;
