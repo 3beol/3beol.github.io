@@ -103,6 +103,9 @@ var extension_sign_keys = [];
 var extension_sign_layout = [];
 var extension_yetgeul_keys = [];
 var extension_yetgeul_layout = [];
+// 모아치기 글판의 글자 조합 종료 타이머
+var ohi_timeout = 0;
+
 
 //browser_detect()
 var browser = '';
@@ -137,7 +140,7 @@ var layout_list_info_ko = [
 	{name: '3-2015p-yet', full_name: '3-2015P 옛한글', link: 'http://pat.im/1090'},
 	{name: '3sun-1990', full_name: '순아래 1990'},
 	{name: '3sun-2014', full_name: '순아래 2014', link: 'http://cafe.daum.net/3bulsik/JMKX/18'},
-    {name: '3moa-2014', full_name: '모아치기 2014 (요즘한글 이어치기)', link: 'http://ssg.wo.tc/220239514856'},
+    {name: '3moa-2014', full_name: '모아치기 2014', link: 'http://ssg.wo.tc/220239514856'},
 	{name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
 	{name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
     {name: '3shin-2015', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'}
@@ -1114,7 +1117,10 @@ function ohi_Hangeul_3 (keyValue, charCode) {
 
 function ohi_Hangeul_3Moa (keyValue, charCode) {
     //alert("ohi_Hangeul_3Moa: " + ohiQ);
-
+    if(ohi_timeout) {
+        clearTimeout(ohi_timeout);
+    }
+    ohi_timeout = setTimeout("ohi_Insert(ohiQ, 0)", 100);
 //alert(Object.keys(right_ou_keys_list).indexOf(KO_type));
     // right_ou_keys_list 에 있으면 오른쪽 ㅗㅜ
     if ((Object.keys(right_ou_keys_list).indexOf(KO_type) >= 0) && 
