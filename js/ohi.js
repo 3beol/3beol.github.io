@@ -135,7 +135,7 @@ var layout_list_info_ko = [
 	{name: '3sun-2014', full_name: '순아래 2014', link: 'http://cafe.daum.net/3bulsik/JMKX/18'},
 	{name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
 	{name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
-    {name: '3shin-2015', full_name: '신세벌식 2015', link: 'http://pat.im/978'}
+    {name: '3shin-2015', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'}
 ];
 
 function browser_detect() {
@@ -1987,8 +1987,8 @@ function change_EN_type(type) {
     }
 
 //alert("layout_list_info");
-    if (KE_status === 'en') {
-        $(".layout_select option[value="+EN_type+"]").prop("selected", true);
+    //if (KE_status === 'en') {
+        //$(".layout_select option[value="+EN_type+"]").prop("selected", true);
         //$.each (layout_list_info_en, function (index, item) {
             //if(typeof(item.link) !== 'undefined') {
                 //$(".layout_link a").attr('href', item.link).show();
@@ -1996,7 +1996,7 @@ function change_EN_type(type) {
                 //$(".layout_link a").attr('href', '').hide();
             //}
         //});
-    }
+    //}
 
 
     english_layout = get_table_english(EN_type);
@@ -2028,16 +2028,18 @@ function change_KO_type(type) {
     KO_type = KO_type_list[index_changed];
 //alert("layout_list_info");
     //if (KE_status === 'ko') {
-        $(".layout_select option[value="+KO_type+"]").prop("selected", true);
+        //$(".layout_select option[value="+KO_type+"]").prop("selected", true);
         $.each (layout_list_info_ko, function (index, item) {
-            if(typeof(item.link) !== 'undefined') {
-                $(".layout_link a").attr('href', item.link).show();
-            } else {
-                $(".layout_link a").attr('href', '').hide();
+            //alert(item.link);
+            if (KO_type == item.name) {
+                if(typeof(item.link) !== 'undefined') {
+                    $(".layout_link a").attr('href', item.link).show();
+                } else {
+                    $(".layout_link a").attr('href', '').hide();
+                }
             }
         });
     //}
-
 
     //alert("KO_type:" + KO_type + "  ==  index_changed:"  + index_changed);
     hangeul_layout = get_table_hangeul(KO_type);

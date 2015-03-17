@@ -54,8 +54,67 @@ function get_taja_hangeul(type) {
         '<strong class="ggeut">ㄲ</strong>': ['V', 2, "key_v"],
     };
 
-
     var K3_3_2015 = {
+        // taja.js > match_key = function(key) [글쇠, 손가락, ID, 갈마들이]
+        '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
+        '<strong class="cheot">ㄴ</strong>':  ['h', 7, "key_h"],
+        '<strong class="cheot">ㄷ</strong>':  ['u', 7, "key_u"],
+        '<strong class="cheot">ㄹ</strong>':  ['y', 7, "key_y"],
+        '<strong class="cheot">ㅁ</strong>':  ['i', 8, "key_i"],
+        '<strong class="cheot">ㅂ</strong>':  [';', 10, "key_semicolon"],
+        '<strong class="cheot">ㅅ</strong>':  ['n', 7, "key_n"],
+        '<strong class="cheot">ㅇ</strong>':  ['j', 7, "key_j"],
+        '<strong class="cheot">ㅈ</strong>':  ['l', 9, "key_l"],
+        '<strong class="cheot">ㅊ</strong>':  ['o', 9, "key_o"],
+        '<strong class="cheot">ㅋ</strong>':  ['0', 9, "key_zero"],
+        '<strong class="cheot">ㅌ</strong>':  ['\'', 10, "key_apostrophe"],
+        '<strong class="cheot">ㅍ</strong>':  ['p', 10, "key_p"],
+        '<strong class="cheot">ㅎ</strong>':  ['m', 8, "key_m"],
+        '<strong class="gawit">ㅏ</strong>': ['f', 2, "key_f"],
+        '<strong class="gawit">ㅐ</strong>': ['t', 2, "key_t"],
+        '<strong class="gawit">ㅒ</strong>': ['T', 2, "key_t", 't'],
+        '<strong class="gawit">ㅑ</strong>': ['6', 2, "key_six"],
+        '<strong class="gawit">ㅓ</strong>': ['r', 2, "key_r"],
+        '<strong class="gawit">ㅔ</strong>': ['c', 3, "key_c"],
+        '<strong class="gawit">ㅖ</strong>': ['7', 7, "key_seven"],
+        '<strong class="gawit">ㅕ</strong>': ['e', 3, "key_e"],
+        '<strong class="gawit">ㅗ</strong>': ['v', 2, "key_v"],
+        '<strong class="gawit">ㅛ</strong>': ['4', 3, "key_four"],
+        '<strong class="gawit">ㅜ</strong>': ['b', 2, "key_b"],
+        '<strong class="gawit">ㅠ</strong>': ['5', 2, "key_five"],
+        '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
+        '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
+        '<strong class="gawit">ㅢ</strong>': ['8', 8, "key_eight"],
+    	'<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
+    	'<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 8, "key_nine"],
+        '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
+        '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
+        '<strong class="ggeut">ㄷ</strong>': ['1', 5, "key_one"],
+        '<strong class="ggeut">ㄹ</strong>': ['w', 4, "key_w"],
+        '<strong class="ggeut">ㅁ</strong>': ['z', 5, "key_z"],
+        '<strong class="ggeut">ㅂ</strong>': ['3', 3, "key_three"],
+        '<strong class="ggeut">ㅅ</strong>': ['q', 5, "key_q"],
+        '<strong class="ggeut">ㅆ</strong>': ['2', 4, "key_two"],
+        '<strong class="ggeut">ㅇ</strong>': ['a', 5, "key_a"],
+        '<strong class="ggeut">ㅈ</strong>': ['E', 3, "key_e", 'e'],
+        '<strong class="ggeut">ㅊ</strong>': ['R', 2, "key_r", 'r'],
+        '<strong class="ggeut">ㅋ</strong>': ['V', 2, "key_v", 'v'],
+        '<strong class="ggeut">ㅌ</strong>': ['C', 3, "key_c", 'c'],
+        '<strong class="ggeut">ㅍ</strong>': ['F', 2, "key_f", 'f'],
+        '<strong class="ggeut">ㅎ</strong>': ['D', 3, "key_d", 'd'],
+    	'<strong>0</strong>': ['H', 7, "key_h"],
+    	'<strong>1</strong>': ['J', 7, "key_j"],
+    	'<strong>2</strong>': ['K', 8, "key_k"],
+    	'<strong>3</strong>': ['L', 9, "key_l"],
+    	'<strong>4</strong>': [':', 10, "key_semicolon"],
+    	'<strong>5</strong>': ['Y', 7, "key_y"],
+    	'<strong>6</strong>': ['U', 7, "key_u"],
+    	'<strong>7</strong>': ['I', 8, "key_i"],
+    	'<strong>8</strong>': ['O', 9, "key_o"],
+    	'<strong>9</strong>': ['P', 10, "key_p"],
+    };
+
+    var K3_3_2015_patal = {
         // taja.js > match_key = function(key) [글쇠, 손가락, ID, 갈마들이]
         '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
         '<strong class="cheot">ㄴ</strong>':  ['h', 7, "key_h"],
@@ -237,10 +296,10 @@ function get_taja_hangeul(type) {
         '<strong class="cheot">ㅍ</strong>':  ['p', 10, "key_p"],
         '<strong class="cheot">ㅎ</strong>':  ['m', 7, "key_m"],
         '<strong class="gawit">ㅏ</strong>': ['f', 2, "key_f"],
-        '<strong class="gawit">ㅐ</strong>': ['t', 2, "key_t"],
+        '<strong class="gawit">ㅐ</strong>': ['r', 2, "key_r"],
         '<strong class="gawit">ㅒ</strong>': ['q', 5, "key_q"],
         '<strong class="gawit">ㅑ</strong>': ['a', 4, "key_a"],
-        '<strong class="gawit">ㅓ</strong>': ['r', 2, "key_r"],
+        '<strong class="gawit">ㅓ</strong>': ['t', 2, "key_t"],
         '<strong class="gawit">ㅔ</strong>': ['c', 3, "key_c"],
         '<strong class="gawit">ㅖ</strong>': ['w', 4, "key_w"],
         '<strong class="gawit">ㅕ</strong>': ['e', 3, "key_e"],
@@ -276,7 +335,9 @@ function get_taja_hangeul(type) {
     if (type.substr(0, 1) === '3') {
         if (type.substr(0, 2) === '3-') {
             if (type.substr(0, 3) === '3-2') {
-                if (type.substr(0, 6) === '3-2015') {
+                if (type.substr(0, 7) === '3-2015p') {
+                    return K3_3_2015_patal;
+                } else if (type.substr(0, 6) === '3-2015') {
                     return K3_3_2015;
                 } else if (type.substr(0, 6) === '3-2012') {
                     return K3_3_2012;
