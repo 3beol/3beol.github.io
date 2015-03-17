@@ -205,7 +205,7 @@ function ohi_Backspace () {
         // 모아치기는 조합하던 글자를 통째로 지운다
         ohiQ = [0,0,0,0,0,0];
         ohi_Insert(0, ohiQ);
-    } else if(ohiQ[1] || ohiQ[3] || (ohiQ[0] && ohiQ[2])) {
+    } else if(ohiQ[0] || ohiQ[1] || ohiQ[2] || ohiQ[3]) {
         //alert("back 1");
 		for(index = 0; index < ohiQ.length; index++) {
             if (ohiQ[index]) {
@@ -227,11 +227,15 @@ function ohi_Backspace () {
             //alert("back 12  " + fore_back + " ohiQ:" + ohiQ);
             ohiQ[last] = 0;
         }
-
+        //alert("back:" + ohiQ);
 		//ohi_Insert(ohiQ[i]=0, ohiQ);
         ohi_Insert(0, ohiQ);
 	} else {
-        ohiQ = [0,0,0,0,0,0];
+        //alert("html:" + ohiQ);
+        //if (ohiQ[0] && !ohiQ[1] && !ohiQ[2]) {
+            //ohiQ = [0,0,0,0,0,0];
+        //}
+        //alert("html:" + ohiQ);
         ohi_html_Backspace();
     }
 }
@@ -1608,9 +1612,9 @@ function ohiKeydown (event) {
     var keyCode=event.which||event.keyCode;
 	if(focus.type=='text' && name=='INPUT' || name=='TEXTAREA') {
 		if(event.keyCode==8) {	// Backspace
-			if(event.preventDefault) {event.preventDefault();}
             //alert("keydown back");
 			ohi_Backspace();
+            if(event.preventDefault) {event.preventDefault();}
 		} else if(event.keyCode==13) { // Enter (한글 조합 상태)
 			if(ohiQ[0] || ohiQ[2] || ohiQ[4]) { // 요즘한글 조합 상태
 				ohi_Insert(0,0);
@@ -2364,6 +2368,7 @@ function add_layout_list() {
 
     $(".layout_select").change(function(){
         //alert("change");
+        extension_steps = 0;
 		var value = $(".layout_select option:selected").selectpicker('val');
         //alert(value.length);
         $.each (value, function (index, item) {
