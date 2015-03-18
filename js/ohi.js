@@ -43,7 +43,7 @@ var KO_type_list = ['2-ksx5002', '2-kps9256', '2sun-ksx5002',
                                 '3-2012', '3-2012-yet', 
                                 '3-2015', '3-2015p', '3-2015p-yet', 
                                 '3sun-1990', '3sun-2014', 
-                                '3moa-2014', 
+                                '3moa-2014', '3moa-ahn', 
                                 '3shin-2003', '3shin-2012', '3shin-2015'];
 // 모아치기 글판은 갈마들이를 쓰지 않지만 html 에 글판 배열에 없는 낱자를 보여주기 위해서 쓴다
 var KO_galmadeuli_list = ['3moa-2014', 
@@ -121,8 +121,8 @@ var layout_list_info_ke = [
 
 var layout_list_info_en = [
     {name: 'qwerty', full_name: '쿼티 (Qwerty)'},
-	{name: 'dvorak', full_name: '드보락 (Dvorak)'},
-	{name: 'colemak', full_name: '콜맥 (Colemak)'}
+    {name: 'dvorak', full_name: '드보락 (Dvorak)'},
+    {name: 'colemak', full_name: '콜맥 (Colemak)'}
 ];
 
 var layout_list_info_ko = [
@@ -131,18 +131,19 @@ var layout_list_info_ko = [
     {name: '2sun-ksx5002', full_name: '두벌식 순아래 (꼬마집오리)', link: 'http://blog.daum.net/tinyduck/2111486'},
     {name: '3-90', full_name: '3-90'},
     {name: '3-91', full_name: '3-91 (공병우 최종 자판)'},
-	{name: '3-93-yet', full_name: '3-93 옛한글', link: 'http://asadal.pnu.kr/data/data_002_006.html'},
+    {name: '3-93-yet', full_name: '3-93 옛한글', link: 'http://asadal.pnu.kr/data/data_002_006.html'},
     {name: '3-2012', full_name: '3-2012', link: 'http://pat.im/938'},
-	{name: '3-2012-yet', full_name: '3-2012 옛한글', link: 'http://pat.im/938#4-2'},
-	{name: '3-2015', full_name: '3-2015', link: 'http://sebeol.org/3-2015.html'},
-	{name: '3-2015-yet', full_name: '3-2015 옛한글', link: 'http://cafe.daum.net/3bulsik/JMKX/36'},
-	{name: '3-2015p', full_name: '3-2015P', link: 'http://pat.im/1090'},
-	{name: '3-2015p-yet', full_name: '3-2015P 옛한글', link: 'http://pat.im/1090'},
-	{name: '3sun-1990', full_name: '순아래 1990'},
-	{name: '3sun-2014', full_name: '순아래 2014', link: 'http://cafe.daum.net/3bulsik/JMKX/18'},
+    {name: '3-2012-yet', full_name: '3-2012 옛한글', link: 'http://pat.im/938#4-2'},
+    {name: '3-2015', full_name: '3-2015', link: 'http://sebeol.org/3-2015.html'},
+    {name: '3-2015-yet', full_name: '3-2015 옛한글', link: 'http://cafe.daum.net/3bulsik/JMKX/36'},
+    {name: '3-2015p', full_name: '3-2015P', link: 'http://pat.im/1090'},
+    {name: '3-2015p-yet', full_name: '3-2015P 옛한글', link: 'http://pat.im/1090'},
+    {name: '3sun-1990', full_name: '순아래 1990'},
+    {name: '3sun-2014', full_name: '순아래 2014', link: 'http://cafe.daum.net/3bulsik/JMKX/18'},
+    {name: '3moa-ahn', full_name: '안마태 소리글판', link: 'http://ahnmatae.org'},
     {name: '3moa-2014', full_name: '모아치기 2014', link: 'http://ssg.wo.tc/220239514856'},
-	{name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
-	{name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
+    {name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
+    {name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
     {name: '3shin-2015', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'}
 ];
 
@@ -674,8 +675,8 @@ function ohi_Hangeul_2(charCode){
     // 두벌식은 호환 자모를 쓴다
     var charCode = jamo_to_compatibility(charCode);
 
-    if(KO_type.substr(0,4) === '2sun') {
-        // 두벌식 순아래
+    if(KO_type.substr(0,5) !== '2-ksx') {
+        // 두벌식 순아래, 조선 국규
         if((ohiQ[2] === charCode) && !ohiQ[1]) {
             var offset = ohi_Double_Jamo(0, ohiQ[0], ohiQ[0]);
             if (offset) {
@@ -1906,8 +1907,9 @@ function mapping_layout_to_html(select) {
                 if ((KE_status == 'ko') && hangeul_layout.length) {
                     // 한글 아랫글쇠
                     if(html_table[id]["false"][0] !== html_table[id]["false"][1]) {
-                        //한글의 아래윗글쇠에는 위아랫글쇠값이 서로 다르면 넣는다
+                        //한글의 아랫글쇠에는 아랫글쇠값이 서로 다르면 넣는다
                         down_han_key.html(html_table[id]["false"][1]);
+                        down_en_key.addClass("ko_alpha");
                         if(html_table[id]["false"][2] === 3) {
                             node.addClass("ggeut");
                         } else if(html_table[id]["false"][2] === 2) {
@@ -1926,6 +1928,7 @@ function mapping_layout_to_html(select) {
                         if(html_table[id]["true"][1] !== html_table[id]["false"][1]) {
                             //한글의 윗글쇠에는 아래윗글쇠값이 서로 다르면 넣는다
                             up_han_key.html(html_table[id]["true"][1]);
+                            up_en_key.addClass("ko_alpha");
                         } else {
                             up_han_key.html("");
                         }
@@ -1934,23 +1937,30 @@ function mapping_layout_to_html(select) {
                     }
 
                     // 갈마들이
-                    // 갈마들이가 있고 갈마들이가 한글 윗글쇠와 다르다
-                    if ( html_table[id]["false"][3] && (html_table[id]["false"][3] !== html_table[id]["true"][1]) ) {
+                    // 아랫글에 대한 갈마들이가 있고 갈마들이가 한글 윗글쇠와 다르다
+                    if (html_table[id]["false"][3] && (html_table[id]["false"][3] !== html_table[id]["true"][1]) ) {
                         // 영문 아랫글쇠에 값이 있으면 한글 윗글쇠를 보고 비었으면 한글 윗글쇠에 넣는다
                         if (down_en_key.html()) {
                             // 모아치기 글판
                             if (!up_han_key.html()) {
                                 up_han_key.addClass("galma");
                                 up_han_key.html(html_table[id]["false"][3]);
+                            } else {
+
                             }
                         } else {
+                            // 한글 아랫글이 있을 때 넣어주었던 class 를 갈마들이를 넣으면서 빼준다
+                            down_en_key.removeClass("ko_alpha");
                             down_en_key.addClass("galma");
                             down_en_key.html(html_table[id]["false"][3]);
                         }
                     }
+
+                    // 윗글에 대한 갈마들이가 있고 갈마들이가 한글 아랫글쇠와 다르다
                     if ( html_table[id]["true"][3] && (html_table[id]["true"][3] !== html_table[id]["false"][1]) ) {
-                        // 윗글에 대한 갈마들이가 있을 때, 아랫글이 첫소리라면 나타내지 않는다
                         //alert("::" + html_table[id]["true"][3] + " == " + html_table[id]["false"][1])
+                        // 한글 아랫글이 있을 때 넣어주었던 class 를 갈마들이를 넣으면서 빼준다
+                        down_en_key.removeClass("ko_alpha");
                         down_en_key.addClass("galma");
                         down_en_key.html(html_table[id]["true"][3]);
                     }
@@ -2439,11 +2449,11 @@ function url_query() {
             continue;
         }
 
-		if (field === 'ke')	{
+		if (field.toLowerCase() === 'ke')	{
 			return_url.ke_status = value.toLowerCase();
-		} else if (field === 'en') {
+		} else if (field.toLowerCase() === 'en') {
 			return_url.en_type = value.toLowerCase();
-		} else if (field === 'ko') {
+		} else if (field.toLowerCase() === 'ko') {
 			return_url.ko_type = value.toLowerCase();
 		}
 	}

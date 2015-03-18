@@ -157,1071 +157,367 @@ $(document).ready(function(){
         }, {keys: "6",
             on_keydown: function() {on_down(key_nodes.six);},
             on_keyup: function() {on_up(key_nodes.six);match_key("6");},
-        }, {
-        keys: "^",
-        on_keydown: function() {
-          on_shift_down(key_nodes.six);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.six);
-          match_key("^");
-        },
-      }, {
-        keys: "7",
-        on_keydown: function() {
-          on_down(key_nodes.seven);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.seven);
-          match_key("7");
-        },
-      }, {
-        keys: "&",
-        on_keydown: function() {
-          on_shift_down(key_nodes.seven);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.seven);
-          match_key("&");
-        },
-      }, {
-        keys: "8",
-        on_keydown: function() {
-          on_down(key_nodes.eight);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.eight);
-          match_key("8");
-        },
-      }, {
-        keys: "*",
-        on_keydown: function() {
-          on_shift_down(key_nodes.eight);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.eight);
-          match_key("*");
-        },
-      }, {
-        keys: "9",
-        on_keydown: function() {
-          on_down(key_nodes.nine);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.nine);
-          match_key("9");
-        },
-      }, {
-        keys: "(",
-        on_keydown: function() {
-          on_shift_down(key_nodes.nine);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.nine);
-          match_key("(");
-        },
-      }, {
-        keys: "0",
-        on_keydown: function() {
-          on_down(key_nodes.zero);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.zero);
-          match_key("0");
-        },
-      }, {
-        keys: ")",
-        on_keydown: function() {
-          on_shift_down(key_nodes.zero);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.zero);
-          match_key(")");
-        },
-      }, {
-        keys: "-",
-        on_keydown: function() {
-          on_down(key_nodes.hyphen);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.hyphen);
-          match_key("-");
-        },
-      }, {
-        keys: "_",
-        on_keydown: function() {
-          on_shift_down(key_nodes.hyphen);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.hyphen);
-          match_key("_");
-        },
-      }, {
-        keys: "=",
-        on_keydown: function() {
-          on_down(key_nodes.equals);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.equals);
-          match_key("=");
-        },
-      }, {
-        keys: "+",
-        on_keydown: function() {
-          on_shift_down(key_nodes.equals);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.equals);
-          match_key("+");
-        },
-      }, {
-        keys: "backspace",
-        on_keydown: function() {
-          on_down(key_nodes.backspace);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.backspace);
-        },
-      }, {
-        keys: "tab",
-        on_keydown: function() {
-          on_down(key_nodes.tab);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.tab);
-        },
-      }, {
-        keys: "q",
-        on_keydown: function() {
-          on_down(key_nodes.q);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.q);
-          match_key("q");
-        },
-      }, {
-        keys: "Q",
-        on_keydown: function() {
-          on_down(key_nodes.q);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.q);
-          match_key("Q");
-        },
-      }, {
-        keys: "w",
-        on_keydown: function() {
-          on_down(key_nodes.w);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.w);
-          match_key("w");
-        },
-      }, {
-        keys: "W",
-        on_keydown: function() {
-          on_down(key_nodes.w);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.w);
-          match_key("W");
-        },
-      }, {
-        keys: "e",
-        on_keydown: function() {
-          on_down(key_nodes.e);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.e);
-          match_key("e");
-        },
-      }, {
-        keys: "E",
-        on_keydown: function() {
-          on_down(key_nodes.e);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.e);
-          match_key("E");
-        },
-      }, {
-        keys: "r",
-        on_keydown: function() {
-          on_down(key_nodes.r);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.r);
-          match_key("r");
-        },
-      }, {
-        keys: "R",
-        on_keydown: function() {
-          on_down(key_nodes.r);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.r);
-          match_key("R");
-        },
-      }, {
-        keys: "t",
-        on_keydown: function() {
-          on_down(key_nodes.t);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.t);
-          match_key("t");
-        },
-      }, {
-        keys: "T",
-        on_keydown: function() {
-          on_down(key_nodes.t);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.t);
-          match_key("T");
-        },
-      }, {
-        keys: "y",
-        on_keydown: function() {
-          on_down(key_nodes.y);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.y);
-          match_key("y");
-        },
-      }, {
-        keys: "Y",
-        on_keydown: function() {
-          on_down(key_nodes.y);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.y);
-          match_key("Y");
-        },
-      }, {
-        keys: "u",
-        on_keydown: function() {
-          on_down(key_nodes.u);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.u);
-          match_key("u");
-        },
-      }, {
-        keys: "U",
-         on_keydown: function() {
-          on_down(key_nodes.u);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.u);
-          match_key("U");
-        },
-      }, {
-        keys: "i",
-        on_keydown: function() {
-          on_down(key_nodes.i);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.i);
-          match_key("i");
-        },
-      }, {
-        keys: "I",
-        on_keydown: function() {
-          on_down(key_nodes.i);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.i);
-          match_key("I");
-        },
-      }, {
-        keys: "o",
-        on_keydown: function() {
-          on_down(key_nodes.o);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.o);
-          match_key("o");
-        },
-      }, {
-        keys: "O",
-        on_keydown: function() {
-          on_down(key_nodes.o);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.o);
-          match_key("O");
-        },
-      }, {
-        keys: "p",
-        on_keydown: function() {
-          on_down(key_nodes.p);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.p);
-          match_key("p");
-        },
-      }, {
-        keys: "P",
-        on_keydown: function() {
-          on_down(key_nodes.p);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.p);
-          match_key("P");
-        },
-      }, {
-        keys: "[",
-        on_keydown: function() {
-          on_down(key_nodes.left_bracket);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.left_bracket);
-          match_key("[");
-        },
-      }, {
-        keys: "{",
-        on_keydown: function() {
-          on_shift_down(key_nodes.left_bracket);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.left_bracket);
-          match_key("{");
-        },
-      }, {
-        keys: "]",
-        on_keydown: function() {
-          on_down(key_nodes.right_bracket);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.right_bracket);
-          match_key("]");
-        },
-      }, {
-        keys: "}",
-        on_keydown: function() {
-          on_shift_down(key_nodes.right_bracket);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.right_bracket);
-          match_key("}");
-        },
-      }, {
-        keys: "\\",
-        on_keydown: function() {
-          on_down(key_nodes.backslash);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.backslash);
-          match_key("\\");
-        },
-      }, {
-        keys: "|",
-        on_keydown: function() {
-          on_shift_down(key_nodes.backslash);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.backslash);
-          match_key("|");
-        },
-      }, {
-        keys: "caps_lock",
-        on_keydown: function() {
-          on_capslock_down(key_nodes.caps_lock);
-        },
-        on_keyup: function() {
-          on_capslock_up(key_nodes.caps_lock);
-        },
-      }, {
-        keys: "a",
-        on_keydown: function() {
-          on_down(key_nodes.a);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.a);
-          match_key("a");
-        },
-      }, {
-        keys: "A",
-        on_keydown: function() {
-          on_down(key_nodes.a);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.a);
-          match_key("A");
-        },
-      }, {
-        keys: "s",
-        on_keydown: function() {
-          on_down(key_nodes.s);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.s);
-          match_key("s");
-        },
-      }, {
-        keys: "S",
-        on_keydown: function() {
-          on_down(key_nodes.s);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.s);
-          match_key("S");
-        },
-      }, {
-        keys: "d",
-        on_keydown: function() {
-          on_down(key_nodes.d);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.d);
-          match_key("d");
-        },
-      }, {
-        keys: "D",
-        on_keydown: function() {
-          on_down(key_nodes.d);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.d);
-          match_key("D");
-        },
-      }, {
-        keys: "f",
-        on_keydown: function() {
-          on_down(key_nodes.f);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.f);
-          match_key("f");
-        },
-      }, {
-        keys: "F",
-        on_keydown: function() {
-          on_down(key_nodes.f);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.f);
-          match_key("F");
-        },
-      }, {
-        keys: "g",
-        on_keydown: function() {
-          on_down(key_nodes.g);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.g);
-          match_key("g");
-        },
-      }, {
-        keys: "G",
-        on_keydown: function() {
-          on_down(key_nodes.g);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.g);
-          match_key("G");
-        },
-      }, {
-        keys: "h",
-        on_keydown: function() {
-          on_down(key_nodes.h);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.h);
-          match_key("h");
-        },
-      }, {
-        keys: "H",
-        on_keydown: function() {
-          on_down(key_nodes.h);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.h);
-          match_key("H");
-        },
-      }, {
-        keys: "j",
-        on_keydown: function() {
-          on_down(key_nodes.j);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.j);
-          match_key("j");
-        },
-      }, {
-        keys: "J",
-        on_keydown: function() {
-          on_down(key_nodes.j);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.j);
-          match_key("J");
-        },
-      }, {
-        keys: "k",
-        on_keydown: function() {
-          on_down(key_nodes.k);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.k);
-          match_key("k");
-        },
-      }, {
-        keys: "K",
-        on_keydown: function() {
-          on_down(key_nodes.k);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.k);
-          match_key("K");
-        },
-      }, {
-        keys: "l",
-        on_keydown: function() {
-          on_down(key_nodes.l);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.l);
-          match_key("l");
-        },
-      }, {
-        keys: "L",
-        on_keydown: function() {
-          on_down(key_nodes.l);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.l);
-          match_key("L");
-        },
-      }, {
-        keys: ";",
-        on_keydown: function() {
-          on_down(key_nodes.semicolon);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.semicolon);
-          match_key(";");
-        },
-      }, {
-        keys: ":",
-        on_keydown: function() {
-          on_shift_down(key_nodes.semicolon);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.semicolon);
-          match_key(":");
-        },
-      }, {
-        keys: "\'",
-        on_keydown: function() {
-          on_down(key_nodes.apostrophe);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.apostrophe);
-          match_key("\'");
-        },
-      }, {
-        keys: "\"",
-        on_keydown: function() {
-          on_shift_down(key_nodes.apostrophe);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.apostrophe);
-          match_key("\"");
-        },
-      }, {
-        keys: "enter",
-        on_keydown: function() {
-          on_down(key_nodes.enter);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.enter);
-        },
-      }, {
-        keys: "shift",
-        on_keydown: function() {
-          on_down(key_nodes.left_shift);
-          on_down(key_nodes.right_shift);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.left_shift);
-          on_up(key_nodes.right_shift);
+        }, {keys: "^",
+            on_keydown: function() {on_shift_down(key_nodes.six);},
+            on_keyup: function() {on_shift_up(key_nodes.six);match_key("^");},
+        }, {keys: "7",
+            on_keydown: function() {on_down(key_nodes.seven);},
+            on_keyup: function() {on_up(key_nodes.seven);match_key("7");},
+        }, {keys: "&",
+            on_keydown: function() {on_shift_down(key_nodes.seven);},
+            on_keyup: function() {on_shift_up(key_nodes.seven);match_key("&");},
+        }, {keys: "8",
+            on_keydown: function() {on_down(key_nodes.eight);},
+            on_keyup: function() {on_up(key_nodes.eight);match_key("8");},
+        }, {keys: "*",
+            on_keydown: function() {on_shift_down(key_nodes.eight);},
+            on_keyup: function() {on_shift_up(key_nodes.eight);match_key("*");},
+        }, {keys: "9",
+            on_keydown: function() {on_down(key_nodes.nine);},
+            on_keyup: function() {on_up(key_nodes.nine);match_key("9");},
+        }, {keys: "(",
+            on_keydown: function() {on_shift_down(key_nodes.nine);},
+            on_keyup: function() {on_shift_up(key_nodes.nine);match_key("(");},
+        }, {keys: "0",
+            on_keydown: function() {on_down(key_nodes.zero);},
+            on_keyup: function() {on_up(key_nodes.zero);match_key("0");},
+        }, {keys: ")",
+            on_keydown: function() {on_shift_down(key_nodes.zero);},
+            on_keyup: function() {on_shift_up(key_nodes.zero);match_key(")");},
+        }, {keys: "-",
+            on_keydown: function() {on_down(key_nodes.hyphen);},
+            on_keyup: function() {on_up(key_nodes.hyphen);match_key("-");},
+        }, {keys: "_",
+            on_keydown: function() {on_shift_down(key_nodes.hyphen);},
+            on_keyup: function() {on_shift_up(key_nodes.hyphen);match_key("_");},
+        }, {keys: "=",
+            on_keydown: function() {on_down(key_nodes.equals);},
+            on_keyup: function() {on_up(key_nodes.equals);match_key("=");},
+        }, {keys: "+",
+            on_keydown: function() {on_shift_down(key_nodes.equals);},
+            on_keyup: function() {on_shift_up(key_nodes.equals);match_key("+");},
+        }, {keys: "backspace",
+            on_keydown: function() {on_down(key_nodes.backspace);},
+            on_keyup: function() {on_up(key_nodes.backspace);},
+        }, {keys: "tab",
+            on_keydown: function() {on_down(key_nodes.tab);},
+            on_keyup: function() {on_up(key_nodes.tab);},
+        }, {keys: "q",
+            on_keydown: function() {on_down(key_nodes.q);},
+            on_keyup: function() {on_up(key_nodes.q);match_key("q");},
+        }, {keys: "Q",
+            on_keydown: function() {on_down(key_nodes.q);},
+            on_keyup: function() {on_up(key_nodes.q);match_key("Q");},
+        }, {keys: "w",
+            on_keydown: function() {on_down(key_nodes.w);},
+            on_keyup: function() {on_up(key_nodes.w);match_key("w");},
+        }, {keys: "W",
+            on_keydown: function() {on_down(key_nodes.w);},
+            on_keyup: function() {on_up(key_nodes.w);match_key("W");},
+        }, {keys: "e",
+            on_keydown: function() {on_down(key_nodes.e);},
+            on_keyup: function() {on_up(key_nodes.e);match_key("e");},
+        }, {keys: "E",
+            on_keydown: function() {on_down(key_nodes.e);},
+            on_keyup: function() {on_up(key_nodes.e);match_key("E");},
+        }, {keys: "r",
+            on_keydown: function() {on_down(key_nodes.r);},
+            on_keyup: function() {on_up(key_nodes.r);match_key("r");},
+        }, {keys: "R",
+            on_keydown: function() {on_down(key_nodes.r);},
+            on_keyup: function() {on_up(key_nodes.r);match_key("R");},
+        }, {keys: "t",
+            on_keydown: function() {on_down(key_nodes.t);},
+            on_keyup: function() {on_up(key_nodes.t);match_key("t");},
+        }, {keys: "T",
+            on_keydown: function() {on_down(key_nodes.t);},
+            on_keyup: function() {on_up(key_nodes.t);match_key("T");},
+        }, {keys: "y",
+            on_keydown: function() {on_down(key_nodes.y);},
+            on_keyup: function() {on_up(key_nodes.y);match_key("y");},
+        }, {keys: "Y",
+            on_keydown: function() {on_down(key_nodes.y);},
+            on_keyup: function() {on_up(key_nodes.y);match_key("Y");},
+        }, {keys: "u",
+            on_keydown: function() {on_down(key_nodes.u);},
+            on_keyup: function() {on_up(key_nodes.u);match_key("u");},
+        }, {keys: "U",
+            on_keydown: function() {on_down(key_nodes.u);},
+            on_keyup: function() {on_up(key_nodes.u);match_key("U");},
+        }, {keys: "i",
+            on_keydown: function() {on_down(key_nodes.i);},
+            on_keyup: function() {on_up(key_nodes.i);match_key("i");},
+        }, {keys: "I",
+            on_keydown: function() {on_down(key_nodes.i);},
+            on_keyup: function() {on_up(key_nodes.i);match_key("I");},
+        }, {keys: "o",
+            on_keydown: function() {on_down(key_nodes.o);},
+            on_keyup: function() {on_up(key_nodes.o);match_key("o");},
+        }, {keys: "O",
+            on_keydown: function() {on_down(key_nodes.o);},
+            on_keyup: function() {on_up(key_nodes.o);match_key("O");},
+        }, {keys: "p",
+            on_keydown: function() {on_down(key_nodes.p);},
+            on_keyup: function() {on_up(key_nodes.p);match_key("p");},
+        }, {keys: "P",
+            on_keydown: function() {on_down(key_nodes.p);},
+            on_keyup: function() {on_up(key_nodes.p);match_key("P");},
+        }, {keys: "[",
+            on_keydown: function() {on_down(key_nodes.left_bracket);},
+            on_keyup: function() {on_up(key_nodes.left_bracket);match_key("[");},
+        }, {keys: "{",
+            on_keydown: function() {on_shift_down(key_nodes.left_bracket);},
+            on_keyup: function() {on_shift_up(key_nodes.left_bracket);match_key("{");},
+        }, {keys: "]",
+            on_keydown: function() {on_down(key_nodes.right_bracket);},
+            on_keyup: function() {on_up(key_nodes.right_bracket);match_key("]");},
+        }, {keys: "}",
+            on_keydown: function() {on_shift_down(key_nodes.right_bracket);},
+            on_keyup: function() {on_shift_up(key_nodes.right_bracket);match_key("}");},
+        }, {keys: "\\",
+            on_keydown: function() {on_down(key_nodes.backslash);},
+            on_keyup: function() {on_up(key_nodes.backslash);match_key("\\");},
+        }, {keys: "|",
+            on_keydown: function() {on_shift_down(key_nodes.backslash);},
+            on_keyup: function() {on_shift_up(key_nodes.backslash);match_key("|");},
+        }, {keys: "caps_lock",
+            on_keydown: function() {on_capslock_down(key_nodes.caps_lock);},
+            on_keyup: function() {on_capslock_up(key_nodes.caps_lock);},
+        }, {keys: "a",
+            on_keydown: function() {on_down(key_nodes.a);},
+            on_keyup: function() {on_up(key_nodes.a);match_key("a");},
+        }, {keys: "A",
+            on_keydown: function() {on_down(key_nodes.a);},
+            on_keyup: function() {on_up(key_nodes.a);match_key("A");},
+        }, {keys: "s",
+            on_keydown: function() {on_down(key_nodes.s);},
+            on_keyup: function() {on_up(key_nodes.s);match_key("s");},
+        }, {keys: "S",
+            on_keydown: function() {on_down(key_nodes.s);},
+            on_keyup: function() {on_up(key_nodes.s);match_key("S");},
+        }, {keys: "d",
+            on_keydown: function() {on_down(key_nodes.d);},
+            on_keyup: function() {on_up(key_nodes.d);match_key("d");},
+        }, {keys: "D",
+            on_keydown: function() {on_down(key_nodes.d);},
+            on_keyup: function() {on_up(key_nodes.d);match_key("D");},
+        }, {keys: "f",
+            on_keydown: function() {on_down(key_nodes.f);},
+            on_keyup: function() {on_up(key_nodes.f);match_key("f");},
+        }, {keys: "F",
+            on_keydown: function() {on_down(key_nodes.f);},
+            on_keyup: function() {on_up(key_nodes.f);match_key("F");},
+        }, {keys: "g",
+            on_keydown: function() {on_down(key_nodes.g);},
+            on_keyup: function() {on_up(key_nodes.g);match_key("g");},
+        }, {keys: "G",
+            on_keydown: function() {on_down(key_nodes.g);},
+            on_keyup: function() {on_up(key_nodes.g);match_key("G");},
+        }, {keys: "h",
+            on_keydown: function() {on_down(key_nodes.h);},
+            on_keyup: function() {on_up(key_nodes.h);match_key("h");},
+        }, {keys: "H",
+            on_keydown: function() {on_down(key_nodes.h);},
+            on_keyup: function() {on_up(key_nodes.h);match_key("H");},
+        }, {keys: "j",
+            on_keydown: function() {on_down(key_nodes.j);},
+            on_keyup: function() {on_up(key_nodes.j);match_key("j");},
+        }, {keys: "J",
+            on_keydown: function() {on_down(key_nodes.j);},
+            on_keyup: function() {on_up(key_nodes.j);match_key("J");},
+        }, {keys: "k",
+            on_keydown: function() {on_down(key_nodes.k);},
+            on_keyup: function() {on_up(key_nodes.k);match_key("k");},
+        }, {keys: "K",
+            on_keydown: function() {on_down(key_nodes.k);},
+            on_keyup: function() {on_up(key_nodes.k);match_key("K");},
+        }, {keys: "l",
+            on_keydown: function() {on_down(key_nodes.l);},
+            on_keyup: function() {on_up(key_nodes.l);match_key("l");},
+        }, {keys: "L",
+            on_keydown: function() {on_down(key_nodes.l);},
+            on_keyup: function() {on_up(key_nodes.l);match_key("L");},
+        }, {keys: ";",
+            on_keydown: function() {on_down(key_nodes.semicolon);},
+            on_keyup: function() {on_up(key_nodes.semicolon);match_key(";");},
+        }, {keys: ":",
+            on_keydown: function() {on_shift_down(key_nodes.semicolon);},
+            on_keyup: function() {on_shift_up(key_nodes.semicolon);match_key(":");},
+        }, {keys: "\'",
+            on_keydown: function() {on_down(key_nodes.apostrophe);},
+            on_keyup: function() {on_up(key_nodes.apostrophe);match_key("\'");},
+        }, {keys: "\"",
+            on_keydown: function() {on_shift_down(key_nodes.apostrophe);},
+            on_keyup: function() {on_shift_up(key_nodes.apostrophe);match_key("\"");},
+        }, {keys: "enter",
+            on_keydown: function() {on_down(key_nodes.enter);},
+            on_keyup: function() {on_up(key_nodes.enter);},
+        }, {keys: "shift",
+            on_keydown: function() {on_down(key_nodes.left_shift);on_down(key_nodes.right_shift);},
+            on_keyup: function() {on_up(key_nodes.left_shift);on_up(key_nodes.right_shift);}
+        }, {keys: "z",
+            on_keydown: function() {on_down(key_nodes.z);},
+            on_keyup: function() {on_up(key_nodes.z);match_key("z");},
+        }, {keys: "Z",
+            on_keydown: function() {on_down(key_nodes.z);},
+            on_keyup: function() {on_up(key_nodes.z);match_key("Z");},
+        }, {keys: "x",
+            on_keydown: function() {on_down(key_nodes.x);},
+            on_keyup: function() {on_up(key_nodes.x);match_key("x");},
+        }, {keys: "X",
+            on_keydown: function() {on_down(key_nodes.x);},
+            on_keyup: function() {on_up(key_nodes.x);match_key("X");},
+        }, {keys: "c",
+            on_keydown: function() {on_down(key_nodes.c);},
+            on_keyup: function() {on_up(key_nodes.c);match_key("c");},
+        }, {keys: "C",
+            on_keydown: function() {on_down(key_nodes.c);},
+            on_keyup: function() {on_up(key_nodes.c);match_key("C");},
+        }, {keys: "v",
+            on_keydown: function() {on_down(key_nodes.v);},
+            on_keyup: function() {on_up(key_nodes.v);match_key("v");},
+        }, {keys: "V",
+            on_keydown: function() {on_down(key_nodes.v);},
+            on_keyup: function() {on_up(key_nodes.v);match_key("V");},
+        }, {keys: "b",
+            on_keydown: function() {on_down(key_nodes.b);},
+            on_keyup: function() {on_up(key_nodes.b);match_key("b");},
+        }, {keys: "B",
+            on_keydown: function() {on_down(key_nodes.b);},
+            on_keyup: function() {on_up(key_nodes.b);match_key("B");},
+        }, {keys: "n",
+            on_keydown: function() {on_down(key_nodes.n);},
+            on_keyup: function() {on_up(key_nodes.n);match_key("n");},
+        }, {keys: "N",
+            on_keydown: function() {on_down(key_nodes.n);},
+            on_keyup: function() {on_up(key_nodes.n);match_key("N");},
+        }, {keys: "m",
+            on_keydown: function() {on_down(key_nodes.m);},
+            on_keyup: function() {on_up(key_nodes.m);match_key("m");},
+        }, {keys: "M",
+            on_keydown: function() {on_down(key_nodes.m);},
+            on_keyup: function() {on_up(key_nodes.m);match_key("M");},
+        }, {keys: ",",
+            on_keydown: function() {on_down(key_nodes.comma);},
+            on_keyup: function() {on_up(key_nodes.comma);match_key(",");},
+        }, {keys: "<",
+            on_keydown: function() {on_shift_down(key_nodes.comma);},
+            on_keyup: function() {on_shift_up(key_nodes.comma);match_key("<");},
+        }, {keys: ".",
+            on_keydown: function() {on_down(key_nodes.period);},
+            on_keyup: function() {on_up(key_nodes.period);match_key(".");},
+        }, {keys: ">",
+            on_keydown: function() {on_shift_down(key_nodes.period);},
+            on_keyup: function() {on_shift_up(key_nodes.period);match_key(">");},
+        }, {keys: "/",
+            on_keydown: function() {on_down(key_nodes.forwardslash);},
+            on_keyup: function() {on_up(key_nodes.forwardslash);match_key("/");},
+        }, {keys: "?",
+            on_keydown: function() {on_shift_down(key_nodes.forwardslash);},
+            on_keyup: function() {on_shift_up(key_nodes.forwardslash);match_key("?");},
+        }, {keys: "ctrl",
+            on_keydown: function() {on_down(key_nodes.left_ctrl);on_down(key_nodes.right_ctrl);},
+            on_keyup: function() {on_up(key_nodes.left_ctrl);on_up(key_nodes.right_ctrl);}
+        }, {keys: "alt",
+            on_keydown: function() {on_down(key_nodes.left_alt);on_down(key_nodes.right_alt);},
+            on_keyup: function() {on_up(key_nodes.left_alt);on_up(key_nodes.right_alt);}
+        }, {keys: "cmd",
+            on_keydown: function() {on_down(key_nodes.left_cmd);on_down(key_nodes.right_cmd);},
+            on_keyup: function() {on_up(key_nodes.left_cmd);on_up(key_nodes.right_cmd);}
+        }, {keys: "space",
+            on_keydown: function() {on_down(key_nodes.space);},
+            on_keyup: function() {on_up(key_nodes.space);}
+        }, {keys: "up",
+            on_keydown: function() {on_down(key_nodes.up);},
+            on_keyup: function() {on_up(key_nodes.up);}
+        }, {keys: "down",
+            on_keydown: function() {on_down(key_nodes.down);},
+            on_keyup: function() {on_up(key_nodes.down);}
+        }, {keys: "left",
+            on_keydown: function() {on_down(key_nodes.left);},
+            on_keyup: function() {on_up(key_nodes.left);}
+        }, {keys: "right",
+            on_keydown: function() {on_down(key_nodes.right);},
+            on_keyup: function() {on_up(key_nodes.right);}
+        }, {keys: "print",
+            on_keydown: function(e) {on_down(key_nodes.print);},
+            on_keyup: function() {on_up(key_nodes.print);}
+        }, {keys: "scroll",
+            on_keydown: function() {on_down(key_nodes.scroll_lock);},
+            on_keyup: function() {on_up(key_nodes.scroll_lock);}
+        }, {keys: "pause",
+            on_keydown: function() {on_down(key_nodes.pause_break);},
+            on_keyup: function() {on_up(key_nodes.pause_break);}
+        }, {keys: "insert",
+            on_keydown: function() {on_down(key_nodes.insert);},
+            on_keyup: function() {on_up(key_nodes.insert);}
+        }, {keys: "home",
+            on_keydown: function() {on_down(key_nodes.home);},
+            on_keyup: function() {on_up(key_nodes.home);}
+        }, {keys: "pageup",
+            on_keydown: function() {on_down(key_nodes.page_up);},
+            on_keyup: function() {on_up(key_nodes.page_up);}
+        }, {keys: "delete",
+            on_keydown: function() {on_down(key_nodes["delete"]);},
+            on_keyup: function() {on_up(key_nodes["delete"]);}
+        }, {keys: "end",
+            on_keydown: function() {on_down(key_nodes.end);},
+            on_keyup: function() {on_up(key_nodes.end);}
+        }, {keys: "pagedown",
+            on_keydown: function() {on_down(key_nodes.page_down);},
+            on_keyup: function() {on_up(key_nodes.page_down);}
+        }, {keys: "num",
+            on_keydown: function() {on_down(key_nodes.num_lock);},
+            on_keyup: function() {on_up(key_nodes.num_lock);}
+        }, {keys: "num_divide",
+            on_keydown: function() {on_down(key_nodes.divide);},
+            on_keyup: function() {on_up(key_nodes.divide);match_key("/");}
+        }, {keys: "num_multiply",
+            on_keydown: function() {on_down(key_nodes.multiply);},
+            on_keyup: function() {on_up(key_nodes.multiply);match_key("*");}
+        }, {keys: "num_subtract",
+            on_keydown: function() {on_down(key_nodes.subtract);},
+            on_keyup: function() {on_up(key_nodes.subtract);match_key("-");}
+        }, {keys: "num_add",
+            on_keydown: function() {on_down(key_nodes.add);},
+            on_keyup: function() {on_up(key_nodes.add);match_key("+");}
+        }, {keys: "num_enter",
+            on_keydown: function() {on_down(key_nodes.num_enter);},
+            on_keyup: function() {on_up(key_nodes.num_enter);}
+        }, {keys: "num_decimal",
+            on_keydown: function() {on_down(key_nodes.num_decimal);},
+            on_keyup: function() {on_up(key_nodes.num_decimal);match_key(".");}
+        }, {keys: "num_0",
+            on_keydown: function() {on_down(key_nodes.num_0);},
+            on_keyup: function() {on_up(key_nodes.num_0);match_key("0");}
+        }, {keys: "num_1",
+            on_keydown: function() {on_down(key_nodes.num_1);},
+            on_keyup: function() {on_up(key_nodes.num_1);match_key("1");}
+        }, {keys: "num_2",
+            on_keydown: function() {on_down(key_nodes.num_2);},
+            on_keyup: function() {on_up(key_nodes.num_2);match_key("2");}
+        }, {keys: "num_3",
+            on_keydown: function() {on_down(key_nodes.num_3);},
+            on_keyup: function() {on_up(key_nodes.num_3);match_key("3");}
+        }, {keys: "num_4",
+            on_keydown: function() {on_down(key_nodes.num_4);},
+            on_keyup: function() {on_up(key_nodes.num_4);match_key("4");}
+        }, {keys: "num_5",
+            on_keydown: function() {on_down(key_nodes.num_5);},
+            on_keyup: function() {on_up(key_nodes.num_5);match_key("5");}
+        }, {keys: "num_6",
+            on_keydown: function() {on_down(key_nodes.num_6);},
+            on_keyup: function() {on_up(key_nodes.num_6);match_key("6");}
+        }, {keys: "num_7",
+            on_keydown: function() {on_down(key_nodes.num_7);},
+            on_keyup: function() {on_up(key_nodes.num_7);match_key("7");}
+        }, {keys: "num_8",
+            on_keydown: function() {on_down(key_nodes.num_8);},
+            on_keyup: function() {on_up(key_nodes.num_8);match_key("8");}
+        }, {keys: "num_9",
+            on_keydown: function() {on_down(key_nodes.num_9);},
+            on_keyup: function() {on_up(key_nodes.num_9);match_key("9");}
         }
-      }, {
-        keys: "z",
-        on_keydown: function() {
-          on_down(key_nodes.z);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.z);
-          match_key("z");
-        },
-      }, {
-        keys: "Z",
-        on_keydown: function() {
-          on_down(key_nodes.z);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.z);
-          match_key("Z");
-        },
-      }, {
-        keys: "x",
-        on_keydown: function() {
-          on_down(key_nodes.x);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.x);
-          match_key("x");
-        },
-      }, {
-        keys: "X",
-        on_keydown: function() {
-          on_down(key_nodes.x);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.x);
-          match_key("X");
-        },
-      }, {
-        keys: "c",
-        on_keydown: function() {
-          on_down(key_nodes.c);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.c);
-          match_key("c");
-        },
-      }, {
-        keys: "C",
-        on_keydown: function() {
-          on_down(key_nodes.c);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.c);
-          match_key("C");
-        },
-      }, {
-        keys: "v",
-        on_keydown: function() {
-          on_down(key_nodes.v);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.v);
-          match_key("v");
-        },
-      }, {
-        keys: "V",
-        on_keydown: function() {
-          on_down(key_nodes.v);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.v);
-          match_key("V");
-        },
-      }, {
-        keys: "b",
-        on_keydown: function() {
-          on_down(key_nodes.b);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.b);
-          match_key("b");
-        },
-      }, {
-        keys: "B",
-        on_keydown: function() {
-          on_down(key_nodes.b);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.b);
-          match_key("B");
-        },
-      }, {
-        keys: "n",
-        on_keydown: function() {
-          on_down(key_nodes.n);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.n);
-          match_key("n");
-        },
-      }, {
-        keys: "N",
-        on_keydown: function() {
-          on_down(key_nodes.n);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.n);
-          match_key("N");
-        },
-      }, {
-        keys: "m",
-        on_keydown: function() {
-          on_down(key_nodes.m);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.m);
-          match_key("m");
-        },
-      }, {
-        keys: "M",
-        on_keydown: function() {
-          on_down(key_nodes.m);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.m);
-          match_key("M");
-        },
-      }, {
-        keys: ",",
-        on_keydown: function() {
-          on_down(key_nodes.comma);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.comma);
-          match_key(",");
-        },
-      }, {
-        keys: "<",
-        on_keydown: function() {
-          on_shift_down(key_nodes.comma);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.comma);
-          match_key("<");
-        },
-      }, {
-        keys: ".",
-        on_keydown: function() {
-          on_down(key_nodes.period);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.period);
-          match_key(".");
-        },
-      }, {
-        keys: ">",
-        on_keydown: function() {
-          on_shift_down(key_nodes.period);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.period);
-          match_key(">");
-        },
-      }, {
-        keys: "/",
-        on_keydown: function() {
-          on_down(key_nodes.forwardslash);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.forwardslash);
-          match_key("/");
-        },
-      }, {
-        keys: "?",
-        on_keydown: function() {
-          on_shift_down(key_nodes.forwardslash);
-        },
-        on_keyup: function() {
-          on_shift_up(key_nodes.forwardslash);
-          match_key("?");
-        },
-      }, {
-        keys: "ctrl",
-        on_keydown: function() {
-          on_down(key_nodes.left_ctrl);
-          on_down(key_nodes.right_ctrl);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.left_ctrl);
-          on_up(key_nodes.right_ctrl);
-        }
-      }, {
-        keys: "alt",
-        on_keydown: function() {
-          on_down(key_nodes.left_alt);
-          on_down(key_nodes.right_alt);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.left_alt);
-          on_up(key_nodes.right_alt);
-        }
-      }, {
-        keys: "cmd",
-        on_keydown: function() {
-          on_down(key_nodes.left_cmd);
-          on_down(key_nodes.right_cmd);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.left_cmd);
-          on_up(key_nodes.right_cmd);
-        }
-      }, {
-        keys: "space",
-        on_keydown: function() {
-          on_down(key_nodes.space);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.space);
-        }
-      }, {
-        keys: "up",
-        on_keydown: function() {
-          on_down(key_nodes.up);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.up);
-        }
-      }, {
-        keys: "down",
-        on_keydown: function() {
-          on_down(key_nodes.down);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.down);
-        }
-      }, {
-        keys: "left",
-        on_keydown: function() {
-          on_down(key_nodes.left);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.left);
-        }
-      }, {
-        keys: "right",
-        on_keydown: function() {
-          on_down(key_nodes.right);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.right);
-        }
-      }, {
-        keys: "print",
-        on_keydown: function(e) {
-          on_down(key_nodes.print);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.print);
-        }
-      }, {
-        keys: "scroll",
-        on_keydown: function() {
-          on_down(key_nodes.scroll_lock);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.scroll_lock);
-        }
-      }, {
-        keys: "pause",
-        on_keydown: function() {
-          on_down(key_nodes.pause_break);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.pause_break);
-        }
-      }, {
-        keys: "insert",
-        on_keydown: function() {
-          on_down(key_nodes.insert);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.insert);
-        }
-      }, {
-        keys: "home",
-        on_keydown: function() {
-          on_down(key_nodes.home);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.home);
-        }
-      }, {
-        keys: "pageup",
-        on_keydown: function() {
-          on_down(key_nodes.page_up);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.page_up);
-        }
-      }, {
-        keys: "delete",
-        on_keydown: function() {
-          on_down(key_nodes["delete"]);
-        },
-        on_keyup: function() {
-          on_up(key_nodes["delete"]);
-        }
-      }, {
-        keys: "end",
-        on_keydown: function() {
-          on_down(key_nodes.end);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.end);
-        }
-      }, {
-        keys: "pagedown",
-        on_keydown: function() {
-          on_down(key_nodes.page_down);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.page_down);
-        }
-      }, {
-        keys: "num",
-        on_keydown: function() {
-          on_down(key_nodes.num_lock);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_lock);
-        }
-      }, {
-        keys: "num_divide",
-        on_keydown: function() {
-          on_down(key_nodes.divide);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.divide);
-          match_key("/");
-        }
-      }, {
-        keys: "num_multiply",
-        on_keydown: function() {
-          on_down(key_nodes.multiply);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.multiply);
-          match_key("*");
-        }
-      }, {
-        keys: "num_subtract",
-        on_keydown: function() {
-          on_down(key_nodes.subtract);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.subtract);
-          match_key("-");
-        }
-      }, {
-        keys: "num_add",
-        on_keydown: function() {
-          on_down(key_nodes.add);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.add);
-          match_key("+");
-        }
-      }, {
-        keys: "num_enter",
-        on_keydown: function() {
-          on_down(key_nodes.num_enter);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_enter);
-        }
-      }, {
-        keys: "num_decimal",
-        on_keydown: function() {
-          on_down(key_nodes.num_decimal);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_decimal);
-          match_key(".");
-        }
-      }, {
-        keys: "num_0",
-        on_keydown: function() {
-          on_down(key_nodes.num_0);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_0);
-          match_key("0");
-        }
-      }, {
-        keys: "num_1",
-        on_keydown: function() {
-          on_down(key_nodes.num_1);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_1);
-          match_key("1");
-        }
-      }, {
-        keys: "num_2",
-        on_keydown: function() {
-          on_down(key_nodes.num_2);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_2);
-          match_key("2");
-        }
-      }, {
-        keys: "num_3",
-        on_keydown: function() {
-          on_down(key_nodes.num_3);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_3);
-          match_key("3");
-        }
-      }, {
-        keys: "num_4",
-        on_keydown: function() {
-          on_down(key_nodes.num_4);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_4);
-          match_key("4");
-        }
-      }, {
-        keys: "num_5",
-        on_keydown: function() {
-          on_down(key_nodes.num_5);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_5);
-          match_key("5");
-        }
-      }, {
-        keys: "num_6",
-        on_keydown: function() {
-          on_down(key_nodes.num_6);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_6);
-          match_key("6");
-        }
-      }, {
-        keys: "num_7",
-        on_keydown: function() {
-          on_down(key_nodes.num_7);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_7);
-          match_key("7");
-        }
-      }, {
-        keys: "num_8",
-        on_keydown: function() {
-          on_down(key_nodes.num_8);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_8);
-          match_key("8");
-        }
-      }, {
-        keys: "num_9",
-        on_keydown: function() {
-          on_down(key_nodes.num_9);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.num_9);
-          match_key("9");
-        }
-      }
     ];
     return listener.register_many(combos);
   };

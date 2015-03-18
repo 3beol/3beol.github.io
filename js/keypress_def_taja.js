@@ -1,4 +1,102 @@
 function get_taja_hangeul(type) {
+    var K2_2_ksx5002 = {
+        // taja.js > match_key = function(key) [글쇠, 손가락, ID, 갈마들이]
+        '<strong class="cheot">ㄱ</strong>':  ['r', 7, "key_r"],
+        '<strong class="cheot">ㄲ</strong>':  ['R', 7, "key_r"],
+        '<strong class="cheot">ㄴ</strong>':  ['s', 9, "key_s"],
+        '<strong class="cheot">ㄷ</strong>':  ['e', 8, "key_e"],
+        '<strong class="cheot">ㄸ</strong>':  ['E', 8, "key_e"],
+        '<strong class="cheot">ㄹ</strong>':  ['f', 7, "key_f"],
+        '<strong class="cheot">ㅁ</strong>':  ['a', 10, "key_a"],
+        '<strong class="cheot">ㅂ</strong>':  ['q', 10, "key_q"],
+        '<strong class="cheot">ㅃ</strong>':  ['Q', 10, "key_q"],
+        '<strong class="cheot">ㅅ</strong>':  ['t', 7, "key_t"],
+        '<strong class="cheot">ㅆ</strong>':  ['T', 7, "key_t"],
+        '<strong class="cheot">ㅇ</strong>':  ['d', 8, "key_d"],
+        '<strong class="cheot">ㅈ</strong>':  ['w', 9, "key_w"],
+        '<strong class="cheot">ㅉ</strong>':  ['W', 9, "key_w"],
+        '<strong class="cheot">ㅊ</strong>':  ['c', 8, "key_c"],
+        '<strong class="cheot">ㅋ</strong>':  ['z', 10, "key_z"],
+        '<strong class="cheot">ㅌ</strong>':  ['x', 9, "key_x"],
+        '<strong class="cheot">ㅍ</strong>':  ['v', 7, "key_v"],
+        '<strong class="cheot">ㅎ</strong>':  ['g', 7, "key_g"],
+        '<strong class="gawit">ㅏ</strong>': ['k', 3, "key_k"],
+        '<strong class="gawit">ㅐ</strong>': ['o', 4, "key_o"],
+        '<strong class="gawit">ㅒ</strong>': ['O', 4, "key_o"],
+        '<strong class="gawit">ㅑ</strong>': ['i', 3, "key_i"],
+        '<strong class="gawit">ㅓ</strong>': ['j', 2, "key_j"],
+        '<strong class="gawit">ㅔ</strong>': ['p', 5, "key_p"],
+        '<strong class="gawit">ㅖ</strong>': ['P', 5, "key_p"],
+        '<strong class="gawit">ㅕ</strong>': ['u', 2, "key_u"],
+        '<strong class="gawit">ㅗ</strong>': ['h', 2, "key_h"],
+        '<strong class="gawit">ㅛ</strong>': ['y', 2, "key_y"],
+        '<strong class="gawit">ㅜ</strong>': ['n', 2, "key_n"],
+        '<strong class="gawit">ㅠ</strong>': ['b', 7, "key_b"],
+        '<strong class="gawit">ㅡ</strong>': ['m', 2, "key_m"],
+        '<strong class="gawit">ㅣ</strong>': ['l', 4, "key_l"],
+    };
+
+    var K2_2sun_ksx5002 = {
+        // taja.js > match_key = function(key) [글쇠, 손가락, ID, 갈마들이]
+        '<strong class="cheot">ㄱ</strong>':  ['r', 7, "key_r"],
+        '<strong class="cheot">ㄴ</strong>':  ['s', 9, "key_s"],
+        '<strong class="cheot">ㄷ</strong>':  ['e', 8, "key_e"],
+        '<strong class="cheot">ㄹ</strong>':  ['f', 7, "key_f"],
+        '<strong class="cheot">ㅁ</strong>':  ['a', 10, "key_a"],
+        '<strong class="cheot">ㅂ</strong>':  ['q', 10, "key_q"],
+        '<strong class="cheot">ㅅ</strong>':  ['t', 7, "key_t"],
+        '<strong class="cheot">ㅇ</strong>':  ['d', 8, "key_d"],
+        '<strong class="cheot">ㅈ</strong>':  ['w', 9, "key_w"],
+        '<strong class="cheot">ㅊ</strong>':  ['c', 8, "key_c"],
+        '<strong class="cheot">ㅋ</strong>':  ['z', 10, "key_z"],
+        '<strong class="cheot">ㅌ</strong>':  ['x', 9, "key_x"],
+        '<strong class="cheot">ㅍ</strong>':  ['v', 7, "key_v"],
+        '<strong class="cheot">ㅎ</strong>':  ['g', 7, "key_g"],
+        '<strong class="gawit">ㅏ</strong>': ['k', 3, "key_k"],
+        '<strong class="gawit">ㅐ</strong>': ['o', 4, "key_o"],
+        '<strong class="gawit">ㅑ</strong>': ['i', 3, "key_i"],
+        '<strong class="gawit">ㅓ</strong>': ['j', 2, "key_j"],
+        '<strong class="gawit">ㅔ</strong>': ['p', 5, "key_p"],
+        '<strong class="gawit">ㅕ</strong>': ['u', 2, "key_u"],
+        '<strong class="gawit">ㅗ</strong>': ['h', 2, "key_h"],
+        '<strong class="gawit">ㅛ</strong>': ['y', 2, "key_y"],
+        '<strong class="gawit">ㅜ</strong>': ['n', 2, "key_n"],
+        '<strong class="gawit">ㅠ</strong>': ['b', 7, "key_b"],
+        '<strong class="gawit">ㅡ</strong>': ['m', 2, "key_m"],
+        '<strong class="gawit">ㅣ</strong>': ['l', 4, "key_l"],
+    };
+
+    var K2_2_kps9256 = {
+        // taja.js > match_key = function(key) [글쇠, 손가락, ID, 갈마들이]
+        '<strong class="cheot">ㄱ</strong>':  ['s', 9, "key_s"],
+        '<strong class="cheot">ㄴ</strong>':  ['f', 7, "key_f"],
+        '<strong class="cheot">ㄷ</strong>':  ['e', 8, "key_e"],
+        '<strong class="cheot">ㄹ</strong>':  ['r', 7, "key_r"],
+        '<strong class="cheot">ㅁ</strong>':  ['w', 9, "key_w"],
+        '<strong class="cheot">ㅂ</strong>':  ['q', 10, "key_q"],
+        '<strong class="cheot">ㅅ</strong>':  ['g', 7, "key_g"],
+        '<strong class="cheot">ㅇ</strong>':  ['d', 8, "key_d"],
+        '<strong class="cheot">ㅈ</strong>':  ['a', 10, "key_a"],
+        '<strong class="cheot">ㅊ</strong>':  ['v', 7, "key_v"],
+        '<strong class="cheot">ㅋ</strong>':  ['z', 10, "key_z"],
+        '<strong class="cheot">ㅌ</strong>':  ['x', 9, "key_x"],
+        '<strong class="cheot">ㅍ</strong>':  ['c', 8, "key_c"],
+        '<strong class="cheot">ㅎ</strong>':  ['t', 7, "key_t"],
+        '<strong class="gawit">ㅏ</strong>': ['j', 2, "key_j"],
+        '<strong class="gawit">ㅐ</strong>': ['o', 4, "key_o"],
+        '<strong class="gawit">ㅑ</strong>': ['m', 2, "key_m"],
+        '<strong class="gawit">ㅓ</strong>': ['i', 3, "key_i"],
+        '<strong class="gawit">ㅔ</strong>': ['p', 5, "key_p"],
+        '<strong class="gawit">ㅕ</strong>': ['y', 2, "key_y"],
+        '<strong class="gawit">ㅗ</strong>': ['h', 2, "key_h"],
+        '<strong class="gawit">ㅛ</strong>': ['n', 2, "key_n"],
+        '<strong class="gawit">ㅜ</strong>': ['u', 2, "key_u"],
+        '<strong class="gawit">ㅠ</strong>': ['b', 7, "key_b"],
+        '<strong class="gawit">ㅡ</strong>': ['l', 4, "key_l"],
+        '<strong class="gawit">ㅣ</strong>': ['k', 3, "key_k"],
+    };
+
+
     var K3_3_2012 = {
         // taja.js > match_key = function(key) [글쇠, 손가락, ID, 갈마들이]
         '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
@@ -347,6 +445,8 @@ function get_taja_hangeul(type) {
             } else {
                 return {};
             }
+        } else if (type.substr(0, 4) === '3moa') {
+            return {};//K3_3moa_2014;
         } else if (type.substr(0, 5) === '3shin') {
             if (type === '3shin-2003') {
                 return K3_3shin_2003;
@@ -359,7 +459,13 @@ function get_taja_hangeul(type) {
             return {};
         }
     } else {
-        return {};    
+        if (type === '2-kps9256') {
+            return K2_2_kps9256;
+        } else if (type === '2sun-ksx5002') {
+            return K2_2sun_ksx5002;
+        } else {
+            return K2_2_ksx5002;
+        }
     } 
 
 }
