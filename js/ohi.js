@@ -37,6 +37,7 @@ var ohiQ = [0,0,0,0,0,0];
 // 낱자가 조합이 될 때는 0
 var fore_back = -1;
 
+var KE_status_list = ['en', 'ko'];
 var EN_type_list = ['qwerty', 'dvorak', 'colemak'];
 var KO_type_list = ['2-ksx5002', '2-kps9256', '2sun-ksx5002', 
                                 '3-90', '3-91', '3-93-yet', 
@@ -2173,21 +2174,13 @@ function change_EN_type(type) {
     }
 
 //alert("layout_list_info");
-    //if (KE_status === 'en') {
-        //$(".layout_select option[value="+EN_type+"]").prop("selected", true);
-        $.each (layout_list_info_en, function (index, item) {
-            if (EN_type == item.name) {
-                $(".en_type option[value="+EN_type+"]").prop("selected", true);
-                //if(typeof(item.link) !== 'undefined') {
-                    //$(".layout_link a").attr('href', item.link).show();
-                //} else {
-                    //$(".layout_link a").attr('href', '').hide();
-                //}
-            } else {
-                $(".en_type option[value="+item.value+"]").prop("selected", false);
-            }
-        });
-    //}
+    $.each (layout_list_info_en, function (index, item) {
+        if (EN_type == item.name) {
+            $(".en_type option[value="+EN_type+"]").prop("selected", true);
+        } else {
+            $(".en_type option[value="+item.name+"]").prop("selected", false);
+        }
+    });
 
 
     english_layout = get_table_english(EN_type);
@@ -2218,30 +2211,25 @@ function change_KO_type(type) {
 
     KO_type = KO_type_list[index_changed];
 //alert("layout_list_info");
-    //if (KE_status === 'ko') {
-        //$(".layout_select option[value="+KO_type+"]").prop("selected", true);
-        $.each (layout_list_info_ko, function (index, item) {
-            //alert(item.link);
-            if (KO_type == item.name) {
-                $(".ko_type option[value="+KO_type+"]").prop("selected", true);
-                if(typeof(item.link) !== 'undefined') {
-                    $(".layout_link a").attr('href', item.link).show();
-                } else {
-                    $(".layout_link a").attr('href', '').hide();
-                }
+    // 배열의 이름 뿐이 아니라 다른 정보도 다루기 위해서 
+    // KO_type_list 가 아닌 layout_list_info_ko 를 쓴다
+    $.each (layout_list_info_ko, function (index, item) {
+        //alert(item.link);
+        if (KO_type == item.name) {
+            $(".ko_type option[value="+KO_type+"]").prop("selected", true);
+            if(typeof(item.link) !== 'undefined') {
+                $(".layout_link a").attr('href', item.link).show();
             } else {
-                $(".ko_type option[value="+item.name+"]").prop("selected", false);
+                $(".layout_link a").attr('href', '').hide();
             }
-        });
-        //$(".layout_select").selectpicker('refresh');
-    //}
+        } else {
+            $(".ko_type option[value="+item.name+"]").prop("selected", false);
+        }
+    });
 
     //alert("KO_type:" + KO_type + "  ==  index_changed:"  + index_changed);
     hangeul_layout = get_table_hangeul(KO_type);
-    //alert("combine");
     hangeul_combination = get_table_combination(KO_type);
-    //alert("combine ee");
-    //alert(hangeul_combination[0][0]);
     index = KO_galmadeuli_list.indexOf(KO_type);
     //alert(index);
     if (index >= 0) {
@@ -2281,29 +2269,48 @@ function change_KO_type(type) {
     //alert("KO 끝");
 }
 
-function change_KE_status(lang, type_en, type_ko) {
-    //alert("change_KE_status");
-//alert("KE: " + lang + " KO_type: " + type_ko + " EN_type: " + type_en);
-    
+function change_KE_status(lang) {
+    //alert('change_KE_status');
+    var index_changed = 0;
+    var index = KE_status_list.indexOf(KE_status);
     if (typeof(lang) === 'undefined') {
         //alert('undefined');
+        // 정하지 않으면 목록에서 바로 다음에 있는 것으로 바꾼다
+        if (index < 0) {
+            index_changed = 0;
+        } else {
+            index_changed = index + 1;
+        }
     } else {
         //alert('defined');
-        if (lang == 'en') {
-            KE_status = lang;
-        } else if (lang == 'ko') {
-            KE_status = lang;
+        index_changed = KE_status_list.indexOf(lang);
+        if (index_changed < 0) {
+             index_changed = 0;
         } else {
         }
     }
 
+    KE_status = KE_status_list[index_changed];
+    $.each (layout_list_info_ke, function (index, item) {
+        //alert(item.link);
+        if (KE_status === item.name) {
+            $(".ke_status option[value="+KE_status+"]").prop("selected", true);
+        } else {
+            $(".ke_status option[value="+item.name+"]").prop("selected", false);
+        }
+    });
+    mapping_layout_to_html();
+}
+
+function change_status(lang, type_en, type_ko) {
+    //alert("change_status");
+    change_KE_status(lang);
     change_EN_type(type_en);
     change_KO_type(type_ko);
-//alert("배열 바꾸기 끝");
 }
 
 function add_layout_list() {
-//    alert("add_layout_list");
+    //alert("add_layout_list");
     /** html layout info **/
     var name;
     var index = -1;
@@ -2341,7 +2348,7 @@ function add_layout_list() {
 
     // 한글 글판을 넣는다
     $.each (layout_list_info_ko, function (index, item) {
-//        alert("layout_list_info_ko");
+        //alert("layout_list_info_ko");
         index = KO_type_list.indexOf(item.name);
         if (index >= 0) {
             if(item.name.substr(0, 1) === '2') {
@@ -2376,37 +2383,11 @@ function add_layout_list() {
         $.each (value, function (index, item) {
             //alert("index:" + index + "  item:" + item.value);
             if ((index == 0) && (KE_status !== item.value)) {
-                //alert("ke_status");
-                $.each (layout_list_info_ke, function (index, list) {
-                    if (item.value === list.name) {
-                        $(".ke_status option[value="+KE_status+"]").prop("selected", true);
-                        KE_status = item.value;
-                        mapping_layout_to_html();
-                    } else {
-                        $(".ke_status option[value="+item.value+"]").prop("selected", false);
-                    }
-                });
+                change_KE_status(item.value);
             } else if ((index == 1) && (EN_type !== item.value)) {
-                //alert("en_type");
-                $.each (layout_list_info_en, function (index, list) {
-                    if (item.value === list.name) {
-                        //$(".en_type option[value="+EN_type+"]").prop("selected", false);
-                        //$(".en_type option[value="+item.value+"]").prop("selected", true);
-                        //KE_status = item.lang;
-                        change_EN_type(item.value);
-                    }
-                });
+                change_EN_type(item.value);
             } else if ((index == 2) && (KO_type !== item.value)) {
-                //alert("ko_type");
-                $.each (layout_list_info_ko, function (index, list) {
-                    if (item.value === list.name) {
-                        //alert("KO_type:" + KO_type + "  ==  item.value:"  + item.value);
-                        //$(".ko_type option[value="+KO_type+"]").prop("selected", false);
-                        //$(".ko_type option[value="+item.value+"]").prop("selected", true);
-                        //KE_status = item.lang;
-                        change_KO_type(item.value);
-                    }
-                });
+                change_KO_type(item.value);
             }
         });
         //$(this).selectpicker('refresh');
@@ -2416,6 +2397,7 @@ function add_layout_list() {
         //true:글판이 바뀌었다. 글판 익히기 배열을 다시 불러온다.
         taja_key_reset(true);
     });
+
 //alert("layout_list_info");
 }
 
@@ -2423,7 +2405,11 @@ function url_query() {
     var return_url = {ke_status:0, en_type:0, ko_type:0}
 	var field, value;
 	var address = unescape(location.href); 
-	var fields = (address.slice(address.indexOf('?')+1,address.length)).split('&');
+    var fields = [];
+    if (address.indexOf('?') >= 0) {
+        fields = (address.slice(address.indexOf('?')+1,address.length)).split('&');
+    }
+
     var i;
 	for(i=0; i<fields.length; ++i){
 		field = fields[i].split('=')[0].toLowerCase();
@@ -2441,6 +2427,7 @@ function url_query() {
 			return_url.ko_type = value;
 		}
 	}
+
     return return_url;
 }
 
@@ -2459,12 +2446,13 @@ function ohiStart (lang, type) {
     inputText_focus(true);
 
     var url = url_query();
+
     // 시작할 때 글판을 불러온다
     url.ke_status = url.ke_status || KE_status;
     url.en_type = url.en_type || EN_type;
     url.ko_type = url.ko_type || KO_type;
     //alert(url.ke_status + "  " + url.en_type + "  " + url.ko_type)
-    change_KE_status(url.ke_status, url.en_type, url.ko_type);
+    change_status(url.ke_status, url.en_type, url.ko_type);
 }
 
 
