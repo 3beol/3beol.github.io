@@ -2175,13 +2175,18 @@ function change_EN_type(type) {
 //alert("layout_list_info");
     //if (KE_status === 'en') {
         //$(".layout_select option[value="+EN_type+"]").prop("selected", true);
-        //$.each (layout_list_info_en, function (index, item) {
-            //if(typeof(item.link) !== 'undefined') {
-                //$(".layout_link a").attr('href', item.link).show();
-            //} else {
-                //$(".layout_link a").attr('href', '').hide();
-            //}
-        //});
+        $.each (layout_list_info_en, function (index, item) {
+            if (EN_type == item.name) {
+                $(".en_type option[value="+EN_type+"]").prop("selected", true);
+                //if(typeof(item.link) !== 'undefined') {
+                    //$(".layout_link a").attr('href', item.link).show();
+                //} else {
+                    //$(".layout_link a").attr('href', '').hide();
+                //}
+            } else {
+                $(".en_type option[value="+item.value+"]").prop("selected", false);
+            }
+        });
     //}
 
 
@@ -2218,13 +2223,17 @@ function change_KO_type(type) {
         $.each (layout_list_info_ko, function (index, item) {
             //alert(item.link);
             if (KO_type == item.name) {
+                $(".ko_type option[value="+KO_type+"]").prop("selected", true);
                 if(typeof(item.link) !== 'undefined') {
                     $(".layout_link a").attr('href', item.link).show();
                 } else {
                     $(".layout_link a").attr('href', '').hide();
                 }
+            } else {
+                $(".ko_type option[value="+item.name+"]").prop("selected", false);
             }
         });
+        //$(".layout_select").selectpicker('refresh');
     //}
 
     //alert("KO_type:" + KO_type + "  ==  index_changed:"  + index_changed);
@@ -2274,7 +2283,8 @@ function change_KO_type(type) {
 
 function change_KE_status(lang, type_en, type_ko) {
     //alert("change_KE_status");
-//alert("KE: " + KE_status + " KO_type: " + KO_type + " EN_type: " + EN_type);
+//alert("KE: " + lang + " KO_type: " + type_ko + " EN_type: " + type_en);
+    
     if (typeof(lang) === 'undefined') {
         //alert('undefined');
     } else {
@@ -2287,32 +2297,8 @@ function change_KE_status(lang, type_en, type_ko) {
         }
     }
 
-    if (typeof(type_en) === 'undefined') {
-        //alert('undefined');
-    } else {
-        //alert('defined');
-        var index = EN_type_list.indexOf(type_en);
-        if (index <= EN_type_list.length) {
-            EN_type = EN_type_list[index];
-        } else {
-        }
-    }
-
-    if (typeof(type_ko) === 'undefined') {
-        //alert('undefined');
-    } else {
-        //alert('defined');
-        var index = KO_type_list.indexOf(type_ko);
-        //alert("index:" + index + "  length:" + KO_type_list[index]);
-        if (index <= KO_type_list.length) {
-            KO_type = KO_type_list[index];
-        } else {
-        }
-    }
-
-//alert("lang:" + change_lang + " ko_type:" + change_ko_type + " en_type:" + change_en_type);
-    change_EN_type(EN_type);
-    change_KO_type(KO_type);
+    change_EN_type(type_en);
+    change_KO_type(type_ko);
 //alert("배열 바꾸기 끝");
 }
 
@@ -2393,33 +2379,30 @@ function add_layout_list() {
                 //alert("ke_status");
                 $.each (layout_list_info_ke, function (index, list) {
                     if (item.value === list.name) {
-                        $(".ke_status option[value="+KE_status+"]").prop("selected", false);
-                        $(".ke_status option[value="+item.value+"]").prop("selected", true);
+                        $(".ke_status option[value="+KE_status+"]").prop("selected", true);
                         KE_status = item.value;
                         mapping_layout_to_html();
+                    } else {
+                        $(".ke_status option[value="+item.value+"]").prop("selected", false);
                     }
                 });
-            }
-
-            if ((index == 1) && (EN_type !== item.value)) {
+            } else if ((index == 1) && (EN_type !== item.value)) {
                 //alert("en_type");
                 $.each (layout_list_info_en, function (index, list) {
                     if (item.value === list.name) {
-                        $(".en_type option[value="+EN_type+"]").prop("selected", false);
-                        $(".en_type option[value="+item.value+"]").prop("selected", true);
+                        //$(".en_type option[value="+EN_type+"]").prop("selected", false);
+                        //$(".en_type option[value="+item.value+"]").prop("selected", true);
                         //KE_status = item.lang;
                         change_EN_type(item.value);
                     }
                 });
-            }
-
-            if ((index == 2) && (KO_type !== item.value)) {
+            } else if ((index == 2) && (KO_type !== item.value)) {
                 //alert("ko_type");
                 $.each (layout_list_info_ko, function (index, list) {
                     if (item.value === list.name) {
                         //alert("KO_type:" + KO_type + "  ==  item.value:"  + item.value);
-                        $(".ko_type option[value="+KO_type+"]").prop("selected", false);
-                        $(".ko_type option[value="+item.value+"]").prop("selected", true);
+                        //$(".ko_type option[value="+KO_type+"]").prop("selected", false);
+                        //$(".ko_type option[value="+item.value+"]").prop("selected", true);
                         //KE_status = item.lang;
                         change_KO_type(item.value);
                     }
@@ -2444,20 +2427,20 @@ function url_query() {
     var i;
 	for(i=0; i<fields.length; ++i){
 		field = fields[i].split('=')[0].toLowerCase();
-		value = fields[i].split('=')[1];
+		value = fields[i].split('=')[1].toLowerCase();
 		if((typeof(value) === 'undefined') || !value) {
             continue;
         }
 
-		if (field.toLowerCase() === 'ke')	{
-			return_url.ke_status = value.toLowerCase();
-		} else if (field.toLowerCase() === 'en') {
-			return_url.en_type = value.toLowerCase();
-		} else if (field.toLowerCase() === 'ko') {
-			return_url.ko_type = value.toLowerCase();
+        //alert(field);
+		if (field === 'ke')	{
+			return_url.ke_status = value;
+		} else if (field === 'en') {
+			return_url.en_type = value;
+		} else if (field === 'ko') {
+			return_url.ko_type = value;
 		}
 	}
-
     return return_url;
 }
 
@@ -2480,7 +2463,7 @@ function ohiStart (lang, type) {
     url.ke_status = url.ke_status || KE_status;
     url.en_type = url.en_type || EN_type;
     url.ko_type = url.ko_type || KO_type;
-    //alert(url.ke + "  " + url.en + "  " + url.ko)
+    //alert(url.ke_status + "  " + url.en_type + "  " + url.ko_type)
     change_KE_status(url.ke_status, url.en_type, url.ko_type);
 }
 
