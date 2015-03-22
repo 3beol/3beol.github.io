@@ -1144,7 +1144,7 @@ var K3_3moa_2015 = [
     0x110b,     /* 0x6A j:              choseong  ieung              */
     0x1100,     /* 0x6B k:              choseong  kiyeok             */
     0x110c,     /* 0x6C l:              choseong  cieuc              */
-    0x1106,     /* 0x6D m:              choseong  mieum              */
+    0x1105,     /* 0x6D m:              choseong  lieul              */
     0x1112,     /* 0x6E n:              choseong  hieuh              */
     0x1107,     /* 0x6F o:              choseong  pieup              */
     0x116e,     /* 0x70 p:              jungseong u                  */
@@ -1156,7 +1156,7 @@ var K3_3moa_2015 = [
     0x1169,     /* 0x76 v:              jungseong o                  */
     0x11b8,     /* 0x77 w:              jongseong pieup               */
     0x11a8,     /* 0x78 x:              jongseong kiyeok             */
-    0x1105,     /* 0x79 y:              choseong  lieul              */
+    0x1106,     /* 0x79 y:              choseong  mieum              */
     0x11b7,     /* 0x7A z:              jongseong mieum              */
     0x007b,     /* 0x7B braceleft:      left brace                   */
     0x007c,     /* 0x7C bar:            vertical line(bar)           */
