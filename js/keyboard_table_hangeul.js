@@ -1594,9 +1594,9 @@ var K3_3shin_m = [
         } else {
             if (type === '3shin-2003') {
                 return K3_3shin_2003;
-            } else if (type === '3shin-2015') {
+            } else if (type === '3shin-2015-shift') {
                 return K3_3shin_2015;
-            } else if (type === '3shin-m') {
+            } else if (type === '3shin-m-shift') {
                 return K3_3shin_m;
             } else {
                 return K3_3shin_2012;

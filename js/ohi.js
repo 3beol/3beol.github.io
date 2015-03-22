@@ -45,10 +45,10 @@ var KO_type_list = ['2-ksx5002', '2-kps9256', '2sun-ksx5002',
                                 '3-2015', '3-2015p', '3-2015p-yet', 
                                 '3sun-1990', '3sun-2014', 
                                 '3moa-2014', '3moa-ahn', '3moa-2015', 
-                                '3shin-2003', '3shin-2012', '3shin-2015', '3shin-m'];
+                                '3shin-2003', '3shin-2012', '3shin-2015-shift', '3shin-m-shift'];
 var KO_galmadeuli_list = ['3moa-2014', '3moa-2015', 
                                         '3-2015', '3-2015p', 
-                                        '3shin-2003', '3shin-2012', '3shin-2015', '3shin-m'];
+                                        '3shin-2003', '3shin-2012', '3shin-2015-shift', '3shin-m-shift'];
 var KO_extension_sign_list = ['3-2012', '3-2012-yet', 
                                                 '3-2015p', '3-2015p-yet',
                                                 '3shin-2003', '3shin-2012'];
@@ -63,8 +63,8 @@ var right_ou_keys_list = {
     '3moa-2015': ['p', ';'],
     '3shin-2003':  ['O', 'P'], 
     '3shin-2012':  ['O', 'P'],
-    '3shin-2015':  ['O', 'P'],
-    '3shin-m':  ['O', 'P']
+    '3shin-2015-shift':  ['O', 'P'],
+    '3shin-m-shift':  ['O', 'P']
 };
 var extension_sign_keys_list = {
     '3-2012':  [0, 'v', '8'], // 0:같은 기호 배열
@@ -147,8 +147,8 @@ var layout_list_info_ko = [
     {name: '3moa-2015', full_name: '모아치기 2015', link: 'http://ssg.wo.tc/220239514856'},
     {name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
     {name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
-    {name: '3shin-2015', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'},
-    {name: '3shin-m', full_name: '신세벌식 M', link: 'http://cafe.daum.net/3bulsik/JMKX/77'},
+    {name: '3shin-2015-shift', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'},
+    {name: '3shin-m-shift', full_name: '신세벌식 M', link: 'http://cafe.daum.net/3bulsik/JMKX/77'},
 ];
 
 function browser_detect() {
@@ -1590,7 +1590,7 @@ function ohi_Hangeul_Process(keyValue) {
         ohi_Hangeul_3Moa(keyValue, charCode);
     } else if (KO_type.substr(0, 5) === '3shin') {
         //alert("신세벌식:");
-        if (KO_type.substr(-4) === '2015') {
+        if (KO_type.substr(-5) === 'shift') {
             ohi_Hangeul_3Shin_Shift(keyValue, charCode);
         } else {
             ohi_Hangeul_3Shin(keyValue, charCode);

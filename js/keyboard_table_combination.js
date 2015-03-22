@@ -840,7 +840,7 @@ var K3_3shin_2015 = [
                     array_default = K3_3moa_2015;
                 }
             } else {
-                if (type === '3shin-2015') {
+                if (type === '3shin-2015-shift') {
                     array_specific = K3_3shin_2015;
                 } else {
                     //array_specific = hangeul_combination_table_default;

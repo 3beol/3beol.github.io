@@ -225,9 +225,9 @@ var galmadeuli_3shin_m = [
         } else if (type.substr(0, 5) === '3shin') {
             if (type === '3shin-2003') {
                 return galmadeuli_3shin_2003;
-            } else if (type === '3shin-2015') {
+            } else if (type === '3shin-2015-shift') {
                 return galmadeuli_3shin_2015;
-            } else if (type === '3shin-m') {
+            } else if (type === '3shin-m-shift') {
                 return galmadeuli_3shin_m;
             } else {
                 //alert("2012");
