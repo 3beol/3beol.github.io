@@ -44,12 +44,11 @@ var KO_type_list = ['2-ksx5002', '2-kps9256', '2sun-ksx5002',
                                 '3-2012', '3-2012-yet', 
                                 '3-2015', '3-2015p', '3-2015p-yet', 
                                 '3sun-1990', '3sun-2014', 
-                                '3moa-2014', '3moa-ahn', 
-                                '3shin-2003', '3shin-2012', '3shin-2015'];
-// 모아치기 글판은 갈마들이를 쓰지 않지만 html 에 글판 배열에 없는 낱자를 보여주기 위해서 쓴다
-var KO_galmadeuli_list = ['3moa-2014', 
+                                '3moa-2014', '3moa-ahn', '3moa-2015', 
+                                '3shin-2003', '3shin-2012', '3shin-2015', '3shin-m'];
+var KO_galmadeuli_list = ['3moa-2014', '3moa-2015', 
                                         '3-2015', '3-2015p', 
-                                        '3shin-2003', '3shin-2012', '3shin-2015'];
+                                        '3shin-2003', '3shin-2012', '3shin-2015', '3shin-m'];
 var KO_extension_sign_list = ['3-2012', '3-2012-yet', 
                                                 '3-2015p', '3-2015p-yet',
                                                 '3shin-2003', '3shin-2012'];
@@ -61,9 +60,11 @@ var right_ou_keys_list = {
     '3-2015p':  ['/', '9'],
     '3-2015p-yet':  ['/', '9'],
     '3moa-2014': ['p', '\''],
+    '3moa-2015': ['p', ';'],
     '3shin-2003':  ['O', 'P'], 
     '3shin-2012':  ['O', 'P'],
-    '3shin-2015':  ['O', 'P']
+    '3shin-2015':  ['O', 'P'],
+    '3shin-m':  ['O', 'P']
 };
 var extension_sign_keys_list = {
     '3-2012':  [0, 'v', '8'], // 0:같은 기호 배열
@@ -81,7 +82,7 @@ var extension_yetgeul_keys_list = {
 // 갈마들이 값이 나타나는데 이것을 막고자 나타내지 말아야하는 글쇠를 나열한다.
 // set_basic_table() 에서 갈마들이를 넣을 때 값을 비워두기 위해서 쓴다
 // 이름은 keyboard_mapping_layout_html.js 의 첫째값들을 쓴다
-var galmadeuli_no_display_keys = ['key_nine', 'key_forwardslash', 'key_i', 'key_o', 'key_p'];
+var galmadeuli_no_display_keys = ['key_nine', 'key_forwardslash', 'key_i', 'key_o', 'key_p', 'key_semicolon'];
 // '[' 로 아래아를 넣는 글판
 var left_bracket_araea_list = ['3-90', '3-2012', '3-2012-yet', 
                                                     '3-2015p', '3-2015p-yet', 
@@ -143,9 +144,11 @@ var layout_list_info_ko = [
     {name: '3sun-2014', full_name: '순아래 2014', link: 'http://cafe.daum.net/3bulsik/JMKX/18'},
     {name: '3moa-ahn', full_name: '안마태 소리글판', link: 'http://ahnmatae.org'},
     {name: '3moa-2014', full_name: '모아치기 2014', link: 'http://ssg.wo.tc/220239514856'},
+    {name: '3moa-2015', full_name: '모아치기 2015', link: 'http://ssg.wo.tc/220239514856'},
     {name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
     {name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
-    {name: '3shin-2015', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'}
+    {name: '3shin-2015', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'},
+    {name: '3shin-m', full_name: '신세벌식 M', link: 'http://cafe.daum.net/3bulsik/JMKX/77'},
 ];
 
 function browser_detect() {
@@ -1984,7 +1987,8 @@ if (KE_status == 'ko') {
     var tag_sign2 = "기②";
     var tag_yet1 = "한①";
     var tag_yet2 = "한②";
-    var tab_moa_shift = "⇦";
+    var tab_moa_gawit_shift = "⇧";
+    var tab_moa_ggeut_shift = "⇦";
 
     var node_key;
     if (!extension_steps && KE_status == 'ko') {
@@ -2055,9 +2059,18 @@ if (KE_status == 'ko') {
     }//if (extension_enable) {
 
     if (KO_type.substr(0, 6) === '3moa-2') {
-        node_key = $("#key_semicolon .down_key .han_key");
-        node_key.html(tab_moa_shift);
-        node_key.addClass("tag10");
+        if (KO_type === '3moa-2014') {
+            node_key = $("#key_semicolon .down_key .han_key");
+            node_key.html(tab_moa_ggeut_shift);
+            node_key.addClass("tag10");
+        } else {
+            node_key = $("#key_semicolon .up_key .han_key");
+            node_key.html(tab_moa_gawit_shift);
+            node_key.addClass("tag10");
+            node_key = $("#key_forwardslash .up_key .han_key");
+            node_key.html(tab_moa_ggeut_shift);
+            node_key.addClass("tag10");
+        }
     }
 
 }//if (KE_status == 'ko')
@@ -2157,7 +2170,7 @@ function change_EN_type(type) {
     if (typeof(type) === 'undefined') {
         //alert('undefined');
         // 배열을 정하지 않으면 목록에서 바로 다음에 있는 것으로 바꾼다
-        if (index < 0) {
+        if ((index < 0) || (index === EN_type_list.length - 1)) {
             index = 0;
         } else {
             index += 1;
@@ -2194,7 +2207,7 @@ function change_KO_type(type) {
     if (typeof(type) === 'undefined') {
         //alert('undefined');
         // 배열을 정하지 않으면 목록에서 바로 다음에 있는 것으로 바꾼다
-        if (index < 0) {
+        if ((index < 0) || (index === KO_type_list.length - 1)) {
             index_changed = 0;
         } else {
             index_changed = index + 1;
@@ -2276,7 +2289,7 @@ function change_KE_status(lang) {
     if (typeof(lang) === 'undefined') {
         //alert('undefined');
         // 정하지 않으면 목록에서 바로 다음에 있는 것으로 바꾼다
-        if (index < 0) {
+        if ((index < 0) || (index === KE_status_list.length - 1)) {
             index_changed = 0;
         } else {
             index_changed = index + 1;
@@ -2406,8 +2419,9 @@ function url_query() {
 	var field, value;
 	var address = unescape(location.href); 
     var fields = [];
-    if (address.indexOf('?') >= 0) {
-        fields = (address.slice(address.indexOf('?')+1,address.length)).split('&');
+    var option = address.indexOf('?');
+    if (option >= 0) {
+        fields = (address.slice(option + 1, address.length)).split('&');
     }
 
     var i;
