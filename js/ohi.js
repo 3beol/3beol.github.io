@@ -45,10 +45,12 @@ var KO_type_list = ['2-ksx5002', '2-kps9256', '2sun-ksx5002',
                                 '3-2015', '3-2015p', '3-2015p-yet', 
                                 '3sun-1990', '3sun-2014', 
                                 '3moa-2014', '3moa-ahn', '3moa-2015', 
-                                '3shin-2003', '3shin-2012', '3shin-2015-shift', '3shin-m-shift'];
+                                '3shin-2003', '3shin-2012', 
+                                '3shin-2015-shift', '3shin-m-shift'];
 var KO_galmadeuli_list = ['3moa-2014', '3moa-2015', 
                                         '3-2015', '3-2015p', 
-                                        '3shin-2003', '3shin-2012', '3shin-2015-shift', '3shin-m-shift'];
+                                        '3shin-2003', '3shin-2012', 
+                                        '3shin-2015-shift', '3shin-m-shift'];
 var KO_extension_sign_list = ['3-2012', '3-2012-yet', 
                                                 '3-2015p', '3-2015p-yet',
                                                 '3shin-2003', '3shin-2012'];
@@ -1139,82 +1141,45 @@ function ohi_Hangeul_3Moa (keyValue, charCode) {
     //alert(cheot_gawit_ggeut);
     //if (charCode >= 0x1100 && charCode <= 0x1112) {// Cho
     if (cheot_gawit_ggeut === 1) {// Cho
-        //alert("1");
-        //if (ohiQ[1] || ohiQ[2] || !ohi_Double_Jamo (0, ohiQ[0], charCode)) { /** ohiQ = ohiQ;**/ }
-        //else { ohiQ = 0; }
-        if (ohiQ[1]) {
-            //alert("11");
-            /** ohiQ = ohiQ;**/
-            ohi_Insert(ohiQ, ohiQ=[charCode,0,0,0,0,0]);
-        } else {
-            //alert("12");
-            if (ohiQ[0]) {
-                combined_value = get_combination_value(ohiQ[0], charCode);
-                //alert("ohiQ[0]:" + ohiQ[0] + "  ohiQ[1]:" + ohiQ[1] + "  value:" + combined_value);
-                if (combined_value) {
-                    //alert("121");
-                    ohi_Insert(0, ohiQ=[combined_value,ohiQ[0],ohiQ[2],ohiQ[3],ohiQ[4],ohiQ[5]]);
-                } else {
-                    /** ohiQ = ohiQ;**/
-                    //alert("122");
-                    ohi_Insert(ohiQ, ohiQ=[charCode,0,0,0,0,0]);
-                }
-            } else if (ohiQ[2] || ohiQ[4]) {
-                //alert("123");
-                ohi_Insert(0, ohiQ=[charCode,ohiQ[1],ohiQ[2],ohiQ[3],ohiQ[4],ohiQ[5]]);
+        if (ohiQ[0]) {
+            combined_value = get_combination_value(ohiQ[0], charCode);
+            if (combined_value) {
+                ohi_Insert(0, ohiQ=[combined_value,ohiQ[0],ohiQ[2],ohiQ[3],ohiQ[4],ohiQ[5]]);
             } else {
-                /** ohiQ = ohiQ;**/
-                //alert("124");
                 ohi_Insert(ohiQ, ohiQ=[charCode,0,0,0,0,0]);
             }
+        } else if (ohiQ[2] || ohiQ[4]) {
+            ohi_Insert(0, ohiQ=[charCode,ohiQ[1],ohiQ[2],ohiQ[3],ohiQ[4],ohiQ[5]]);
+        } else {
+            ohi_Insert(ohiQ, ohiQ=[charCode,0,0,0,0,0]);
         }
     //} else if (charCode >= 0x1161 && charCode <= 0x1175) { // Jung
     } else if (cheot_gawit_ggeut === 2) { // Jung
-        if (ohiQ[3]) {
-            //alert("21");
-            ohi_Insert(ohiQ, ohiQ=[0,0,charCode,0,0,0]);
-        } else {
-            //alert("22");
-            if (ohiQ[2]) {
-                combined_value = get_combination_value(ohiQ[2], charCode);
-                if (combined_value) {
-                    //alert("221");
-                    ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],combined_value,ohiQ[2],ohiQ[4],ohiQ[5]]);
-                } else {
-                    //alert("222");
-                    ohi_Insert(ohiQ, ohiQ=[0,0,charCode,0,0,0]);
-                }
-            } else if (ohiQ[0] || ohiQ[4]) {
-                //alert("223");
-                ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],charCode,ohiQ[3],ohiQ[4],ohiQ[5]]);
+        if (ohiQ[2]) {
+            combined_value = get_combination_value(ohiQ[2], charCode);
+            if (combined_value) {
+                ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],combined_value,ohiQ[2],ohiQ[4],ohiQ[5]]);
             } else {
-                //alert("224");
                 ohi_Insert(ohiQ, ohiQ=[0,0,charCode,0,0,0]);
             }
+        } else if (ohiQ[0] || ohiQ[4]) {
+            ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],charCode,ohiQ[3],ohiQ[4],ohiQ[5]]);
+        } else {
+            ohi_Insert(ohiQ, ohiQ=[0,0,charCode,0,0,0]);
         }
     //} else if (charCode >= 0x11A8 && charCode <= 0x11C2) { // Jong
     } else if (cheot_gawit_ggeut === 3) { // Jong
-        if (ohiQ[5]) {
-            //alert("31");
-            ohi_Insert(ohiQ, ohiQ=[0,0,0,0,charCode,0]);
-        } else {
-            //alert("32");
-            if (ohiQ[4]) {
-                combined_value = get_combination_value(ohiQ[4], charCode);
-                if (combined_value) {
-                    //alert("321");
-                    ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],ohiQ[2],ohiQ[3],combined_value,ohiQ[4]]);
-                } else {
-                    //alert("322");
-                    ohi_Insert(ohiQ, ohiQ=[0,0,0,0,charCode,0]);
-                }
-            } else if (ohiQ[0] || ohiQ[2]) {
-                //alert("323");
-                ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],ohiQ[2],ohiQ[3],charCode,ohiQ[5]]);
+        if (ohiQ[4]) {
+            combined_value = get_combination_value(ohiQ[4], charCode);
+            if (combined_value) {
+                ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],ohiQ[2],ohiQ[3],combined_value,ohiQ[4]]);
             } else {
-                //alert("324");
                 ohi_Insert(ohiQ, ohiQ=[0,0,0,0,charCode,0]);
             }
+        } else if (ohiQ[0] || ohiQ[2]) {
+            ohi_Insert(0, ohiQ=[ohiQ[0],ohiQ[1],ohiQ[2],ohiQ[3],charCode,ohiQ[5]]);
+        } else {
+            ohi_Insert(ohiQ, ohiQ=[0,0,0,0,charCode,0]);
         }
     } else {
         ohi_Insert(0, charCode);
