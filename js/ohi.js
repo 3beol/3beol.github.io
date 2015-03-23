@@ -211,11 +211,7 @@ function ohi_Backspace () {
     var index = 0;
     var last = 0;
 
-    if ((KO_type.substr(0, 4) === '3moa') && (ohiQ[0] || ohiQ[2] || ohiQ[4])) {
-        // 모아치기는 조합하던 글자를 통째로 지운다
-        ohiQ = [0,0,0,0,0,0];
-        ohi_Insert(0, ohiQ);
-    } else if(ohiQ[0] || ohiQ[1] || ohiQ[2] || ohiQ[3]) {
+    if(ohiQ[0] || ohiQ[1] || ohiQ[2] || ohiQ[3]) {
         //alert("back 1");
 		for(index = 0; index < ohiQ.length; index++) {
             if (ohiQ[index]) {
@@ -503,119 +499,58 @@ function ohi_Insert(commit, charCode) {
             if (charCode[1] >= 0x1100) {cheot = charCode[0];}
             if (charCode[3] >= 0x1100) {gawit = charCode[2];}
             if (charCode[5] >= 0x1100) {ggeut = charCode[4];}
-            // 이어치기와 모아치기를 나누어 본다
-            if (KO_type.substr(0, 4) === '3moa') {
-                if ( (!cheot && gawit) || (!gawit && ggeut) ) {
-                    charCode = 0;
+
+            var count = 0;
+            var index = 0;
+            var last = 0;
+            //alert(ohiQ);
+//alert("insert 12");
+
+            for(index = 0; index < ohiQ.length; index += 1) {
+                // 값이 있을 때마다 last 에 넣어주고 index 가 짝수 일 때만 count 를 올려준다
+                if (ohiQ[index]) {
+                    if (!(index & 0x01)) {
+                        count++;
+                    }
+                    last = index;
+                }
+            }
+            // 옛한글의 낱자가 조합이 되어 더해졌다
+            // 조합된 낱자가 빠질 때는 ohi_Backspace() 에서 다룬다
+            if ((fore_back < 0) && (last & 0x01)) {
+                //alert("fore_back 0");
+                fore_back = 0;
+            }
+
+            if (cheot && gawit) {
+//alert("insert 121");
+                if ( (cheot >= 0x1113 && cheot <= 0x115E) || // 0x115F
+                        (gawit >= 0x1176 && gawit <= 0x11A7) || // 0x1160
+                        (ggeut >= 0x11C3 && ggeut <= 0x11FF) ) {
+                    // 옛한글을 다룬다
+// 옛한글을 넣을 때 preedit 의 옛한글 낱자들을 지워준다
+                    for (count += fore_back; count > 0; count--) {
+                        ohi_html_Backspace();
+                    }
+
+                    if (commit) {
+                        ohi_html_Insert(commit, 0);
+                    }
+                    ohi_html_Insert(0, cheot);
+                    ohi_html_Insert(0, gawit);
+                    if (ggeut) {
+                        ohi_html_Insert(0, ggeut);
+                    }
                 } else {
-                    if (cheot && gawit) {
-        //alert("insert 121");
-                        if ( (cheot >= 0x1113 && cheot <= 0x115E) || // 0x115F
-                                (gawit >= 0x1176 && gawit <= 0x11A7) || // 0x1160
-                                (ggeut >= 0x11C3 && ggeut <= 0x11FF) ) {
-                            // 옛한글을 다룬다
-                        } else {
-                            if (cheot) {cheot = cheot - 0x1100;}
-                            if (gawit) {gawit = gawit - 0x1161;}
-                            if (ggeut) {ggeut = ggeut - 0x11A7;}
-                            charCode = 0xac00 + (cheot * 588) + (gawit * 28) + ggeut; 
-                        }
-                        //alert(String.fromCharCode(charCode));
-                    } else if ((cheot && !gawit && !ggeut) || 
-                                    (!cheot && gawit && !ggeut) || 
-                                    (!cheot && !gawit && ggeut)) {
-        //alert("insert 122");
-                        // 한글 호환자모
-                        // 각 표준자모를 호환자모로 바꿀 수 있는 것을 바꾸어준다
-                        if (cheot) { cheot = jamo_to_compatibility(cheot); }
-                        if (gawit) { gawit = jamo_to_compatibility(gawit); }
-                        if (ggeut) { ggeut = jamo_to_compatibility(ggeut); }
-                        //alert("cheot:" + cheot + "  gawit:" + gawit + "  ggeut:" + ggeut);
-                        charCode = cheot || gawit || ggeut;
-                    } else {
-        //alert("insert 123");
-                        //alert("charCode:" + charCode);
-                        charCode = charCode;
-                    }
-                }
-            } else {// 이어치기
-                var count = 0;
-                var index = 0;
-                var last = 0;
-                //alert(ohiQ);
-    //alert("insert 12");
-
-                for(index = 0; index < ohiQ.length; index += 1) {
-                    // 값이 있을 때마다 last 에 넣어주고 index 가 짝수 일 때만 count 를 올려준다
-                    if (ohiQ[index]) {
-                        if (!(index & 0x01)) {
-                            count++;
-                        }
-                        last = index;
-                    }
-                }
-                // 옛한글의 낱자가 조합이 되어 더해졌다
-                // 조합된 낱자가 빠질 때는 ohi_Backspace() 에서 다룬다
-                if ((fore_back < 0) && (last & 0x01)) {
-                    //alert("fore_back 0");
-                    fore_back = 0;
-                }
-
-                if (cheot && gawit) {
-    //alert("insert 121");
-                    if ( (cheot >= 0x1113 && cheot <= 0x115E) || // 0x115F
-                            (gawit >= 0x1176 && gawit <= 0x11A7) || // 0x1160
-                            (ggeut >= 0x11C3 && ggeut <= 0x11FF) ) {
-                        // 옛한글을 다룬다
-    // 옛한글을 넣을 때 preedit 의 옛한글 낱자들을 지워준다
-                        for (count += fore_back; count > 0; count--) {
-                            ohi_html_Backspace();
-                        }
-
-                        if (commit) {
-                            ohi_html_Insert(commit, 0);
-                        }
-                        ohi_html_Insert(0, cheot);
-                        ohi_html_Insert(0, gawit);
-                        if (ggeut) {
-                            ohi_html_Insert(0, ggeut);
-                        }
-                    } else {
-                        //http://gernot-katzers-spice-pages.com/var/korean_hangul_unicode.html
-                        //tail = mod (Hangul codepoint − 0xac00, 28)
-                        //vowel = 1 + mod (Hangul codepoint − 0xac00 − tail, 588) / 28
-                        //lead = 1 + int [ (Hangul codepoint − 0xac00)/588 ] 
-                        //Code point of Hangul = tail + (vowel−1)*28 + (lead−1)*588 + 44032 
-                        // 유니코드 기반의 완성형 한글 조합 방식은 아래와 같다.
-                        // "낼"  =  44032  +  ( (2 * 588)  +  (1 * 28)  +  (8) )
-                        // 각 호환자모를 순서번호로 바꾸어준다
-                        //alert(count);
-
-                        // ohi_Backspace 에서 낱자를 지워서 ohiQ 에 옛한글이 없을 때
-                        // 옛한글 낱자가 있는 preedit 의 옛한글 낱자들을 지워준다
-                        if (fore_back > 0) {
-                            for (count += fore_back; count > 0; count--) {
-                                ohi_html_Backspace();
-                            }
-                        }
-
-                        if (cheot) {cheot = cheot - 0x1100;}
-                        if (gawit) {gawit = gawit - 0x1161;}
-                        if (ggeut) {ggeut = ggeut - 0x11A7;}
-                        charCode = 0xac00 + (cheot * 588) + (gawit * 28) + ggeut; 
-                    }
-                    //alert(String.fromCharCode(charCode));
-                } else if ((cheot && !gawit && !ggeut) || 
-                                (!cheot && gawit && !ggeut) || 
-                                (!cheot && !gawit && ggeut)) {
-    //alert("insert 122");
-                    // 한글 호환자모
-                    // 각 표준자모를 호환자모로 바꿀 수 있는 것을 바꾸어준다
-                    if (cheot) { cheot = jamo_to_compatibility(cheot); }
-                    if (gawit) { gawit = jamo_to_compatibility(gawit); }
-                    if (ggeut) { ggeut = jamo_to_compatibility(ggeut); }
-                    //alert("cheot:" + cheot + "  gawit:" + gawit + "  ggeut:" + ggeut);
-                    charCode = cheot || gawit || ggeut;
+                    //http://gernot-katzers-spice-pages.com/var/korean_hangul_unicode.html
+                    //tail = mod (Hangul codepoint − 0xac00, 28)
+                    //vowel = 1 + mod (Hangul codepoint − 0xac00 − tail, 588) / 28
+                    //lead = 1 + int [ (Hangul codepoint − 0xac00)/588 ] 
+                    //Code point of Hangul = tail + (vowel−1)*28 + (lead−1)*588 + 44032 
+                    // 유니코드 기반의 완성형 한글 조합 방식은 아래와 같다.
+                    // "낼"  =  44032  +  ( (2 * 588)  +  (1 * 28)  +  (8) )
+                    // 각 호환자모를 순서번호로 바꾸어준다
+                    //alert(count);
 
                     // ohi_Backspace 에서 낱자를 지워서 ohiQ 에 옛한글이 없을 때
                     // 옛한글 낱자가 있는 preedit 의 옛한글 낱자들을 지워준다
@@ -624,15 +559,40 @@ function ohi_Insert(commit, charCode) {
                             ohi_html_Backspace();
                         }
                     }
-                } else {
-    //alert("insert 123");
-                    //alert("charCode:" + charCode);
-                    charCode = charCode;
-                }
 
-                // 처리를 다 하고 기본값으로 돌아간다
-                fore_back = -1;
+                    if (cheot) {cheot = cheot - 0x1100;}
+                    if (gawit) {gawit = gawit - 0x1161;}
+                    if (ggeut) {ggeut = ggeut - 0x11A7;}
+                    charCode = 0xac00 + (cheot * 588) + (gawit * 28) + ggeut; 
+                }
+                //alert(String.fromCharCode(charCode));
+            } else if ((cheot && !gawit && !ggeut) || 
+                            (!cheot && gawit && !ggeut) || 
+                            (!cheot && !gawit && ggeut)) {
+//alert("insert 122");
+                // 한글 호환자모
+                // 각 표준자모를 호환자모로 바꿀 수 있는 것을 바꾸어준다
+                if (cheot) { cheot = jamo_to_compatibility(cheot); }
+                if (gawit) { gawit = jamo_to_compatibility(gawit); }
+                if (ggeut) { ggeut = jamo_to_compatibility(ggeut); }
+                //alert("cheot:" + cheot + "  gawit:" + gawit + "  ggeut:" + ggeut);
+                charCode = cheot || gawit || ggeut;
+
+                // ohi_Backspace 에서 낱자를 지워서 ohiQ 에 옛한글이 없을 때
+                // 옛한글 낱자가 있는 preedit 의 옛한글 낱자들을 지워준다
+                if (fore_back > 0) {
+                    for (count += fore_back; count > 0; count--) {
+                        ohi_html_Backspace();
+                    }
+                }
+            } else {
+//alert("insert 123");
+                //alert("charCode:" + charCode);
+                charCode = charCode;
             }
+
+            // 처리를 다 하고 기본값으로 돌아간다
+            fore_back = -1;
         }
     }
     ohi_html_Insert(commit, charCode);
