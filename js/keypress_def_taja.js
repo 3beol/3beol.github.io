@@ -128,8 +128,8 @@ function get_taja_hangeul(type) {
         '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
         '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
         '<strong class="gawit">ㅢ</strong>': ['8', 8, "key_eight"],
-    	'<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
-    	'<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 9, "key_nine"],
+        '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 9, "key_nine"],
         '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
         '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
         '<strong class="ggeut">ㄷ</strong>': ['A', 5, "key_a"],
@@ -183,8 +183,8 @@ function get_taja_hangeul(type) {
         '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
         '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
         '<strong class="gawit">ㅢ</strong>': ['8', 8, "key_eight"],
-    	'<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
-    	'<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 8, "key_nine"],
+        '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 8, "key_nine"],
         '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
         '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
         '<strong class="ggeut">ㄷ</strong>': ['1', 5, "key_one"],
@@ -200,16 +200,16 @@ function get_taja_hangeul(type) {
         '<strong class="ggeut">ㅌ</strong>': ['C', 3, "key_c", 'c'],
         '<strong class="ggeut">ㅍ</strong>': ['F', 2, "key_f", 'f'],
         '<strong class="ggeut">ㅎ</strong>': ['D', 3, "key_d", 'd'],
-    	'<strong>0</strong>': ['H', 7, "key_h"],
-    	'<strong>1</strong>': ['J', 7, "key_j"],
-    	'<strong>2</strong>': ['K', 8, "key_k"],
-    	'<strong>3</strong>': ['L', 9, "key_l"],
-    	'<strong>4</strong>': [':', 10, "key_semicolon"],
-    	'<strong>5</strong>': ['Y', 7, "key_y"],
-    	'<strong>6</strong>': ['U', 7, "key_u"],
-    	'<strong>7</strong>': ['I', 8, "key_i"],
-    	'<strong>8</strong>': ['O', 9, "key_o"],
-    	'<strong>9</strong>': ['P', 10, "key_p"],
+        '<strong>0</strong>': ['H', 7, "key_h"],
+        '<strong>1</strong>': ['J', 7, "key_j"],
+        '<strong>2</strong>': ['K', 8, "key_k"],
+        '<strong>3</strong>': ['L', 9, "key_l"],
+        '<strong>4</strong>': [':', 10, "key_semicolon"],
+        '<strong>5</strong>': ['Y', 7, "key_y"],
+        '<strong>6</strong>': ['U', 7, "key_u"],
+        '<strong>7</strong>': ['I', 8, "key_i"],
+        '<strong>8</strong>': ['O', 9, "key_o"],
+        '<strong>9</strong>': ['P', 10, "key_p"],
     };
 
     var K3_3_2015_patal = {
@@ -243,8 +243,8 @@ function get_taja_hangeul(type) {
         '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
         '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
         '<strong class="gawit">ㅢ</strong>': ['8', 8, "key_eight"],
-    	'<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
-    	'<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 9, "key_nine"],
+        '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 9, "key_nine"],
         '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
         '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
         '<strong class="ggeut">ㄷ</strong>': ['1', 5, "key_one"],
@@ -260,16 +260,16 @@ function get_taja_hangeul(type) {
         '<strong class="ggeut">ㅌ</strong>': ['C', 3, "key_c", 'c'],
         '<strong class="ggeut">ㅍ</strong>': ['F', 2, "key_f", 'f'],
         '<strong class="ggeut">ㅎ</strong>': ['D', 3, "key_d", 'd'],
-    //	'<strong>0</strong>': ['H', 7, "key_h"],
-    //	'<strong>1</strong>': ['J', 7, "key_j"],
-    //	'<strong>2</strong>': ['K', 8, "key_k"],
-    //	'<strong>3</strong>': ['L', 9, "key_l"],
-    //	'<strong>4</strong>': [':', 10, "key_semicolon"],
-    //	'<strong>5</strong>': ['Y', 7, "key_y"],
-    //	'<strong>6</strong>': ['U', 7, "key_u"],
-    //	'<strong>7</strong>': ['I', 8, "key_i"],
-    //	'<strong>8</strong>': ['O', 9, "key_o"],
-    //	'<strong>9</strong>': ['P', 10, "key_p"],
+    //    '<strong>0</strong>': ['H', 7, "key_h"],
+    //    '<strong>1</strong>': ['J', 7, "key_j"],
+    //    '<strong>2</strong>': ['K', 8, "key_k"],
+    //    '<strong>3</strong>': ['L', 9, "key_l"],
+    //    '<strong>4</strong>': [':', 10, "key_semicolon"],
+    //    '<strong>5</strong>': ['Y', 7, "key_y"],
+    //    '<strong>6</strong>': ['U', 7, "key_u"],
+    //    '<strong>7</strong>': ['I', 8, "key_i"],
+    //    '<strong>8</strong>': ['O', 9, "key_o"],
+    //    '<strong>9</strong>': ['P', 10, "key_p"],
     };
 
     var K3_3shin_2003 = {
@@ -303,9 +303,9 @@ function get_taja_hangeul(type) {
         '<strong class="gawit">ㅡ</strong>': ['G', 2, "key_g", 'g'],
         '<strong class="gawit">ㅣ</strong>': ['D', 3, "key_d", 'd'],
         '<strong class="gawit">ㅢ</strong>': ['I', 8, "key_i", 'i'],
-    	'<strong class="gawit_right">ㅗ(↗)</strong>': ['P', 10, "key_p", 'p'],
+        '<strong class="gawit_right">ㅗ(↗)</strong>': ['P', 10, "key_p", 'p'],
         '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash", '?'],
-    	'<strong class="gawit_right">ㅜ(↗)</strong>': ['O', 9, "key_o", 'o'],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['O', 9, "key_o", 'o'],
         '<strong class="gawit_right">ㆍ(↗아래아)</strong>': ['[', 10, "key_left_bracket"],
         '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
         '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
@@ -356,9 +356,9 @@ function get_taja_hangeul(type) {
         '<strong class="gawit">ㅣ</strong>': ['D', 3, "key_d", 'd'],
         '<strong class="gawit">ㅢ</strong>': ['I', 8, "key_i", 'i'],
         '<strong class="gawit">ㆍ(아래아)</strong>': ['Z', 5, "key_z", 'z'],
-    	'<strong class="gawit_right">ㅗ(↗)</strong>': ['P', 10, "key_p", 'p'],
+        '<strong class="gawit_right">ㅗ(↗)</strong>': ['P', 10, "key_p", 'p'],
         '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash", '?'],
-    	'<strong class="gawit_right">ㅜ(↗)</strong>': ['O', 9, "key_o", 'o'],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['O', 9, "key_o", 'o'],
         '<strong class="gawit_right">ㆍ(↗아래아)</strong>': ['[', 10, "key_left_bracket"],
         '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
         '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
@@ -408,9 +408,9 @@ function get_taja_hangeul(type) {
         '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
         '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
         '<strong class="gawit">ㅢ</strong>': ['s', 4, "key_s"],
-    	'<strong class="gawit_right">ㅗ(↗)</strong>': ['P', 10, "key_p", 'p'],
+        '<strong class="gawit_right">ㅗ(↗)</strong>': ['P', 10, "key_p", 'p'],
         '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash", '?'],
-    	'<strong class="gawit_right">ㅜ(↗)</strong>': ['O', 9, "key_o", 'o'],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['O', 9, "key_o", 'o'],
         '<strong class="ggeut">ㄱ</strong>': ['X', 4, "key_x", 'x'],
         '<strong class="ggeut">ㄴ</strong>': ['S', 4, "key_s", 's'],
         '<strong class="ggeut">ㄷ</strong>': ['G', 2, "key_g", 'g'],
@@ -430,42 +430,27 @@ function get_taja_hangeul(type) {
 
 
     // object
-    if (type.substr(0, 1) === '3') {
-        if (type.substr(0, 2) === '3-') {
-            if (type.substr(0, 3) === '3-2') {
-                if (type.substr(0, 7) === '3-2015p') {
-                    return K3_3_2015_patal;
-                } else if (type.substr(0, 6) === '3-2015') {
-                    return K3_3_2015;
-                } else if (type.substr(0, 6) === '3-2012') {
-                    return K3_3_2012;
-                } else {
-                    return {};
-                }
-            } else {
-                return {};
-            }
-        } else if (type.substr(0, 4) === '3moa') {
+    switch (true) {
+        case /3-2015p/.test(KO_type) :
+            return K3_3_2015_patal;
+        case /3-2015/.test(KO_type) :
+            return K3_3_2015;
+        case /3-2012/.test(KO_type) :
+            return K3_3_2012;
+        case /3moa/.test(KO_type) :
             return {};//K3_3moa_2014;
-        } else if (type.substr(0, 5) === '3shin') {
-            if (type === '3shin-2003') {
-                return K3_3shin_2003;
-            } else if (type === '3shin-2015') {
-                return K3_3shin_2015;
-            } else {
-                return K3_3shin_2012;
-            }
-        } else {
-            return {};
-        }
-    } else {
-        if (type === '2-kps9256') {
+        case /3shin-2003/.test(KO_type) :
+            return K3_3shin_2003;
+        case /3shin-2015/.test(KO_type) :
+            return K3_3shin_2015;
+        case /3shin-2012/.test(KO_type) :
+            return K3_3shin_2012;
+        case /2-kps9256/.test(KO_type) :
             return K2_2_kps9256;
-        } else if (type === '2sun-ksx5002') {
+        case /2sun-ksx5002/.test(KO_type) :
             return K2_2sun_ksx5002;
-        } else {
+        default :
             return K2_2_ksx5002;
-        }
-    } 
+    }
 
 }
