@@ -96,5 +96,5 @@ function get_table_html_mapping() {
     ['key_accent', "true", '~']    /* ~ */    /*    0x7E    :    asciitilde    :    tilde    */
 ];
 
-    return layout_to_html.slice(0);
+    return layout_to_html;
 }

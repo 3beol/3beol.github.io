@@ -207,37 +207,25 @@ var galmadeuli_3shin_m = [
 ];
 
     // array
-    if (type.substr(0, 1) === '3') {
-        if (type.substr(0, 2) === '3-') {
-            if (type === '3-2015') {
-                return galmadeuli_3_2015;
-            } else if (type === '3-2015p') {
-                return galmadeuli_3_2015_patal;
-            } else {
-                return [];
-            }
-        } else if (type.substr(0, 4) === '3moa') {
-            if (type.substr(-4) === '2014') {
-                return galmadeuli_3moa_2014;
-            } else {
-                return galmadeuli_3moa_2015;
-            }
-        } else if (type.substr(0, 5) === '3shin') {
-            if (type === '3shin-2003') {
-                return galmadeuli_3shin_2003;
-            } else if (type === '3shin-2015-shift') {
-                return galmadeuli_3shin_2015;
-            } else if (type === '3shin-m-shift') {
-                return galmadeuli_3shin_m;
-            } else {
-                //alert("2012");
-                return galmadeuli_3shin_2012;
-            }
-        } else {
+    switch (true) {
+        case /3-2015p$/.test(type) :
+            return galmadeuli_3_2015_patal;
+        case /3-2015$/.test(type) :
+            return galmadeuli_3_2015;
+        case /3moa-2014/.test(type) :
+            return galmadeuli_3moa_2014;
+        case /3moa-2015/.test(type) :
+            return galmadeuli_3moa_2015;
+        case /3shin-2003/.test(type) :
+            return galmadeuli_3shin_2003;
+        case /3shin-2012/.test(type) :
+            return galmadeuli_3shin_2012;
+        case /3shin-2015-shift/.test(type) :
+            return galmadeuli_3shin_2015;
+        case /3shin-m-shift/.test(type) :
+            return galmadeuli_3shin_m;
+        default :
             return [];
-        }
-    } else {
-        return [];    
-    } 
+    }
 
 }

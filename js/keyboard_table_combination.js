@@ -1,6 +1,6 @@
 function get_table_combination(type) {
-	
-	var hangeul_combination_table_default = [
+    
+    var hangeul_combination_table_default = [
     [0x11001100,0x1101], /* choseong  gieug + gieug = ssanggieug */
     [0x11031103,0x1104], /* choseong  dieud + dieud = ssangdieud */
     [0x11071107,0x1108], /* choseong  bieup + bieup = ssangbieup */
@@ -28,9 +28,9 @@ function get_table_combination(type) {
     [0x11af11c2,0x11b6], /* jongseong lieul + hieuh = lieul-hieuh */
     [0x11b811ba,0x11b9]  /* jongseong bieub + sieus = bieub-sieus */
     //[0x116c1162,0x1164] /* jungseong i     + ae    = yae */
-	];
+    ];
 
-	var hangeul_combination_table_full = [
+    var hangeul_combination_table_full = [
     [0x11001100,0x1101], /* choseong gieug + gieug = ssanggieug */
     [0x11001103,0x115a], /* choseong gieug + dieud = gieug-dieud */
     [0x11021100,0x1113], /* choseong nieun + gieug = nieun-gieug */
@@ -383,7 +383,7 @@ function get_table_combination(type) {
     [0xd7de11ab,0xd7df], /* jongseong mieum-nieun + nieun = mieum-ssangnieun */
     [0xd7f311bc,0xd7f4], /* jongseong bansieus-bieub + ieung = bansieus-gabyeounbieub */
     [0xd7f711b8,0xd7f8]  /* jongseong jieuj-bieub + bieub = jieuj-ssangbieub */
-	];
+    ];
 
 var K3_3_2015 = [
     /* choseong */
@@ -644,7 +644,7 @@ var K3_3moa_2014 = [
     [0x11c211ba,0x11b3], /* jongseong hieuh  + sios    = lieul-sios    */
     [0x11c211bb,0x11b6], /* jongseong hieuh  + ssangsios = lieul-hieuh */
     [0x11c211bc,0x11b5] /* jongseong hieuh  + ieung   = lieul-phieuph */
-];	
+];    
 
 var K3_3moa_2015 = [
     [0x1100110b,0x1101], /* choseong  kiyeok + ieung   = ssangkiyeok   */
@@ -753,7 +753,7 @@ var K3_3moa_2015 = [
     [0x11c211ab,0x11ad], /* jongseong hieuh  + nieun   = nieun-hieuh   */
     [0x11c211ae,0x11c0], /* jongseong hieuh  + tikeut  = thikeuth      */
     [0x11c211b8,0x11c1], /* jongseong hieuh  + pieup   = phieuph       */
-];	
+];    
 
 var K3_3sun_2014 = [
     [ 0x11621162,0x1164 ], /* jungseong ae + ae = yae */ // 2014
@@ -807,53 +807,32 @@ var K3_3shin_2015 = [
         array_default = hangeul_combination_table_full;
     } else {
         array_default = hangeul_combination_table_default;
-        if (type.substr(0, 1) === '3') {
-            if (type.substr(0, 2) === '3-') {
-                if (type.substr(0, 3) === '3-2') {
-                    if (type === '3-2015') {
-                        array_specific = K3_3_2015;
-                    }  else if (type === '3-2015-yet') {
-                        array_specific = K3_3_2015_yet;
-                    } else {
-                        //array_specific = hangeul_combination_table_default;
-                    }
-                } else if (type.substr(0, 3) === '3-9') {
-                    if (type === '3-90') {
-                        //array_specific = hangeul_combination_table_default;
-                    } else if (type === '3-93-yet') {
-                        //array_specific = hangeul_combination_table_default;
-                    } else {
-                        //array_specific = hangeul_combination_table_default;
-                    }
-                } else {
-                    //alert("K3_3_90");
-                    //array_specific = hangeul_combination_table_default;
-                }
-            } else if (type.substr(0, 4) === '3sun-2014') {
-                array_specific = K3_3sun_2014;
-            } else if (type.substr(0,4) === '3moa') {
-                if (type.substr(-3) === 'ahn') {
-                    array_default = K3_3moa_ahn;
-                } else if (type.substr(-4) === '2014') {
-                    array_default = K3_3moa_2014;
-                } else {
-                    array_default = K3_3moa_2015;
-                }
-            } else {
-                if (type === '3shin-2015-shift') {
-                    array_specific = K3_3shin_2015;
-                } else {
-                    //array_specific = hangeul_combination_table_default;
-                }
-            }
-        } else {//K2_kps9256
-            if (type === '2-kps9256') {
-                //array_specific = hangeul_combination_table_default;
-            } else {
-                //alert("K2_ksx5002");
-                //array_specific = hangeul_combination_table_default;    
-            }
-        }
+    }
+
+    switch (true) {
+        case /3-2015$/.test(type) :
+            array_specific = K3_3_2015;
+            break;
+        case /3-2015-yet/.test(type) :
+            array_specific = K3_3_2015_yet;
+            break;
+        case /3sun-2014/.test(type) :
+            array_specific = K3_3sun_2014;
+            break;
+        case /3moa-ahn/.test(type) :
+            array_default = K3_3moa_ahn;
+            break;
+        case /3moa-2014/.test(type) :
+            array_default = K3_3moa_2014;
+            break;
+        case /3moa-2015/.test(type) :
+            array_default = K3_3moa_2014;
+            break;
+        case /3shin-2015-shift/.test(type) :
+            array_specific = K3_3shin_2015;
+            break;
+        default :
+            break;
     }
 
     return_array[0] = array_default;
