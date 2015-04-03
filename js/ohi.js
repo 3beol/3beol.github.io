@@ -1994,10 +1994,10 @@ if (KE_status == 'ko') {
             node_key.html(tab_moa_ggeut_shift);
             node_key.addClass("tag10");
         } else {
-            node_key = $("#key_semicolon .up_key .han_key");
+            node_key = $("#key_apostrophe .up_key .han_key");
             node_key.html(tab_moa_gawit_shift);
             node_key.addClass("tag10");
-            node_key = $("#key_forwardslash .up_key .han_key");
+            node_key = $("#key_semicolon .up_key .han_key");
             node_key.html(tab_moa_ggeut_shift);
             node_key.addClass("tag10");
         }
