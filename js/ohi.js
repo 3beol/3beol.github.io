@@ -84,10 +84,11 @@ var extension_yetgeul_keys_list = {
 // 갈마들이 값이 나타나는데 이것을 막고자 나타내지 말아야하는 글쇠를 나열한다.
 // set_basic_table() 에서 갈마들이를 넣을 때 값을 비워두기 위해서 쓴다
 // 이름은 keyboard_mapping_layout_html.js 의 첫째값들을 쓴다
-var galmadeuli_no_display_keys = ['key_nine', 'key_forwardslash', 'key_i', 'key_o', 'key_p', 'key_semicolon'];
+var galmadeuli_no_display_keys = ['key_nine', 'key_i', 'key_o', 'key_p',
+                                                        'key_forwardslash', 'key_semicolon', 'key_apostrophe'];
 // '[' 로 아래아를 넣는 글판
-var left_bracket_araea_list = ['3-90', '3-2012', '3-2012-yet', 
-                                                    '3-2015p', '3-2015p-yet', 
+var left_bracket_araea_list = ['3-90', '3-2012', '3-2012-yet',
+                                                    '3-2015p', '3-2015p-yet',
                                                     '3shin-2003', '3shin-2012'];
 
 // ASCII 0x21 (33) 부터 시작해서 제 값을 얻으려면 33 을 빼줘야 한다
