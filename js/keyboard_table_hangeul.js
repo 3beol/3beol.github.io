@@ -1074,7 +1074,7 @@ var K3_3moa_2015 = [
     0x0024,     /* 0x24 dollar:         dollar sign                  */
     0x0025,     /* 0x25 percent:        percent sign                 */
     0x0026,     /* 0x26 ampersand:      ampersand                    */
-    0x0027,     /* 0x27 apostrophe:     apostrophe                   */
+    0x1169,     /* 0x27 apostrophe:     jungseong o                  */
     0x0028,     /* 0x28 parenleft:      left parenthesis             */
     0x0029,     /* 0x29 parenright:     right parenthesis            */
     0x002a,     /* 0x2A asterisk:       asterisk                     */
@@ -1082,7 +1082,7 @@ var K3_3moa_2015 = [
     0x002c,     /* 0x2C comma:          comma                        */
     0x002d,     /* 0x2D minus:          minus sign                   */
     0x002e,     /* 0x2E period:         period                       */
-    0x11bb,     /* 0x2F slash:          jongseong ssangsios          */
+    0x002f,     /* 0x2F slash:          slash                        */
     0x0030,     /* 0x30 0:              0                            */
     0x0031,     /* 0x31 1:              1                     */
     0x0032,     /* 0x32 2:              2                     */
@@ -1094,14 +1094,14 @@ var K3_3moa_2015 = [
     0x0038,     /* 0x38 8:              8                            */
     0x0039,     /* 0x39 9:              9                            */
     0x003a,     /* 0x3A colon:          colon                        */
-    0x1169,     /* 0x3B semicolon:      jungseong o                  */
+    0x11bb,     /* 0x3B semicolon:      jongseong ssangsios          */
     0x003c,     /* 0x3C less:           less-than sign               */
     0x003d,     /* 0x3D equal:          euals sign                   */
     0x003e,     /* 0x3E greater:        greater-than sign            */
     0x003f,     /* 0x3F question:       question mark                */
     0x0040,     /* 0x40 at:             commertial at                */
     0x2606,     /* 0x41 A:              ☆ white star                */
-    0x002f,     /* 0x42 B:              slash                        */
+    0x0027,     /* 0x42 B:              apostrophe                   */
     0x300c,     /* 0x43 C:              「 left corner bracket       */
     0x25B3,     /* 0x44 D:              △ white up-pointing triangle */
     0x2192,     /* 0x45 E:              → rightwards arrow           */
