@@ -77,6 +77,45 @@ var galmadeuli_3moa_2015 = [
     //[0x11c2, 0x11b6],  /* jongseong hieuh (ㅎ) -> (ㅀ) */
 ];
 
+
+var galmadeuli_3shin_1995 = [
+    /* choseong -> jungseong */
+    [0x1106, 0x116e],  /* choseong mieum <ㅁ> */     /* jungseong u <ㅜ> */
+    //[0x110b, 0x119e],  /* choseong ieung <ㅇ> */      /* jungseong araea<ㆍ> */
+    [0x110e, 0x116e],  /* choseong chieuch <ㅊ> */      /* jungseong u <ㅜ> */
+    [0x110f, 0x1169],  /* choseong khieukh <ㅋ> */     /* jungseong o <ㅗ> */
+    [0x1111, 0x1169],  /* choseong phieuph <ㅍ> */     /* jungseong o <ㅗ> */
+    /* jungseong -> jongseong */
+    [0x1161, 0x11ac],     /*ㅏ*/     /* <ㄵ> */
+    [0x1162, 0x11b4],     /*ㅐ*/     /* <ㄾ> */
+    [0x1163, 0x11b0],     /*ㅑ*/     /* <ㄺ> */
+    [0x1164, 0x11b9],     /*ㅒ*/     /* <ㅄ> */
+    [0x1166, 0x11b5],     /*ㅔ*/     /* <ㄿ>*/
+    [0x1167, 0x11b2],     /*ㅕ*/     /* <ㄼ> */
+    [0x1168, 0x11ad],     /*ㅖ*/     /* <ㄶ> */
+    [0x1169, 0x11aa],     /*ㅗ*/     /* <ㄳ> */
+    [0x116d, 0x11a9],     /*ㅛ*/     /* <ㄲ> */
+    [0x1172, 0x11b1],     /*ㅠ*/     /* <ㄻ> */
+    [0x1174, 0x11b3],     /*ㅢ*/    /* <ㄽ>  */
+    [0x1175, 0x11b6],     /*ㅣ*/     /* <ㅀ> */
+    /* jongseong -> jungseong */
+    [0x11a8, 0x116d],  /* jongseong kiyeok (ㄱ)        -> jungseong yo (ㅛ) */
+    [0x11ab, 0x1168],  /* jongseong nieun (ㄴ)         -> jungseong ye (ㅖ)       */
+    [0x11ae, 0x1162],  /* jongseong tikeut (ㄷ)        -> jungseong ae  (ㅐ)      */
+    [0x11af, 0x1163],  /* jongseong rieul (ㄹ)         ->  jungseong ya (ㅑ)       */
+    [0x11b7, 0x1172],  /* jongseong mieum  (ㅁ)        ->  jungseong yu  (ㅠ)   */
+    [0x11b8, 0x1167],  /* jongseong pieup  (ㅂ)        -> jungseong yeo (ㅕ)     */
+    [0x11ba, 0x1174],  /* jongseong sios (ㅅ)          -> jungseong yi <ㅢ>        */
+    [0x11bb, 0x116e], /* jongseong ssangsios (ㅆ)     -> jungseong u  (ㅜ)   */
+    [0x11bc, 0x1164],  /* jongseong ieung (ㅇ)         -> jungseong yae (ㅒ)      */
+    [0x11bd, 0x1161],  /* jongseong cieuc (ㅈ)         -> jungseong a (ㅏ)      */
+    [0x11be, 0x1166],  /* jongseong chieuch (ㅊ)       -> jungseong e  (ㅔ)    */
+    [0x11bf, 0x1169],  /* jongseong khieukh (ㅋ)        -> jungseong o  (ㅗ)    */
+    [0x11c0, 0x1165],  /* jongseong thieuth (ㅌ)       -> jungseong eo  (ㅓ)    */
+    [0x11c1, 0x1173],  /* jongseong phieuph (ㅍ)       -> jungseong eu  (ㅡ)    */
+    [0x11c2, 0x1175]  /* jongseong hieuh (ㅎ)         -> jungseong i  (ㅣ)     */
+];
+
 var galmadeuli_3shin_2003 = [
     /* choseong -> jungseong */
     [0x1106, 0x1174],  /* choseong mieum <ㅁ> */     /* jungseong yi <ㅢ> */
@@ -216,6 +255,8 @@ var galmadeuli_3shin_m = [
             return galmadeuli_3moa_2014;
         case /3moa-2015/.test(type) :
             return galmadeuli_3moa_2015;
+        case /3shin-1995/.test(type) :
+            return galmadeuli_3shin_1995;
         case /3shin-2003/.test(type) :
             return galmadeuli_3shin_2003;
         case /3shin-2012/.test(type) :
