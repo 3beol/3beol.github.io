@@ -809,7 +809,7 @@ demos = {
     demo_1: {
         wire: function() {
             //alert("demo_1 wire");
-            focus_tab_id = 'inputText';
+            focus_tag_id = 'inputText';
             inputText_focus(true);
             listener.should_force_event_defaults = true;
             demo_1.registered_combos = listener.register_many(demo_1.combos);
@@ -825,7 +825,7 @@ demos = {
     demo_2: {
         wire: function() {
             //alert("demo_2 wire");
-            focus_tab_id = 'searchText';
+            focus_tag_id = 'searchText';
             inputText_focus(true);
             listener.should_force_event_defaults = true;
             demo_1.registered_combos = listener.register_many(demo_1.combos);
@@ -841,7 +841,7 @@ demos = {
     demo_3: {
         wire: function() {
             //alert("demo_3 wire");
-            focus_tab_id = 'jamo_panel';
+            focus_tag_id = 'jamo_panel';
             tadak_tadak = true;
             table_taja = get_taja_hangeul(KO_type);
             // false:글판이 바뀌지 않았다

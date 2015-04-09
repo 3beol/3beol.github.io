@@ -118,7 +118,7 @@ var browser = '';
 var browser_ver = 0;
 var nu = navigator.userAgent;
 
-var focus_tab_id = "inputText";
+var focus_tag_id = "inputText";
 
 var layout_list_info_ke = [
     {name: 'en', full_name: '영문'},
@@ -1576,9 +1576,9 @@ function inputText_focus(end) {
     var focus = document.activeElement;
     if (focus.tagName.toLowerCase() != 'textarea' && focus.tagName.toLowerCase() != 'input') {
         //alert("??");
-        if (focus_tab_id != '') {
+        if (focus_tag_id != '') {
             //alert("?//?");
-            var id_focus = document.getElementById(focus_tab_id);
+            var id_focus = document.getElementById(focus_tag_id);
             if (typeof(id_focus.tagName) != 'undefined') {
                 focus = id_focus
             }
@@ -1918,8 +1918,8 @@ if (KE_status == 'ko') {
     var tag_sign2 = "기②";
     var tag_yet1 = "한①";
     var tag_yet2 = "한②";
-    var tab_moa_gawit_shift = "⇧";
-    var tab_moa_ggeut_shift = "⇦";
+    var tag_moa_gawit_shift = "⇧";
+    var tag_moa_ggeut_shift = "⇦";
 
     var node_key;
     if (!extension_steps && KE_status == 'ko') {
@@ -1993,17 +1993,17 @@ if (KE_status == 'ko') {
     if (/3moa-2/.test(KO_type)) {
         if (KO_type === '3moa-2014') {
             node_key = $("#key_semicolon .down_key .han_key");
-            node_key.html(tab_moa_ggeut_shift);
+            node_key.html(tag_moa_ggeut_shift);
             node_key.addClass("tag10");
         } else {
             node_key = $("#key_apostrophe .up_key .han_key");
-            node_key.html(tab_moa_gawit_shift);
+            node_key.html(tag_moa_gawit_shift);
             node_key.addClass("tag10");
             node_key = $("#key_v .up_key .han_key");
-            node_key.html(tab_moa_gawit_shift);
+            node_key.html(tag_moa_gawit_shift);
             node_key.addClass("tag10");
             node_key = $("#key_semicolon .up_key .han_key");
-            node_key.html(tab_moa_ggeut_shift);
+            node_key.html(tag_moa_ggeut_shift);
             node_key.addClass("tag10");
         }
     }
