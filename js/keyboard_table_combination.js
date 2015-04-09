@@ -828,7 +828,7 @@ var K3_3shin_2015 = [
             array_default = K3_3moa_2014;
             break;
         case /3moa-2015/.test(type) :
-            array_default = K3_3moa_2014;
+            array_default = K3_3moa_2015;
             break;
         case /3shin-2015-shift/.test(type) :
             array_specific = K3_3shin_2015;
