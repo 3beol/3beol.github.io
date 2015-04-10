@@ -1999,7 +1999,7 @@ if (KE_status == 'ko') {
             node_key = $("#key_apostrophe .up_key .han_key");
             node_key.html(tag_moa_gawit_shift);
             node_key.addClass("tag10");
-            node_key = $("#key_v .up_key .han_key");
+            node_key = $("#key_v .up_key .en_key");
             node_key.html(tag_moa_gawit_shift);
             node_key.addClass("tag10");
             node_key = $("#key_semicolon .up_key .han_key");
