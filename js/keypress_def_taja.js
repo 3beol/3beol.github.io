@@ -94,6 +94,123 @@ function get_taja_hangeul(type) {
         '<strong class="gawit">ㅣ</strong>': ['k', 3, "key_k"],
     };
 
+
+    var K3_3_90 = {
+        '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
+        '<strong class="cheot">ㄴ</strong>':  ['h', 7, "key_h"],
+        '<strong class="cheot">ㄷ</strong>':  ['u', 7, "key_u"],
+        '<strong class="cheot">ㄹ</strong>':  ['y', 7, "key_y"],
+        '<strong class="cheot">ㅁ</strong>':  ['i', 8, "key_i"],
+        '<strong class="cheot">ㅂ</strong>':  [';', 10, "key_semicolon"],
+        '<strong class="cheot">ㅅ</strong>':  ['n', 7, "key_n"],
+        '<strong class="cheot">ㅇ</strong>':  ['j', 7, "key_j"],
+        '<strong class="cheot">ㅈ</strong>':  ['l', 9, "key_l"],
+        '<strong class="cheot">ㅊ</strong>':  ['o', 9, "key_o"],
+        '<strong class="cheot">ㅋ</strong>':  ['0', 10, "key_zero"],
+        '<strong class="cheot">ㅌ</strong>':  ['\'', 10, "key_apostrophe"],
+        '<strong class="cheot">ㅍ</strong>':  ['p', 10, "key_p"],
+        '<strong class="cheot">ㅎ</strong>':  ['m', 7, "key_m"],
+        '<strong class="gawit">ㅏ</strong>': ['f', 2, "key_f"],
+        '<strong class="gawit">ㅐ</strong>': ['r', 2, "key_r"],
+        '<strong class="gawit">ㅒ</strong>': ['R', 2, "key_r"],
+        '<strong class="gawit">ㅑ</strong>': ['6', 2, "key_six"],
+        '<strong class="gawit">ㅓ</strong>': ['t', 2, "key_t"],
+        '<strong class="gawit">ㅔ</strong>': ['c', 3, "key_c"],
+        '<strong class="gawit">ㅖ</strong>': ['7', 7, "key_seven"],
+        '<strong class="gawit">ㅕ</strong>': ['e', 3, "key_e"],
+        '<strong class="gawit">ㅗ</strong>': ['v', 2, "key_v"],
+        '<strong class="gawit">ㅛ</strong>': ['4', 2, "key_four"],
+        '<strong class="gawit">ㅜ</strong>': ['b', 2, "key_b"],
+        '<strong class="gawit">ㅠ</strong>': ['5', 2, "key_five"],
+        '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
+        '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
+        '<strong class="gawit">ㅢ</strong>': ['8', 8, "key_eight"],
+        '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 9, "key_nine"],
+        '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
+        '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
+        '<strong class="ggeut">ㄷ</strong>': ['A', 5, "key_a"],
+        '<strong class="ggeut">ㄹ</strong>': ['w', 4, "key_w"],
+        '<strong class="ggeut">ㅁ</strong>': ['z', 5, "key_z"],
+        '<strong class="ggeut">ㅂ</strong>': ['3', 3, "key_three"],
+        '<strong class="ggeut">ㅅ</strong>': ['q', 5, "key_q"],
+        '<strong class="ggeut">ㅆ</strong>': ['2', 4, "key_two"],
+        '<strong class="ggeut">ㅇ</strong>': ['a', 5, "key_a"],
+        '<strong class="ggeut">ㅈ</strong>': ['!', 5, "key_one"],
+        '<strong class="ggeut">ㅊ</strong>': ['Z', 5, "key_z"],
+        '<strong class="ggeut">ㅋ</strong>': ['E', 3, "key_e"],
+        '<strong class="ggeut">ㅌ</strong>': ['W', 4, "key_w"],
+        '<strong class="ggeut">ㅍ</strong>': ['Q', 5, "key_q"],
+        '<strong class="ggeut">ㅎ</strong>': ['1', 5, "key_one"],
+        '<strong class="ggeut">ㄲ</strong>': ['F', 2, "key_f"],
+        '<strong class="ggeut">ㄺ</strong>': ['D', 3, "key_d"],
+        '<strong class="ggeut">ㅀ</strong>': ['V', 2, "key_v"],
+        '<strong class="ggeut">ㄶ</strong>': ['S', 4, "key_s"],
+        '<strong class="ggeut">ㄻ</strong>': ['C', 3, "key_c"],
+        '<strong class="ggeut">ㅄ</strong>': ['X', 4, "key_x"],
+    };
+
+    var K3_3_91 = {
+        '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
+        '<strong class="cheot">ㄴ</strong>':  ['h', 7, "key_h"],
+        '<strong class="cheot">ㄷ</strong>':  ['u', 7, "key_u"],
+        '<strong class="cheot">ㄹ</strong>':  ['y', 7, "key_y"],
+        '<strong class="cheot">ㅁ</strong>':  ['i', 8, "key_i"],
+        '<strong class="cheot">ㅂ</strong>':  [';', 10, "key_semicolon"],
+        '<strong class="cheot">ㅅ</strong>':  ['n', 7, "key_n"],
+        '<strong class="cheot">ㅇ</strong>':  ['j', 7, "key_j"],
+        '<strong class="cheot">ㅈ</strong>':  ['l', 9, "key_l"],
+        '<strong class="cheot">ㅊ</strong>':  ['o', 9, "key_o"],
+        '<strong class="cheot">ㅋ</strong>':  ['0', 10, "key_zero"],
+        '<strong class="cheot">ㅌ</strong>':  ['\'', 10, "key_apostrophe"],
+        '<strong class="cheot">ㅍ</strong>':  ['p', 10, "key_p"],
+        '<strong class="cheot">ㅎ</strong>':  ['m', 7, "key_m"],
+        '<strong class="gawit">ㅏ</strong>': ['f', 2, "key_f"],
+        '<strong class="gawit">ㅐ</strong>': ['r', 2, "key_r"],
+        '<strong class="gawit">ㅒ</strong>': ['G', 2, "key_G"],
+        '<strong class="gawit">ㅑ</strong>': ['6', 2, "key_six"],
+        '<strong class="gawit">ㅓ</strong>': ['t', 2, "key_t"],
+        '<strong class="gawit">ㅔ</strong>': ['c', 3, "key_c"],
+        '<strong class="gawit">ㅖ</strong>': ['7', 7, "key_seven"],
+        '<strong class="gawit">ㅕ</strong>': ['e', 3, "key_e"],
+        '<strong class="gawit">ㅗ</strong>': ['v', 2, "key_v"],
+        '<strong class="gawit">ㅛ</strong>': ['4', 2, "key_four"],
+        '<strong class="gawit">ㅜ</strong>': ['b', 2, "key_b"],
+        '<strong class="gawit">ㅠ</strong>': ['5', 2, "key_five"],
+        '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
+        '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
+        '<strong class="gawit">ㅢ</strong>': ['8', 8, "key_eight"],
+        '<strong class="gawit_right">ㅗ(↘)</strong>': ['/', 10, "key_forwardslash"],
+        '<strong class="gawit_right">ㅜ(↗)</strong>': ['9', 9, "key_nine"],
+        '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
+        '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
+        '<strong class="ggeut">ㄷ</strong>': ['A', 5, "key_a"],
+        '<strong class="ggeut">ㄹ</strong>': ['w', 4, "key_w"],
+        '<strong class="ggeut">ㅁ</strong>': ['z', 5, "key_z"],
+        '<strong class="ggeut">ㅂ</strong>': ['3', 3, "key_three"],
+        '<strong class="ggeut">ㅅ</strong>': ['q', 5, "key_q"],
+        '<strong class="ggeut">ㅆ</strong>': ['2', 4, "key_two"],
+        '<strong class="ggeut">ㅇ</strong>': ['a', 5, "key_a"],
+        '<strong class="ggeut">ㅈ</strong>': ['#', 3, "key_three"],
+        '<strong class="ggeut">ㅊ</strong>': ['Z', 5, "key_z"],
+        '<strong class="ggeut">ㅋ</strong>': ['C', 3, "key_c"],
+        '<strong class="ggeut">ㅌ</strong>': ['W', 4, "key_w"],
+        '<strong class="ggeut">ㅍ</strong>': ['Q', 5, "key_q"],
+        '<strong class="ggeut">ㅎ</strong>': ['1', 5, "key_one"],
+        '<strong class="ggeut">ㄲ</strong>': ['!', 5, "key_one"],
+        '<strong class="ggeut">ㄺ</strong>': ['@', 4, "key_two"],
+        '<strong class="ggeut">ㄿ</strong>': ['$', 2, "key_four"],
+        '<strong class="ggeut">ㄾ</strong>': ['%', 2, "key_five"],
+        '<strong class="ggeut">ㄵ</strong>': ['E', 3, "key_e"],
+        '<strong class="ggeut">ㅀ</strong>': ['R', 2, "key_r"],
+        '<strong class="ggeut">ㄽ</strong>': ['T', 2, "key_t"],
+        '<strong class="ggeut">ㄶ</strong>': ['S', 4, "key_s"],
+        '<strong class="ggeut">ㄼ</strong>': ['D', 3, "key_d"],
+        '<strong class="ggeut">ㄻ</strong>': ['F', 2, "key_f"],
+        '<strong class="ggeut">ㅄ</strong>': ['X', 4, "key_x"],
+        '<strong class="ggeut">ㄳ</strong>': ['V', 2, "key_v"],
+    };
+
     var K3_3_2012 = {
         '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
         '<strong class="cheot">ㄴ</strong>':  ['h', 7, "key_h"],
@@ -513,9 +630,9 @@ function get_taja_hangeul(type) {
     // object
     switch (true) {
         case /3-90/.test(KO_type) :
-            return {};
+            return K3_3_90;
         case /3-91/.test(KO_type) :
-            return {};
+            return K3_3_91;
         case /3-93/.test(KO_type) :
             return {};
         case /3-2015p/.test(KO_type) :
@@ -538,12 +655,14 @@ function get_taja_hangeul(type) {
             return K3_3shin_2015;
         case /3shin-m/.test(KO_type) :
             return K3_3shin_M;
-        case /2-kps9256/.test(KO_type) :
-            return K2_2_kps9256;
+        case /2-ksx5002/.test(KO_type) :
+            return K2_2_ksx5002;
         case /2sun-ksx5002/.test(KO_type) :
             return K2_2sun_ksx5002;
+        case /2-kps9256/.test(KO_type) :
+            return K2_2_kps9256;
         default :
-            return K2_2_ksx5002;
+            return {};
     }
 
 }
