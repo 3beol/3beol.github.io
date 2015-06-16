@@ -356,6 +356,9 @@ body {
         font-weight: bold;
         text-align: right;}
 
+div.navbar-header a.navbar-brand {
+    color: #fff; }
+
 .examples > h1,
 .overview > h1,
 .get_keypress > h1,
