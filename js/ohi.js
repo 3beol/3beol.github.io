@@ -1250,7 +1250,7 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
         charCode = galmadeuliCode;
         right_oua = 0;
         //alert("here 5");
-    } else if (charCode == 0x110F/*ㅋ*/ && ohiQ[0] ) {
+    } else if (charCode == 0x110F/*ㅋ*/ && ohiQ[0] && (!ohiQ[2]) ) {
         // 오른손 쪽 ㅋ 자리에 들어간 ㅗ
         charCode = 0x1169/*ㅗ*/;
         right_oua = 1;
