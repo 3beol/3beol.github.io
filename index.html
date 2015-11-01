@@ -3,12 +3,8 @@ layout: default
 ---
 
 <div class="home">
-
-    <div class="container">
-        <div class="col-md-8">
 <!-- -->
-<div class="row">
-    <div class="col-md-12">
+    <div class="row">
         <div class="overview ">
                 <ul>
                     <li><a class="demo_link active" data-demo="demo_1">한글 쓰기</a></li>
@@ -16,56 +12,51 @@ layout: default
                     <li><a class="demo_link" data-demo="demo_3">글쇠 익히기</a></li>
                 </ul>
         </div><!-- class="overview" -->
-    </div>
-</div><!-- class="row" -->
+    </div><!-- class="row" -->
 <!-- -->
-<div class="row">
-    <div class="col-md-12">
-            <div class="examples">
-                <div class="example_window">
-                    <div class="demo" data-demo="demo_1">
-                        <textarea id="inputText" class="form-control" rows="5"></textarea>
-                    </div>
-                    <div class="demo" data-demo="demo_2">
-                        <form class="form-horizontal" role="form" target="_blank" action="http://www.google.co.kr/search">
-                            <div class="input-group">
-                                <span class="input-group-addon">구글</span>
-                                <input class="form-control" id="searchText" name="query" placeholder="찾을 단어나 문장을 넣으시오">
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">찾기</button>
-                                </div>
+    <div class="row">
+        <div class="examples">
+            <div class="example_window">
+                <div class="demo" data-demo="demo_1">
+                    <textarea id="inputText" class="form-control" rows="5"></textarea>
+                </div>
+                <div class="demo" data-demo="demo_2">
+                    <form class="form-horizontal" role="form" target="_blank" action="http://www.google.co.kr/search">
+                        <div class="input-group">
+                            <span class="input-group-addon">구글</span>
+                            <input class="form-control" id="searchText" name="query" placeholder="찾을 단어나 문장을 넣으시오">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default">찾기</button>
                             </div>
-                        </form>
-                        <form class="form-horizontal" role="form" target="_blank" action="http://search.naver.com/search.naver">
-                            <div class="input-group">
-                                <span class="input-group-addon">네이버</span>
-                                <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">찾기</button>
-                                </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" role="form" target="_blank" action="http://search.naver.com/search.naver">
+                        <div class="input-group">
+                            <span class="input-group-addon">네이버</span>
+                            <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default">찾기</button>
                             </div>
-                        </form>
-                        <form class="form-horizontal" role="form" target="_blank" action="http://search.daum.net/search">
-                            <div class="input-group">
-                                <span class="input-group-addon">다음</span>
-                                <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default">찾기</button>
-                                </div>
+                        </div>
+                    </form>
+                    <form class="form-horizontal" role="form" target="_blank" action="http://search.daum.net/search">
+                        <div class="input-group">
+                            <span class="input-group-addon">다음</span>
+                            <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default">찾기</button>
                             </div>
-                        </form>
-                    </div>
-                    <div class="demo" data-demo="demo_3">
-                        <div class="jamo_panel" id="jamo_panel"></div>
-                    </div>
-                </div><!-- class="example_window" -->
-            </div><!-- class="examples" -->
-    </div>
-</div><!-- class="row" -->
+                        </div>
+                    </form>
+                </div>
+                <div class="demo" data-demo="demo_3">
+                    <div class="jamo_panel" id="jamo_panel"></div>
+                </div>
+            </div><!-- class="example_window" -->
+        </div><!-- class="examples" -->
+    </div><!-- class="row" -->
 <!-- -->
-
-<div class="row">
-    <div class="col-md-12">
+    <div class="row">
         <div class="layout_list">
             <select name="layout_select" class="layout_select selectpicker" multiple data-max-options="3" data-width="520px">
                 <optgroup class="ke_status" label="한/영" data-max-options="1"></optgroup>
@@ -74,12 +65,9 @@ layout: default
             </select>
         </div>
         <div class="layout_link"><a href="" target="_blank">ⓘ</a></div>
-    </div>
-</div><!-- class="row" -->
+    </div><!-- class="row" -->
 <!-- -->
-
-<div class="row">
-    <div class="clearfix col-md-12">
+    <div class="row">
         <div class="keyboard">
             <section>
                 <div class="key_row">
@@ -363,28 +351,18 @@ layout: default
             </section>
 -->
         </div><!-- keyboard -->
-    </div>
-</div><!-- class="row" -->
+    </div><!-- class="row" -->
 <!-- -->
-<div class="row">
-    <div class="col-md-12">
+    <div class="row">
         <figure>
-            <img class="hand" id = "hand" src = "images/taja/hands.png" />
+            <img class="hand" id = "hand" src = "{{ '/images/taja/hands.png' | prepend: site.baseurl }}" />
         </figure>
-    </div>
-</div><!-- class="row" -->
+    </div><!-- class="row" -->
 <!-- -->
-<div class="row">
-    <div class="col-md-12">
+    <div class="row">
         <div class="documentation advanced_documentation">
             <h1 class="blue">Great! So how do I use it?</h1>
         </div>
-    </div>
-</div><!-- class="row" -->
+    </div><!-- class="row" -->
 
-
-
-        </div><!--div class="col-md-8"-->
-    </div><!-- class = "container" -->
-
-</div>
+</div><!--div class="home"-->

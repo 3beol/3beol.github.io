@@ -49,10 +49,10 @@ $(document).ready(function(){
             current_key = random_key();
             $("#" + table_taja[current_key][2] + "").addClass('topress');
             $('#jamo_panel').html(current_key);
-            $('#hand').attr('src', "images/taja/hands_" + table_taja[current_key][1].toString() + ".png");
+            $('#hand').attr('src', "{{ '/images/taja/hands_" + table_taja[current_key][1].toString() + ".png' | prepend: site.baseurl }}");
         } else {
             $('#jamo_panel').html('ⓘ');
-            $('#hand').attr('src', "images/taja/hands.png");
+            $('#hand').attr('src', "{{ '/images/taja/hands.png' | prepend: site.baseurl }}");
         }
     }
 
