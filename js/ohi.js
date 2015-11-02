@@ -153,7 +153,7 @@ var layout_list_info_ko = [
     {name: '3sun-2014', full_name: '순아래 2014', link: 'http://cafe.daum.net/3bulsik/JMKX/18'},
     {name: '3moa-ahn', full_name: '안마태 소리글판', link: 'http://ahnmatae.org'},
     {name: '3moa-2014', full_name: '모아치기 2014', link: 'http://ssg.wo.tc/220239514856'},
-    {name: '3moa-2015', full_name: '모아치기 2015', link: 'http://ssg.wo.tc/220239514856'},
+    {name: '3moa-2015', full_name: '세모이 (모아치기 2015)', link: 'http://ssg.wo.tc/220239514856'},
     {name: '3shin-1995', full_name: '신세벌식 1995'},
     {name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
     {name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
