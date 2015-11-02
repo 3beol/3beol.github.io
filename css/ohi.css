@@ -540,3 +540,7 @@ div.navbar-header a.navbar-brand {
     font-size: 1.5em;}
 .keyboard {
     margin-left: 20px;}
+
+
+div a.page-link.active {
+    color: grey;}

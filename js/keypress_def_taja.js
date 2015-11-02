@@ -1,3 +1,6 @@
+---
+---
+
 // taja.js > match_key = function(key) [글쇠, 손가락, ID, 갈마들이]
 function get_taja_hangeul(type) {
     var K2_2_ksx5002 = {
