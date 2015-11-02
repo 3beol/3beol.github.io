@@ -1983,7 +1983,7 @@ if (KE_status == 'ko') {
             if ((/2003/.test(KO_type)) || (/2012/.test(KO_type)) || (/-p/.test(KO_type))) {
                 node_key = $("#key_j .down_key .en_key");
                 node_key.html(tag_sign0);
-                node_key.addClass("tag09");
+                node_key.addClass("tag08");
                 node_key = $("#key_k .down_key .en_key");
                 node_key.html("①");
                 node_key.addClass("tag10");
