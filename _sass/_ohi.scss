@@ -1,0 +1,230 @@
+/**
+ * OHI
+ */
+
+body {
+  $navbar-fixed-height: 50px;
+
+  padding: $navbar-fixed-height 0 0; // 50px to make the container go all the way to the bottom of the topbar
+  background-image: url('/images/bg_noise.png');
+
+  div {
+    &.navbar-fixed-top {
+      height: $navbar-fixed-height;
+      padding-right: 1em;
+      a {
+        font-weight: bold;
+      }
+      .navbar-header a.navbar-brand {
+          color: #fff;
+      }
+    }
+  }
+}
+
+
+.examples,
+.overview,
+.get_keypress,
+.documentation {
+  & > h1 {
+    margin-bottom: 0.5em;
+    font-size: 1.4em;
+    line-height: 1em;
+    &.pink {
+      border-bottom: 3px solid #FF0089;
+    }
+    &.lime {
+      border-bottom: 3px solid #aade00;
+    }
+    &.blue {
+      border-bottom: 3px solid #63B3E0;
+    }
+  }
+  p {
+    font-size: 0.8em;
+    clear: both;
+    img {
+      float: left;
+      margin-right: 1em;
+    }
+  }
+}
+
+.overview {
+  text-align: center;
+  ul {
+    margin: 0 0 1em 0;
+    display: inline-block;
+    /* For IE, the outcast */
+    zoom:1;
+    *display: inline;
+    li {
+      float: left;
+      &:first-child a {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      &:last-child a {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      a {
+        font-weight:normal;
+        display: block; 
+        padding: 0.5em 1.5em;
+        cursor: pointer;
+        color: #323232;
+        background-color: #fff;
+        border: 1px solid #dddddd;
+        position: relative;
+        line-height: 1em;
+        -webkit-transition: all 0.2s ease-in-out 0s;
+        -moz-transition: all 0.2s ease-in-out 0s;
+        -o-transition: all 0.2s ease-in-out 0s;
+        transition: all 0.2s ease-in-out 0s;
+        &:hover {
+          color: #327fc7;
+          border-color: #327fc7;
+          z-index: 10;
+        }
+        &.active {
+          z-index: 20;
+          color: #fff;
+          background-color: #327fc7;
+          border-color: #327fc7;
+          outline: none;
+          &::before {
+            content: none;
+          }
+          &::after {
+            content: "\00a0";
+            position: absolute;
+            left: 2em;
+            top: 2.2em;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 0px 1.4em 1.4em 1.4em;
+            border-color: transparent transparent #63b3e0 transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.examples {
+  margin-bottom: 1em;
+  .example_window {
+    border: 4px solid #63b3e0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    .demo {
+      display: none;
+      h2 {
+        margin-bottom: 0.5em;
+        font-size: 1.2em;
+        line-height: 1.1em;
+        border-bottom: 1px solid #aaa;
+      }
+      p {
+        margin-bottom: 1em;
+      }
+      textarea {
+        resize: none;
+      }
+      form {
+        margin: 1em 0;
+        .input-group-addon {
+            width: 100px;
+            font-weight: bold;
+            text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.demo[data-demo="demo_1"] {
+  display: block;
+}
+
+
+.documentation {
+  margin: 3em auto;
+  p {
+    clear: both;
+    margin-bottom: 1em;
+  }
+  ul {
+    font-size: 1.2em;
+    border-left: 4px solid rgba(0, 55, 68, 0.25);
+    padding-left: 1em;
+    li {
+      margin-bottom: 1em;
+      strong {
+        position: relative;
+        top: -1px;
+        padding: 2px 6px 4px;
+        background: #003744;
+        font-family: monospace, serif;
+        font-weight: normal;
+        font-size: 0.9em;
+        color: #00ac98;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        &.group_2 {
+          color: #A5AC00;
+        }
+        &.group_3 {
+          color: #07AC00;
+        }
+        &.group_4 {
+          color: #C07618;
+        }
+      }
+    }
+  }
+}
+
+.advanced_documentation {
+  background: #fff;
+  -webkit-box-shadow: 0 0 0 15px white;
+  -moz-box-shadow: 0 0 0 15px white;
+  box-shadow: 0 0 0 15px white;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+
+.jamo_panel {
+  font-size: 3em;
+  width: 2em;
+  margin: 0.5em auto 0.1em;
+  text-align: center;
+  white-space: nowrap;
+  .cheot{
+	color: green;
+  }
+  .gawit{
+	color: brown;
+  }
+  .gawit_right{
+	color: orange;
+  }
+  .ggeut{
+	color: red;
+  }
+}
+
+.hand {
+  width:480px;
+  margin:0 auto;
+  display: none;
+}

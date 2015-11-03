@@ -1,0 +1,321 @@
+/**
+ * Keyboard
+ */
+
+.keyboard {
+  $very-small-font-size:  ($base-font-size * 0.625); // 10px // main.scss
+  //$grey-color-dark    // main.scss
+  $key_width: 40px;
+  $key_height: 40px;
+
+
+
+/// 벤더 프리픽스를 산출하는 믹스인 헬퍼
+/// @access public
+/// @author HugoGiraudel
+/// @param {String} $property - 프리픽스가 붙지 않은 CSS 속성
+/// @param {*} $value - 가공되지 않은 CSS 값
+/// @param {List} $prefixes - 산출할 프리픽스 리스트
+@mixin prefix-property($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+
+  #{$property}: $value;
+}
+
+@mixin prefix-function($property, $value, $function, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    $property: -#{$prefix}-#{$function}($value);
+  }
+}
+
+
+  clear: both;
+  font-size: $very-small-font-size;
+  margin: 1em 0 0 1em;
+  zoom: 1;
+
+  &::before, 
+  &::after {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+
+  .layout_list {
+    float: left;
+    margin-right: 1em;
+  }
+  .layout_link {
+    font-size: 2.5em;
+  }
+
+  .note,
+  .message {
+    margin-top: 1em;
+    margin-left: 3em;
+    width: 175px;
+    font-size: 1em;
+    color: $grey-color-dark;
+  }
+  section {
+    float: left;
+    margin-top: 1em;
+    margin-right: 1em;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  .key_row {
+    height: $key_height;
+    margin-bottom: 5px; 
+		margin-left: auto;
+		margin-right: auto;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  .key,
+  .key_filler {
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+    width: $key_width;
+    height: $key_height;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  .key_filler {
+    pointer-events: none;
+  }
+  .key {
+    cursor: pointer;
+    border: 1px solid #aaa;
+    padding-top: 0.25em;
+    vertical-align: top;
+    font-size: 1.2em;
+    color: #333;
+    text-align: center;
+    @include prefix-property (border-radius, 
+                                            5px, 
+                                            ('webkit', 'moz'));
+    @include prefix-property (box-shadow, 
+                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2), 
+                                            ('webkit', 'moz'));
+    background: white;
+    @include prefix-function (background-image, 
+                                            (-90deg, white 0%, #e3e3e3 100%), 
+                                            linear-gradient, 
+                                            ('webkit', 'moz', 'o', 'ms'));
+    &.cheot{
+      background: PaleGreen;
+    }
+    &.gawit{
+      background: PaleGoldenRod;
+    }
+    &.gawit_right{
+      background: PaleGoldenRod;
+    }
+    &.ggeut{
+      background: PaleTurquoise;
+    }
+    &.topress{
+      border: 2px solid #000;
+      padding-top: 0.25em;
+      vertical-align: top;
+      font-size: 1.2em;
+      color: #333;
+      text-align: center;
+      @include prefix-property (border-radius, 
+                                            5px, 
+                                            ('webkit', 'moz'));
+      @include prefix-property (box-shadow, 
+                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2), 
+                                            ('webkit', 'moz'));
+      background: white;
+      @include prefix-function (background-image, 
+                                            (-90deg, white 0%, #e3e3e3 100%), 
+                                            linear-gradient, 
+                                            ('webkit', 'moz', 'o', 'ms'));
+		}
+    &.pressed, 
+    &.shift_pressed, 
+    &.capslock_pressed {
+      @include prefix-property (box-shadow, 
+                                            inset 1px 1px 1px 0 rgba(0, 0, 0, 0.2), 
+                                            ('webkit', 'moz'));
+      background: #f3f3f3;
+      @include prefix-function (background-image, 
+                                            (90deg, #f3f3f3 0%, #dddddd 100%), 
+                                            linear-gradient, 
+                                            ('webkit', 'moz', 'o', 'ms'));
+      strong {
+        color: #33bbff;
+      }
+      .triangle:first-child.up {
+        border-color: transparent transparent #33bbff transparent;
+      }
+      .triangle:first-child.down {
+        border-color: #33bbff transparent transparent transparent;
+      }
+      .triangle:first-child.right {
+        border-color: transparent transparent transparent #33bbff;
+      }
+      .triangle:first-child.left {
+        border-color: transparent #33bbff transparent transparent;
+      }
+    }
+    &.shift_pressed,
+    &.capslock_pressed {
+      strong {
+        color: #333;
+      }
+      em {
+        color: #33bbff;
+      }
+    }
+    &.wide_1 {
+      width: 61px;
+    }
+    &.wide_2 {
+      width: 64px;
+    }
+    &.wide_3 {
+      width: 76px;
+    }
+    &.wide_4 {
+      width: 100px;
+    }
+    &.wide_5 {
+      width: 274px;
+    }
+    &.wide_6 {
+      width: 85px;
+    }
+    &.tall {
+      height: 85px;
+      line-height: 85px;
+    }
+    &:hover {
+      background: #ccc;
+    }
+    em {
+      font-style: normal;
+    }
+    strong {
+      font-weight: normal;
+    }
+    .up_key,
+    .down_key {
+      text-align: center;
+    }
+    .en_key {
+      float: left;
+      margin-left: 0.5em;
+      &.ko_alpha {
+        color: #bbb;
+      }
+    }
+    .han_key {
+      float: right; 
+      margin-right: 0.5em;
+      &.extension_key {
+        color: black;
+      }
+    }
+    .cheot{
+      color: green;
+    }
+		.gawit{
+			color: brown;
+    }
+		.gawit_right{
+			color: brown;
+    }
+		.ggeut{
+			color: red;
+    }
+		.galma{
+			color: red;
+    }
+		.font08{
+			font-size: 0.8em;
+    }
+		.tag08{
+      font-size: 0.8em;
+      background: black;
+      color: white;
+      letter-spacing: -1px;
+    }
+		.tag09{
+      font-size: 0.9em;
+      background: black;
+      color: white;
+      letter-spacing: -1px;
+    }
+		.tag10{
+      font-size: 1em;
+      background: black;
+      color: white;
+    }
+    .triangle {
+      margin: 8px auto;
+      &.up {
+        top: 2px;
+      }
+      &.down {
+        top: 5px;
+      }
+      &.left {
+        left: -2px;
+      }
+      &.right {
+        left: 2px;
+      }
+    }
+    br + .triangle {
+      margin: 0 auto;
+    }
+    span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      padding: 0.2em 0.5em;
+      bottom: 0;
+      font-size: 0.8em;
+      text-align: center;
+      &.right {
+        text-align: right;
+      }
+      &.left {
+        text-align: left;
+      }
+    }
+  }
+  .triangle {
+    position: relative;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    &.up {
+      border-width: 0 8px 10px 8px;
+      border-color: transparent transparent #555555 transparent;
+    }
+    &.down {
+      border-width: 10px 8px 0 8px;
+      border-color: #555555 transparent transparent transparent;
+    }
+    &.right {
+      border-width: 8px 0 8px 10px;
+      border-color: transparent transparent transparent #555555;
+    }
+    &.left {
+      border-width: 8px 8px 10px 0;
+      border-color: transparent #555555 transparent transparent;
+    }
+  }
+}

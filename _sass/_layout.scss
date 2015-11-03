@@ -8,6 +8,9 @@
 
     // Positioning context for the mobile navigation icon
     position: relative;
+    a {
+      text-decoration: none;
+    }
 }
 
 .site-title {
@@ -39,6 +42,10 @@
         // Gaps between nav items, but not on the last one
         &:not(:last-child) {
             margin-right: 20px;
+        }
+        &.active,
+        &:hover {
+            color: $grey-color;
         }
     }
 
