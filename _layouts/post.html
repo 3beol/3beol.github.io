@@ -12,4 +12,7 @@ layout: default
     {{ content }}
   </div>
 
+  {% if site.comments.provider %}
+    {% include {{ site.comments.provider }}-comments.html %}
+  {% endif %}
 </article>

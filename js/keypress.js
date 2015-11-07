@@ -18,7 +18,7 @@ limitations under the License.
 Keypress is a robust keyboard input capturing Javascript utility
 focused on input for games.
 
-version 2.1.0
+version 2.1.3
  */
 
 /*
@@ -94,6 +94,12 @@ Combo options available and their defaults:
   keypress.Listener = (function() {
     function Listener(element, defaults) {
       var attach_handler, property, value;
+      if ((typeof jQuery !== "undefined" && jQuery !== null) && element instanceof jQuery) {
+        if (element.length !== 1) {
+          _log_error("Warning: your jQuery selector should have exactly one object.");
+        }
+        element = element[0];
+      }
       this.should_suppress_event_defaults = false;
       this.should_force_event_defaults = false;
       this.sequence_delay = 800;
@@ -392,6 +398,10 @@ Combo options available and their defaults:
           }
         }
         if (match) {
+          debugger;
+          if (combo.is_exclusive) {
+            this._sequence = [];
+          }
           return combo;
         }
       }
@@ -653,7 +663,8 @@ Combo options available and their defaults:
       return this.register_combo({
         keys: keys,
         on_keydown: callback,
-        is_sequence: true
+        is_sequence: true,
+        is_exclusive: true
       });
     };
 
