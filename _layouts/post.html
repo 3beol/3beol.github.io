@@ -5,12 +5,51 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </time>
+      {% if page.author %}
+      &nbsp•&nbsp
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">
+          {{ page.author }}
+        </span>
+      </span>
+      {% endif %}
+    </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
+
+        {% if page.category %}
+            {% for site_category in site.data.categories %}
+                {% if site_category.slug == page.category | downcase %}
+                    {% assign category = site_category %}
+                {% endif %}
+            {% endfor %}
+
+            {% if category %}
+                {% capture category_content %}
+                 in 
+                    <span class="label" style="background-color: {{ category.color }}">
+                        <a href="/blog/category/{{ category.slug }}/">
+                            {{ category.name }}
+                        </a>
+                    </span>
+                {% endcapture %}
+            {% else %}
+                {% assign category_content = '' %}
+            {% endif %}
+        {% else %}
+            {% assign category_content = '' %}
+        {% endif %}
+
+        {% if category_content != '' %}
+            <p id="post-meta">Posted {{ category_content }}</p>
+        {% endif %}
 
   {% if site.comments.provider %}
     {% include {{ site.comments.provider }}-comments.html %}

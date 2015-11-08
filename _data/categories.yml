@@ -1,0 +1,13 @@
+- slug: general
+  name: General
+  color: '#3498db'
+  
+- slug: jekyll
+  name: Jekyll
+  color: '#1abc9c'
+  
+  
+- slug: ubuntu
+  name: Ubuntu
+  color: rgb(255, 51, 0)
+  

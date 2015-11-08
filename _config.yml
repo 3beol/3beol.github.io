@@ -22,9 +22,20 @@ github_username:  jekyll
 # Build settings
 markdown: kramdown
 
+kramdown: 
+  input: GFM
+
+# Posts
+posts_limit: 5
+
+# Blog
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: /blog/page:num
+
 # Comments settings
 comments:
-  provider: false
+  provider: disqus
   disqus:
     short_name: 3beol
   google:

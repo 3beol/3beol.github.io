@@ -1,0 +1,93 @@
+---
+layout: default
+title: Articles
+---
+
+<header id="post-header">
+    <h1 id="post-title">Articles</h1>
+</header>
+
+<div id="post-content">
+    {% if paginator.posts %}
+        {% for post in paginator.posts %}
+            <section class="post">
+                <header class="post-header">
+                    <a href="{{ post.url }}">
+                        <h4 class="post-title">{{ post.title | truncatewords: 4 }}</h4>
+                    </a>
+                    <div class="post-info">
+                        <div>
+                        {% if post.category %}
+                            {% for site_category in site.data.categories %}
+                                {% if site_category.slug == post.category | downcase %}
+                                    {% assign category = site_category %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if category %}
+                                {% capture category_content %}
+                                <span class="label" style="background-color: {{ category.color }}">
+                                    <a href="/blog/category/{{ category.slug }}">
+                                        {{ category.name }}
+                                    </a>
+                                </span>
+                                {% endcapture %}
+                            {% else %}
+                                {% assign category_content = '' %}
+                            {% endif %}
+                        {% else %}
+                            {% assign category_content = '' %}
+                        {% endif %}
+
+                        {% if category_content != '' %}
+                            {{ category_content }}
+                        {% endif %}
+                        </div>
+                        <div>
+                            &ndash; 
+                            <time datetime="{{ post.date | date_to_xmlschema }}">
+                                {{ post.date | date: '%b. %d, %Y' }}
+                            </time>
+                            &ndash; 
+                        </div>
+                    </div>
+                </header>
+                <div class="post-description">
+                    {{ post.excerpt }}
+                </div>
+                <!--a href="{{ post.url }}/" class="pull-right">Read more</a-->
+                <div class="clearfix"></div>
+            </section>
+        {% endfor %}
+    {% else %}
+        <p>No posts found.</p>
+    {% endif %}
+    {% if paginator.total_pages > 0 %}
+        <div class="text-center">
+            <ul class="pagination">
+                {% if paginator.previous_page %}
+                    {% if paginator.previous_page == 1 %}
+                        <li><a href="/blog/">&laquo;</a></li>
+                    {% else %}
+                        <li><a href="{{ paginator.previous_page_path }}/">&laquo;</a></li>
+                    {% endif %}
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for page in (1..paginator.total_pages) %}
+                    {% if page == paginator.page %}
+                        <li class="active"><span>{{ page }}</span></li>
+                    {% elsif page == 1 %}
+                        <li><a href="/blog/">1</a></li>
+                    {% else %}
+                        <li><a href="{{ site.paginate_path | replace: ':num', page }}/">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if paginator.next_page %}
+                    <li><a href="{{ paginator.next_page_path }}/">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><a href="#">&raquo;</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
