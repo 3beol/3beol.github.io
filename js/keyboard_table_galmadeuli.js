@@ -252,8 +252,8 @@ var galmadeuli_3shin_p = [
     [0x1106, 0x1173],  /* choseong mieum <ㅁ> */     /* jungseong eu <ㅡ> */
     //[0x110b, 0x119e],  /* choseong ieung <ㅇ> */      /* jungseong araea<ㆍ> */
     [0x110e, 0x116e],  /* choseong chieuch <ㅊ> */      /* jungseong u <ㅜ> */
-    [0x110f, 0x119e],  /* choseong khieukh <ㅋ> */     /* jungseong araea<ㆍ> */
-    [0x1111, 0x1169],  /* choseong phieuph <ㅍ> */     /* jungseong o <ㅗ> */
+    [0x110f, 0x1169],  /* choseong khieukh <ㅋ> */     /* jungseong o <ㅗ> */
+    [0x1111, 0x119e],  /* choseong phieuph <ㅍ> */     /* jungseong araea<ㆍ> */
     /* jungseong -> jongseong */
     [0x1161, 0x11c1], /* jungseong a (ㅏ)     -> jongseong phieuph (ㅍ)   */
     [0x1162, 0x11be],  /* jungseong ae  (ㅐ)       -> jongseong chieuch (ㅊ)    */

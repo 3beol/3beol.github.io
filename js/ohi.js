@@ -159,7 +159,7 @@ var layout_list_info_ko = [
     {name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
     {name: '3shin-2015-shift', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'},
     {name: '3shin-m-shift', full_name: '신세벌식 M', link: 'http://cafe.daum.net/3bulsik/JMKX/77'},
-    {name: '3shin-p', full_name: '신세벌식 P', link: 'http://pat.im/1123'},
+    {name: '3shin-p', full_name: '신세벌식 P', link: 'http://pat.im/1110'},
 ];
 
 function browser_detect() {
@@ -1219,8 +1219,11 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
         charCode = 0x119e;
         right_oua = 1;
         //alert("here 0");
-    } else if ( (charCode == 0x1106/*ㅁ*/ || charCode == 0x110E/*ㅊ*/ || charCode == 0x1111/*ㅍ*/) && 
-                ohiQ[0] && !ohiQ[2] ) {
+    } else if ( ohiQ[0] && !ohiQ[2] && 
+                        (charCode == 0x1106/*ㅁ*/ || 
+                        charCode == 0x110E/*ㅊ*/ || 
+                        charCode == 0x1111/*ㅍ*/ || 
+                        charCode == 0x110f/*ㅋ*/) ) {
         // 첫소리가 들어갔을 때에 오른손 자리의 가운뎃소리(ㅗ, ㅜ, ㅢ) 넣기
         charCode = galmadeuliCode;
         if (charCode !== 0x1174/*ㅢ*/) {// ㅢ 는 뺀다
@@ -1228,8 +1231,10 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
         }
         //alert("here 1");
     } else if ( (keyValue == 'I' && charCode == 0x1173/*ㅡ*/) || 
+                        (keyValue == 'O' && charCode == 0x116E/*ㅜ*/) ||
                         (keyValue == 'P' && charCode == 0x1169/*ㅗ*/) || 
-                        (keyValue == 'O' && charCode == 0x116E/*ㅜ*/) ) {
+                        (keyValue == 'P' && charCode == 0x119e/*araea*/) ||
+                        (keyValue == '/' && charCode == 0x1169/*ㅗ*/) ) {
         // 오른손 윗글 자리의 가운뎃소리(ㅡ, ㅗ, ㅜ) 넣기
         right_oua = 1;
         //alert("here 2");
@@ -1275,7 +1280,7 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
         //alert("here 7");
     } else if ( (/shin-p/.test(KO_type)) && ohiQ[4] && galmadeuliCode &&
                         input_cheot_gawit_ggeut === 2 &&
-                        !((keyValue == 'I' ) || (keyValue == 'O' ) || (keyValue == 'P' )) ) {
+                        !((keyValue == 'I' ) || (keyValue == 'O' ) || (keyValue == 'P' ) || (keyValue == '/' )) ) {
         // 가윗소리가 들어 왔으니 끝소리로 바꾸어 끝소리 조합을 해본다
         var combined = get_combination_value(ohiQ[4], galmadeuliCode);
         if (combined) {
@@ -1951,13 +1956,14 @@ if (KE_status == 'ko') {
             node_key.addClass("gawit_right");
             node_key.addClass("font08");
         }
-        if (/3shin-p/.test(KO_type)) {
-            node_key = $("#key_forwardslash .up_key .han_key");
+        //if (/3shin-p/.test(KO_type)) {
+            //node_key = $("#key_forwardslash .up_key .han_key");
             // ㅋ 자리의 ㆍ(아래아) 를 다룬다
-            node_key.html("(ㆍ)");
-            node_key.addClass("gawit_right");
-            node_key.addClass("font08");
-        } else  if (/3shin/.test(KO_type)) {
+            //node_key.html("(ㆍ)");
+            //node_key.addClass("gawit_right");
+            //node_key.addClass("font08");
+        //} else  
+        if (/3shin/.test(KO_type)) {
             node_key = $("#key_forwardslash .up_key .han_key");
             // ㅋ 자리의 ㅗ 를 다룬다
             node_key.html("(ㅗ)");

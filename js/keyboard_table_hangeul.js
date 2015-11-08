@@ -1699,7 +1699,7 @@ var K3_3shin_p = [
     0x0022,	/* 0x4D M:            quotatioin mark */
     0x2015,	/* 0x4E N:            horizontal bar */
     0x116e,	/* 0x4F O:            jungseong u */
-    0x1169,	/* 0x50 P:            jungseong o */
+    0x119e,	/* 0x50 P:            jungseong araea */
     0x1164,	/* 0x51 Q:            jungseong yae */
     0x1165,	/* 0x52 R:            jungseong eo */
     0x1168,	/* 0x53 S:            jungseong ye */
