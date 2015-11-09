@@ -176,7 +176,7 @@
 }
 
 .page-heading {
-    font-size: 20px;
+    font-size: 1.4em;
     display: inline-block;
 }
 
@@ -205,6 +205,11 @@
  */
 .category-group {
   float: right;
+  padding: 0.2em 0.2em 0.3em;
+  li {
+    float: none;
+    margin: 0.1em 0.2em;
+  }
 }
 
 .list-group-item {// bootstrap.css

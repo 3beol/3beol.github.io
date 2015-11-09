@@ -11,10 +11,10 @@ into_menu: true
 
   {% if site.posts.size > 0 %}
 
-  <div class="category-group">
+  <ul class="category-group">
     {% for site_category in site.data.categories %}
         {% capture category_content %}
-            <span class="label" style="background-color: {{ site_category.color }}">
+            <li class="label" style="background-color: {{ site_category.color }}">
                 <a href="/blog/category/{{ site_category.slug }}">
                     {{ site_category.name }}
                 </a>
@@ -33,7 +33,7 @@ into_menu: true
           <h4 class="list-group-item-heading">{{ post.title }}</h4>
           <div class="list-group-item-time">
             &ndash;
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b. %d, %Y' }}</time>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y/%m/%d' }}</time>
             &ndash;
           </div>
         </a>
