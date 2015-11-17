@@ -11,12 +11,29 @@ body {
   div {
     &.navbar-fixed-top {
       height: $navbar-fixed-height;
-      padding-right: 1em;
+
+
+      #navbar {
+        background-color: #222;
+        ul {
+          padding-right: 5px;
+        }
+
+        @media (max-width: 830px) {
+          ul{
+            &.navbar-right {
+              li:last-child {
+                display: none;
+              }
+            }
+          }
+        }
+      }
       a {
         font-weight: bold;
-      }
-      .navbar-header a.navbar-brand {
+        &.navbar-brand {
           color: #fff;
+        }
       }
     }
   }
@@ -94,10 +111,10 @@ body {
           background-color: #327fc7;
           border-color: #327fc7;
           outline: none;
-          &::before {
+          &:before {
             content: none;
           }
-          &::after {
+          &:after {
             content: "\00a0";
             position: absolute;
             left: 2em;
