@@ -33,7 +33,8 @@ var KE_status = 'ko';// en, ko
 //  두벌식의 offset 값을 넣는 자리에 앞낱자를 넣어둔다 ohiQ[1] = ohiQ[0]
 //  backspace 처리시에 조합낱자를 지우고 offset 자리에 넣어둔 앞낱자를
 //  다시 앞자리로 옮겨준다 ohiQ[0] = ohiQ[1]
-var ohiQ = [0,0,0,0,0,0];
+const OHIQ_INIT = [0,0,0,0,0,0];
+var ohiQ = OHIQ_INIT;
 // 옛한글을 조합할 때, 
 // 낱자가 더해질 때는 앞선 preedit 의 낱자가 하나 적으니 -1
 // 낱자가 빠질 때는 앞선 preedit 의 낱자가 하나 많으니 1
@@ -115,7 +116,9 @@ var extension_sign_layout = [];
 var extension_yetgeul_keys = [];
 var extension_yetgeul_layout = [];
 // 모아치기 글판의 글자 조합 종료 타이머
-var ohi_timeout = 0;
+//var ohi_timeout = 0;
+var pressing_keys = 0;
+var shoot_at_once = false;
 
 
 //browser_detect()
@@ -248,7 +251,7 @@ function ohi_Backspace () {
     } else {
         //alert("html:" + ohiQ);
         //if (ohiQ[0] && !ohiQ[1] && !ohiQ[2]) {
-            //ohiQ = [0,0,0,0,0,0];
+            //ohiQ = OHIQ_INIT;
         //}
         //alert("html:" + ohiQ);
         ohi_html_Backspace();
@@ -416,10 +419,11 @@ function ohi_html_Insert(commit, charCode) {
         var selection = document.selection.createRange ();
         var text = selection.text;
         if (text && document.selection.clear) { document.selection.clear (); }
-        selection.text = (commit == '0,0,0,0,0,0' || (charCode && text.length > 1 ? '' : text)) + charValue;
+        selection.text = (commit == OHIQ_INIT || (charCode && text.length > 1 ? '' : text)) + charValue;
+        focus.focus();
         if (!charCode || !commit || selection.moveStart ('character', -1)) { selection.select (); }
     } else if (focus.selectionEnd + 1) {
-        if (commit != '0,0,0,0,0,0' && (focus.selectionEnd - focus.selectionStart == 1)) { focus.selectionStart++; }
+        if (commit != OHIQ_INIT && (focus.selectionEnd - focus.selectionStart == 1)) { focus.selectionStart++; }
         var event = document.createEvent ('KeyboardEvent');
         if (event.initKeyEvent && !(browser == "Firefox" && browser_ver >= 12 ) && browser != "Chrome") { // Gecko
             event.initKeyEvent ('keypress', 0, 0, null, 0, 0, 0, 0, 127, charCode);
@@ -430,6 +434,7 @@ function ohi_html_Insert(commit, charCode) {
             var selectionStart = focus.selectionStart;
             var endText = focus.value.substr (focus.selectionEnd, focus.value.length);// 커서 뒷쪽의 글자들
             focus.value = focus.value.substr (0, selectionStart);// 커서 앞쪽의 글자들
+            focus.focus();
             if (charCode > 0) {
                 focus.value += charValue;
             }
@@ -447,14 +452,14 @@ function ohi_html_Insert(commit, charCode) {
 function ohi_Insert(commit, charCode) {
     //alert ("Func : ohi_Insert()");
     //alert ("charCode : " + charCode + "  == ohiQ:" + ohiQ);
-    if (!charCode && ohiQ == '0,0,0,0,0,0') {
+    if (!charCode && ohiQ == OHIQ_INIT) {
         return true;
     }
 
     if (charCode.length != 6) {
-        ohiQ = [0,0,0,0,0,0];
+        ohiQ = OHIQ_INIT;
     } else {
-        var commit = commit || '0,0,0,0,0,0';
+        var commit = commit || OHIQ_INIT;
         var cheot = charCode[0] + charCode[1];
         var gawit = charCode[2] + charCode[3];
         var ggeut = charCode[4] + charCode[5];
@@ -790,7 +795,7 @@ function ohi_Hangeul_3 (keyValue, charCode) {
                 // 서로 같은 배열
                 // 확장으로 처음 들어오면 먼저 있던 것을 뿌린다
                 if (extension_steps < 1) {
-                    ohi_Insert(ohiQ, ohiQ = [0, 0, 0, 0, 0, 0]);
+                    ohi_Insert(ohiQ, ohiQ = OHIQ_INIT);
                 }
 
                 // 처음 눌리거나 앞서와 같으면 +1 씩
@@ -815,7 +820,7 @@ function ohi_Hangeul_3 (keyValue, charCode) {
                 // 각각 다른 배열
                 // 확장으로 들어오면 먼저 있던 것을 뿌린다
                 if ((extension_steps % 10) == 0) {
-                    ohi_Insert(ohiQ, ohiQ = [0, 0, 0, 0, 0, 0]);
+                    ohi_Insert(ohiQ, ohiQ = OHIQ_INIT);
                 }
 
                 extension_steps += 1;
@@ -1093,10 +1098,10 @@ function ohi_Hangeul_3 (keyValue, charCode) {
 
 function ohi_Hangeul_3Moa (keyValue, charCode) {
     //alert("ohi_Hangeul_3Moa: " + ohiQ);
-    if(ohi_timeout) {
-        clearTimeout(ohi_timeout);
-    }
-    ohi_timeout = setTimeout("ohi_Insert(ohiQ, 0)", 100);
+    //if(ohi_timeout) {
+        //clearTimeout(ohi_timeout);
+    //}
+    //ohi_timeout = setTimeout("ohi_Insert(ohiQ, 0)", 100);
 //alert(Object.keys(right_ou_keys_list).indexOf(KO_type));
     // right_ou_keys_list 에 있으면 오른쪽 ㅗㅜ
     if ((Object.keys(right_ou_keys_list).indexOf(KO_type) >= 0) && 
@@ -1524,6 +1529,25 @@ function ohi_Roman(keyCode) {
 // 한글을 다루는 시작점이다
 function ohi_Hangeul_Process(keyValue) {
     //alert("ohi_Hangeul_Process KE_status:" + KE_status);
+    if (keyValue == "-1") {
+        // 글쇠가 떼어질 때 "-1" 을 넘겨받는다.
+        //alert("ohi_Hangeul_Process keyValue:" + keyValue);
+        if (shoot_at_once == false) {
+            return;
+        } else if (pressing_keys > 1) {
+            pressing_keys--;
+            return;
+        } else {
+            ohi_Insert(ohiQ, 0);
+            ohiQ = OHIQ_INIT;
+            pressing_keys = 0;
+            return;
+        }
+    } else if (ohiQ == OHIQ_INIT) {
+        pressing_keys = 0;
+    }
+        
+    pressing_keys++;
     var keyCode = keyValue.charCodeAt(0);
     if(KE_status === 'en') {
         ohi_Roman(keyCode);
@@ -1542,7 +1566,11 @@ function ohi_Hangeul_Process(keyValue) {
             ohi_Hangeul_3(keyValue, charCode);
             break;
         case /3moa/.test(KO_type) :
-            ohi_Hangeul_3Moa(keyValue, charCode);
+            if (shoot_at_once) {
+                ohi_Hangeul_3Moa(keyValue, charCode);
+            } else {
+                ohi_Hangeul_3(keyValue, charCode);
+            }
             break;
         case /3shin/.test(KO_type) :
             if (/shift/.test(KO_type)) {
@@ -1596,6 +1624,11 @@ function ohiKeydown (event) {
             return false;
         }        
     }
+}
+
+function ohiKeyup (event) {
+        //if (event.preventDefault) { event.preventDefault (); }
+        //return false;
 }
 
 function inputText_focus(end) {
@@ -2211,6 +2244,19 @@ function change_KO_type(type) {
     //alert("KO_type:" + KO_type + "  ==  index_changed:"  + index_changed);
     hangeul_layout = get_table_hangeul(KO_type);
     hangeul_combination = get_table_combination(KO_type);
+
+    if (/3moa/.test(KO_type)) {
+        $("#toggle_shoot_at_once").bootstrapToggle('enable');
+        $('#toggle_shoot_at_once').prop('checked', true).change()
+    } else {
+        $("#toggle_shoot_at_once").bootstrapToggle('disable');
+        $('#toggle_shoot_at_once').prop('checked', false).change()
+    }
+    $("#toggle_shoot_at_once").change(function(){
+        //alert('toggle_shoot_at_once: ' + shoot_at_once);
+        shoot_at_once = $(this).is(":checked");
+    });
+
     index = KO_galmadeuli_list.indexOf(KO_type);
     //alert(index);
     if (index >= 0) {
@@ -2398,7 +2444,7 @@ function add_layout_list() {
 
         // 있던 것을 뿌리고 맨 뒤로 간다
         ohi_Insert(ohiQ, 0);
-        inputText_focus(true);
+        inputText_focus(true).focus();
         //true:글판이 바뀌었다. 글판 익히기 배열을 다시 불러온다.
         taja_key_reset(true);
     });
@@ -2441,10 +2487,16 @@ function ohiStart (lang, type) {
     if (document.addEventListener) {
         document.addEventListener ('keypress', ohiKeypress, true);
         document.addEventListener ('keydown', ohiKeydown, true);
+        document.addEventListener('keyup', ohiKeyup, true);
     } else {
         document.onkeypress = ohiKeypress;
         document.onkeydown = ohiKeydown;
+        document.onkeyup = ohiKeyup;
     }
+
+    $(document).on('click touchstart', function () {
+        inputText_focus(true).focus();
+    });
 
     // 글판 목록을 html select 에 넣는다
     add_layout_list();

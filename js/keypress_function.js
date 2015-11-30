@@ -532,203 +532,299 @@ $(document).ready(function(){
     //ohi_Hangeul_Process(key);
     demo_1.combos = [
         {   keys: "`",
-            on_keydown: function() { ohi_Hangeul_Process("`"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("`"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {   keys: "~",
-            on_keydown: function() { ohi_Hangeul_Process("~"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("~"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {   keys: "1",
-            on_keydown: function() { ohi_Hangeul_Process("1"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("1"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {   keys: "!",
-            on_keydown: function() { ohi_Hangeul_Process("!"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("!"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {   keys: "2",
-            on_keydown: function() { ohi_Hangeul_Process("2"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("2"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {   keys: "@",
-            on_keydown: function() { ohi_Hangeul_Process("@"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("@"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "3",
-            on_keydown: function() { ohi_Hangeul_Process("3"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("3"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "#",
-            on_keydown: function() { ohi_Hangeul_Process("#"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("#"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "4",
-            on_keydown: function() { ohi_Hangeul_Process("4"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("4"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "$",
-            on_keydown: function() { ohi_Hangeul_Process("$"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("$"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "5",
-            on_keydown: function() { ohi_Hangeul_Process("5"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("5"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "%",
-            on_keydown: function() { ohi_Hangeul_Process("%"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("%"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "6",
-            on_keydown: function() { ohi_Hangeul_Process("6"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("6"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "^",
-            on_keydown: function() { ohi_Hangeul_Process("^"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("^"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "7",
-            on_keydown: function() { ohi_Hangeul_Process("7"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("7"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "&",
-            on_keydown: function() { ohi_Hangeul_Process("&"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("&"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "8",
-            on_keydown: function() { ohi_Hangeul_Process("8"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("8"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "*",
-            on_keydown: function() { ohi_Hangeul_Process("*"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("*"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "9",
-            on_keydown: function() { ohi_Hangeul_Process("9"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("9"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "(",
-            on_keydown: function() { ohi_Hangeul_Process("("); return;}
+            on_keydown: function() { ohi_Hangeul_Process("("); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "0",
-            on_keydown: function() { ohi_Hangeul_Process("0"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("0"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: ")",
-            on_keydown: function() { ohi_Hangeul_Process(")"); return;}
+            on_keydown: function() { ohi_Hangeul_Process(")"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "-",
-            on_keydown: function() { ohi_Hangeul_Process("-"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("-"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "_",
-            on_keydown: function() { ohi_Hangeul_Process("_"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("_"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "=",
-            on_keydown: function() { ohi_Hangeul_Process("="); return;}
+            on_keydown: function() { ohi_Hangeul_Process("="); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "+",
-            on_keydown: function() { ohi_Hangeul_Process("+"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("+"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "backspace",
-            on_keydown: function() { inputText_focus(true); return; }
+            on_keydown: function() { inputText_focus(true); return; },
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "tab",
             on_keydown: function() { return; }
         }, {    keys: "q",
-            on_keydown: function() { ohi_Hangeul_Process("q"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("q"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "Q",
-            on_keydown: function() { ohi_Hangeul_Process("Q"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("Q"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "w",
-            on_keydown: function() { ohi_Hangeul_Process("w"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("w"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "W",
-            on_keydown: function() { ohi_Hangeul_Process("W"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("W"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "e",
-            on_keydown: function() { ohi_Hangeul_Process("e"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("e"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "E",
-            on_keydown: function() { ohi_Hangeul_Process("E"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("E"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "r",
-            on_keydown: function() { ohi_Hangeul_Process("r"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("r"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "R",
-            on_keydown: function() { ohi_Hangeul_Process("R"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("R"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "t",
-            on_keydown: function() { ohi_Hangeul_Process("t"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("t"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "T",
-            on_keydown: function() { ohi_Hangeul_Process("T"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("T"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "y",
-            on_keydown: function() { ohi_Hangeul_Process("y"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("y"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "Y",
-            on_keydown: function() { ohi_Hangeul_Process("Y"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("Y"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "u",
-            on_keydown: function() { ohi_Hangeul_Process("u"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("u"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "U",
-            on_keydown: function() { ohi_Hangeul_Process("U"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("U"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "i",
-            on_keydown: function() { ohi_Hangeul_Process("i"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("i"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "I",
-            on_keydown: function() { ohi_Hangeul_Process("I"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("I"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "o",
-            on_keydown: function() { ohi_Hangeul_Process("o"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("o"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "O",
-            on_keydown: function() { ohi_Hangeul_Process("O"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("O"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "p",
-            on_keydown: function() { ohi_Hangeul_Process("p"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("p"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "P",
-            on_keydown: function() { ohi_Hangeul_Process("P"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("P"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "[",
-            on_keydown: function() { ohi_Hangeul_Process("["); return;}
+            on_keydown: function() { ohi_Hangeul_Process("["); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "{",
-            on_keydown: function() { ohi_Hangeul_Process("{"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("{"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "]",
-            on_keydown: function() { ohi_Hangeul_Process("]"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("]"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "}",
-            on_keydown: function() { ohi_Hangeul_Process("}"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("}"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "\\",
-            on_keydown: function() { ohi_Hangeul_Process("\\"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("\\"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "|",
-            on_keydown: function() { ohi_Hangeul_Process("|"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("|"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "caps_lock",
             on_keydown: function() { return; }
         }, {    keys: "a",
-            on_keydown: function() { ohi_Hangeul_Process("a"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("a"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "A",
-            on_keydown: function() { ohi_Hangeul_Process("A"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("A"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "s",
-            on_keydown: function() { ohi_Hangeul_Process("s"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("s"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "S",
-            on_keydown: function() { ohi_Hangeul_Process("S"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("S"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "d",
-            on_keydown: function() { ohi_Hangeul_Process("d"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("d"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "D",
-            on_keydown: function() { ohi_Hangeul_Process("D"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("D"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "f",
-            on_keydown: function() { ohi_Hangeul_Process("f"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("f"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "F",
-            on_keydown: function() { ohi_Hangeul_Process("F"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("F"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "g",
-            on_keydown: function() { ohi_Hangeul_Process("g"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("g"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "G",
-            on_keydown: function() { ohi_Hangeul_Process("G"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("G"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "h",
-            on_keydown: function() { ohi_Hangeul_Process("h"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("h"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "H",
-            on_keydown: function() { ohi_Hangeul_Process("H"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("H"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "j",
-            on_keydown: function() { ohi_Hangeul_Process("j"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("j"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "J",
-            on_keydown: function() { ohi_Hangeul_Process("J"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("J"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "k",
-            on_keydown: function() { ohi_Hangeul_Process("k"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("k"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "K",
-            on_keydown: function() { ohi_Hangeul_Process("K"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("K"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "l",
-            on_keydown: function() { ohi_Hangeul_Process("l"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("l"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "L",
-            on_keydown: function() { ohi_Hangeul_Process("L"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("L"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: ";",
-            on_keydown: function() { ohi_Hangeul_Process(";"); return;}
+            on_keydown: function() { ohi_Hangeul_Process(";"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: ":",
-            on_keydown: function() { ohi_Hangeul_Process(":"); return;}
+            on_keydown: function() { ohi_Hangeul_Process(":"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "\'",
             on_keydown: function() { ohi_Hangeul_Process("\'"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "\"",
-            on_keydown: function() { ohi_Hangeul_Process("\""); return;}
+            on_keydown: function() { ohi_Hangeul_Process("\""); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "enter",
-            on_keydown: function() { inputText_focus(true); return;}
+            on_keydown: function() { inputText_focus(true); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "shift",
             on_keydown: function() { return; }
         }, {    keys: "z",
-            on_keydown: function() { ohi_Hangeul_Process("z"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("z"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "Z",
-            on_keydown: function() { ohi_Hangeul_Process("Z"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("Z"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "x",
-            on_keydown: function() { ohi_Hangeul_Process("x"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("x"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "X",
-            on_keydown: function() { ohi_Hangeul_Process("X"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("X"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "c",
-            on_keydown: function() { ohi_Hangeul_Process("c"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("c"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "C",
-            on_keydown: function() { ohi_Hangeul_Process("C"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("C"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "v",
-            on_keydown: function() { ohi_Hangeul_Process("v"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("v"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "V",
-            on_keydown: function() { ohi_Hangeul_Process("V"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("V"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "b",
-            on_keydown: function() { ohi_Hangeul_Process("b"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("b"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "B",
-            on_keydown: function() { ohi_Hangeul_Process("B"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("B"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "n",
-            on_keydown: function() { ohi_Hangeul_Process("n"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("n"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "N",
-            on_keydown: function() { ohi_Hangeul_Process("N"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("N"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "m",
-            on_keydown: function() { ohi_Hangeul_Process("m"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("m"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "M",
-            on_keydown: function() { ohi_Hangeul_Process("M"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("M"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: ",",
-            on_keydown: function() { ohi_Hangeul_Process(","); return;}
+            on_keydown: function() { ohi_Hangeul_Process(","); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "<",
-            on_keydown: function() { ohi_Hangeul_Process("<"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("<"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: ".",
-            on_keydown: function() { ohi_Hangeul_Process("."); return;}
+            on_keydown: function() { ohi_Hangeul_Process("."); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: ">",
-            on_keydown: function() { ohi_Hangeul_Process(">"); return;}
+            on_keydown: function() { ohi_Hangeul_Process(">"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "/",
             on_keydown: function() { ohi_Hangeul_Process("/"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "?",
-            on_keydown: function() { ohi_Hangeul_Process("?"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("?"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "ctrl",
             on_keydown: function() { return; }
         }, {    keys: "alt",
@@ -766,37 +862,52 @@ $(document).ready(function(){
         }, {    keys: "num",
             on_keydown: function() { return; }
         }, {    keys: "num_divide",
-            on_keydown: function() { ohi_Hangeul_Process("/"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("/"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_multiply",
-            on_keydown: function() { ohi_Hangeul_Process("*"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("*"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_subtract",
-            on_keydown: function() { ohi_Hangeul_Process("-"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("-"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_add",
-            on_keydown: function() { ohi_Hangeul_Process("+"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("+"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_enter",
             on_keydown: function() { return; }
         }, {    keys: "num_decimal",
-            on_keydown: function() { ohi_Hangeul_Process("."); return;}
+            on_keydown: function() { ohi_Hangeul_Process("."); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_0",
-            on_keydown: function() { ohi_Hangeul_Process("0"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("0"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_1",
-            on_keydown: function() { ohi_Hangeul_Process("1"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("1"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_2",
-            on_keydown: function() { ohi_Hangeul_Process("2"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("2"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_3",
-            on_keydown: function() { ohi_Hangeul_Process("3"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("3"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_4",
-            on_keydown: function() { ohi_Hangeul_Process("4"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("4"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_5",
-            on_keydown: function() { ohi_Hangeul_Process("5"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("5"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_6",
-            on_keydown: function() { ohi_Hangeul_Process("6"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("6"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_7",
-            on_keydown: function() { ohi_Hangeul_Process("7"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("7"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_8",
-            on_keydown: function() { ohi_Hangeul_Process("8"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("8"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "num_9",
-            on_keydown: function() { ohi_Hangeul_Process("9"); return;}
+            on_keydown: function() { ohi_Hangeul_Process("9"); return;},
+            on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }
     ];
 
@@ -813,7 +924,7 @@ demos = {
         wire: function() {
             //alert("demo_1 wire");
             focus_tag_id = 'inputText';
-            inputText_focus(true);
+            inputText_focus(true).focus();
             listener.should_force_event_defaults = true;
             demo_1.registered_combos = listener.register_many(demo_1.combos);
             return;
@@ -829,7 +940,7 @@ demos = {
         wire: function() {
             //alert("demo_2 wire");
             focus_tag_id = 'searchText';
-            inputText_focus(true);
+            inputText_focus(true).focus();
             listener.should_force_event_defaults = true;
             demo_1.registered_combos = listener.register_many(demo_1.combos);
             return;

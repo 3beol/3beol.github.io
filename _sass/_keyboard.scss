@@ -50,8 +50,15 @@
     margin-right: 1em;
   }
   .layout_link {
+    float: left;
     font-size: 2.5em;
   }
+  .layout_option {
+    float: right;
+    font-size: 1em;
+    margin-right: 10px;
+  }
+
 
   .note,
   .message {

@@ -59,13 +59,22 @@ layout: default
     <div class="row">
         <div class="keyboard">
             <div class="layout_list">
-                <select name="layout_select" class="layout_select selectpicker" multiple data-max-options="3" data-width="520px">
+                <select name="layout_select" class="layout_select selectpicker" 
+                    multiple 
+                    data-max-options="3" 
+                    data-width="520px">
                     <optgroup class="ke_status" label="한/영" data-max-options="1"></optgroup>
                     <optgroup class="en_type" label="영문 글판" data-max-options="1"></optgroup>
                     <optgroup class="ko_type" label="한글 글판" data-max-options="1"></optgroup>
                 </select>
             </div>
             <div class="layout_link"><a href="" target="_blank">ⓘ</a></div>
+            <div class="layout_option">
+                <input type="checkbox" id="toggle_shoot_at_once" 
+                    data-toggle="toggle" 
+                    data-on="모아치기" 
+                    data-off="이어치기" >
+            </div>
             <section>
                 <div class="key_row">
                     <div id="key_accent" class="key">
@@ -359,6 +368,7 @@ layout: default
     <div class="row">
         <div class="documentation advanced_documentation">
             <h1 class="blue">Great! So how do I use it?</h1>
+            <p>입력기가 한글 입력으로 되어있을 때 이상동작을 할 수 있으니 되도록 영문 입력 상태에서 쓰시기를 바랍니다!!</p>
         </div>
     </div><!-- class="row" -->
 
