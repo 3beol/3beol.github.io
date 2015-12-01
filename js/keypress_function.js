@@ -610,7 +610,7 @@ $(document).ready(function(){
             on_keydown: function() { ohi_Hangeul_Process("+"); return;},
             on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "backspace",
-            on_keydown: function() { inputText_focus(true); return; },
+            on_keydown: function() { inputText_focus(); return; },
             on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "tab",
             on_keydown: function() { return; }
@@ -761,7 +761,7 @@ $(document).ready(function(){
             on_keydown: function() { ohi_Hangeul_Process("\""); return;},
             on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "enter",
-            on_keydown: function() { inputText_focus(true); return;},
+            on_keydown: function() { inputText_focus(); return;},
             on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
         }, {    keys: "shift",
             on_keydown: function() { return; }
@@ -832,7 +832,7 @@ $(document).ready(function(){
         }, {    keys: "cmd",
             on_keydown: function() { return; }
         }, {    keys: "space",
-            on_keydown: function() { inputText_focus(true); return;}
+            on_keydown: function() { inputText_focus(); return;}
         }, {    keys: "up",
             on_keydown: function() { return; }
         }, {    keys: "down",
@@ -924,7 +924,7 @@ demos = {
         wire: function() {
             //alert("demo_1 wire");
             focus_tag_id = 'inputText';
-            inputText_focus(true).focus();
+            inputText_focus();
             listener.should_force_event_defaults = true;
             demo_1.registered_combos = listener.register_many(demo_1.combos);
             return;
@@ -940,7 +940,7 @@ demos = {
         wire: function() {
             //alert("demo_2 wire");
             focus_tag_id = 'searchText';
-            inputText_focus(true).focus();
+            inputText_focus();
             listener.should_force_event_defaults = true;
             demo_1.registered_combos = listener.register_many(demo_1.combos);
             return;

@@ -153,7 +153,12 @@ body {
       }
       textarea {
         resize: none;
+        ime-mode: disabled !important;
       }
+
+input {
+  ime-mode: disabled !important;
+}
       form {
         margin: 1em 0;
         .input-group-addon {
@@ -163,6 +168,7 @@ body {
         }
       }
     }
+
   }
 }
 

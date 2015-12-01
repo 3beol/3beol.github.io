@@ -420,7 +420,6 @@ function ohi_html_Insert(commit, charCode) {
         var text = selection.text;
         if (text && document.selection.clear) { document.selection.clear (); }
         selection.text = (commit == OHIQ_INIT || (charCode && text.length > 1 ? '' : text)) + charValue;
-        focus.focus();
         if (!charCode || !commit || selection.moveStart ('character', -1)) { selection.select (); }
     } else if (focus.selectionEnd + 1) {
         if (commit != OHIQ_INIT && (focus.selectionEnd - focus.selectionStart == 1)) { focus.selectionStart++; }
@@ -434,7 +433,6 @@ function ohi_html_Insert(commit, charCode) {
             var selectionStart = focus.selectionStart;
             var endText = focus.value.substr (focus.selectionEnd, focus.value.length);// 커서 뒷쪽의 글자들
             focus.value = focus.value.substr (0, selectionStart);// 커서 앞쪽의 글자들
-            focus.focus();
             if (charCode > 0) {
                 focus.value += charValue;
             }
@@ -1588,74 +1586,18 @@ function ohi_Hangeul_Process(keyValue) {
     return;
 }
 
-// keypress 에서는 keydown, keyup 와 달리 대소문자를 구분한다
-// 또한 keyCode 가 아닌 charCode 에 넣는다
-// 기능 글쇠들은 charCode 에 값이 들어가지 않는다 ( shift, alt, ctrl ~~ )
-// (ie >= 9 && others) || ie < 9 //
-function ohiKeypress (event) {
-        //if (event.preventDefault) { event.preventDefault (); }
-        //return false;
-}
-
-// keyup , keydown 에서는 대소문자를 구분하지 않는다
-// 또한 charCode 가 아닌 keyCode 에 넣는다
-// Chrome 에서는 charactor key 가 아니면 keypress 이벤트가 생기지 않는다
-function ohiKeydown (event) {
-    var i;
-    var event=event||window.event;
-    var focus=event.target||event.srcElement;
-    var name=focus.nodeName||focus.tagName;
-    var keyCode=event.which||event.keyCode;
-    if(focus.type=='text' && name=='INPUT' || name=='TEXTAREA') {
-        if(event.keyCode==8) {    // Backspace
-            //alert("keydown back");
-            ohi_Backspace();
-            if(event.preventDefault) {event.preventDefault();}
-        } else if(event.keyCode==13) { // Enter (한글 조합 상태)
-            if(ohiQ[0] || ohiQ[2] || ohiQ[4]) { // 요즘한글 조합 상태
-                ohi_Insert(0,0);
-            }
-        } else if (event.keyCode!=16 && event.keyCode<47) {
-            ohi_Insert(0,0);
-        } else if (event.keyCode==27) {
-            focus.blur(); // Esc
-        } else {
-            if (event.preventDefault) { event.preventDefault (); }
-            return false;
-        }        
-    }
-}
-
-function ohiKeyup (event) {
-        //if (event.preventDefault) { event.preventDefault (); }
-        //return false;
-}
-
-function inputText_focus(end) {
+function inputText_focus() {
     var focus = document.activeElement;
-    if (focus.tagName.toLowerCase() != 'textarea' && focus.tagName.toLowerCase() != 'input') {
-        //alert("??");
-        if (focus_tag_id != '') {
-            //alert("?//?");
-            var id_focus = document.getElementById(focus_tag_id);
-            if (typeof(id_focus.tagName) != 'undefined') {
-                focus = id_focus
-            }
+    if (focus.tagName.toLowerCase() != 'textarea' && 
+            focus.tagName.toLowerCase() != 'input') {
+        var focus_id = document.getElementById(focus_tag_id);
+        if (focus_id.tagName.toLowerCase() != 'textarea' && 
+                focus_id.tagName.toLowerCase() != 'input') {
+            focus_id = document.getElementById('inputText');
         }
-        if (focus.tagName.toLowerCase() != 'textarea' && focus.tagName.toLowerCase() != 'input') {
-            focus = document.getElementById('inputText');
-        }
+        focus = focus_id;
     }
-
-    //alert(focus.tagName);
-    if(focus.id && end) {// 커서를 끝으로 옮긴다
-        focus.onfocus = function() {
-            var text = this.value;
-            this.value = '';
-            this.value = text;
-        }
-        focus.focus();
-    }
+    focus.focus()
     return focus;
 }
 
@@ -2115,6 +2057,7 @@ if (KE_status == 'ko') {
 
 function click_html_keymap(current_id) {
     //alert("click_html_keymap");
+    inputText_focus();
     var index = -1;
     var value;
     var up_down;
@@ -2488,8 +2431,53 @@ function url_query() {
     return return_url;
 }
 
+// keypress 에서는 keydown, keyup 와 달리 대소문자를 구분한다
+// 또한 keyCode 가 아닌 charCode 에 넣는다
+// 기능 글쇠들은 charCode 에 값이 들어가지 않는다 ( shift, alt, ctrl ~~ )
+// (ie >= 9 && others) || ie < 9 //
+function ohiKeypress (event) {
+        //if (event.preventDefault) { event.preventDefault (); }
+        //return false;
+}
+
+// keyup , keydown 에서는 대소문자를 구분하지 않는다
+// 또한 charCode 가 아닌 keyCode 에 넣는다
+// Chrome 에서는 charactor key 가 아니면 keypress 이벤트가 생기지 않는다
+function ohiKeydown (event) {
+    var i;
+    var event=event||window.event;
+    var focus=event.target||event.srcElement;
+    var name=focus.nodeName||focus.tagName;
+    var keyCode=event.which||event.keyCode;
+    if(focus.type=='text' && name=='INPUT' || name=='TEXTAREA') {
+        if(event.keyCode==8) {    // Backspace
+            //alert("keydown back");
+            ohi_Backspace();
+            if(event.preventDefault) {event.preventDefault();}
+        } else if(event.keyCode==13) { // Enter (한글 조합 상태)
+            if(ohiQ[0] || ohiQ[2] || ohiQ[4]) { // 요즘한글 조합 상태
+                ohi_Insert(0,0);
+            }
+        } else if (event.keyCode!=16 && event.keyCode<47) {
+            ohi_Insert(0,0);
+        } else if (event.keyCode==27) {
+            focus.blur(); // Esc
+        } else {
+            if (event.preventDefault) { event.preventDefault (); }
+            return false;
+        }        
+    }
+    return true;
+}
+
+function ohiKeyup (event) {
+        //if (event.preventDefault) { event.preventDefault (); }
+        //return false;
+}
+
 function ohiStart (lang, type) {
     if (document.addEventListener) {
+        //alert("addEventListener");
         document.addEventListener ('keypress', ohiKeypress, true);
         document.addEventListener ('keydown', ohiKeydown, true);
         document.addEventListener('keyup', ohiKeyup, true);
@@ -2500,13 +2488,15 @@ function ohiStart (lang, type) {
     }
 
     $(document).on('click touchstart', function () {
-        inputText_focus(true).focus();
+        setTimeout(function () {
+            inputText_focus().focus();
+        }, 100);
     });
 
     // 글판 목록을 html select 에 넣는다
     add_layout_list();
     browser_detect();
-    inputText_focus(true);
+    inputText_focus();
 
     var url = url_query();
 
