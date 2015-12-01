@@ -134,9 +134,9 @@ var layout_list_info_ke = [
 ];
 
 var layout_list_info_en = [
-    {name: 'qwerty', full_name: '쿼티 (Qwerty)'},
-    {name: 'dvorak', full_name: '드보락 (Dvorak)'},
-    {name: 'colemak', full_name: '콜맥 (Colemak)'}
+    {name: 'qwerty', full_name: 'Qwerty'},
+    {name: 'dvorak', full_name: 'Dvorak'},
+    {name: 'colemak', full_name: 'Colemak'}
 ];
 
 var layout_list_info_ko = [
@@ -2189,15 +2189,31 @@ function change_EN_type(type) {
 //alert("layout_list_info");
     $.each (layout_list_info_en, function (index, item) {
         if (EN_type == item.name) {
-            $(".en_type option[value="+EN_type+"]").prop("selected", true);
+            $(".layout_select_en option[value="+EN_type+"]").prop("selected", true);
         } else {
-            $(".en_type option[value="+item.name+"]").prop("selected", false);
+            $(".layout_select_en option[value="+item.name+"]").prop("selected", false);
         }
     });
-    $('.layout_select').selectpicker('render');
 
     english_layout = get_table_english(EN_type);
+
     mapping_layout_to_html();
+
+
+    $(".layout_select_en").change(function(){
+        var value = $(".layout_select_en option:selected").selectpicker('val');
+        if (value.length) {
+            $.each (value, function (index, item) {
+                if (EN_type !== item.value) {
+                    change_EN_type(item.value);
+                }
+            });
+        } else {
+            change_EN_type(EN_type);
+        }
+
+        ohi_Insert(ohiQ, 0);
+    });
 }
 
 function change_KO_type(type) {
@@ -2229,28 +2245,29 @@ function change_KO_type(type) {
     $.each (layout_list_info_ko, function (index, item) {
         //alert(item.link);
         if (KO_type == item.name) {
-            $(".ko_type option[value="+KO_type+"]").prop("selected", true);
+            $(".layout_select_ko option[value="+KO_type+"]").prop("selected", true);
             if(typeof(item.link) !== 'undefined') {
                 $(".layout_link a").attr('href', item.link).show();
             } else {
                 $(".layout_link a").attr('href', '').hide();
             }
         } else {
-            $(".ko_type option[value="+item.name+"]").prop("selected", false);
+            $(".layout_select_ko option[value="+item.name+"]").prop("selected", false);
         }
     });
-    $('.layout_select').selectpicker('render');
 
     //alert("KO_type:" + KO_type + "  ==  index_changed:"  + index_changed);
     hangeul_layout = get_table_hangeul(KO_type);
     hangeul_combination = get_table_combination(KO_type);
 
     if (/3moa/.test(KO_type)) {
+        // 켠 뒤에 바꾼다
         $("#toggle_shoot_at_once").bootstrapToggle('enable');
         $('#toggle_shoot_at_once').prop('checked', true).change()
     } else {
-        $("#toggle_shoot_at_once").bootstrapToggle('disable');
+        // 바꾼 뒤에 끈다
         $('#toggle_shoot_at_once').prop('checked', false).change()
+        $("#toggle_shoot_at_once").bootstrapToggle('disable');
     }
     $("#toggle_shoot_at_once").change(function(){
         //alert('toggle_shoot_at_once: ' + shoot_at_once);
@@ -2294,6 +2311,26 @@ function change_KO_type(type) {
     }
     mapping_layout_to_html();
     //alert("KO 끝");
+
+
+    $(".layout_select_ko").change(function(){
+        //alert("change");
+        extension_steps = 0;
+        var value = $(".layout_select_ko option:selected").selectpicker('val');
+        if (value.length) {
+            $.each (value, function (index, item) {
+                if (KO_type !== item.value) {
+                    change_KO_type(item.value);
+                }
+            });
+        } else {
+            change_KO_type(KO_type);
+        }
+
+        ohi_Insert(ohiQ, 0);
+        //true:글판이 바뀌었다. 글판 익히기 배열을 다시 불러온다.
+        taja_key_reset(true);
+    });
 }
 
 function change_KE_status(lang) {
@@ -2322,14 +2359,30 @@ function change_KE_status(lang) {
     $.each (layout_list_info_ke, function (index, item) {
         //alert(item.link);
         if (KE_status === item.name) {
-            $(".ke_status option[value="+KE_status+"]").prop("selected", true);
+            $(".layout_select_lang option[value="+KE_status+"]").prop("selected", true);
         } else {
-            $(".ke_status option[value="+item.name+"]").prop("selected", false);
+            $(".layout_select_lang option[value="+item.name+"]").prop("selected", false);
         }
     });
-    $('.layout_select').selectpicker('render');
 
     mapping_layout_to_html();
+
+
+    $(".layout_select_lang").change(function(){
+        var value = $(".layout_select_lang option:selected").selectpicker('val');
+        //alert(value.length);
+        if (value.length) {
+            $.each (value, function (index, item) {
+                if (KE_status !== item.value) {
+                    change_KE_status(item.value);
+                }
+            });
+        } else {
+            change_KE_status(KE_status);
+        }
+
+        ohi_Insert(ohiQ, 0);
+    });
 }
 
 function change_status(lang, type_en, type_ko) {
@@ -2348,12 +2401,12 @@ function add_layout_list() {
     // 한영을 넣는다
     $.each (layout_list_info_ke, function (index, item) {
         //alert("layout_list_info_ke");
-        $(".ke_status").append($('<option>', {
+        $(".layout_select_lang").append($('<option>', {
             value: item.name,
             html: item.full_name
         }));
         if (KE_status === item.name) {
-            $(".ke_status option[value="+KE_status+"]").prop("selected", true);
+            $(".layout_select_lang option[value="+KE_status+"]").prop("selected", true);
         }
     });
 
@@ -2362,16 +2415,14 @@ function add_layout_list() {
         //alert("layout_list_info_en");
         index = EN_type_list.indexOf(item.name);
         if (index >= 0) {
-            //name = '<strong>[영문]</strong> ';
-            name = '[영문] ';
-            name += item.full_name;
+            name = item.full_name;
             
-            $(".en_type").append($('<option>', {
+            $(".layout_select_en").append($('<option>', {
                 value: item.name,
                 html: name
             }));
             if (EN_type === item.name) {
-                $(".en_type option[value="+EN_type+"]").prop("selected", true);
+                $(".layout_select_en option[value="+EN_type+"]").prop("selected", true);
             }
         }
     });
@@ -2382,11 +2433,9 @@ function add_layout_list() {
         index = KO_type_list.indexOf(item.name);
         if (index >= 0) {
             if(item.name.substr(0, 1) === '2') {
-                //name = '<strong>[한글 2벌식]</strong> ';
-                name = '[한글 두벌식] ';
+                name = '[두벌식] ';
             } else if(item.name.substr(0, 1) === '3') {
-                //name = '<strong>[한글 3벌식]</strong> ';
-                name = '[한글 세벌식] ';
+                name = '[세벌식] ';
             }
 
             name += item.full_name;
@@ -2394,59 +2443,15 @@ function add_layout_list() {
                 name+=' (문장 입력용)';
             }
 
-            $(".ko_type").append($('<option>', {
+            $(".layout_select_ko").append($('<option>', {
                 value: item.name,
                 html: name
             }));
             if (KO_type === item.name) {
                 //alert("layout_list_info_ko");
-                $(".ko_type option[value="+KO_type+"]").prop("selected", true);
+                $(".layout_select_ko option[value="+KO_type+"]").prop("selected", true);
             }
         }
-    });
-
-    $(".layout_select").change(function(){
-        //alert("change");
-        extension_steps = 0;
-        // 그룹내의 옵션 선택을 모두 풀 때를 위해 나누어서 다룬다
-        var value = $(".layout_select .ke_status option:selected").selectpicker('val');
-        //alert(value.length);
-        if (value.length) {
-            $.each (value, function (index, item) {
-                if (KE_status !== item.value) {
-                    change_KE_status(item.value);
-                }
-            });
-        } else {
-            change_KE_status(KE_status);
-        }
-        value = $(".layout_select .en_type option:selected").selectpicker('val');
-        if (value.length) {
-            $.each (value, function (index, item) {
-                if (EN_type !== item.value) {
-                    change_EN_type(item.value);
-                }
-            });
-        } else {
-            change_EN_type(EN_type);
-        }
-        value = $(".layout_select .ko_type option:selected").selectpicker('val');
-        if (value.length) {
-            $.each (value, function (index, item) {
-                if (KO_type !== item.value) {
-                    change_KO_type(item.value);
-                }
-            });
-        } else {
-            change_KO_type(KO_type);
-        }
-        //$(this).selectpicker('refresh');
-
-        // 있던 것을 뿌리고 맨 뒤로 간다
-        ohi_Insert(ohiQ, 0);
-        inputText_focus(true).focus();
-        //true:글판이 바뀌었다. 글판 익히기 배열을 다시 불러온다.
-        taja_key_reset(true);
     });
 
 //alert("layout_list_info");
