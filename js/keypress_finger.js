@@ -681,6 +681,57 @@ function get_taja_hangeul(type) {
         '<strong class="ggeut">ㅍ</strong>': ['f', 2, "key_f"],
     };
 
+    var K3_3moa_2015 = {
+        '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
+        '<strong class="cheot">ㄴ</strong>':  ['u', 7, "key_u"],
+        '<strong class="cheot">ㄷ</strong>':  ['i', 8, "key_i"],
+        '<strong class="cheot">ㄹ</strong>':  ['m', 7, "key_m"],
+        '<strong class="cheot">ㅁ</strong>':  ['y', 7, "key_y"],
+        '<strong class="cheot">ㅂ</strong>':  ['o', 9, "key_o"],
+        '<strong class="cheot">ㅅ</strong>':  ['h', 7, "key_h"],
+        '<strong class="cheot">ㅇ</strong>':  ['j', 7, "key_j"],
+        '<strong class="cheot">ㅈ</strong>':  ['l', 9, "key_l"],
+        //'<strong class="cheot">ㅊ</strong>':  ['o', 9, "key_o"],nl
+        //'<strong class="cheot">ㅋ</strong>':  ['/', 10, "key_forwardslash"],nk
+        //'<strong class="cheot">ㅌ</strong>':  ['\'', 10, "key_apostrophe"],ni
+        //'<strong class="cheot">ㅍ</strong>':  ['p', 10, "key_p"],no
+        '<strong class="cheot">ㅎ</strong>':  ['n', 7, "key_n"],
+        '<strong class="gawit">ㅏ</strong>': ['f', 2, "key_f"],
+        //'<strong class="gawit">ㅐ</strong>': ['t', 2, "key_t"],fd
+        '<strong class="gawit">ㅒ</strong>': ['T', 2, "key_t", 't'],
+        '<strong class="gawit">ㅑ</strong>': ['R', 2, "key_r", 'r'],
+        '<strong class="gawit">ㅓ</strong>': ['r', 2, "key_r"],
+        '<strong class="gawit">ㅔ</strong>': ['c', 3, "key_c"],
+        '<strong class="gawit">ㅖ</strong>': ['C', 3, "key_c", 'c'],
+        '<strong class="gawit">ㅕ</strong>': ['t', 2, "key_t"],
+        '<strong class="gawit">ㅗ</strong>': ['v', 2, "key_v"],
+        '<strong class="gawit">ㅛ</strong>': ['V', 2, "key_v", 'v'],
+        '<strong class="gawit">ㅜ</strong>': ['b', 2, "key_b"],
+        '<strong class="gawit">ㅠ</strong>': ['B', 2, "key_b", 'b'],
+        '<strong class="gawit">ㅡ</strong>': ['g', 2, "key_g"],
+        '<strong class="gawit">ㅣ</strong>': ['d', 3, "key_d"],
+        //'<strong class="gawit">ㅡ(↗)</strong>': ['I', 8, "key_i", 'i'],
+        //'<strong class="gawit_right">ㆍ(아래아)(↗)</strong>': ['P', 10, "key_p", 'p'],
+        '<strong class="gawit_right">ㅗ(↗)</strong>': ['p', 10, "key_p"],
+        '<strong class="gawit_right">ㅜ(→)</strong>': ['\'', 10, "key_apostrophe"],
+        '<strong class="ggeut">ㄱ</strong>': ['x', 4, "key_x"],
+        '<strong class="ggeut">ㄴ</strong>': ['s', 4, "key_s"],
+        '<strong class="ggeut">ㄷ</strong>': ['Z', 5, "key_z", 'z'],
+        '<strong class="ggeut">ㄹ</strong>': ['e', 3, "key_e"],
+        '<strong class="ggeut">ㅁ</strong>': ['z', 5, "key_z"],
+        '<strong class="ggeut">ㅂ</strong>': ['w', 4, "key_w"],
+        '<strong class="ggeut">ㅅ</strong>': ['q', 5, "key_q"],
+        '<strong class="ggeut">ㅆ</strong>': [';', 10, "key_semicolon"],
+        '<strong class="ggeut">ㅇ</strong>': ['a', 5, "key_a"],
+        '<strong class="ggeut">ㅈ</strong>': ['E', 3, "key_e", 'e'],
+        '<strong class="ggeut">ㅊ</strong>': ['Q', 5, "key_q", 'q'],
+        '<strong class="ggeut">ㅎ</strong>': ['S', 4, "key_s", 's'],
+        //'<strong class="ggeut">ㅌ</strong>': ['r', 2, "key_r"],
+        '<strong class="ggeut">ㅋ</strong>': ['X', 4, "key_x", 'x'],
+        '<strong class="ggeut">ㅍ</strong>': ['W', 4, "key_w", 'w'],
+        '<strong class="ggeut">ㅀ</strong>': ['A', 5, "key_a", 'a'],
+    };
+
     // object
     switch (true) {
         case /3-90/.test(KO_type) :
@@ -695,6 +746,8 @@ function get_taja_hangeul(type) {
             return K3_3_2015;
         case /3-2012/.test(KO_type) :
             return K3_3_2012;
+        case /3moa-2015/.test(KO_type) :
+            return K3_3moa_2015;
         case /3moa/.test(KO_type) :
             return {};
         case /3sun/.test(KO_type) :

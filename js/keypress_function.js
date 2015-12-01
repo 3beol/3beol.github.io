@@ -923,6 +923,8 @@ demos = {
     demo_1: {
         wire: function() {
             //alert("demo_1 wire");
+            // 자리 익히기에서 풀었던 click 을 다시 묶어준다
+            mapping_layout_to_html();
             focus_tag_id = 'inputText';
             inputText_focus();
             listener.should_force_event_defaults = true;
@@ -930,6 +932,7 @@ demos = {
             return;
         },
         unwire: function() {
+            //alert("demo_1 unwire");
             if (typeof(demo_1.registered_combos) !== 'undefined') {
                 listener.unregister_many(demo_1.registered_combos);
             }
@@ -939,6 +942,8 @@ demos = {
     demo_2: {
         wire: function() {
             //alert("demo_2 wire");
+            // 자리 익히기에서 풀었던 click 을 다시 묶어준다
+            mapping_layout_to_html();
             focus_tag_id = 'searchText';
             inputText_focus();
             listener.should_force_event_defaults = true;
@@ -955,6 +960,8 @@ demos = {
     demo_3: {
         wire: function() {
             //alert("demo_3 wire");
+            // 자리 익히기에서 html 글쇠를 누르면 일어나는 문제를 푼다
+            $("div.keyboard div.key").unbind( "click" );
             focus_tag_id = 'jamo_panel';
             tadak_tadak = true;
             table_taja = get_taja_hangeul(KO_type);

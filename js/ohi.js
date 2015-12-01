@@ -1597,6 +1597,9 @@ function inputText_focus() {
         }
         focus = focus_id;
     }
+    if (focus_tag_id == "jamo_panel") {
+        return;
+    }
     focus.focus()
     return focus;
 }
@@ -2022,7 +2025,7 @@ if (KE_status == 'ko') {
     // html 글판 그림을 눌렀을 때 한글을 넣는다
     // 이 함수는 글판이 바뀔 때마다 묶인다. 그래서 앞서 묶어놓은 것은 풀어준다
     $("div.keyboard div.key").unbind( "click" );
-    $('div.keyboard div.key').click(function(){
+    $('div.keyboard div.key').bind("click", function(){
         var current_id = $(this).attr('id');
         var array_id = current_id.split("_");
         var name = array_id[array_id.length - 1];
@@ -2057,7 +2060,6 @@ if (KE_status == 'ko') {
 
 function click_html_keymap(current_id) {
     //alert("click_html_keymap");
-    inputText_focus();
     var index = -1;
     var value;
     var up_down;
@@ -2487,7 +2489,10 @@ function ohiStart (lang, type) {
         document.onkeyup = ohiKeyup;
     }
 
-    $(document).on('click touchstart', function () {
+    $(document).bind('click touchstart', function () {
+        if (tadak_tadak) {
+            return;
+        }
         setTimeout(function () {
             inputText_focus().focus();
         }, 100);
