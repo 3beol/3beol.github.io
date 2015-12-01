@@ -119,6 +119,7 @@ var extension_yetgeul_layout = [];
 //var ohi_timeout = 0;
 var pressing_keys = 0;
 var shoot_at_once = false;
+var tadak_tadak = false;
 
 
 //browser_detect()
@@ -2025,37 +2026,38 @@ if (KE_status == 'ko') {
     // html 글판 그림을 눌렀을 때 한글을 넣는다
     // 이 함수는 글판이 바뀔 때마다 묶인다. 그래서 앞서 묶어놓은 것은 풀어준다
     $("div.keyboard div.key").unbind( "click" );
-    $('div.keyboard div.key').bind("click", function(){
-        var current_id = $(this).attr('id');
-        var array_id = current_id.split("_");
-        var name = array_id[array_id.length - 1];
-// 넣자
-//caps_lock_on
-//key_caps_lock
-        if(name === "shift") {
-            if ($(this).hasClass("shift_pressed")) {
-                shift_on = "false";
-                $(this).removeClass("shift_pressed");
+    if (tadak_tadak == false) {
+        $('div.keyboard div.key').bind("click", function(){
+            var current_id = $(this).attr('id');
+            var array_id = current_id.split("_");
+            var name = array_id[array_id.length - 1];
+    // 넣자
+    //caps_lock_on
+    //key_caps_lock
+            if(name === "shift") {
+                if ($(this).hasClass("shift_pressed")) {
+                    shift_on = "false";
+                    $(this).removeClass("shift_pressed");
+                } else {
+                    shift_on = "true";
+                    $(this).addClass("shift_pressed");
+                }
+            } else if(name === "lock") {
+                if ($(this).hasClass("capslock_pressed")) {
+                    caps_lock_on = "false";
+                    $(this).removeClass("capslock_pressed");
+                } else {
+                    caps_lock_on = "true";
+                    $(this).addClass("capslock_pressed");
+                }
             } else {
-                shift_on = "true";
-                $(this).addClass("shift_pressed");
+                $(this).addClass("pressed");
+                $(".key.shift_pressed").removeClass("shift_pressed");
             }
-        } else if(name === "lock") {
-            if ($(this).hasClass("capslock_pressed")) {
-                caps_lock_on = "false";
-                $(this).removeClass("capslock_pressed");
-            } else {
-                caps_lock_on = "true";
-                $(this).addClass("capslock_pressed");
-            }
-        } else {
-            $(this).addClass("pressed");
-            $(".key.shift_pressed").removeClass("shift_pressed");
-        }
 
-        click_html_keymap(current_id);
-    });
-
+            click_html_keymap(current_id);
+        });
+    }
 }
 
 function click_html_keymap(current_id) {

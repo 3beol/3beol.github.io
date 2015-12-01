@@ -11,7 +11,7 @@ $(document).ready(function(){
     // 눌러야할 글쇠의 값을 가진다
     var current_key = -1;
     // 글쇠 연습하기의 메뉴를 누르면 true 가 되어 동작하도록 만든다
-    var tadak_tadak = false;
+    //var tadak_tadak = false;
 
     var bind_keyboard, combo, listener, _i, _len, _ref;
     listener = new window.keypress.Listener();
@@ -924,6 +924,7 @@ demos = {
         wire: function() {
             //alert("demo_1 wire");
             // 자리 익히기에서 풀었던 click 을 다시 묶어준다
+            tadak_tadak = false;
             mapping_layout_to_html();
             focus_tag_id = 'inputText';
             inputText_focus();
@@ -943,6 +944,7 @@ demos = {
         wire: function() {
             //alert("demo_2 wire");
             // 자리 익히기에서 풀었던 click 을 다시 묶어준다
+            tadak_tadak = false;
             mapping_layout_to_html();
             focus_tag_id = 'searchText';
             inputText_focus();
@@ -960,10 +962,10 @@ demos = {
     demo_3: {
         wire: function() {
             //alert("demo_3 wire");
-            // 자리 익히기에서 html 글쇠를 누르면 일어나는 문제를 푼다
-            $("div.keyboard div.key").unbind( "click" );
-            focus_tag_id = 'jamo_panel';
+            // 자리 익히기에서는 html 글쇠의 click 을 푼다
             tadak_tadak = true;
+            mapping_layout_to_html();
+            focus_tag_id = 'jamo_panel';
             table_taja = get_taja_hangeul(KO_type);
             // false:글판이 바뀌지 않았다
             taja_key_reset(false);
