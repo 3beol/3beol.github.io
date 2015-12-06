@@ -769,8 +769,7 @@ $(document).ready(function(){
       on_keydown: function() { ohi_Hangeul_Process("\""); return;},
       on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
     }, {    keys: "enter",
-      on_keydown: function() { inputText_focus(); return;},
-      on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
+      on_keydown: function() { return; }
     }, {    keys: "shift",
       on_keydown: function() { return; }
     }, {    keys: "z",
@@ -840,7 +839,7 @@ $(document).ready(function(){
     }, {    keys: "cmd",
       on_keydown: function() { return; }
     }, {    keys: "space",
-      on_keydown: function() { inputText_focus(); return;}
+      on_keydown: function() { return; }
     }, {    keys: "up",
       on_keydown: function() { return; }
     }, {    keys: "down",
