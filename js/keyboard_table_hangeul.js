@@ -1,5 +1,5 @@
 function get_table_hangeul(type) {
-var K2_ksx5002 = [
+  var K2_ksx5002 = [
     0x0021,     /* 0x21 exclam:       exclamation mark               */
     0x0022,     /* 0x22 quotedbl:     quotation mark                 */
     0x0023,     /* 0x23 numbersign:   number sign                    */
@@ -94,9 +94,9 @@ var K2_ksx5002 = [
     0x007c,     /* 0x7C bar:          vertical bar                   */
     0x007d,     /* 0x7D braceright:   right brace                    */
     0x007e     /* 0x7E asciitilde:   tilde                          */
-];
+  ];
 
-var K2_kps9256 = [
+  var K2_kps9256 = [
     0x0021,     /* 0x21 exclam:       exclamation mark               */
     0x0022,     /* 0x22 quotedbl:     quotation mark                 */
     0x0023,     /* 0x23 numbersign:   number sign                    */
@@ -191,10 +191,10 @@ var K2_kps9256 = [
     0x007c,     /* 0x7C bar:          vertical bar                   */
     0x007d,     /* 0x7D braceright:   right brace                    */
     0x007e     /* 0x7E asciitilde:   tilde                          */
-];
+  ];
 
 
-var K3_3_90 = [
+  var K3_3_90 = [
     0x11bd,     /* 0x21 exclam:         jongseong cieuc              */
     0x0022,     /* 0x22 quotedbl:       quotatioin mark              */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -289,9 +289,9 @@ var K3_3_90 = [
     0x007c,     /* 0x7C bar:            vertical line(bar)           */
     0x007d,     /* 0x7D braceright:     right brace                  */
     0x007e     /* 0x7E asciitilde:     tilde                        */
-];
+  ];
 
-var K3_3_91 = [
+  var K3_3_91 = [
     0x11a9,     /* 0x21 exclam:         jongseong ssangkiyeok        */
     0x00b7,     /* 0x22 quotedbl:       middle dot                   */
     0x11bd,     /* 0x23 numbersign:     jognseong cieuc              */
@@ -386,9 +386,9 @@ var K3_3_91 = [
     0x005c,     /* 0x7C bar:            backslash                    */
     0x002f,     /* 0x7D braceright:     slash                        */
     0x203b     /* 0x7E asciitilde:     reference mark               */
-];
+  ];
 
-var K3_3_93_yet = [
+  var K3_3_93_yet = [
     0x11bd,     /* 0x21 exclam:         jongseong cieuc              */
     0x0022,     /* 0x22 quotedbl:       quotatioin mark              */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -483,9 +483,9 @@ var K3_3_93_yet = [
     0x007c,     /* 0x7C bar:            vertical line(bar)           */
     0x007d,     /* 0x7D braceright:     right brace                  */
     0x11f0     /* 0x7E asciitilde:     jongseong yesieung           */
-];
+  ];
 
-var K3_3_2012 = [
+  var K3_3_2012 = [
     0x0021,     /* 0x21 exclam:         exclamation mark             */
     0x002f,     /* 0x22 quotedbl:       slash                        */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -580,9 +580,9 @@ var K3_3_2012 = [
     0x007c,     /* 0x7C bar:            vertical line(bar)           */
     0x007d,     /* 0x7D braceright:     right brace                  */
     0x007e     /* 0x7E asciitilde:     tilde                        */
-];
+  ];
 
-var K3_3_2015 = [
+  var K3_3_2015 = [
     0x0021,    /* 0x21 exclam */
     0x002f,    /* 0x22 quotedbl: slash */
     0x0023,    /* 0x23 numbersign */
@@ -677,9 +677,9 @@ var K3_3_2015 = [
     0x007c,    /* 0x7C bar */
     0x007d,    /* 0x7D braceright */
     0x007e    /* 0x7E asciitilde */
-];
+  ];
 
-var K3_3sun_1990 = [
+  var K3_3sun_1990 = [
     0x0021,     /* 0x21 exclam:         exclamation mark             */
     0x0022,     /* 0x22 quotedbl:       quotatioin mark              */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -774,9 +774,9 @@ var K3_3sun_1990 = [
     0x007c,     /* 0x7C bar:            vertical line(bar)           */
     0x007d,     /* 0x7D braceright:     right brace                  */
     0x007e     /* 0x7E asciitilde:     tilde                        */
-];
+  ];
 
-var K3_3sun_2014 = [
+  var K3_3sun_2014 = [
     0x0021, /* 0x21 exclam:       exclamation mark */
     0x0022, /* 0x22 quotedbl:     quotatioin mark */
     0x0023, /* 0x23 numbersign:   number sign */
@@ -824,7 +824,7 @@ var K3_3sun_2014 = [
     0x0031, /* 0x4D M:            1 */
     0x0030, /* 0x4E N:            0 */
     0x0039, /* 0x4F O:            9 */
-    0x003e, /* 0x50 P:            greater-than sign */              
+    0x003e, /* 0x50 P:            greater-than sign */
     0x11bd, /* 0x51 Q:            jongseong jieuj */
     0x1164, /* 0x52 R:            jungseong yae */
     0x11c0, /* 0x53 S:            jongseong tieut */
@@ -871,9 +871,9 @@ var K3_3sun_2014 = [
     0x007c, /* 0x7C bar:          vertical line(bar) */
     0x007d, /* 0x7D braceright:   right brace */
     0x007e /* 0x7E asciitilde:   tilde */
-];
+  ];
 
-var K3_3moa_ahn = [
+  var K3_3moa_ahn = [
     0x0021,     /* 0x21 exclam:       exclamation mark               */
     0x0022,     /* 0x22 quotedbl:     quotation mark                 */
     0x0023,     /* 0x23 numbersign:   number sign                    */
@@ -968,9 +968,9 @@ var K3_3moa_ahn = [
     0x007c,     /* 0x7C bar:          vertical bar                   */
     0x007d,     /* 0x7D braceright:   right brace                    */
     0x007e,     /* 0x7E asciitilde:   tilde                          */
-];
+  ];
 
-var K3_3moa_2014 = [
+  var K3_3moa_2014 = [
     0x0021,     /* 0x21 exclam:         exclamation mark             */
     0x0022,     /* 0x22 quotedbl:       quotatioin mark              */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -1065,9 +1065,9 @@ var K3_3moa_2014 = [
     0x007c,     /* 0x7C bar:            vertical line(bar)           */
     0x007d,     /* 0x7D braceright:     right brace                  */
     0x007e,     /* 0x7E asciitilde:     tilde                        */
-];
+  ];
 
-var K3_3moa_2015 = [
+  var K3_3moa_2015 = [
     0x0021,     /* 0x21 exclam:         exclamation mark             */
     0x0022,     /* 0x22 quotedbl:       quotatioin mark              */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -1117,7 +1117,7 @@ var K3_3moa_2015 = [
     0x25B3,     /* 0x4F O:              △ white up-pointing triangle */
     0x25bd,     /* 0x50 P:              ▽ white down-pointing triangle */
     0x2194,     /* 0x51 Q:              ↔ left right arrow           */
-    0x2606,     /* 0x52 R:              ☆ white star                */ 
+    0x2606,     /* 0x52 R:              ☆ white star                */
     0x2193,     /* 0x53 S:              ↓                            */
     0x203b,     /* 0x54 T:              ※ reference mark            */
     0x300B,     /* 0x55 U:              》			    */
@@ -1162,9 +1162,9 @@ var K3_3moa_2015 = [
     0x007c,     /* 0x7C bar:            vertical line(bar)           */
     0x007d,     /* 0x7D braceright:     right brace                  */
     0x007e,     /* 0x7E asciitilde:     tilde                        */
-];
+  ];
 
-var K3_3shin_1995 = [
+  var K3_3shin_1995 = [
     0x0021,    /* ! *///    0x21    :    exclam    ->    {exclamation mark}
     0x0022,    /* " *///    0x22    :    quotedbl    ->    {quotation mark}
     0x0023,    /* # *///    0x23    :    numbersign    ->    {number sign}
@@ -1260,9 +1260,9 @@ var K3_3shin_1995 = [
     0x007d,    /* } *///    0x7D    :    braceright    ->    {right brace}
     0x007e,    /* ~ *///    0x7E    :    asciitilde    ->    {tilde}
     0x0000    /*   *///    0x7F    :    delete    ->    {    }
-];
+  ];
 
-var K3_3shin_2003 = [
+  var K3_3shin_2003 = [
     0x0021,    /* ! *///    0x21    :    exclam    ->    {exclamation mark}
     0x0022,    /* " *///    0x22    :    quotedbl    ->    {quotation mark}
     0x0023,    /* # *///    0x23    :    numbersign    ->    {number sign}
@@ -1357,9 +1357,9 @@ var K3_3shin_2003 = [
     0x007c,    /* | *///    0x7C    :    bar    ->    {vertical bar}
     0x007d,    /* } *///    0x7D    :    braceright    ->    {right brace}
     0x007e    /* ~ *///    0x7E    :    asciitilde    ->    {tilde}
-];
+  ];
 
-var K3_3shin_2012 = [
+  var K3_3shin_2012 = [
     0x0021,    /* ! */    /*    0x21    :    exclam    :    exclamation mark    */
     0x002F,    /* " */    /*    0x22    :    quotedbl    :   slash     */
     0x0023,    /* # */    /*    0x23    :    numbersign    :    number sign    */
@@ -1454,10 +1454,10 @@ var K3_3shin_2012 = [
     0x007c,    /* | */    /*    0x7C    :    bar    :    vertical bar    */
     0x007d,    /* } */    /*    0x7D    :    braceright    :    right brace    */
     0x007e    /* ~ */    /*    0x7E    :    asciitilde    :    tilde    */
-];
+  ];
 
 
-var K3_3shin_2015 = [
+  var K3_3shin_2015 = [
     0x0021,    /* ! */    /*    0x21    :    exclam    :    exclamation mark    */
     0x002F,    /* " */    /*    0x22    :    quotedbl    :   slash     */
     0x0023,    /* # */    /*    0x23    :    numbersign    :    number sign    */
@@ -1552,9 +1552,9 @@ var K3_3shin_2015 = [
     0x007c,    /* | */    /*    0x7C    :    bar    :    vertical bar    */
     0x007d,    /* } */    /*    0x7D    :    braceright    :    right brace    */
     0x007e    /* ~ */    /*    0x7E    :    asciitilde    :    tilde    */
-];
+  ];
 
-var K3_3shin_m = [
+  var K3_3shin_m = [
     0x0021,    /* ! */    /*    0x21    :    exclam    :    exclamation mark    */
     0x002F,    /* " */    /*    0x22    :    quotedbl    :   slash     */
     0x0023,    /* # */    /*    0x23    :    numbersign    :    number sign    */
@@ -1649,9 +1649,9 @@ var K3_3shin_m = [
     0x007c,    /* | */    /*    0x7C    :    bar    :    vertical bar    */
     0x007d,    /* } */    /*    0x7D    :    braceright    :    right brace    */
     0x007e    /* ~ */    /*    0x7E    :    asciitilde    :    tilde    */
-];
+  ];
 
-var K3_3shin_p = [
+  var K3_3shin_p = [
     0x0021,	/* 0x21 exclam:       exclamation mark */
     0x002f,	/* 0x22 quotedbl:     slash */
     0x0023,	/* 0x23 numbersign:   number sign */
@@ -1746,49 +1746,49 @@ var K3_3shin_p = [
     0x007c,	/* 0x7C bar:          vertical line(bar) */
     0x007d,	/* 0x7D braceright: right brace */
     0x007e,	/* 0x7E asciitilde:   tilde */
-];
+  ];
 
-//alert("get_table_hangeul:" + type);
-    // array
-    switch (true) {
-        case /3-2012/.test(type) :
-            return K3_3_2012;
-        case /3-2015$/.test(type) :
-            return K3_3_2015;
-        case /3-2015p/.test(type) :
-            return K3_3_2015;
-        case /3-90/.test(type) :
-            return K3_3_90;
-        case /3-91/.test(type) :
-            return K3_3_91;
-        case /3-93-yet/.test(type) :
-            return K3_3_93_yet;
-        case /3moa-ahn/.test(type) :
-            return K3_3moa_ahn;
-        case /3moa-2014/.test(type) :
-            return K3_3moa_2014;
-        case /3moa-2015/.test(type) :
-            return K3_3moa_2015;
-        case /3sun-1990/.test(type) :
-            return K3_3sun_1990;
-        case /3sun-2014/.test(type) :
-            return K3_3sun_2014;
-        case /3shin-1995/.test(type) :
-            return K3_3shin_1995;
-        case /3shin-2003/.test(type) :
-            return K3_3shin_2003;
-        case /3shin-2012/.test(type) :
-            return K3_3shin_2012;
-        case /3shin-2015-shift/.test(type) :
-            return K3_3shin_2015;
-        case /3shin-m-shift/.test(type) :
-            return K3_3shin_m;
-        case /3shin-p/.test(type) :
-            return K3_3shin_p;
-        case /2-kps9256/.test(type) :
-            return K2_kps9256;
-        default :
-            return K2_ksx5002;
-    }
+  //alert("get_table_hangeul:" + type);
+  // array
+  switch (true) {
+    case /3-2012/.test(type) :
+      return K3_3_2012;
+    case /3-2015$/.test(type) :
+      return K3_3_2015;
+    case /3-2015p/.test(type) :
+      return K3_3_2015;
+    case /3-90/.test(type) :
+      return K3_3_90;
+    case /3-91/.test(type) :
+      return K3_3_91;
+    case /3-93-yet/.test(type) :
+      return K3_3_93_yet;
+    case /3moa-ahn/.test(type) :
+      return K3_3moa_ahn;
+    case /3moa-2014/.test(type) :
+      return K3_3moa_2014;
+    case /3moa-2015/.test(type) :
+      return K3_3moa_2015;
+    case /3sun-1990/.test(type) :
+      return K3_3sun_1990;
+    case /3sun-2014/.test(type) :
+      return K3_3sun_2014;
+    case /3shin-1995/.test(type) :
+      return K3_3shin_1995;
+    case /3shin-2003/.test(type) :
+      return K3_3shin_2003;
+    case /3shin-2012/.test(type) :
+      return K3_3shin_2012;
+    case /3shin-2015-shift/.test(type) :
+      return K3_3shin_2015;
+    case /3shin-m-shift/.test(type) :
+      return K3_3shin_m;
+    case /3shin-p/.test(type) :
+      return K3_3shin_p;
+    case /2-kps9256/.test(type) :
+      return K2_kps9256;
+    default :
+      return K2_ksx5002;
+  }
 
 }

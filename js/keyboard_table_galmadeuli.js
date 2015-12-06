@@ -1,5 +1,5 @@
 function get_table_galmadeuli(type) {
-var galmadeuli_3_2015 = [
+  var galmadeuli_3_2015 = [
     [0x1161, 0x11c1], /* jungseong a (ㅏ):       jongseong phieuph (ㅍ)        */
     [0x1162, 0x1164], /* jungseong ae (ㅐ):       jungseong yae (ㅒ)        */
     [0x1165, 0x11be], /* jungseong eo (ㅓ):      jongseong chieuch (ㅊ)      */
@@ -7,22 +7,22 @@ var galmadeuli_3_2015 = [
     [0x1167, 0x11bd], /* jungseong yeo (ㅕ):     jongseong cieuc (ㅈ)        */
     [0x1169, 0x11bf], /* jungseong o (ㅗ):       jongseong khiyeok (ㅋ)        */
     [0x1175, 0x11c2], /* jungseong i (ㅣ):       jongseong hieuh (ㅎ)       */
-//
+    //
     [0x11ab, 0x11ad],  /* jongseong nieun (ㄴ) -> <ㄶ> */
     [0x11af, 0x11b0],  /* jongseong rieul (ㄹ) -> <ㄺ> */
     [0x11b7, 0x11b1],  /* jongseong mieum  (ㅁ) -> <ㄻ>   */
     [0x11ba, 0x11b6],  /* jongseong sios (ㅅ) -> <ㅀ> */
     [0x11bc, 0x11b9],  /* jongseong ieung (ㅇ) -> <ㅄ> */
-//
+    //
     [0x11bd, 0x11ac], /* jongseong cieuc (ㅈ):   jongseong nieun-cieuc (ㄵ)  */
     [0x11be, 0x11b6], /* jongseong chieuch (ㅊ): jongseong rieul-hieuh (ㅀ)  */
     [0x11bf, 0x11aa], /* jongseong khiyeok (ㅋ):   jongseong kiyeok-sios (ㄳ)  */
     [0x11c0, 0x11b5], /* jongseong thikeuth (ㅌ):   jongseong rieul-phieuph (ㄿ)  */
     [0x11c1, 0x11b1], /* jongseong phieuph (ㅍ):   jongseong rieul-mieum (ㄻ)  */
     [0x11c2, 0x11b2], /* jongseong hieuh (ㅎ):   jongseong rieul-pieup (ㄼ)  */
-];
+  ];
 
-var galmadeuli_3_2015_patal = [
+  var galmadeuli_3_2015_patal = [
     [0x1161, 0x11c1], /* jungseong a (ㅏ):       jongseong phieuph (ㅍ)        */
     [0x1162, 0x1164], /* jungseong ae (ㅐ):       jungseong yae (ㅒ)        */
     [0x1165, 0x11be], /* jungseong eo (ㅓ):      jongseong chieuch (ㅊ)      */
@@ -30,22 +30,22 @@ var galmadeuli_3_2015_patal = [
     [0x1167, 0x11bd], /* jungseong yeo (ㅕ):     jongseong cieuc (ㅈ)        */
     [0x1169, 0x11bf], /* jungseong o (ㅗ):       jongseong khiyeok (ㅋ)        */
     [0x1175, 0x11c2], /* jungseong i (ㅣ):       jongseong hieuh (ㅎ)       */
-//
+    //
     [0x11ab, 0x11ad],  /* jongseong nieun (ㄴ) -> <ㄶ> */
     [0x11af, 0x11b0],  /* jongseong rieul (ㄹ) -> <ㄺ> */
     [0x11b7, 0x11b1],  /* jongseong mieum  (ㅁ) -> <ㄻ>   */
     [0x11ba, 0x11b6],  /* jongseong sios (ㅅ) -> <ㅀ> */
     [0x11bc, 0x11b9],  /* jongseong ieung (ㅇ) -> <ㅄ> */
-//
+    //
     [0x11bd, 0x11ac], /* jongseong cieuc (ㅈ):   jongseong nieun-cieuc (ㄵ)  */
     [0x11be, 0x11b3], /* jongseong chieuch (ㅊ): jongseong rieul-sios (ㄽ)  */
     [0x11bf, 0x11aa], /* jongseong khiyeok (ㅋ):   jongseong kiyeok-sios (ㄳ)  */
     [0x11c0, 0x11b4], /* jongseong thikeuth (ㅌ):   jongseong rieul-thieuth (ㄾ)  */
     [0x11c1, 0x11b5],  /* jongseong phieuph (ㅍ):   jongseong rieul-phieuph (ㄿ)  */
     [0x11c2, 0x11b2] /* jongseong hieuh (ㅎ):   jongseong rieul-pieup (ㄼ)  */
-];
+  ];
 
-var galmadeuli_3moa_2014 = [
+  var galmadeuli_3moa_2014 = [
     [0x11a8, 0x11bf],  /* jongseong kiyeok (ㄱ) -> (ㅋ) */
     [0x11ab, 0x11ad],  /* jongseong nieun (ㄴ) -> <ㄶ> */
     [0x11ae, 0x11c0],  /* jongseong tikeut (ㄷ) -> (ㅌ) */
@@ -56,15 +56,15 @@ var galmadeuli_3moa_2014 = [
     [0x11ba, 0x11be],  /* jongseong sios (ㅅ) -> (ㅊ) */
     [0x11bc, 0x11b8],  /* jongseong ieung (ㅇ) -> (ㅂ) */
     [0x11c2, 0x11b6],  /* jongseong hieuh (ㅎ) -> (ㅀ) */
-];
+  ];
 
-var galmadeuli_3moa_2015 = [
+  var galmadeuli_3moa_2015 = [
     [0x1165, 0x1163],     /*ㅓ*/     /* <ㅑ> */
     [0x1166, 0x1168],     /*ㅔ*/     /* <ㅖ>*/
     [0x1167, 0x1164],     /*ㅕ*/     /* <ㅒ> */
     [0x1169, 0x116d],     /*ㅗ*/     /* <ㅛ> */
     [0x116e, 0x1172],     /*ㅜ*/     /* <ㅠ> */
-//
+    //
     [0x11a8, 0x11bf],  /* jongseong kiyeok (ㄱ) -> (ㅋ) */
     [0x11ab, 0x11c2],  /* jongseong nieun (ㄴ) -> (ㅎ) */
     //[0x11ae, 0x11c0],  /* jongseong tikeut (ㄷ) -> (ㅌ) */
@@ -75,10 +75,10 @@ var galmadeuli_3moa_2015 = [
     [0x11ba, 0x11be],  /* jongseong sios (ㅅ) -> (ㅊ) */
     [0x11bc, 0x11b6],  /* jongseong ieung (ㅇ) -> (ㅀ) */
     //[0x11c2, 0x11b6],  /* jongseong hieuh (ㅎ) -> (ㅀ) */
-];
+  ];
 
 
-var galmadeuli_3shin_1995 = [
+  var galmadeuli_3shin_1995 = [
     /* choseong -> jungseong */
     [0x1106, 0x116e],  /* choseong mieum <ㅁ> */     /* jungseong u <ㅜ> */
     //[0x110b, 0x119e],  /* choseong ieung <ㅇ> */      /* jungseong araea<ㆍ> */
@@ -114,9 +114,9 @@ var galmadeuli_3shin_1995 = [
     [0x11c0, 0x1165],  /* jongseong thieuth (ㅌ)       -> jungseong eo  (ㅓ)    */
     [0x11c1, 0x1173],  /* jongseong phieuph (ㅍ)       -> jungseong eu  (ㅡ)    */
     [0x11c2, 0x1175]  /* jongseong hieuh (ㅎ)         -> jungseong i  (ㅣ)     */
-];
+  ];
 
-var galmadeuli_3shin_2003 = [
+  var galmadeuli_3shin_2003 = [
     /* choseong -> jungseong */
     [0x1106, 0x1174],  /* choseong mieum <ㅁ> */     /* jungseong yi <ㅢ> */
     [0x110b, 0x119e],  /* choseong ieung <ㅇ> */      /* jungseong araea<ㆍ> */
@@ -153,9 +153,9 @@ var galmadeuli_3shin_2003 = [
     [0x11c2, 0x1169],  /* jongseong hieuh (ㅎ)         -> jungseong o   (ㅗ)     */
     /* jungseong -> jongseong */
     [0x203B, 0x11b1]     /*※: 0x203B*/    /* <ㄻ>  */
-];
+  ];
 
-var galmadeuli_3shin_2012 = [
+  var galmadeuli_3shin_2012 = [
     /* choseong -> jungseong */
     [0x1106, 0x1174],  /* choseong mieum <ㅁ> */     /* jungseong yi <ㅢ> */
     //[0x110b, 0x119e],  /* choseong ieung <ㅇ> */      /* jungseong araea<ㆍ> */
@@ -192,10 +192,10 @@ var galmadeuli_3shin_2012 = [
     [0x11c0, 0x1165],  /* jongseong thieuth (ㅌ)       -> jungseong eo  (ㅓ)    */
     [0x11c1, 0x1169],  /* jongseong phieuph (ㅍ)       -> jungseong o   (ㅗ)    */
     [0x11c2, 0x1166]  /* jongseong hieuh (ㅎ)         -> jungseong e  (ㅔ)     */
-];
+  ];
 
 
-var galmadeuli_3shin_2015 = [
+  var galmadeuli_3shin_2015 = [
     /* choseong -> jungseong */
     //[0x1106, 0x1174],  /* choseong mieum <ㅁ> */     /* jungseong yi <ㅢ> */
     //[0x110b, 0x119e],  /* choseong ieung <ㅇ> */      /* jungseong araea<ㆍ> */
@@ -218,9 +218,9 @@ var galmadeuli_3shin_2015 = [
     [0x1173, 0x11ae],     /*ㅡ*/     /* <ㄷ> */
     [0x1174, 0x11ab],     /*ㅢ*/     /* <ㄴ> */
     [0x1175, 0x11af],     /*ㅣ*/     /* <ㄹ> */
-];
+  ];
 
-var galmadeuli_3shin_m = [
+  var galmadeuli_3shin_m = [
     /* choseong -> jungseong */
     //[0x1106, 0x1174],  /* choseong mieum <ㅁ> */     /* jungseong yi <ㅢ> */
     //[0x110b, 0x119e],  /* choseong ieung <ㅇ> */      /* jungseong araea<ㆍ> */
@@ -243,9 +243,9 @@ var galmadeuli_3shin_m = [
     [0x1173, 0x11ae],     /*ㅡ*/     /* <ㄷ> */
     [0x1174, 0x11ab],     /*ㅢ*/     /* <ㄴ> */
     [0x1175, 0x11bb],     /*ㅣ*/     /* <ㅆ> */
-];
+  ];
 
-var galmadeuli_3shin_p = [
+  var galmadeuli_3shin_p = [
     /*  */
     [0x00D7,	0x302F],  /* 0x59 Y:  multiplication (×) -> 0x302F (〯) */
     /* choseong -> jungseong */
@@ -288,32 +288,32 @@ var galmadeuli_3shin_p = [
     [0x11c2, 0x1175],  /* jongseong hieuh (ㅎ)         -> jungseong i  (ㅣ)     */
     /*  */
     [0x25CB,	0x302E],  /* 0x55 U:  white circle (○) -> 0x302E (〮) */
-];
+  ];
 
-    // array
-    switch (true) {
-        case /3-2015p$/.test(type) :
-            return galmadeuli_3_2015_patal;
-        case /3-2015$/.test(type) :
-            return galmadeuli_3_2015;
-        case /3moa-2014/.test(type) :
-            return galmadeuli_3moa_2014;
-        case /3moa-2015/.test(type) :
-            return galmadeuli_3moa_2015;
-        case /3shin-1995/.test(type) :
-            return galmadeuli_3shin_1995;
-        case /3shin-2003/.test(type) :
-            return galmadeuli_3shin_2003;
-        case /3shin-2012/.test(type) :
-            return galmadeuli_3shin_2012;
-        case /3shin-2015-shift/.test(type) :
-            return galmadeuli_3shin_2015;
-        case /3shin-m-shift/.test(type) :
-            return galmadeuli_3shin_m;
-        case /3shin-p/.test(type) :
-            return galmadeuli_3shin_p;
-        default :
-            return [];
-    }
+  // array
+  switch (true) {
+    case /3-2015p$/.test(type) :
+      return galmadeuli_3_2015_patal;
+    case /3-2015$/.test(type) :
+      return galmadeuli_3_2015;
+    case /3moa-2014/.test(type) :
+      return galmadeuli_3moa_2014;
+    case /3moa-2015/.test(type) :
+      return galmadeuli_3moa_2015;
+    case /3shin-1995/.test(type) :
+      return galmadeuli_3shin_1995;
+    case /3shin-2003/.test(type) :
+      return galmadeuli_3shin_2003;
+    case /3shin-2012/.test(type) :
+      return galmadeuli_3shin_2012;
+    case /3shin-2015-shift/.test(type) :
+      return galmadeuli_3shin_2015;
+    case /3shin-m-shift/.test(type) :
+      return galmadeuli_3shin_m;
+    case /3shin-p/.test(type) :
+      return galmadeuli_3shin_p;
+    default :
+      return [];
+  }
 
 }

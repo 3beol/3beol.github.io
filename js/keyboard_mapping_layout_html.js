@@ -1,5 +1,5 @@
 function get_table_html_mapping() {
- var layout_to_html = [
+  var layout_to_html = [
     ['key_one', "true", '!'],    /* ! */    /*    0x21    :    exclam    :    exclamation mark    */
     ['key_apostrophe', "true", '"'],    /* " */    /*    0x22    :    quotedbl    :   slash     */
     ['key_three', "true", '#'],    /* # */    /*    0x23    :    numbersign    :    number sign    */
@@ -94,7 +94,7 @@ function get_table_html_mapping() {
     ['key_backslash', "true", '|'],    /* | */    /*    0x7C    :    bar    :    vertical bar    */
     ['key_right_bracket', "true", '}'],    /* } */    /*    0x7D    :    braceright    :    right brace    */
     ['key_accent', "true", '~']    /* ~ */    /*    0x7E    :    asciitilde    :    tilde    */
-];
+  ];
 
-    return layout_to_html;
+  return layout_to_html;
 }
