@@ -2102,18 +2102,28 @@ function click_html_keymap(current_id) {
     //alert(String.fromCharCode(value));
     var keyValue = html_map_layout[index][2];
     ohi_Hangeul_Process(keyValue);
-  } else if (current_id === 'key_backspace') {
-    //alert("html backspace");
-    ohi_Backspace();
-  } else if (current_id === 'key_space') {
-    //alert("space");
-    ohi_Insert(0, 0x20);
-  } else if (current_id === 'key_enter') {
-    //alert("space");
-    ohi_Insert(0, 0x0d);
-  } else if (current_id === 'key_tab') {
-    //alert("space");
-    ohi_Insert(0, 0x09);
+  } else {
+    if (extension_steps > 0) {
+      if (current_id !== 'key_backspace') {
+        ohi_Backspace();
+      }
+      extension_steps = 0;
+      mapping_layout_to_html();
+      ohiQ = OHIQ_INIT;
+    }
+    if (current_id === 'key_backspace') {
+      //alert("html backspace");
+      ohi_Backspace();
+    } else if (current_id === 'key_space') {
+      //alert("space");
+      ohi_Insert(0, 0x20);
+    } else if (current_id === 'key_enter') {
+      //alert("space");
+      ohi_Insert(0, 0x0d);
+    } else if (current_id === 'key_tab') {
+      //alert("space");
+      ohi_Insert(0, 0x09);
+    }
   }
 
   // 눌렸던 html 글쇠를 풀어준다
@@ -2468,6 +2478,9 @@ function ohiKeydown (event) {
   if(focus.type=='text' && name=='INPUT' || name=='TEXTAREA') {
     if (event.keyCode!=16 && event.keyCode<47) {
       if (extension_steps > 0) {
+        if (event.keyCode!=8 || event.keyCode!=13 || event.keyCode!=20) {
+          ohi_Backspace();
+        }
         extension_steps = 0;
         mapping_layout_to_html();
         ohiQ = OHIQ_INIT;
@@ -2476,6 +2489,9 @@ function ohiKeydown (event) {
         //alert("keydown back");
         ohi_Backspace();
         //alert(String.fromCharCode(event.keyCode));
+        if(event.preventDefault) {event.preventDefault();}
+      } else if (event.keyCode==9) {// Tab
+        ohi_Insert(0,0x09);
         if(event.preventDefault) {event.preventDefault();}
       } else if (event.keyCode==27) {// Esc
         ohi_Insert(0,0);
