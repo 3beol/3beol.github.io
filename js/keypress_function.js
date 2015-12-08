@@ -618,8 +618,8 @@ $(document).ready(function(){
       on_keydown: function() { ohi_Hangeul_Process("+"); return;},
       on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
     }, {    keys: "backspace",
-      on_keydown: function() { inputText_focus(); return; },
-      on_keyup: function() {ohi_Hangeul_Process("-1"); return;}
+      on_keydown: function() { return; },
+      on_keyup: function() { return;}
     }, {    keys: "tab",
       on_keydown: function() { return; }
     }, {    keys: "q",

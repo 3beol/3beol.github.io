@@ -2478,7 +2478,7 @@ function ohiKeydown (event) {
   if(focus.type=='text' && name=='INPUT' || name=='TEXTAREA') {
     if (event.keyCode!=16 && event.keyCode<47) {
       if (extension_steps > 0) {
-        if (event.keyCode!=8 || event.keyCode!=13 || event.keyCode!=20) {
+        if (event.keyCode!=8) {
           ohi_Backspace();
         }
         extension_steps = 0;
