@@ -474,7 +474,7 @@ function ohi_Insert(commit, charCode) {
     var cheot = charCode[0] + charCode[1];
     var gawit = charCode[2] + charCode[3];
     var ggeut = charCode[4] + charCode[5];
-//alert("insert 1");
+    //alert("insert 1");
     if ( (charCode[0] > 0x3130 && charCode[0] < 0x318F) ||
         (charCode[2] > 0x3130 && charCode[2] < 0x318F) ||
         (charCode[4] > 0x3130 && charCode[4] < 0x318F) ) {
@@ -529,7 +529,7 @@ function ohi_Insert(commit, charCode) {
       var index = 0;
       var last = 0;
       //alert(ohiQ);
-//alert("insert 12");
+      //alert("insert 12");
 
       for(index = 0; index < ohiQ.length; index += 1) {
         // 값이 있을 때마다 last 에 넣어주고 index 가 짝수 일 때만 count 를 올려준다
@@ -548,12 +548,12 @@ function ohi_Insert(commit, charCode) {
       }
 
       if (cheot && gawit) {
-//alert("insert 121");
+        //alert("insert 121");
         if ( (cheot >= 0x1113 && cheot <= 0x115E) || // 0x115F
             (gawit >= 0x1176 && gawit <= 0x11A7) || // 0x1160
             (ggeut >= 0x11C3 && ggeut <= 0x11FF) ) {
           // 옛한글을 다룬다
-// 옛한글을 넣을 때 preedit 의 옛한글 낱자들을 지워준다
+          // 옛한글을 넣을 때 preedit 의 옛한글 낱자들을 지워준다
           for (count += fore_back; count > 0; count--) {
             ohi_html_Backspace();
           }
@@ -594,7 +594,7 @@ function ohi_Insert(commit, charCode) {
       } else if ((cheot && !gawit && !ggeut) ||
                 (!cheot && gawit && !ggeut) ||
                 (!cheot && !gawit && ggeut)) {
-//alert("insert 122");
+        //alert("insert 122");
         // 한글 호환자모
         // 각 표준자모를 호환자모로 바꿀 수 있는 것을 바꾸어준다
         if (cheot) { cheot = jamo_to_compatibility(cheot); }
@@ -611,7 +611,7 @@ function ohi_Insert(commit, charCode) {
           }
         }
       } else {
-//alert("insert 123");
+        //alert("insert 123");
         //alert("charCode:" + charCode);
         charCode = charCode;
       }
@@ -716,9 +716,9 @@ function ohi_Hangeul_2(charCode){
 
 function ohi_Hangeul_3 (keyValue, charCode) {
   //alert("ohi_Hangeul_3: " + ohiQ);
-//alert(extension_sign_layout[0].length);
-//alert(extension_sign_layout[0]);
-//alert(extension_enable);
+  //alert(extension_sign_layout[0].length);
+  //alert(extension_sign_layout[0]);
+  //alert(extension_enable);
   if (extension_enable) {
     var extension_start = 0;
     var sign_index = extension_sign_keys.indexOf(keyValue);
@@ -800,7 +800,7 @@ function ohi_Hangeul_3 (keyValue, charCode) {
           }
         }
     }
-//alert(extension_start);
+    //alert(extension_start);
     if (sign_index > -1) {// 기호 확장 글쇠다
       if ( (extension_start === 1) || (extension_start === 2) ) {
         // 서로 같은 배열
@@ -949,10 +949,10 @@ function ohi_Hangeul_3 (keyValue, charCode) {
     }// if (extension_steps) {
   }// if (extension_enable && extension_sign_keys.length) {
 
-//alert("조건");
+    //alert("조건");
   var cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
 
-//alert(Object.keys(right_ou_keys_list).indexOf(KO_type));
+  //alert(Object.keys(right_ou_keys_list).indexOf(KO_type));
   // right_ou_keys_list 에 있으면 오른쪽 ㅗㅜ
   if ((Object.keys(right_ou_keys_list).indexOf(KO_type) >= 0) &&
       ( (keyValue === right_ou_keys_list[KO_type][0]) || (keyValue === right_ou_keys_list[KO_type][1]) ) ) {
@@ -972,7 +972,7 @@ function ohi_Hangeul_3 (keyValue, charCode) {
       }
     }
 
-//alert(galmadeuliCode);
+    //alert(galmadeuliCode);
     if (galmadeuliCode) {
       if ((cheot_gawit_ggeut === 3) && ohiQ[2] && !ohiQ[4] && (keyValue === keyValue.toUpperCase())) {
         // 윗글쇠를 함께 눌렀을 때 왼쪽 갈마들이의 윗글 자리의 겹받침 넣기
@@ -1037,7 +1037,7 @@ function ohi_Hangeul_3 (keyValue, charCode) {
     right_oua = 0;
   }
 
-//alert("시작");
+  //alert("시작");
   var combined_value = 0;
   //if (charCode >= 0x1100 && charCode <= 0x1112) {// Cho
   if (cheot_gawit_ggeut === 1) {// Cho
@@ -1113,14 +1113,14 @@ function ohi_Hangeul_3Moa (keyValue, charCode) {
     //clearTimeout(ohi_timeout);
   //}
   //ohi_timeout = setTimeout("ohi_Insert(ohiQ, 0)", 100);
-//alert(Object.keys(right_ou_keys_list).indexOf(KO_type));
+  //alert(Object.keys(right_ou_keys_list).indexOf(KO_type));
   // right_ou_keys_list 에 있으면 오른쪽 ㅗㅜ
   if ((Object.keys(right_ou_keys_list).indexOf(KO_type) >= 0) &&
       ( (keyValue === right_ou_keys_list[KO_type][0]) || (keyValue === right_ou_keys_list[KO_type][1]) ) ) {
     right_oua = 1;
   }
 
-//alert("시작");
+  //alert("시작");
   var combined_value = 0;
   var cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
   //alert(cheot_gawit_ggeut);
@@ -1204,7 +1204,7 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
         }
       }
     }
-  //alert(extension_start + "   ==   " + ohiQ);
+    //alert(extension_start + "   ==   " + ohiQ);
     if (extension_start > 0 && extension_start < 4) {
       // 신세벌 확장 기호를 넣을 조건을 갖추었을 될 때
       // 1 단은 ㄱ, 2 단은 ㄴ, 3 단은 ㄷ 으로 나타낸다
@@ -1228,7 +1228,7 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
     }
   }
 
-//alert(keyValue + " == " + charCode);
+  //alert(keyValue + " == " + charCode);
   var input_cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
 
   if ((left_bracket_araea_list.indexOf(KO_type) > -1) && ohiQ[0] && (keyValue == '[')) {
@@ -1305,8 +1305,8 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
     //alert("here 8");
   }
 
-//alert(charCode + " == " + String.fromCharCode(charCode));
-//alert(is_cheot_gawit_ggeut(charCode) & 0x07);
+  //alert(charCode + " == " + String.fromCharCode(charCode));
+  //alert(is_cheot_gawit_ggeut(charCode) & 0x07);
   var combined_value = 0;
   var cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
   //alert(cheot_gawit_ggeut === 1);
@@ -1400,7 +1400,7 @@ function ohi_Hangeul_3Shin_Shift (keyValue, charCode) {
     }
   }
 
-//alert(keyValue + " == " + charCode);
+  //alert(keyValue + " == " + charCode);
   var cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
 
   if ( (charCode == 0x110E/*ㅊ*/ || charCode == 0x1111/*ㅍ*/) && ohiQ[0] && !ohiQ[2] ) {
@@ -1460,7 +1460,7 @@ function ohi_Hangeul_3Shin_Shift (keyValue, charCode) {
     //alert("here 9");
   }
 
-//alert(charCode + " == " + String.fromCharCode(charCode));
+  //alert(charCode + " == " + String.fromCharCode(charCode));
   cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
   var combined_value = 0;
   //if (charCode >= 0x1100 && charCode <= 0x1112) {// Cho
@@ -1538,10 +1538,10 @@ function ohi_Roman(keyCode) {
 }
 
 // 한글을 다루는 시작점이다
-function ohi_Hangeul_Process(keyValue) {
+function ohi_Hangeul_Process(keyCode) {
   //alert("ohi_Hangeul_Process KE_status:" + KE_status);
-  if (keyValue == "-1") {
-    // 글쇠가 떼어질 때 "-1" 을 넘겨받는다.
+  if (keyCode == 0x00) {
+    // 글쇠가 떼어질 때 0x00 을 넘겨받는다.
     //alert("ohi_Hangeul_Process keyValue:" + keyValue);
     if (shoot_at_once == false) {
       return;
@@ -1554,24 +1554,58 @@ function ohi_Hangeul_Process(keyValue) {
       pressing_keys = 0;
       return;
     }
+  } else if (keyCode < 0x21 || keyCode > 0x7E) {
+    //alert(keyCode + " : " + String.fromCharCode(keyCode));
+    if (extension_steps > 0) {
+      if (keyCode != 0x08) {// Backspace
+        ohi_Backspace();
+      }
+      extension_steps = 0;
+      mapping_layout_to_html();
+      ohiQ = OHIQ_INIT;
+    }
+    if(keyCode == 0x08) {    // Backspace
+      //alert("keydown back");
+      ohi_Backspace();
+      //alert(String.fromCharCode(0x09));
+    } else if ( (keyCode == 0x09) ||  // Tab
+                (keyCode == 0x20) //Space
+              ) {
+      ohi_Insert(0,keyCode);
+    } else if (keyCode == 0x1B) {// Esc
+      ohi_Insert(0,0);
+      //focus.blur();
+    } else if(keyCode == 0x0D) { // Enter (한글 조합 상태)
+      //if(ohiQ[0] || ohiQ[2] || ohiQ[4]) { // 요즘한글 조합 상태
+        ohi_Insert(0,keyCode);
+      //} else {
+        //ohi_Insert(0,keyCode);
+      //}
+    } else {
+      ohi_Insert(0,0);
+    }
+    pressing_keys = 0;
+    return;
   } else if (ohiQ == OHIQ_INIT) {
     pressing_keys = 0;
   }
 
   pressing_keys++;
-  var keyCode = keyValue.charCodeAt(0);
+
   if(KE_status === 'en') {
     ohi_Roman(keyCode);
     return;
   }
 
   var charCode = hangeul_layout[keyCode - 0x21];
+  var keyValue = String.fromCharCode(keyCode);
+
   // 한글 낱자가 아니면 그냥 넣는다
   //if((is_cheot_gawit_ggeut(charCode) & 0x07) < 1) {
     //ohi_Insert(0, keyCode);
     //return;
   //}
-//alert(keyValue + " == " + charCode);
+  //alert(keyValue + " == " + charCode);
   switch (true) {
     case /3-/.test(KO_type) :
       ohi_Hangeul_3(keyValue, charCode);
@@ -1648,7 +1682,7 @@ function set_extension_table(sign_yetgeul) {
     //alert("확장 단계가 0 이네...");
     return;
   }
-//alert(steps + " == " + extension_steps + " -- " + (extension_steps / 10));
+  //alert(steps + " == " + extension_steps + " -- " + (extension_steps / 10));
   for(i = 0; i < 94; i++) {
     if (steps[0] == 2) {
       extensionCode = layout[i][1][steps[1]];
@@ -1671,7 +1705,7 @@ function set_extension_table(sign_yetgeul) {
     }
 
     charCode = String.fromCharCode(english_layout[i]);
-//alert(charCode);
+    //alert(charCode);
 
     key_name = html_map_layout[i][0]
     key_up_down = html_map_layout[i][1]
@@ -1769,9 +1803,9 @@ function set_basic_table() {
 
 // select #0:기본배열, #1:기호버열, #2:옛한글배열
 function mapping_layout_to_html(select) {
-//alert("mapping_layout_to_html");
-//alert("KE: " + KE_status + " KO_type: " + KO_type + " EN_type: " + EN_type);
-//alert("select: " + select);
+  //alert("mapping_layout_to_html");
+  //alert("KE: " + KE_status + " KO_type: " + KO_type + " EN_type: " + EN_type);
+  //alert("select: " + select);
   var html_table = {};
   //alert(hangeul_layout);
   //alert(typeof(select));
@@ -1783,13 +1817,13 @@ function mapping_layout_to_html(select) {
 
   //alert(Object.keys(html_table).length);// => 47
 
-//alert(english_layout.constructor.toString().indexOf("Array"));// => 9
-//alert(hangeul_layout.constructor.toString().indexOf("Array"));// => 9
-//alert(html_map_layout.constructor.toString().indexOf("Array"));// => 9
-//alert(html_table.constructor.toString().indexOf("Array"));// => -1
-//alert(html_table.constructor.toString().indexOf("Object"));// => 9
-//alert(english_layout.length);// => 94
-//alert(hangeul_layout.length);// => 94
+  //alert(english_layout.constructor.toString().indexOf("Array"));// => 9
+  //alert(hangeul_layout.constructor.toString().indexOf("Array"));// => 9
+  //alert(html_map_layout.constructor.toString().indexOf("Array"));// => 9
+  //alert(html_table.constructor.toString().indexOf("Array"));// => -1
+  //alert(html_table.constructor.toString().indexOf("Object"));// => 9
+  //alert(english_layout.length);// => 94
+  //alert(hangeul_layout.length);// => 94
 
   var id, name, node;
   var i;
@@ -1927,112 +1961,112 @@ function mapping_layout_to_html(select) {
 
 
 
-/*** 각 배열마다 따로 들어가는 값이 있으면 여기서 넣는다 ***/
-if (KE_status == 'ko') {
+  /*** 각 배열마다 따로 들어가는 값이 있으면 여기서 넣는다 ***/
+  if (KE_status == 'ko') {
 
-  var tag_sign0 = "기호";
-  var tag_sign1 = "기①";
-  var tag_sign2 = "기②";
-  var tag_yet1 = "한①";
-  var tag_yet2 = "한②";
-  var tag_moa_gawit_shift = "⇧";
-  var tag_moa_ggeut_shift = "⇦";
+    var tag_sign0 = "기호";
+    var tag_sign1 = "기①";
+    var tag_sign2 = "기②";
+    var tag_yet1 = "한①";
+    var tag_yet2 = "한②";
+    var tag_moa_gawit_shift = "⇧";
+    var tag_moa_ggeut_shift = "⇦";
 
-  var node_key;
-  if (!extension_steps && KE_status == 'ko') {
-    if (left_bracket_araea_list.indexOf(KO_type) > -1) {
-      // [ 자리의 [아래아] 를 다룬다
-      node_key = $("#key_left_bracket .down_key .han_key");
-      node_key.html("(ㆍ)");
-      node_key.addClass("gawit_right");
-      node_key.addClass("font08");
+    var node_key;
+    if (!extension_steps && KE_status == 'ko') {
+      if (left_bracket_araea_list.indexOf(KO_type) > -1) {
+        // [ 자리의 [아래아] 를 다룬다
+        node_key = $("#key_left_bracket .down_key .han_key");
+        node_key.html("(ㆍ)");
+        node_key.addClass("gawit_right");
+        node_key.addClass("font08");
+      }
+      //if (/3shin-p/.test(KO_type)) {
+        //node_key = $("#key_forwardslash .up_key .han_key");
+        // ㅋ 자리의 ㆍ(아래아) 를 다룬다
+        //node_key.html("(ㆍ)");
+        //node_key.addClass("gawit_right");
+        //node_key.addClass("font08");
+      //} else
+      if (/3shin/.test(KO_type)) {
+        node_key = $("#key_forwardslash .up_key .han_key");
+        // ㅋ 자리의 ㅗ 를 다룬다
+        node_key.html("(ㅗ)");
+        node_key.addClass("gawit_right");
+        node_key.addClass("font08");
+      }
     }
-    //if (/3shin-p/.test(KO_type)) {
-      //node_key = $("#key_forwardslash .up_key .han_key");
-      // ㅋ 자리의 ㆍ(아래아) 를 다룬다
-      //node_key.html("(ㆍ)");
-      //node_key.addClass("gawit_right");
-      //node_key.addClass("font08");
-    //} else
-    if (/3shin/.test(KO_type)) {
-      node_key = $("#key_forwardslash .up_key .han_key");
-      // ㅋ 자리의 ㅗ 를 다룬다
-      node_key.html("(ㅗ)");
-      node_key.addClass("gawit_right");
-      node_key.addClass("font08");
-    }
-  }
 
-  if (extension_enable) {
-    if ((KO_type === '3-2011') || (KO_type === '3-2012')) {
-      node_key = $("#key_v .down_key .en_key");
-      node_key.html(tag_sign0);
-      node_key.addClass("tag08");
-      node_key = $("#key_eight .down_key .en_key");
-      node_key.html(tag_sign0);
-      node_key.addClass("tag08");
-    } else if ((KO_type == '3-2011-yet') || (KO_type == '3-2012-yet') ||
-        (/3-2014/.test(KO_type)) || (/3-2015p/.test(KO_type))) {
-      node_key = $("#key_forwardslash .up_key .han_key");
-      node_key.html(tag_sign1);
-      node_key.addClass("tag08");
-      node_key = $("#key_nine .up_key .han_key");
-      node_key.html(tag_sign2);
-      node_key.addClass("tag08");
-    } else if (/3shin/.test(KO_type)) {
-      if ((/2003/.test(KO_type)) || (/2012/.test(KO_type)) || (/-p/.test(KO_type))) {
-        node_key = $("#key_j .down_key .en_key");
+    if (extension_enable) {
+      if ((KO_type === '3-2011') || (KO_type === '3-2012')) {
+        node_key = $("#key_v .down_key .en_key");
         node_key.html(tag_sign0);
         node_key.addClass("tag08");
-        node_key = $("#key_k .down_key .en_key");
-        node_key.html("①");
+        node_key = $("#key_eight .down_key .en_key");
+        node_key.html(tag_sign0);
+        node_key.addClass("tag08");
+      } else if ((KO_type == '3-2011-yet') || (KO_type == '3-2012-yet') ||
+          (/3-2014/.test(KO_type)) || (/3-2015p/.test(KO_type))) {
+        node_key = $("#key_forwardslash .up_key .han_key");
+        node_key.html(tag_sign1);
+        node_key.addClass("tag08");
+        node_key = $("#key_nine .up_key .han_key");
+        node_key.html(tag_sign2);
+        node_key.addClass("tag08");
+      } else if (/3shin/.test(KO_type)) {
+        if ((/2003/.test(KO_type)) || (/2012/.test(KO_type)) || (/-p/.test(KO_type))) {
+          node_key = $("#key_j .down_key .en_key");
+          node_key.html(tag_sign0);
+          node_key.addClass("tag08");
+          node_key = $("#key_k .down_key .en_key");
+          node_key.html("①");
+          node_key.addClass("tag10");
+          node_key = $("#key_l .down_key .en_key");
+          node_key.html("②");
+          node_key.addClass("tag10");
+          node_key = $("#key_semicolon .down_key .en_key");
+          node_key.html("③");
+          node_key.addClass("tag10");
+        }
+      }
+
+      if ((/yet/.test(KO_type)) &&
+          (/3-2011/.test(KO_type) || /3-2012/.test(KO_type) ||
+          /3-2014/.test(KO_type) || /3-2015p/.test(KO_type))) {
+        node_key = $("#key_seven .up_key .han_key");
+        node_key.html(tag_yet1);
+        node_key.addClass("tag08");
+        node_key = $("#key_eight .up_key .han_key");
+        node_key.html(tag_yet2);
+        node_key.addClass("tag08");
+        node_key = $("#key_seven .down_key .han_key");
+        node_key.html("(ㅣ)");
+        node_key.addClass("font08");
+        node_key = $("#key_eight .down_key .han_key");
+        node_key.html("(ㅡ)");
+        node_key.addClass("font08");
+      }
+    }//if (extension_enable) {
+
+    if (/3moa-2/.test(KO_type)) {
+      if (KO_type === '3moa-2014') {
+        node_key = $("#key_semicolon .down_key .han_key");
+        node_key.html(tag_moa_ggeut_shift);
         node_key.addClass("tag10");
-        node_key = $("#key_l .down_key .en_key");
-        node_key.html("②");
+      } else {
+        node_key = $("#key_p .up_key .han_key");
+        node_key.html(tag_moa_gawit_shift);
         node_key.addClass("tag10");
-        node_key = $("#key_semicolon .down_key .en_key");
-        node_key.html("③");
+        node_key = $("#key_v .up_key .en_key");
+        node_key.html(tag_moa_gawit_shift);
+        node_key.addClass("tag10");
+        node_key = $("#key_semicolon .up_key .han_key");
+        node_key.html(tag_moa_ggeut_shift);
         node_key.addClass("tag10");
       }
     }
 
-    if ((/yet/.test(KO_type)) &&
-        (/3-2011/.test(KO_type) || /3-2012/.test(KO_type) ||
-        /3-2014/.test(KO_type) || /3-2015p/.test(KO_type))) {
-      node_key = $("#key_seven .up_key .han_key");
-      node_key.html(tag_yet1);
-      node_key.addClass("tag08");
-      node_key = $("#key_eight .up_key .han_key");
-      node_key.html(tag_yet2);
-      node_key.addClass("tag08");
-      node_key = $("#key_seven .down_key .han_key");
-      node_key.html("(ㅣ)");
-      node_key.addClass("font08");
-      node_key = $("#key_eight .down_key .han_key");
-      node_key.html("(ㅡ)");
-      node_key.addClass("font08");
-    }
-  }//if (extension_enable) {
-
-  if (/3moa-2/.test(KO_type)) {
-    if (KO_type === '3moa-2014') {
-      node_key = $("#key_semicolon .down_key .han_key");
-      node_key.html(tag_moa_ggeut_shift);
-      node_key.addClass("tag10");
-    } else {
-      node_key = $("#key_p .up_key .han_key");
-      node_key.html(tag_moa_gawit_shift);
-      node_key.addClass("tag10");
-      node_key = $("#key_v .up_key .en_key");
-      node_key.html(tag_moa_gawit_shift);
-      node_key.addClass("tag10");
-      node_key = $("#key_semicolon .up_key .han_key");
-      node_key.html(tag_moa_ggeut_shift);
-      node_key.addClass("tag10");
-    }
-  }
-
-}//if (KE_status == 'ko')
+  }//if (KE_status == 'ko')
 
 
   // html 글판 그림을 눌렀을 때 한글을 넣는다
@@ -2155,7 +2189,7 @@ function change_EN_type(type) {
     }
   }
 
-//alert("layout_list_info");
+  //alert("layout_list_info");
   $.each (layout_list_info_en, function (index, item) {
     if (EN_type == item.name) {
       $(".layout_select_en option[value="+EN_type+"]").prop("selected", true);
@@ -2208,7 +2242,7 @@ function change_KO_type(type) {
     //alert("KO_type:" + KO_type);
   }
 
-//alert("layout_list_info");
+  //alert("layout_list_info");
   // 배열의 이름 뿐이 아니라 다른 정보도 다루기 위해서
   // KO_type_list 가 아닌 layout_list_info_ko 를 쓴다
   $.each (layout_list_info_ko, function (index, item) {
@@ -2423,7 +2457,7 @@ function add_layout_list() {
     }
   });
 
-//alert("layout_list_info");
+  //alert("layout_list_info");
 }
 
 function url_query() {
@@ -2457,77 +2491,7 @@ function url_query() {
   return return_url;
 }
 
-// keypress 에서는 keydown, keyup 와 달리 대소문자를 구분한다
-// 또한 keyCode 가 아닌 charCode 에 넣는다
-// 기능 글쇠들은 charCode 에 값이 들어가지 않는다 ( shift, alt, ctrl ~~ )
-// (ie >= 9 && others) || ie < 9 //
-function ohiKeypress (event) {
-    //if (event.preventDefault) { event.preventDefault (); }
-    //return false;
-}
-
-// keyup , keydown 에서는 대소문자를 구분하지 않는다
-// 또한 charCode 가 아닌 keyCode 에 넣는다
-// Chrome 에서는 charactor key 가 아니면 keypress 이벤트가 생기지 않는다
-function ohiKeydown (event) {
-  var i;
-  var event=event||window.event;
-  var focus=event.target||event.srcElement;
-  var name=focus.nodeName||focus.tagName;
-  var keyCode=event.which||event.keyCode;
-  if(focus.type=='text' && name=='INPUT' || name=='TEXTAREA') {
-    if (event.keyCode!=16 && event.keyCode<47) {
-      if (extension_steps > 0) {
-        if (event.keyCode!=8) {
-          ohi_Backspace();
-        }
-        extension_steps = 0;
-        mapping_layout_to_html();
-        ohiQ = OHIQ_INIT;
-      }
-      if(event.keyCode==8) {    // Backspace
-        //alert("keydown back");
-        ohi_Backspace();
-        //alert(String.fromCharCode(event.keyCode));
-        if(event.preventDefault) {event.preventDefault();}
-      } else if (event.keyCode==9) {// Tab
-        ohi_Insert(0,0x09);
-        if(event.preventDefault) {event.preventDefault();}
-      } else if (event.keyCode==27) {// Esc
-        ohi_Insert(0,0);
-        //focus.blur();
-      } else if(event.keyCode==13) { // Enter (한글 조합 상태)
-        if(ohiQ[0] || ohiQ[2] || ohiQ[4]) { // 요즘한글 조합 상태
-          ohi_Insert(0,0);
-        }
-      } else {
-        ohi_Insert(0,0);
-      }
-    } else {
-      if (event.preventDefault) { event.preventDefault (); }
-      return false;
-    }
-  }
-  return true;
-}
-
-function ohiKeyup (event) {
-    //if (event.preventDefault) { event.preventDefault (); }
-    //return false;
-}
-
 function ohiStart (lang, type) {
-  if (document.addEventListener) {
-    //alert("addEventListener");
-    document.addEventListener ('keypress', ohiKeypress, true);
-    document.addEventListener ('keydown', ohiKeydown, true);
-    document.addEventListener('keyup', ohiKeyup, true);
-  } else {
-    document.onkeypress = ohiKeypress;
-    document.onkeydown = ohiKeydown;
-    document.onkeyup = ohiKeyup;
-  }
-
   $(document).bind('click touchstart', function () {
     if (tadak_tadak) {
       return;
@@ -2551,8 +2515,3 @@ function ohiStart (lang, type) {
   //alert(url.ke_status + "  " + url.en_type + "  " + url.ko_type)
   change_status(url.ke_status, url.en_type, url.ko_type);
 }
-
-
-$(document).ready(function(){
-  ohiStart();
-});
