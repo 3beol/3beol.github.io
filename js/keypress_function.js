@@ -949,7 +949,6 @@ $(document).ready(function(){
         inputText_focus();
         //listener.should_force_event_defaults = true;
         demo_1.registered_combos = listener.register_many(demo_1.combos);
-        listener.listen();
         return;
       },
       unwire: function() {
@@ -1091,17 +1090,17 @@ $(document).ready(function(){
       keys: "esc",
       is_exclusive: true,
       prevent_default: true,
-      on_keydown: activate_next_demo
+      on_keyup: activate_next_demo
     });
-    listener.simple_combo("ctrl 1", function() {
-      return activate_demo("demo_1");
-    }, true);
-    listener.simple_combo("ctrl 2", function() {
-      return activate_demo("demo_2");
-    }, true);
-    listener.simple_combo("ctrl 3", function() {
-      return activate_demo("demo_3");
-    }, true);
+    //listener.simple_combo("ctrl 1", function() {
+      //return activate_demo("demo_1");
+    //}, true);
+    //listener.simple_combo("ctrl 2", function() {
+      //return activate_demo("demo_2");
+    //}, true);
+    //listener.simple_combo("ctrl 3", function() {
+      //return activate_demo("demo_3");
+    //}, true);
   };
 
 

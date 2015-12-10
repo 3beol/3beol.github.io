@@ -156,7 +156,7 @@ var layout_list_info_ko = [
   {name: '2-kps9256', full_name: '조선 국규 (KPS 9256)'},
   {name: '2sun-ksx5002', full_name: '두벌식 순아래 (꼬마집오리)', link: 'http://blog.daum.net/tinyduck/2111486'},
   {name: '3-90', full_name: '3-90'},
-  {name: '3-91', full_name: '3-91 (공병우 최종 자판)'},
+  {name: '3-91', full_name: '3-91 (공병우 최종)'},
   {name: '3-93-yet', full_name: '3-93 옛한글', link: 'http://asadal.pnu.kr/data/data_002_006.html'},
   {name: '3-2012', full_name: '3-2012', link: 'http://pat.im/938'},
   {name: '3-2012-yet', full_name: '3-2012 옛한글', link: 'http://pat.im/938#4-2'},
@@ -1043,11 +1043,13 @@ function ohi_Hangeul_3 (keyValue, charCode) {
           }
         }
         if (index >= 0) {
-          ohiQ[4] = 0;
-          ohiQ[5] = 0;
-          galmadeuliCode = galmadeuli_layout[index][1];
-          charCode = galmadeuliCode;
+          ohiQ[5] = ohiQ[4];
+          ohiQ[4] = galmadeuli_layout[index][1];
+          ohi_Insert(0, ohiQ);
+          return;
         }
+      } else {
+        right_oua = false;
       }
     } else {
       right_oua = false;
@@ -2469,7 +2471,7 @@ function add_layout_list() {
 
       name += item.full_name;
       if(item.name === '3-2011' || item.name === '3-91') {
-        name+=' (문장 입력용)';
+        name+=' (문장)';
       }
 
       $(".layout_select_ko").append($('<option>', {
