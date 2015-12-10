@@ -645,7 +645,19 @@ function is_cheot_gawit_ggeut(charCode) {
 // 조합 규칙에서 찾아본다
 function get_combination_value(ohiqCode, charCode) {
   //alert("ohiqCode:" + ohiqCode + "  charCode:" + charCode);
-  var key = (ohiqCode * 0x10000) + charCode;
+  var key = 0;
+  if (/3moa/.test(KO_type)) {
+    // 입력순서를 따지지 않는 글판에서는
+    // 작은 값을 앞에 놓아서 조합규칙의 크기를 줄인다.
+    if (ohiqCode > charCode) {
+      key = (charCode * 0x10000) + ohiqCode;
+    } else {
+      key = (ohiqCode * 0x10000) + charCode;
+    }
+  } else {
+    key = (ohiqCode * 0x10000) + charCode;
+  }
+
   var value = 0;
   var index = -1;
   var i;
@@ -1717,10 +1729,10 @@ function set_extension_table(sign_yetgeul) {
 
     key_name = html_map_layout[i][0]
     key_up_down = html_map_layout[i][1]
-    if(typeof html_table[key_name] == "undefined") {
+    if(typeof(html_table[key_name]) == "undefined") {
       html_table[key_name] = {};
     }
-    if(typeof html_table[key_name][key_up_down] == "undefined") {
+    if(typeof(html_table[key_name][key_up_down]) == "undefined") {
       html_table[key_name][key_up_down] = [];
     }
 
@@ -1796,10 +1808,10 @@ function set_basic_table() {
 
     key_name = html_map_layout[i][0]
     key_up_down = html_map_layout[i][1]
-    if(typeof html_table[key_name] == "undefined") {
+    if(typeof(html_table[key_name]) == "undefined") {
       html_table[key_name] = {};
     }
-    if(typeof html_table[key_name][key_up_down] == "undefined") {
+    if(typeof(html_table[key_name][key_up_down]) == "undefined") {
       html_table[key_name][key_up_down] = [];
     }
 
@@ -1859,7 +1871,7 @@ function mapping_layout_to_html(select) {
   $.each(keys, function(_, node) {
     node = $(node);
     id = node.attr("id");
-    if(typeof html_table[id] != "undefined") {
+    if(typeof(html_table[id]) != "undefined") {
       up_en_key = node.children("em.up_key").children("div.en_key");
       up_han_key = node.children("em.up_key").children("div.han_key");
       down_en_key = node.children("strong.down_key").children("div.en_key");
@@ -1963,7 +1975,7 @@ function mapping_layout_to_html(select) {
           up_han_key.html("");
         }//  if ((KE_status == 'ko') && hangeul_layout.length) {
       }// if (extension_steps) {
-    }// if(typeof html_table[id] != "undefined") {
+    }// if(typeof(html_table[id]) != "undefined") {
   });// $.each(keys, function(_, node) {
   //alert("html 끝");
 
@@ -2138,12 +2150,12 @@ function click_html_keymap(current_id) {
     }
   }
 
-  //alert(index + "   typeof:  " + typeof index);
+  //alert(index + "   typeof:  " + typeof(index));
   if(index > -1 && index < 94) {
     //var value = hangeul_layout[index];
     //alert(String.fromCharCode(value));
-    var keyValue = html_map_layout[index][2];
-    ohi_Hangeul_Process(keyValue);
+    var keyCode = html_map_layout[index][3];
+    ohi_Hangeul_Process(keyCode);
   } else {
     if (extension_steps > 0) {
       if (current_id !== 'key_backspace') {
