@@ -1659,18 +1659,13 @@ function ohi_Hangeul_Process(keyCode) {
 }
 
 function inputText_focus() {
-  var focus = document.activeElement;
-  if (focus.tagName.toLowerCase() != 'textarea' &&
-      focus.tagName.toLowerCase() != 'input') {
-    var focus_id = document.getElementById(focus_tag_id);
-    if (focus_id.tagName.toLowerCase() != 'textarea' &&
-        focus_id.tagName.toLowerCase() != 'input') {
-      focus_id = document.getElementById('inputText');
-    }
-    focus = focus_id;
-  }
   if (focus_tag_id == "jamo_panel") {
     return;
+  }
+  var focus = document.getElementById(focus_tag_id);
+  if (focus.tagName.toLowerCase() != 'textarea' &&
+      focus.tagName.toLowerCase() != 'input') {
+    focus = document.getElementById('inputText');
   }
   focus.focus()
   return focus;
@@ -1680,7 +1675,7 @@ function inputText_focus() {
 function set_extension_table(sign_yetgeul) {
   var layout = [];
   switch(sign_yetgeul) {
-    case 1 : layout = extension_sign_layout; break;
+    case 1: layout = extension_sign_layout; break;
     case 2: layout = extension_yetgeul_layout; break;
     default : alert("확장 배열이 없습니다."); return;
   }
