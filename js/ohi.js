@@ -50,7 +50,7 @@ var KO_type_list = [
   '3-2015', '3-2015p', '3-2015p-yet',
   '3sun-1990', '3sun-2014',
   '3moa-2014', '3moa-ahn', '3moa-2015',
-  '3shin-1995', '3shin-2003', '3shin-2012', '3shin-p',
+  '3shin-1995', '3shin-b', '3shin-2003', '3shin-2012', '3shin-p',
   '3shin-2015-shift', '3shin-m-shift'
 ];
 var KO_galmadeuli_list = [
@@ -74,6 +74,7 @@ var right_ou_keys_list = {
   '3moa-2014': ['p', '\''],
   '3moa-2015': ['p', '\''],
   '3shin-1995':  ['I', 'O', 'P'],
+  '3shin-b':  ['O', 'P'],
   '3shin-2003':  ['O', 'P'],
   '3shin-2012':  ['O', 'P'],
   '3shin-2015-shift':  ['O', 'P'],
@@ -168,8 +169,9 @@ var layout_list_info_ko = [
   {name: '3moa-ahn', full_name: '안마태 소리글판', link: 'http://ahnmatae.org'},
   {name: '3moa-2014', full_name: '모아치기 2014', link: 'http://ssg.wo.tc/220239514856'},
   {name: '3moa-2015', full_name: '세모이 (모아치기 2015)', link: 'http://ssg.wo.tc/220239514856'},
-  {name: '3shin-1995', full_name: '신세벌식 1995'},
-  {name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정 신세벌식)'},
+  {name: '3shin-1995', full_name: '신세벌식 1995 (신광조)'},
+  {name: '3shin-b', full_name: '신세벌식 박경남'},
+  {name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정)'},
   {name: '3shin-2012', full_name: '신세벌식 2012', link: 'http://pat.im/978'},
   {name: '3shin-2015-shift', full_name: '신세벌식 2015', link: 'http://sebeol.org/gnuboard/bbs/board.php?bo_table=lab&wr_id=28'},
   {name: '3shin-m-shift', full_name: '신세벌식 M', link: 'http://cafe.daum.net/3bulsik/JMKX/77'},
@@ -1561,6 +1563,7 @@ function ohi_Hangeul_Process(keyCode) {
     // 글쇠가 떼어질 때 0x00 을 넘겨받는다.
     //alert("ohi_Hangeul_Process keyValue:" + keyValue);
     if (shoot_at_once == false) {
+      pressing_keys = 0;
       return;
     } else if (pressing_keys > 1) {
       pressing_keys--;
@@ -2008,7 +2011,8 @@ function mapping_layout_to_html(select) {
         //node_key.addClass("gawit_right");
         //node_key.addClass("font08");
       //} else
-      if (/3shin/.test(KO_type)) {
+      if ( (/3shin/.test(KO_type)) &&
+          !(/3shin-b/.test(KO_type)) ) {
         node_key = $("#key_forwardslash .up_key .han_key");
         // ㅋ 자리의 ㅗ 를 다룬다
         node_key.html("(ㅗ)");
@@ -2156,6 +2160,7 @@ function click_html_keymap(current_id) {
     //alert(String.fromCharCode(value));
     var keyCode = html_map_layout[index][3];
     ohi_Hangeul_Process(keyCode);
+    ohi_Hangeul_Process(0x0000);
   } else {
     if (extension_steps > 0) {
       if (current_id !== 'key_backspace') {
@@ -2295,6 +2300,7 @@ function change_KO_type(type) {
   $("#toggle_shoot_at_once").change(function(){
     //alert('toggle_shoot_at_once: ' + shoot_at_once);
     shoot_at_once = $(this).is(":checked");
+    ohi_Insert(ohiQ, 0);
   });
 
   index = KO_galmadeuli_list.indexOf(KO_type);

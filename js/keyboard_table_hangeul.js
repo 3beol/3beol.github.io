@@ -1262,6 +1262,103 @@ function get_table_hangeul(type) {
     0x0000    /*   *///    0x7F    :    delete    ->    {    }
   ];
 
+  var K3_3shin_b = [
+    0x203B,    /* ! *///    0x21    :    exclam    ->    {reference mark}
+    0x00B7,    /* " *///    0x22    :    quotedbl    ->    {middle dot}
+    0x0023,    /* # *///    0x23    :    numbersign    ->    {number sign}
+    0x0024,    /* $ *///    0x24    :    dollar    ->    {dollar sign}
+    0x0025,    /* % *///    0x25    :    percent    ->    {percent sign}
+    0x0026,    /* & *///    0x26    :    ampersand    ->    {ampersand}
+    0x1110,    /* ' *///    0x27    :    apostrophe    ->    {Choseong thieuth}
+    0x0028,    /* ( *///    0x28    :    parenleft    ->    {left parenthesis}
+    0x0029,    /* ) *///    0x29    :    parenright    ->    {right parenthesis}
+    0x002A,    /* * *///    0x2A    :    asterisk    ->    {asterisk}
+    0x002B,    /* + *///    0x2B    :    plus    ->    {plus sign}
+    0x002C,    /* , *///    0x2C    :    comma    ->    {comma}
+    0x002D,    /* - *///    0x2D    :    minus    ->    {minus sign}
+    0x002E,    /* . *///    0x2E    :    period    ->    {period}
+    0x110F,    /* / *///    0x2F    :    slash    ->    {choseong khieukh}
+    0x0030,    /* 0 *///    0x30    :    0    ->    {0}
+    0x0031,    /* 1 *///    0x31    :    1    ->    {1}
+    0x0032,    /* 2 *///    0x32    :    2    ->    {2}
+    0x0033,    /* 3 *///    0x33    :    3    ->    {3}
+    0x0034,    /* 4 *///    0x34    :    4    ->    {4}
+    0x0035,    /* 5 *///    0x35    :    5    ->    {5}
+    0x0036,    /* 6 *///    0x36    :    6    ->    {6}
+    0x0037,    /* 7 *///    0x37    :    7    ->    {7}
+    0x0038,    /* 8 *///    0x38    :    8    ->    {8}
+    0x0039,    /* 9 *///    0x39    :    9    ->    {9}
+    0x003A,    /* : *///    0x3A    :    colon    ->    {colon}
+    0x1107,    /* ; *///    0x3B    :    semicolon    ->    {Choseong pieup}
+    0x003C,    /* < *///    0x3C    :    less    ->    {less-than sign}
+    0x003D,    /* = *///    0x3D    :    equal    ->    {equals sign}
+    0x003E,    /* > *///    0x3E    :    greater    ->    {greater-than sign}
+    0x0021,    /* ? *///    0x3F    :    question    ->    {exclamation mark}
+    0x0040,    /* @ *///    0x40    :    at    ->    {commercial at}
+    0x1172,    /* A *///    0x41    :    A    ->    {jungseong yu}
+    0x116E,    /* B *///    0x42    :    B    ->    {jungseong u}
+    0x1166,    /* C *///    0x43    :    C    ->    {jungseong e}
+    0x1175,    /* D *///    0x44    :    D    ->    {jungseong i}
+    0x1167,    /* E *///    0x45    :    E    ->    {jungseong yeo}
+    0x1161,    /* F *///    0x46    :    F    ->    {jungseong a}
+    0x1173,    /* G *///    0x47    :    G    ->    {jungseong eu}
+    0x0000,    /* H *///    0x48    :    H    ->    {}
+    0x1174,    /* I *///    0x49    :    I    ->    {jungseong yeu}
+    0x0022,    /* J *///    0x4A    :    J    ->    {quotatioin mark}
+    0x003B,    /* K *///    0x4B    :    K    ->    {semicolon}
+    0x0027,    /* L *///    0x4C    :    L    ->    {quota}
+    0x002F,    /* M *///    0x4D    :    M    ->    {slash}
+    0x0000,    /* N *///    0x4E    :    N    ->    {}
+    0x116E,    /* O *///    0x4F    :    O    ->    {jungseong u}
+    0x1169,    /* P *///    0x50    :    P    ->    {jungseong o}
+    0x1164,    /* Q *///    0x51    :    Q    ->    {jungseong yae}
+    0x1162,    /* R *///    0x52    :    R    ->    {jungseong yeo}
+    0x1168,    /* S *///    0x53    :    S    ->    {jungseong ye}
+    0x1165,    /* T *///    0x54    :    T    ->    {jungseong eo}
+    0x0000,    /* U *///    0x55    :    U    ->    {}
+    0x1169,    /* V *///    0x56    :    V    ->    {jungseong o}
+    0x1163,    /* W *///    0x57    :    W    ->    {jungseong ya}
+    0x116D,    /* X *///    0x58    :    X    ->    {jungseong yo}
+    0x0000,    /* Y *///    0x59    :    Y    ->    {}
+    0x003F,    /* Z *///    0x5A    :    Z    ->    {question mark}
+    0x005B,    /* [ *///    0x5B    :    bracketleft    ->    {left bracket}
+    0x005C,    /* \ *///    0x5C    :    backslash    ->    {backslash}
+    0x005D,    /* ] *///    0x5D    :    bracketright    ->    {right bracket}
+    0x005E,    /* ^ *///    0x5E    :    asciicircum    ->    {circumflex accent}
+    0x005F,    /* _ *///    0x5F    :    underscore    ->    {underscore}
+    0x0060,    /* ` *///    0x60    :    quoteleft    ->    {grave accent}
+    0x11BC,    /* a *///    0x61    :    a    ->    {Jongseong ieung}
+    0x11BF,    /* b *///    0x62    :    b    ->    {Jongseong khiyeok}
+    0x11BE,    /* c *///    0x63    :    c    ->    {Jongseong chieuch}
+    0x11AE,    /* d *///    0x64    :    d    ->    {Jongseong tikeut}
+    0x11B8,    /* e *///    0x65    :    e    ->    {Jongseong pieup}
+    0x11BB,    /* f *///    0x66    :    f    ->    {Jongseong ssangsios}
+    0x11BD,    /* g *///    0x67    :    g    ->    {Jongseong cieuc}
+    0x1102,    /* h *///    0x68    :    h    ->    {Choseong nieun}
+    0x1106,    /* i *///    0x69    :    i    ->    {Choseong mieum}
+    0x110B,    /* j *///    0x6A    :    j    ->    {Choseong ieung}
+    0x1100,    /* k *///    0x6B    :    k    ->    {Choseong kiyeok}
+    0x110C,    /* l *///    0x6C    :    l    ->    {Choseong cieuc}
+    0x1112,    /* m *///    0x6D    :    m    ->    {Choseong hieuh}
+    0x1109,    /* n *///    0x6E    :    n    ->    {Choseong sios}
+    0x110E,    /* o *///    0x6F    :    o    ->    {Choseong chieuch}
+    0x1111,    /* p *///    0x70    :    p    ->    {Choseong phieuph}
+    0x11BA,    /* q *///    0x71    :    q    ->    {Jongseong sios}
+    0x11C0,    /* r *///    0x72    :    r    ->    {Jongseong thikeuth}
+    0x11AB,    /* s *///    0x73    :    s    ->    {Jongseong nieun}
+    0x11C1,    /* t *///    0x74    :    t    ->    {Jongseong phieuph}
+    0x1103,    /* u *///    0x75    :    u    ->    {Choseong tikeut}
+    0x11C2,    /* v *///    0x76    :    v    ->    {Jongseong hieuh}
+    0x11AF,    /* w *///    0x77    :    w    ->    {Jongseong rieul}
+    0x11A8,    /* x *///    0x78    :    x    ->    {Jongseong kiyeok}
+    0x1105,    /* y *///    0x79    :    y    ->    {Choseong rieul}
+    0x11B7,    /* z *///    0x7A    :    z    ->    {Jongseong mieum}
+    0x007B,    /* { *///    0x7B    :    braceleft    ->    {left brace}
+    0x007C,    /* | *///    0x7C    :    bar    ->    {vertical bar}
+    0x007D,    /* } *///    0x7D    :    braceright    ->    {right brace}
+    0x007E    /* ~ *///    0x7E    :    asciitilde    ->    {tilde}
+  ];
+
   var K3_3shin_2003 = [
     0x0021,    /* ! *///    0x21    :    exclam    ->    {exclamation mark}
     0x0022,    /* " *///    0x22    :    quotedbl    ->    {quotation mark}
@@ -1775,6 +1872,8 @@ function get_table_hangeul(type) {
       return K3_3sun_2014;
     case /3shin-1995/.test(type) :
       return K3_3shin_1995;
+    case /3shin-b/.test(type) :
+      return K3_3shin_b;
     case /3shin-2003/.test(type) :
       return K3_3shin_2003;
     case /3shin-2012/.test(type) :

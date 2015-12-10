@@ -1087,7 +1087,8 @@ $(document).ready(function(){
       return activate_demo(demo);
     });
     listener.register_combo({
-      keys: "`",
+      //keys: "`",
+      keys: "esc",
       is_exclusive: true,
       prevent_default: true,
       on_keydown: activate_next_demo
