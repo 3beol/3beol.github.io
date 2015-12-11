@@ -18,10 +18,12 @@ layout: default
     <div class="examples">
       <div class="example_window">
         <div class="demo" data-demo="demo_1">
-          <textarea id="inputText" class="form-control" rows="5"></textarea>
+          <textarea id="inputText" class="form-control" rows="5" autocomplete="off"></textarea>
         </div>
         <div class="demo" data-demo="demo_2">
-          <form class="form-horizontal" role="form" target="_blank" action="http://www.google.co.kr/search">
+          <form class="form-horizontal" role="form"
+                target="_blank" autocomplete="off"
+                action="http://www.google.co.kr/search">
             <div class="input-group">
               <span class="input-group-addon">구글</span>
               <input class="form-control" id="searchText" name="query" placeholder="찾을 단어나 문장을 넣으시오">
@@ -30,7 +32,9 @@ layout: default
               </div>
             </div>
           </form>
-          <form class="form-horizontal" role="form" target="_blank" action="http://search.naver.com/search.naver">
+          <form class="form-horizontal" role="form"
+                target="_blank" autocomplete="off"
+                action="http://search.naver.com/search.naver">
             <div class="input-group">
               <span class="input-group-addon">네이버</span>
               <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
@@ -39,7 +43,9 @@ layout: default
               </div>
             </div>
           </form>
-          <form class="form-horizontal" role="form" target="_blank" action="http://search.daum.net/search">
+          <form class="form-horizontal" role="form"
+                target="_blank" autocomplete="off"
+                action="http://search.daum.net/search">
             <div class="input-group">
               <span class="input-group-addon">다음</span>
               <input class="form-control" name="query" placeholder="찾을 단어나 문장을 넣으시오">
