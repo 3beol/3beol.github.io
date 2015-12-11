@@ -1,4 +1,7 @@
-function get_table_combination(type) {
+function get_table_combination(type, __yetgeul) {
+  // 요즘한글 글판에서 옛한글을 넣을 때
+  // 기본 조합규칙을 default 가 아닌 full 로 설정한다
+  __yetgeul = typeof(__yetgeul !== 'undefined') ? __yetgeul : false;
 
   var hangeul_combination_table_default = [
     [0x11001100,0x1101], /* choseong  gieug + gieug = ssanggieug */
@@ -682,6 +685,42 @@ function get_table_combination(type) {
     [ 0x11c211af, 0x11b6 ] /* jongseong hieuh  + rieul (ㅎ + ㄹ)  = rieul-hieuh (ㅀ)  */
   ];
 
+  var K3_3shin_p_yet = [
+    [0x11001109,0x1140], /* choseong gieug + siues = ssanggieug */
+    [0x1100110B,0x114C], /* choseong gieug + ieung = yesieung */
+    [0x11001112,0x1159], /* choseong gieug + hiueh = yeolinhieuh */
+    [0x110A11C1,0xD7EE], /* jongseong ssangsieus + pieup = sieus-yeolinsieus */
+    [0x110C1100,0x1150], /* choseong jieuj + gieug = dwis-jieuj */
+    [0x110C1103,0x114E], /* choseong jieuj + dieug = ab-jieuj */
+    [0x110C1109,0x113C], /* choseong jieuj + siues = ab-sieus */
+    [0x110D1100,0x1151], /* choseong ssangjieuj + gieug = ssang-dwis-jieuj */
+    [0x110D1103,0x114F], /* choseong ssangjieuj + dieug = ssang-ab-jieuj */
+    [0x110E1100,0x1155], /* choseong chieuch + gieug = dwis-chieuch */
+    [0x110E1103,0x1154], /* choseong chieuch + dieug = ab-chieuch */
+    [0x110E1109,0x113E], /* choseong chieuch + siues = dwis-sieus */
+    [0x113C1109,0x113D], /* choseong ab-sieus + sieug = ssang-ab-sieus */
+    [0x113E1109,0x113F], /* choseong dwis-sieus + sieug = ssang-dwis-sieus */
+    [0x11411109,0x1146], /* choseong ieung-gieug + sieus = ieung-yeolinsieus */
+    [0x11591112,0xA97C], /* choseong yeolinhieuh + hiueh = ssangyeolinhieuh */
+    [0x11B311C1,0x11D7], /* jongseong lieul-sieus + pieup = lieul-yeolinsieus */
+    [0x11B611C1,0x11D9], /* jongseong lieul-hieuh + pieup = lieul-yeolinhieuh */
+    [0x11BA11C1,0x11EB], /* jongseong sieus + pieup = yeolinsieus */
+    [0x11BB11C1,0xD7EE], /* jongseong ssangsiues + pieup = sieus-yeolinsieus */
+    [0x11BC11A8,0x11EC], /* jongseong ieung + gieug = yesieung-gieug */
+    [0x11BC11A9,0x11EC], /* jongseong ieung + ssanggieug = yesieung-ssanggieug */
+    [0x11BC11B7,0xD7F5], /* jongseong ieung + mieum = yesieung-mieum */
+    [0x11BC11BA,0x11F1], /* jongseong ieung + sieus = yesieung-sieus */
+    [0x11BC11BC,0x11EE], /* jongseong ieung + ieung = ssangyesieung */
+    [0x11BC11BF,0x11EF], /* jongseong ieung + ieung = ssangyesieung */
+    [0x11BC11C1,0x11F0], /* jongseong ieung + pieup = yesieung */
+    [0x11BC11C2,0xD7F6]/* jongseong ieung + ieung = ssangyesieung */
+    [0x11C211C1,0x11F9], /* jongseong hieuh + pieup = yeolinhieuh */
+    [0x11C711C1,0x11C8], /* jongseong nieun-sieus + pieup = nieun-yeolinsieus */
+    [0x11DD11C1,0x11DF], /* jongseong mieum-sieus + pieup = mieum-yeolinsieus */
+    [0x11F011C1,0x11EE], /* jongseong yesieung + pieup =  */
+    [0x11F111C1,0x11F2], /* jongseong yesieung-sieus + pieup = yesieung-yeolinsieus */
+    [0xD7DD11C1,0xD7DB], /* jongseong yeolinlieul + pieup = lieul-yesieung */
+  ];
 
   var return_array = [];
   var array_default = [];
@@ -689,6 +728,8 @@ function get_table_combination(type) {
   //alert("combine in");
   // array
   if (type.substr(-3) === 'yet') {
+    array_default = hangeul_combination_table_full;
+  } else if (__yetgeul) {
     array_default = hangeul_combination_table_full;
   } else {
     array_default = hangeul_combination_table_default;
@@ -712,6 +753,9 @@ function get_table_combination(type) {
       break;
     case /3moa-2015/.test(type) :
       array_default = K3_3moa_2015;
+      break;
+    case (__yetgeul && /3shin-p/.test(type)) :
+      array_specific = K3_3shin_p_yet;
       break;
     case /3shin-2015-shift/.test(type) :
       array_specific = K3_3shin_2015;

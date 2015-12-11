@@ -69,13 +69,27 @@ layout: default
           data-width="auto" data-size="10">
         </select>
       </div>
-      <div class="layout_link"><a href="" target="_blank">ⓘ</a></div>
-      <div class="layout_option">
-        <input type="checkbox" id="toggle_shoot_at_once"
-          data-toggle="toggle"
-          data-on="모아치기"
-          data-off="이어치기" >
+      <div class="layout_link"
+            data-toggle="tooltip"
+            title="글판의 자세한 정보를 본다">
+        <a href="" target="_blank">ⓘ</a>
       </div>
+      <ul class="layout_option">
+        <li data-toggle="tooltip"
+            title="이어치기나 모아치기를 고른다!">
+          <input type="checkbox" id="toggle_shoot_at_once"
+            data-toggle="toggle"
+            data-on="모아치기"
+            data-off="이어치기" />
+        </li>
+        <li data-toggle="tooltip"
+            title="요즘글이나 옛한글을 고른다!">
+          <input type="checkbox" id="toggle_yet_hangeul"
+            data-toggle="toggle"
+            data-on="옛한글"
+            data-off="요즘글" />
+        </li>
+      </ul>
       <section>
         <div class="key_row">
           <div id="key_accent" class="key">

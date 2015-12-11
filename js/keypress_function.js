@@ -1108,7 +1108,7 @@ $(document).ready(function(){
   bind_demos();
   activate_demo("demo_1");
   listener.listen();
-
+  $("[data-toggle = 'tooltip']").tooltip();
   ohiStart();
 
   if (navigator.userAgent.indexOf("Mac OS X") !== -1) {

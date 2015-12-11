@@ -33,10 +33,10 @@
 
   clear: both;
   font-size: $very-small-font-size;
-  margin: 1em 0 0 1em;
+  margin: 1em 1em 0 1em;
   zoom: 1;
 
-  &::before, 
+  &::before,
   &::after {
     content: "";
     display: table;
@@ -55,9 +55,19 @@
     font-size: 2.5em;
   }
   .layout_option {
+    list-style: none;
     float: right;
     font-size: 1em;
-    margin-right: 10px;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      margin-left: 0.5em;
+      padding: 0;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
 
 
@@ -79,7 +89,7 @@
   }
   .key_row {
     height: $key_height;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
     &:last-of-type {
@@ -108,16 +118,16 @@
     font-size: 1.2em;
     color: #333;
     text-align: center;
-    @include prefix-property (border-radius, 
-                                            5px, 
+    @include prefix-property (border-radius,
+                                            5px,
                                             ('webkit', 'moz'));
-    @include prefix-property (box-shadow, 
-                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2), 
+    @include prefix-property (box-shadow,
+                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2),
                                             ('webkit', 'moz'));
     background: white;
-    @include prefix-function (background-image, 
-                                            (-90deg, white 0%, #e3e3e3 100%), 
-                                            linear-gradient, 
+    @include prefix-function (background-image,
+                                            (-90deg, white 0%, #e3e3e3 100%),
+                                            linear-gradient,
                                             ('webkit', 'moz', 'o', 'ms'));
     &.cheot{
       background: PaleGreen;
@@ -138,28 +148,28 @@
       font-size: 1.2em;
       color: #333;
       text-align: center;
-      @include prefix-property (border-radius, 
-                                            5px, 
+      @include prefix-property (border-radius,
+                                            5px,
                                             ('webkit', 'moz'));
-      @include prefix-property (box-shadow, 
-                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2), 
+      @include prefix-property (box-shadow,
+                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2),
                                             ('webkit', 'moz'));
       background: white;
-      @include prefix-function (background-image, 
-                                            (-90deg, white 0%, #e3e3e3 100%), 
-                                            linear-gradient, 
+      @include prefix-function (background-image,
+                                            (-90deg, white 0%, #e3e3e3 100%),
+                                            linear-gradient,
                                             ('webkit', 'moz', 'o', 'ms'));
         }
-    &.pressed, 
-    &.shift_pressed, 
+    &.pressed,
+    &.shift_pressed,
     &.capslock_pressed {
-      @include prefix-property (box-shadow, 
-                                            inset 1px 1px 1px 0 rgba(0, 0, 0, 0.2), 
+      @include prefix-property (box-shadow,
+                                            inset 1px 1px 1px 0 rgba(0, 0, 0, 0.2),
                                             ('webkit', 'moz'));
       background: #f3f3f3;
-      @include prefix-function (background-image, 
-                                            (90deg, #f3f3f3 0%, #dddddd 100%), 
-                                            linear-gradient, 
+      @include prefix-function (background-image,
+                                            (90deg, #f3f3f3 0%, #dddddd 100%),
+                                            linear-gradient,
                                             ('webkit', 'moz', 'o', 'ms'));
       strong {
         color: #33bbff;
@@ -229,7 +239,7 @@
       }
     }
     .han_key {
-      float: right; 
+      float: right;
       margin-right: 0.5em;
       &.extension_key {
         color: black;
