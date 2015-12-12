@@ -1,7 +1,7 @@
 function get_table_combination(type, __yetgeul) {
   // 요즘한글 글판에서 옛한글을 넣을 때
   // 기본 조합규칙을 default 가 아닌 full 로 설정한다
-  __yetgeul = typeof(__yetgeul !== 'undefined') ? __yetgeul : false;
+  __yetgeul = typeof(__yetgeul != 'undefined') ? __yetgeul : false;
 
   var hangeul_combination_table_default = [
     [0x11001100,0x1101], /* choseong  gieug + gieug = ssanggieug */
@@ -403,8 +403,8 @@ function get_table_combination(type, __yetgeul) {
     /* jungseong */
     /* jongseong */
     [ 0x11a811af, 0x11b0 ], /* jongseong kiyeok  + rieul (ㄱ + ㄹ) = rieul-kiyeok (ㄺ) */
-    [ 0x11a811B7,0x11a9 ], /* jongseong kiyeok + mieum (ㄱ + ㅁ)  = ssangekiyeok (ㄲ) */
-    [ 0x11B711a8,0x11a9 ], /* jongseong mieum + kiyeok (ㅁ + ㄱ)  = ssangekiyeok (ㄲ) */
+    [ 0x11a811B7, 0x11a9 ], /* jongseong kiyeok + mieum (ㄱ + ㅁ)  = ssangekiyeok (ㄲ) */
+    [ 0x11B711a8, 0x11a9 ], /* jongseong mieum + kiyeok (ㅁ + ㄱ)  = ssangekiyeok (ㄲ) */
     [ 0x11b711af, 0x11b1 ], /* jongseong mieum  + rieul (ㅁ + ㄹ)  = rieul-mieum (ㄻ)  */
     [ 0x11b811af, 0x11b2 ], /* jongseong pieup  + rieul (ㅂ + ㄹ)  = rieul-pieup (ㄼ)  */
     [ 0x11ba11a8, 0x11aa ], /* jongseong sios + kiyeok (ㅅ + ㄱ)   = kiyeok-sois (ㄳ)  */
