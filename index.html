@@ -75,6 +75,7 @@ layout: default
           data-width="auto" data-size="10">
           <optgroup label="머리"></optgroup>
           <optgroup label="팔"></optgroup>
+          <optgroup label="허리"></optgroup>
           <optgroup label="다리"></optgroup>
         </select>
       </div>
@@ -317,7 +318,7 @@ layout: default
 	      </p>
       </section><!-- section -->
 <!--
-      <section>
+      <section class="hidden">
         <div class="key_row">
           <div id="key_print" class="key"><span><strong>print</strong></span></div>
           <div id="key_scroll_lock" class="key"><span><strong>scroll lock</strong></span></div>
@@ -345,9 +346,8 @@ layout: default
         </div>
       </section>
 -->
-
 <!--
-      <section>
+      <section class="hidden">
         <div class="key_row">
           <div id="key_num_lock" class="key"><span><strong>num lock</strong></span></div>
           <div id="key_divide" class="key single"><strong>/</strong></div>
@@ -392,7 +392,16 @@ layout: default
   <div class="row">
     <div class="documentation advanced_documentation">
       <h1 class="blue">Great! So how do I use it?</h1>
-      <p>입력기가 한글 입력으로 되어있을 때 이상동작을 할 수 있으니 되도록 영문 입력 상태에서 쓰시기를 바랍니다!!</p>
+      <div class="general">
+        <p>입력기가 한글 입력으로 되어있을 때 이상동작을 할 수 있으니 되도록 영문 입력 상태에서 쓰시기를 바랍니다!!</p>
+      </div>
+      <div class="3moa hidden">
+        <p>모아치기에 시험적용된 줄여넣기<br />
+          ㅂ(끝) + ㄴ(첫) = ㅂ니다<br />
+          ㅇ(첫) + ㅂ(끝) = 입니다<br />
+          ㅎ(첫) + ㅈ(첫) + ㄴ(끝) = 입니다
+        </p>
+      </div>
     </div>
   </div><!-- class="row" -->
 

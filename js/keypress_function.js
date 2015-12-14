@@ -106,18 +106,33 @@ $(document).ready(function(){
       return key_nodes[name] = node;
     });
     on_down = function(node) {
+      if (typeof(node) == 'undefined') {
+        return;
+      }
       return node.addClass("pressed");
     };
     on_up = function(node) {
+      if (typeof(node) == 'undefined') {
+        return;
+      }
       return node.removeClass("pressed");
     };
     on_shift_down = function(node) {
+      if (typeof(node) == 'undefined') {
+        return;
+      }
       return node.addClass("shift_pressed");
     };
     on_shift_up = function(node) {
+      if (typeof(node) == 'undefined') {
+        return;
+      }
       return node.removeClass("shift_pressed");
     };
     on_capslock_down = function(node) {
+      if (typeof(node) == 'undefined') {
+        return;
+      }
       if (node.hasClass("capslock_pressed")) {
         return node.removeClass("capslock_pressed");
       } else {
@@ -125,6 +140,9 @@ $(document).ready(function(){
       }
     };
     on_capslock_up = function(node) {
+      if (typeof(node) == 'undefined') {
+        return;
+      }
       //return node.removeClass("capslock_pressed");
       return;
     };
@@ -840,42 +858,59 @@ $(document).ready(function(){
       on_keydown: function() { ohi_Hangeul_Process(0x3F); return; },
       on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "ctrl",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "alt",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "cmd",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "space",
       on_keydown: function() { ohi_Hangeul_Process(0x20); return; },
       on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "up",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "down",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "left",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "right",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "print",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "scroll",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "pause",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "insert",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "home",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "pageup",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "delete",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "end",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "pagedown",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "num",
-      on_keydown: function() { return; }
+      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
+      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
     }, {    keys: "num_divide",
       on_keydown: function() { ohi_Hangeul_Process(0x2F); return; },
       on_keyup: function() { ohi_Hangeul_Process(0x00); return; }

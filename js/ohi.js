@@ -35,6 +35,8 @@ var KE_status = 'ko';// en, ko
 //  다시 앞자리로 옮겨준다 ohiQ[0] = ohiQ[1]
 const OHIQ_INIT = [0,0,0,0,0,0];
 var ohiQ = OHIQ_INIT;
+// 줄여넣기에서 앞선 ohiQ 의 값을 알기위해서 쓰인다
+var ohiQ_backup = OHIQ_INIT;
 // 옛한글을 조합할 때,
 // 낱자가 더해질 때는 앞선 preedit 의 낱자가 하나 적으니 -1
 // 낱자가 빠질 때는 앞선 preedit 의 낱자가 하나 많으니 1
@@ -71,7 +73,7 @@ var layout_list_info_ko = [
     position: "팔",
   },
   {name: '3-93-yet', full_name: '3-93 옛한글',
-    position: "팔",
+    position: "허리",
     link: 'http://asadal.pnu.kr/data/data_002_006.html'
   },
   {name: '3-2012', full_name: '3-2012',
@@ -81,7 +83,7 @@ var layout_list_info_ko = [
     link: 'http://pat.im/938'
   },
   {name: '3-2012-yet', full_name: '3-2012 옛한글',
-    position: "팔",
+    position: "허리",
     left_bracket_araea: true,
     extension_sign_keys: [1, '/', '9'], //  1:다른 기호 배열
     extension_yetgeul_keys: [1, '7', '8'], //  1:다른 기호 배열
@@ -105,7 +107,7 @@ var layout_list_info_ko = [
     link: 'http://pat.im/1090'
   },
   {name: '3-2015p-yet', full_name: '3-2015P 옛한글',
-    position: "팔",
+    position: "허리",
     right_ou_keys: ['/', '9'],
     left_bracket_araea: true,
     extension_sign_keys: [1, '/', '9'], //  1:다른 기호 배열
@@ -278,7 +280,9 @@ function ohi_html_Backspace () {
 }
 
 function ohi_Backspace () {
-  if(ohiQ[0] || ohiQ[1] || ohiQ[2] || ohiQ[3]) {
+  if (shoot_at_once && (ohiQ != OHIQ_INIT)) {
+    ohi_Insert(0, ohiQ = OHIQ_INIT);
+  } else if(ohiQ[0] || ohiQ[1] || ohiQ[2] || ohiQ[3]) {
     //alert("back 1");
     var last = 0;
     for(var index in ohiQ) {
@@ -1228,6 +1232,49 @@ function ohi_Hangeul_3Moa (keyValue, charCode) {
     //clearTimeout(ohi_timeout);
   //}
   //ohi_timeout = setTimeout("ohi_Insert(ohiQ, 0)", 100);
+  if (shoot_at_once && Object.keys(extension_sign_layout).length) {
+    // 줄여넣기를 다룬다
+    if (pressing_keys == 1) {
+      extension_sign_keys = [];
+      extension_sign_keys.push(charCode);
+      ohiQ_backup = ohiQ;
+      ohi_Insert(ohiQ, ohiQ=OHIQ_INIT);
+    } else if (pressing_keys > 1) {
+      extension_sign_keys.push(charCode);
+      extension_sign_keys.sort();
+      var string = '0x';
+      for (var i in extension_sign_keys) {
+        string += extension_sign_keys[i].toString(16).toUpperCase();
+      }
+      var shorting = extension_sign_layout[string];
+      if (typeof(shorting) != 'undefined') {
+        var cgg = is_cheot_gawit_ggeut(shorting[0]) & 0x07;
+        for (var i in shorting) {
+          if ((ohiQ_backup[0] && ohiQ_backup[2] && !ohiQ_backup[4]) &&
+              (cgg == 3) &&
+              (i == 0)
+              ) {
+            ohi_Backspace();
+            ohi_Backspace();
+            ohiQ = ohiQ_backup;
+            ohiQ[4] = shorting[i];
+            ohi_Insert(0, ohiQ);
+          } else if (ohiQ != OHIQ_INIT || ohiQ_backup != OHIQ_INIT) {
+            if (cgg != 3) {
+              ohi_Backspace();
+            }
+            ohi_Insert(0, shorting[i]);
+          } else {
+            ohi_Insert(0, shorting[i]);
+          }
+          ohiQ_backup = OHIQ_INIT;
+        }
+        ohiQ = OHIQ_INIT;
+        return;
+      }
+    }
+  }
+
   // right_ou_keys 가 있으면 오른쪽 ㅗㅜ
   if (right_ou_keys.length) {
     if (right_ou_keys.indexOf(keyValue) >= 0) {
@@ -1456,7 +1503,7 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
     //alert("1");
     //if (ohiQ[1] || ohiQ[2] || !ohi_Double_Jamo (0, ohiQ[0], charCode)) { /** ohiQ = ohiQ;**/ }
     //else { ohiQ = 0; }
-    if (ohiQ[1] || ohiQ[2]) {
+    if ((!yet_hangeul && ohiQ[1]) || ohiQ[2]) {
       /** ohiQ = ohiQ;**/
       ohi_Insert(ohiQ, ohiQ=[charCode,0,0,0,0,0]);
     } else {
@@ -1480,7 +1527,7 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
   //} else if (charCode >= 0x1161 && charCode <= 0x1175) { // Jung
   } else if (cheot_gawit_ggeut == 2) { // Jung
     //alert("2");
-    if (!ohiQ[3]) {
+    if (!ohiQ[3] || yet_hangeul) {
       //ohiQ[3] = ohi_Double_Jamo (1, ohiQ[2], charCode);
       combined_value = get_combination_value(ohiQ[2], charCode);
       if (combined_value) {
@@ -1499,7 +1546,7 @@ function ohi_Hangeul_3Shin (keyValue, charCode) {
   //} else if (charCode >= 0x11A8 && charCode <= 0x11C2) { // Jong
   } else if (cheot_gawit_ggeut == 3) { // Jong
     //alert("3");
-    if (!ohiQ[5]) {
+    if (!ohiQ[5] || yet_hangeul) {
       //ohiQ[5] = ohi_Double_Jamo (2, ohiQ[4], charCode);
       combined_value = get_combination_value(ohiQ[4], charCode);
       if (combined_value) {
@@ -1700,8 +1747,8 @@ function ohi_Hangeul_Process(keyCode) {
       pressing_keys--;
       return;
     } else {
-      ohi_Insert(ohiQ, 0);
-      ohiQ = OHIQ_INIT;
+      //ohi_Insert(ohiQ, 0);
+      //ohiQ = OHIQ_INIT;
       pressing_keys = 0;
       return;
     }
@@ -1736,7 +1783,7 @@ function ohi_Hangeul_Process(keyCode) {
         //ohi_Insert(0,keyCode);
       //}
     } else {
-      ohi_Insert(0,0);
+      ohi_Insert(ohiQ,ohiQ=OHIQ_INIT);
     }
     pressing_keys = 0;
     return;
@@ -2515,10 +2562,15 @@ function change_KO_type(type) {
     // 켠 뒤에 바꾼다
     $("#toggle_shoot_at_once").bootstrapToggle('enable');
     $('#toggle_shoot_at_once').prop('checked', true).change()
+    extension_sign_layout = get_table_shortening(KO_type);
+    $(".documentation div").removeClass('hidden');
+    $(".documentation .general").addClass('hidden');
   } else {
     // 바꾼 뒤에 끈다
     $('#toggle_shoot_at_once').prop('checked', false).change()
     $("#toggle_shoot_at_once").bootstrapToggle('disable');
+    $(".documentation div").removeClass('hidden');
+    $(".documentation .3moa").addClass('hidden');
   }
   $("#toggle_shoot_at_once").change(function(){
     //alert('toggle_shoot_at_once: ' + shoot_at_once);
@@ -2640,6 +2692,11 @@ function add_layout_list() {
       }));
     } else if (item.position == "팔") {
       $(".layout_select_ko [label='팔']").append($('<option>', {
+        value: item.name,
+        html: name
+      }));
+    } else if (item.position == "허리") {
+      $(".layout_select_ko [label='허리']").append($('<option>', {
         value: item.name,
         html: name
       }));
