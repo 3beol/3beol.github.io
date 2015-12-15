@@ -72,9 +72,11 @@ $(document).ready(function(){
       }
     }
     //alert(Object.keys(table_taja).length);
+    var image = '';
     for (var i = 1; i <= 10; i++) {
+      image = '/images/taja/finger_' + i + '_off.png';
       $(".hand div img#finger_" + i + "")
-        .attr('src', "{{ '/images/taja/finger_' + i + '_off.png' | prepend: site.baseurl }}");
+        .attr('src', "{{ '" + image + "' | prepend: site.baseurl }}");
     }
 
     if (Object.keys(table_taja).length) {
@@ -84,13 +86,15 @@ $(document).ready(function(){
       if (Array.isArray(key_id_list)) {
         for (var i in key_id_list) {
           $("#" + key_id_list[i] + "").addClass('topress');
+          image = '/images/taja/finger_' + finger_list[i].toString() + '_on.png';
           $(".hand div img#finger_" + finger_list[i] + "")
-              .attr('src', "{{ '/images/taja/finger_' + finger_list[i].toString() + '_on.png' | prepend: site.baseurl }}");
+              .attr('src', "{{ '" + image + "' | prepend: site.baseurl }}");
         }
       } else {
         $("#" + key_id_list + "").addClass('topress');
+        image = '/images/taja/finger_' + finger_list.toString() + '_on.png';
         $(".hand div img#finger_" + finger_list + "")
-            .attr('src', "{{ '/images/taja/finger_' + finger_list.toString() + '_on.png' | prepend: site.baseurl }}");
+            .attr('src', "{{ '" + image + "' | prepend: site.baseurl }}");
       }
       $('#jamo_panel').html(current_key);
     } else {
