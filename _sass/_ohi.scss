@@ -247,7 +247,15 @@ body {
 }
 
 .hand {
-  width:480px;
-  margin:0 auto;
   display: none;
+  margin: 0 auto;
+  text-align:center;
+
+  div {
+    display: inline-block;
+    vertical-align: text-bottom;
+    img {
+      max-width: 40px;
+    }
+  }
 }

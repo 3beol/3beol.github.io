@@ -12,34 +12,58 @@ $(document).ready(function(){
   var current_key = -1;
   // 글쇠 연습하기의 메뉴를 누르면 true 가 되어 동작하도록 만든다
   //var tadak_tadak = false;
+  var taja_Q = [];
 
-  var bind_keyboard, combo, listener, _i, _len, _ref;
+
+  var bind_keyboard;
+  var combo;
+  var listener;
+  var _i;
+  var _len;
+  var _ref;
   listener = new window.keypress.Listener();
-  //listener.should_force_event_defaults = true;
 
   random_key = function() {
     var keys = Object.keys(table_taja);
-    return keys[Math.floor(Math.random()*keys.length)];
+    return keys[Math.floor(Math.random() * keys.length)];
   }
 
-  taja_key_reset = function(change) {
-    //alert("taja_key_reset change:" + change);
+  reset_taja_key = function(change) {
+    //alert("reset_taja_key change:" + change);
+    change = typeof(change != 'undefined') ? change : false;
     if (tadak_tadak == false) {
       //alert("current_key:" + current_key);
-      $('#hand').css("display", "none");
-      if ((current_key !== -1) && Object.keys(table_taja).length) {
-        $("#" + table_taja[current_key][2] + "").removeClass('topress');
+      $('.hand').css("display", "none");
+      if (current_key != -1) {
+        if (Object.keys(table_taja).length) {
+          // 먼저 설정된 글쇠가 있으면 풀어준다
+          var key_id_list = table_taja[current_key][2];
+          if (Array.isArray(key_id_list)) {
+            for (var i in key_id_list) {
+              $("#" + key_id_list[i] + "").removeClass('topress');
+            }
+          } else {
+            $("#" + key_id_list + "").removeClass('topress');
+          }
+        }
         // 설정된 값을 지우고 초기화를 한다
         current_key = -1;
       }
       return;
     } else {
-      $('#hand').css("display", "block");
-      if (current_key === -1) {
+      $('.hand').css("display", "block");
+      if (current_key == -1) {
       } else {
         if (Object.keys(table_taja).length) {
           // 먼저 설정된 글쇠가 있으면 풀어준다
-          $("#" + table_taja[current_key][2] + "").removeClass('topress');
+          var key_id_list = table_taja[current_key][2];
+          if (Array.isArray(key_id_list)) {
+            for (var i in key_id_list) {
+              $("#" + key_id_list[i] + "").removeClass('topress');
+            }
+          } else {
+            $("#" + key_id_list + "").removeClass('topress');
+          }
         }
       }
       // 바뀌기 전의 글쇠에 표시된 것을 먼저 지우고 새로운 글판을 불러온다
@@ -48,14 +72,35 @@ $(document).ready(function(){
       }
     }
     //alert(Object.keys(table_taja).length);
+    for (var i = 1; i <= 10; i++) {
+      $(".hand div img#finger_" + i + "")
+        .attr('src', "{{ '/images/taja/finger_" + i + "_off.png' | prepend: site.baseurl }}");
+    }
+
     if (Object.keys(table_taja).length) {
       current_key = random_key();
-      $("#" + table_taja[current_key][2] + "").addClass('topress');
+      var key_id_list = table_taja[current_key][2];
+      var finger_list = table_taja[current_key][1];
+      if (Array.isArray(key_id_list)) {
+        for (var i in key_id_list) {
+          $("#" + key_id_list[i] + "").addClass('topress');
+          $(".hand div img#finger_" + finger_list[i] + "")
+              .attr('src', "{{ '/images/taja/finger_" +
+                            finger_list[i].toString() +
+                            "_on.png' | prepend: site.baseurl }}"
+                  );
+        }
+      } else {
+        $("#" + key_id_list + "").addClass('topress');
+        $(".hand div img#finger_" + finger_list + "")
+            .attr('src', "{{ '/images/taja/finger_" +
+                          finger_list.toString() +
+                          "_on.png' | prepend: site.baseurl }}"
+                );
+      }
       $('#jamo_panel').html(current_key);
-      $('#hand').attr('src', "{{ '/images/taja/hands_" + table_taja[current_key][1].toString() + ".png' | prepend: site.baseurl }}");
     } else {
       $('#jamo_panel').html('ⓘ');
-      $('#hand').attr('src', "{{ '/images/taja/hands.png' | prepend: site.baseurl }}");
     }
   }
 
@@ -63,15 +108,52 @@ $(document).ready(function(){
     if (tadak_tadak == false) {
       return;
     }
-
-    if ((key == table_taja[current_key][0]) || (key == table_taja[current_key][3])) {
-      taja_key_reset();
-    }
-    else {
-      $('#jamo_panel').css('background-color', 'black');
-      setTimeout(function() {
-        $('#jamo_panel').css('background-color', 'white');
-      }, 150);
+    var key_value_list = table_taja[current_key][0];
+    if (Array.isArray(key_value_list)) {
+      var equal = 0;
+      if (!taja_Q.length) {
+        taja_Q.push(key);
+      } else {
+        for (var i in taja_Q) {
+          if (taja_Q[i] == key) {
+            continue;
+          }
+          taja_Q.push(key);
+          taja_Q.sort();
+        }
+      }
+      // 들어온 글쇠와 설정된 글쇠의 값이 같은 갯수를 센다
+      for (var i in key_value_list) {
+        if (taja_Q[i] != key_value_list[i]) {
+          break;
+        }
+        equal++;
+      }
+      if (equal == key_value_list.length) {
+        reset_taja_key();
+      } else {
+        if (taja_Q.length == key_value_list.length) {
+          $('#jamo_panel').css('background-color', 'black');
+          setTimeout(function() {
+            $('#jamo_panel').css('background-color', 'white');
+          }, 150);
+        } else {
+          // taja_Q 를 초기화하지 않는다
+          return;
+        }
+      }
+      taja_Q = [];
+    } else {
+      if ((key == table_taja[current_key][0]) ||
+          (key == table_taja[current_key][3]) // 갈마들이 글쇠
+          ) {
+        reset_taja_key();
+      } else {
+        $('#jamo_panel').css('background-color', 'black');
+        setTimeout(function() {
+          $('#jamo_panel').css('background-color', 'white');
+        }, 150);
+      }
     }
   };
 
@@ -80,8 +162,12 @@ $(document).ready(function(){
   bind_keyboard = function() {
     var combos;
     var key_nodes;
-    var keyboard_msg_node, keys;
-    var on_down, on_shift_down, on_shift_up, on_up;
+    var keyboard_msg_node;
+    var keys;
+    var on_down;
+    var on_up;
+    var on_shift_down;
+    var on_shift_up;
     keyboard_msg_node = $('.keyboard .message');
     $('body').bind('keydown', function(e) {
       return keyboard_msg_node.text(
@@ -99,7 +185,8 @@ $(document).ready(function(){
     keys = $('.keyboard .key');
     key_nodes = {};
     $.each(keys, function(_, node) {
-      var id, name;
+      var id;
+      var name;
       node = $(node);
       id = node.attr("id");
       name = id.substr(4);
@@ -350,13 +437,15 @@ $(document).ready(function(){
         on_keyup: function() {on_up(key_nodes.h);match_key("H");},
       }, {keys: "j",
         on_keydown: function() {on_down(key_nodes.j);},
-        on_keyup: function() {on_up(key_nodes.j);match_key("j");},
+        on_keyup: function() {on_up(key_nodes.j);},
+        on_release: function() {match_key("j");},
       }, {keys: "J",
         on_keydown: function() {on_down(key_nodes.j);},
         on_keyup: function() {on_up(key_nodes.j);match_key("J");},
       }, {keys: "k",
         on_keydown: function() {on_down(key_nodes.k);},
-        on_keyup: function() {on_up(key_nodes.k);match_key("k");},
+        on_keyup: function() {on_up(key_nodes.k);},
+        on_release: function() {match_key("k");},
       }, {keys: "K",
         on_keydown: function() {on_down(key_nodes.k);},
         on_keyup: function() {on_up(key_nodes.k);match_key("K");},
@@ -551,9 +640,9 @@ $(document).ready(function(){
     return listener.register_many(combos);
   };
 
-///****************************************************///
-///**************      OHI 한글 입력기      *****************///
-///****************************************************///
+  ///****************************************************///
+  ///**************      OHI 한글 입력기      *****************///
+  ///****************************************************///
   demo_1 = {};
   //ohi_Hangeul_Process(key);
   demo_1.combos = [
@@ -963,13 +1052,15 @@ $(document).ready(function(){
   ];
 
   _ref = demo_1.combos;
-  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+  for (_i in _ref) {
     combo = _ref[_i];
-    // 글쇠가 눌렸을 때 반복해서 입력되는 것을 막는다
-    combo['prevent_repeat'] = true;
+    if (combo.keys != "backspace") {
+      // 글쇠가 눌렸을 때 반복해서 입력되는 것을 막는다
+      combo['prevent_repeat'] = true;
+    }
     //return true to allow the browser's default response
     //return false to cancel the default response
-    combo['prevent_default'] = false;
+    //combo['prevent_default'] = false;
   }
 
 
@@ -982,7 +1073,6 @@ $(document).ready(function(){
         mapping_layout_to_html();
         focus_tag_id = 'inputText';
         inputText_focus();
-        //listener.should_force_event_defaults = true;
         demo_1.registered_combos = listener.register_many(demo_1.combos);
         return;
       },
@@ -1002,7 +1092,6 @@ $(document).ready(function(){
         mapping_layout_to_html();
         focus_tag_id = 'searchText';
         inputText_focus();
-        //listener.should_force_event_defaults = true;
         demo_1.registered_combos = listener.register_many(demo_1.combos);
         return;
       },
@@ -1022,15 +1111,14 @@ $(document).ready(function(){
         focus_tag_id = 'jamo_panel';
         table_taja = get_taja_hangeul(KO_type);
         // false:글판이 바뀌지 않았다
-        taja_key_reset(false);
-        //listener.should_force_event_defaults = false;
+        reset_taja_key(false);
         return;
       },
       unwire: function() {
         //alert("demo_3 unwire");
         tadak_tadak = false;
         // false:글판이 바뀌지 않았다
-        taja_key_reset(false);
+        reset_taja_key(false);
         return;
       }
     },
@@ -1041,7 +1129,8 @@ $(document).ready(function(){
   };
 
   wire_demo = function(demo_node, wiring) {
-    var demo, demo_obj;
+    var demo;
+    var demo_obj;
     if (wiring == null) {
       wiring = true;
     }
@@ -1069,7 +1158,9 @@ $(document).ready(function(){
   };
 
   activate_demo = function(demo_name) {
-    var active_demo, demo, nav_node;
+    var active_demo;
+    var demo;
+    var nav_node;
     demo = $(".examples .demo[data-demo=" + demo_name + "]");
     if (!demo.length) {
       return false;
@@ -1091,7 +1182,9 @@ $(document).ready(function(){
   };
 
   activate_next_demo = function() {
-    var active_demo, next_demo, next_name;
+    var active_demo;
+    var next_demo;
+    var next_name;
     active_demo = get_active_demo();
     next_demo = active_demo.next();
     if (next_demo.length) {
@@ -1103,7 +1196,9 @@ $(document).ready(function(){
   };
 
   activate_prev_demo = function() {
-    var active_demo, next_demo, next_name;
+    var active_demo;
+    var next_demo;
+    var next_name;
     active_demo = get_active_demo();
     next_demo = active_demo.prev();
     if (next_demo.length) {
@@ -1115,11 +1210,13 @@ $(document).ready(function(){
   };
 
   bind_demos = function() {
+    // a.demo_link 를 누를 때 그에 맞는 것을 켠다
     $('body').delegate('a.demo_link', 'click', function() {
       var demo;
       demo = $(this).data("demo");
       return activate_demo(demo);
     });
+    // 글쇠를 누를 때마다 a.demo_link 를 차례로 돈다
     listener.register_combo({
       //keys: "`",
       keys: "esc",

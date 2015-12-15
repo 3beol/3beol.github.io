@@ -2628,7 +2628,7 @@ function change_KO_type(type) {
     }
 
     //true:글판이 바뀌었다. 글판 익히기 배열을 다시 불러온다.
-    taja_key_reset(true);
+    reset_taja_key(true);
   });
 }
 
