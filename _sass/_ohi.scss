@@ -225,24 +225,26 @@ body {
   border-radius: 2px;
 }
 
-
-.jamo_panel {
-  font-size: 3em;
-  width: 2em;
+.jamo_box {
   margin: 0.5em auto 0.1em;
   text-align: center;
-  white-space: nowrap;
-  .cheot{
-	color: green;
-  }
-  .gawit{
-	color: brown;
-  }
-  .gawit_right{
-	color: orange;
-  }
-  .ggeut{
-	color: red;
+  .jamo_panel {
+    display: inline-block;
+    font-size: 3em;
+    padding: 0 0.5em;
+    white-space: nowrap;
+    .cheot{
+  	color: green;
+    }
+    .gawit{
+  	color: brown;
+    }
+    .gawit_right{
+  	color: orange;
+    }
+    .ggeut{
+  	color: red;
+    }
   }
 }
 
