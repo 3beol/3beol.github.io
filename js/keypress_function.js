@@ -74,8 +74,7 @@ $(document).ready(function(){
     //alert(Object.keys(table_taja).length);
     for (var i = 1; i <= 10; i++) {
       $(".hand div img#finger_" + i + "")
-        .attr('src', "{{ '/images/taja/finger_' + i + '_off.png' | \
-                      prepend: site.baseurl }}");
+        .attr('src', "{{ '/images/taja/finger_' + i + '_off.png' | prepend: site.baseurl }}");
     }
 
     if (Object.keys(table_taja).length) {
@@ -86,18 +85,12 @@ $(document).ready(function(){
         for (var i in key_id_list) {
           $("#" + key_id_list[i] + "").addClass('topress');
           $(".hand div img#finger_" + finger_list[i] + "")
-              .attr('src', "{{ '/images/taja/finger_' + \
-                            finger_list[i].toString() + '_on.png' | \
-                            prepend: site.baseurl }}"
-                  );
+              .attr('src', "{{ '/images/taja/finger_' + finger_list[i].toString() + '_on.png' | prepend: site.baseurl }}");
         }
       } else {
         $("#" + key_id_list + "").addClass('topress');
         $(".hand div img#finger_" + finger_list + "")
-            .attr('src', "{{ '/images/taja/finger_' + \
-                          finger_list.toString() + '_on.png' | \
-                          prepend: site.baseurl }}"
-                );
+            .attr('src', "{{ '/images/taja/finger_' + finger_list.toString() + '_on.png' | prepend: site.baseurl }}");
       }
       $('#jamo_panel').html(current_key);
     } else {
