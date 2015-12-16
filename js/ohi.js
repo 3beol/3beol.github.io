@@ -77,7 +77,7 @@ var layout_list_info_ko = [
     link: 'http://asadal.pnu.kr/data/data_002_006.html'
   },
   {name: '3-2012', full_name: '3-2012',
-    position: "팔",
+    position: "머리",
     left_bracket_araea: true,
     extension_sign_keys: [0, 'v', '8'], // 0:같은 기호 배열
     link: 'http://pat.im/938'
@@ -99,7 +99,7 @@ var layout_list_info_ko = [
     //link: 'http://cafe.daum.net/3bulsik/JMKX/36'
   //},
   {name: '3-2015p', full_name: '3-2015P',
-    position: "머리",
+    position: "팔",
     right_ou_keys: ['/', '9'],
     left_bracket_araea: true,
     galmadeuli: true,
@@ -125,13 +125,13 @@ var layout_list_info_ko = [
     position: "팔",
     link: 'http://ahnmatae.org'
   },
-  {name: '3moa-2014', full_name: '모아치기 2014',
+  {name: '3moa-2014', full_name: '세모이 2014',
     position: "다리",
     right_ou_keys: ['p', '\''],
     galmadeuli: true,
     link: 'http://ssg.wo.tc/220239514856'
   },
-  {name: '3moa-2015', full_name: '세모이 (모아치기 2015)',
+  {name: '3moa-2015', full_name: '세모이',
     position: "머리",
     right_ou_keys: ['p', '\''],
     galmadeuli: true,
@@ -147,7 +147,7 @@ var layout_list_info_ko = [
     right_ou_keys: ['O', 'P'],
     galmadeuli: true
   },
-  {name: '3shin-2003', full_name: '신세벌식 2003 (박경남 수정)',
+  {name: '3shin-2003', full_name: '신세벌식 박경남 수정 (2003)',
     position: "팔",
     right_ou_keys: ['O', 'P'],
     left_bracket_araea: true,
@@ -906,30 +906,38 @@ function ohi_Hangeul_3 (keyValue, charCode) {
     //alert(extension_start);
     if (sign_index > -1) {// 기호 확장 글쇠다
       if ( (extension_start == 1) || (extension_start == 2) ) {
-        // 서로 같은 배열
-        // 확장으로 처음 들어오면 먼저 있던 것을 뿌린다
-        if (extension_steps < 1) {
-          ohi_Insert(ohiQ, ohiQ = OHIQ_INIT);
-        }
+        do {
+          // 서로 같은 배열
+          // 확장으로 처음 들어오면 먼저 있던 것을 뿌린다
+          if (extension_steps < 1) {
+            ohi_Insert(ohiQ, ohiQ = OHIQ_INIT);
+          }
 
-        // 처음 눌리거나 앞서와 같으면 +1 씩
-        if (extension_pressed_key && (extension_pressed_key != keyValue)) {
-          extension_steps += 2;
-        } else {
-          extension_steps += 1;
-        }
-        extension_pressed_key = keyValue;
+          // 처음 눌리거나 앞서와 같으면 +1 씩
+          if (extension_pressed_key && (extension_pressed_key != keyValue)) {
+            if (extension_steps > 1) {
+              // 아래의 return 을 건너뛰기 위해서 do {} while(); 을 쓴다
+              // 기호글쇠에 있는 기호늘 넣기 위해서 빠져나간다
+              break;
+            } else {
+              extension_steps += 2;
+            }
+          } else {
+            extension_steps += 1;
+          }
+          extension_pressed_key = keyValue;
 
-        if (extension_steps > 3) {
-          extension_steps = 0;
-          extension_pressed_key = 0;
-          ohi_Insert(0, 0)
-          mapping_layout_to_html(0);
-        } else {
-                     // html 에 기호 버열을 보여준다
-          mapping_layout_to_html(1);
-        }
-        return;
+          if (extension_steps > 3) {
+            extension_steps = 0;
+            extension_pressed_key = 0;
+            ohi_Insert(0, 0)
+            mapping_layout_to_html(0);
+          } else {
+                       // html 에 기호 버열을 보여준다
+            mapping_layout_to_html(1);
+          }
+          return;
+        } while (false);
       } else if ( (extension_start == 3) || (extension_start == 4) ) {
         // 각각 다른 배열
         // 확장으로 들어오면 먼저 있던 것을 뿌린다
@@ -2558,35 +2566,32 @@ function change_KO_type(type) {
   //alert("KO 끝");
 
   // layout_option 에 있는 것들의 상태를 다룬다
+    // 바꾼 뒤에 끈다
+  $('#toggle_shoot_at_once').prop('checked', false).change()
+  $("#toggle_shoot_at_once").bootstrapToggle('disable');
+  $('#toggle_yet_hangeul').prop('checked', false).change()
+  $("#toggle_yet_hangeul").bootstrapToggle('disable');
+  $(".documentation div").addClass('hidden');
   if (/3moa/.test(KO_type)) {
     // 켠 뒤에 바꾼다
     $("#toggle_shoot_at_once").bootstrapToggle('enable');
     $('#toggle_shoot_at_once').prop('checked', true).change()
     extension_sign_layout = get_table_shortening(KO_type);
-    $(".documentation div").removeClass('hidden');
-    $(".documentation .general").addClass('hidden');
+    $(".documentation div.3moa").removeClass('hidden');
+  } else if (/3shin-p/.test(KO_type)) {
+    // 켠 뒤에 바꾼다
+    $("#toggle_yet_hangeul").bootstrapToggle('enable');
+    $('#toggle_yet_hangeul').prop('checked', false).change()
+    $(".documentation div.3shin").removeClass('hidden');
   } else {
-    // 바꾼 뒤에 끈다
-    $('#toggle_shoot_at_once').prop('checked', false).change()
-    $("#toggle_shoot_at_once").bootstrapToggle('disable');
-    $(".documentation div").removeClass('hidden');
-    $(".documentation .3moa").addClass('hidden');
+    $(".documentation div.general").removeClass('hidden');
   }
+
   $("#toggle_shoot_at_once").change(function(){
     //alert('toggle_shoot_at_once: ' + shoot_at_once);
     shoot_at_once = $(this).is(":checked");
     ohi_Insert(ohiQ, 0);
   });
-
-  if (/3shin-p/.test(KO_type)) {
-    // 켠 뒤에 바꾼다
-    $("#toggle_yet_hangeul").bootstrapToggle('enable');
-    $('#toggle_yet_hangeul').prop('checked', false).change()
-  } else {
-    // 바꾼 뒤에 끈다
-    $('#toggle_yet_hangeul').prop('checked', false).change()
-    $("#toggle_yet_hangeul").bootstrapToggle('disable');
-  }
   $("#toggle_yet_hangeul").change(function(){
     //alert('toggle_yet_hangeul: ' + yet_hangeul);
     yet_hangeul = $(this).is(":checked");
