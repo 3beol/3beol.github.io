@@ -1354,4 +1354,42 @@ $(document).ready(function(){
 
 }).call(this);
 
+// 그림을 미리 불러온다
+// https://perishablepress.com/3-ways-preload-images-css-javascript-ajax/
+function preloader() {
+  var images = [];
+  function preload() {
+    for (var i in preload.arguments) {
+      images[i] = new Image()
+      images[i].src = preload.arguments[i]
+    }
+  }
+  preload(
+    "/images/taja/finger_1_on.png",
+    "/images/taja/finger_2_on.png",
+    "/images/taja/finger_3_on.png",
+    "/images/taja/finger_4_on.png",
+    "/images/taja/finger_5_on.png",
+    "/images/taja/finger_6_on.png",
+    "/images/taja/finger_7_on.png",
+    "/images/taja/finger_8_on.png",
+    "/images/taja/finger_9_on.png",
+    "/images/taja/finger_10_on.png"
+  );
+}
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof(window.onload) != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+addLoadEvent(preloader);
+
 });
