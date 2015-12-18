@@ -1049,6 +1049,7 @@ function ohi_Hangeul_3 (keyValue, charCode) {
           }
           if (yetgeulCode) {
             charCode = yetgeulCode;
+            cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
           }
           extension_steps = 0;
           extension_pressed_key = 0;
