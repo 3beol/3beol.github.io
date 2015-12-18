@@ -516,7 +516,7 @@ function get_table_combination(type, __yetgeul) {
     [0x11ce11c2,0x11b4], /* jongseong lieul-tikeut + hieuh  = lieul-thieuth */
   ];
 
-  var K3_3moa_2014 = [
+  var K3_3moa_semoe_2014 = [
     [0x1100110b,0x1101], /* choseong  kiyeok + ieung   = ssangkiyeok   */
     [0x11001112,0x110f], /* choseong  kiyeok + hieuh   = khieukh       */
     [0x1103110b,0x1104], /* choseong  tikeut + ieung   = ssangtikeut   */
@@ -584,7 +584,7 @@ function get_table_combination(type, __yetgeul) {
     [0x11bc11c2,0x11b5], /* jongseong ieung  + hieuh   = lieul-phieuph */
   ];
 
-  var K3_3moa_2015 = [
+  var K3_3moa_semoe_2015 = [
     [0x1100110b,0x1101], /* choseong  kiyeok + ieung   = ssangkiyeok   */
     [0x11001112,0x110f], /* choseong  kiyeok + hieuh   = khieukh       */
     [0x1103110b,0x1104], /* choseong  tikeut + ieung   = ssangtikeut   */
@@ -748,11 +748,11 @@ function get_table_combination(type, __yetgeul) {
     case /3moa-ahn/.test(type) :
       array_default = K3_3moa_ahn;
       break;
-    case /3moa-2014/.test(type) :
-      array_default = K3_3moa_2014;
+    case /3moa-semoe-2014/.test(type) :
+      array_default = K3_3moa_semoe_2014;
       break;
-    case /3moa-2015/.test(type) :
-      array_default = K3_3moa_2015;
+    case /3moa-semoe-2015/.test(type) :
+      array_default = K3_3moa_semoe_2015;
       break;
     case (__yetgeul && /3shin-p/.test(type)) :
       array_specific = K3_3shin_p_yet;

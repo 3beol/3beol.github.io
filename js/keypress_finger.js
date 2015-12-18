@@ -681,7 +681,7 @@ function get_taja_hangeul(type) {
     '<strong class="ggeut">ㅍ</strong>': ['f', 2, "key_f"],
   };
 
-  var K3_3moa_2015 = {
+  var K3_3moa_semoe_2015 = {
     // 배열의 안의 값이 배열일 때
     // 첫째 배열은 unicode 오름차순으로 넣고 나머지는 첫째에 맞추어서 넣는다
     '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
@@ -786,8 +786,8 @@ function get_taja_hangeul(type) {
       return K3_3_2015;
     case /3-2012/.test(KO_type) :
       return K3_3_2012;
-    case /3moa-2015/.test(KO_type) :
-      return K3_3moa_2015;
+    case /3moa-semoe-2015/.test(KO_type) :
+      return K3_3moa_semoe_2015;
     case /3moa/.test(KO_type) :
       return {};
     case /3sun/.test(KO_type) :

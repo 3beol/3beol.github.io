@@ -45,7 +45,7 @@ function get_table_galmadeuli(type) {
     [0x11c2, 0x11b2] /* jongseong hieuh (ㅎ):   jongseong rieul-pieup (ㄼ)  */
   ];
 
-  var galmadeuli_3moa_2014 = [
+  var galmadeuli_3moa_semoe_2014 = [
     [0x11a8, 0x11bf],  /* jongseong kiyeok (ㄱ) -> (ㅋ) */
     [0x11ab, 0x11ad],  /* jongseong nieun (ㄴ) -> <ㄶ> */
     [0x11ae, 0x11c0],  /* jongseong tikeut (ㄷ) -> (ㅌ) */
@@ -58,7 +58,7 @@ function get_table_galmadeuli(type) {
     [0x11c2, 0x11b6],  /* jongseong hieuh (ㅎ) -> (ㅀ) */
   ];
 
-  var galmadeuli_3moa_2015 = [
+  var galmadeuli_3moa_semoe_2015 = [
     [0x1165, 0x1163],     /*ㅓ*/     /* <ㅑ> */
     [0x1166, 0x1168],     /*ㅔ*/     /* <ㅖ>*/
     [0x1167, 0x1164],     /*ㅕ*/     /* <ㅒ> */
@@ -318,10 +318,10 @@ function get_table_galmadeuli(type) {
       return galmadeuli_3_2015_patal;
     case /3-2015$/.test(type) :
       return galmadeuli_3_2015;
-    case /3moa-2014/.test(type) :
-      return galmadeuli_3moa_2014;
-    case /3moa-2015/.test(type) :
-      return galmadeuli_3moa_2015;
+    case /3moa-semoe-2014/.test(type) :
+      return galmadeuli_3moa_semoe_2014;
+    case /3moa-semoe-2015/.test(type) :
+      return galmadeuli_3moa_semoe_2015;
     case /3shin-1995/.test(type) :
       return galmadeuli_3shin_1995;
     case /3shin-b/.test(type) :

@@ -1360,8 +1360,8 @@ function preloader() {
   var images = [];
   function preload() {
     for (var i in preload.arguments) {
-      images[i] = new Image()
-      images[i].src = preload.arguments[i]
+      images[i] = new Image();
+      images[i].src = preload.arguments[i];
     }
   }
   preload(

@@ -970,7 +970,7 @@ function get_table_hangeul(type) {
     0x007e,     /* 0x7E asciitilde:   tilde                          */
   ];
 
-  var K3_3moa_2014 = [
+  var K3_3moa_semoe_2014 = [
     0x0021,     /* 0x21 exclam:         exclamation mark             */
     0x0022,     /* 0x22 quotedbl:       quotatioin mark              */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -1067,7 +1067,7 @@ function get_table_hangeul(type) {
     0x007e,     /* 0x7E asciitilde:     tilde                        */
   ];
 
-  var K3_3moa_2015 = [
+  var K3_3moa_semoe_2015 = [
     0x0021,     /* 0x21 exclam:         exclamation mark             */
     0x0022,     /* 0x22 quotedbl:       quotatioin mark              */
     0x0023,     /* 0x23 numbersign:     number sign                  */
@@ -1862,10 +1862,10 @@ function get_table_hangeul(type) {
       return K3_3_93_yet;
     case /3moa-ahn/.test(type) :
       return K3_3moa_ahn;
-    case /3moa-2014/.test(type) :
-      return K3_3moa_2014;
-    case /3moa-2015/.test(type) :
-      return K3_3moa_2015;
+    case /3moa-semoe-2014/.test(type) :
+      return K3_3moa_semoe_2014;
+    case /3moa-semoe-2015/.test(type) :
+      return K3_3moa_semoe_2015;
     case /3sun-1990/.test(type) :
       return K3_3sun_1990;
     case /3sun-2014/.test(type) :
