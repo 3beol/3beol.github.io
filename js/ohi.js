@@ -1267,7 +1267,9 @@ function ohi_Hangeul_3Moa (keyValue, charCode) {
         if (pressing_keys - count > 1) {
           ohi_Backspace();
         }
-        ohi_Backspace();
+        if (ohiQ_backup != OHIQ_INIT) {
+          ohi_Backspace();
+        }
         ohi_Backspace();
         ohiQ = ohiQ_backup;
         ohiQ_backup = OHIQ_INIT;
