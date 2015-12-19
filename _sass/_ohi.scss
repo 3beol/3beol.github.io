@@ -3,37 +3,23 @@
  */
 
 body {
-  $navbar-fixed-height: 50px;
-
-  padding: $navbar-fixed-height 0 0; // 50px to make the container go all the way to the bottom of the topbar
+  // 50px to make the container go all the way to the bottom of the topbar
+  padding: 50px 0 0;
   background-image: url('/images/bg_noise.png');
-
-  div {
-    &.navbar-fixed-top {
-      height: $navbar-fixed-height;
-
-
-      #navbar {
-        background-color: #222;
-        ul {
-          padding-right: 5px;
-        }
-
-        @media (max-width: 830px) {
-          ul{
-            &.navbar-right {
-              li:last-child {
-                display: none;
-              }
-            }
+  nav.navbar {
+    @media (max-width: 830px) {
+      ul{
+        &.navbar-right {
+          li:last-child {
+            display: none;
           }
         }
       }
-      a {
-        font-weight: bold;
-        &.navbar-brand {
-          color: #fff;
-        }
+    }
+    a {
+      font-weight: bold;
+      &.navbar-brand {
+        color: #fff;
       }
     }
   }
@@ -152,11 +138,13 @@ body {
         margin-bottom: 1em;
       }
       textarea {
+        font-family: $text-font-family !important;
         resize: none;
         ime-mode: disabled !important;
       }
 
       input {
+        font-family: $text-font-family !important;
         ime-mode: disabled !important;
       }
       form {

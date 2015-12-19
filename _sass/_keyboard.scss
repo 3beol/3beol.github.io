@@ -3,36 +3,29 @@
  */
 
 .keyboard {
-  $very-small-font-size:  ($base-font-size * 0.625); // 10px // main.scss
-  //$grey-color-dark    // main.scss
-  $key_width: 40px;
-  $key_height: 40px;
+  /// 벤더 프리픽스를 산출하는 믹스인 헬퍼
+  /// @access public
+  /// @author HugoGiraudel
+  /// @param {String} $property - 프리픽스가 붙지 않은 CSS 속성
+  /// @param {*} $value - 가공되지 않은 CSS 값
+  /// @param {List} $prefixes - 산출할 프리픽스 리스트
+  @mixin prefix-property($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+      -#{$prefix}-#{$property}: $value;
+    }
 
-
-
-/// 벤더 프리픽스를 산출하는 믹스인 헬퍼
-/// @access public
-/// @author HugoGiraudel
-/// @param {String} $property - 프리픽스가 붙지 않은 CSS 속성
-/// @param {*} $value - 가공되지 않은 CSS 값
-/// @param {List} $prefixes - 산출할 프리픽스 리스트
-@mixin prefix-property($property, $value, $prefixes: ()) {
-  @each $prefix in $prefixes {
-    -#{$prefix}-#{$property}: $value;
+    #{$property}: $value;
   }
 
-  #{$property}: $value;
-}
-
-@mixin prefix-function($property, $value, $function, $prefixes: ()) {
-  @each $prefix in $prefixes {
-    $property: -#{$prefix}-#{$function}($value);
+  @mixin prefix-function($property, $value, $function, $prefixes: ()) {
+    @each $prefix in $prefixes {
+      $property: -#{$prefix}-#{$function}($value);
+    }
   }
-}
 
 
   clear: both;
-  font-size: $very-small-font-size;
+  font-size: 0.625em;
   margin: 1em 1em 0 1em;
   zoom: 1;
 
@@ -75,7 +68,7 @@
   .message {
     margin-top: 1em;
     margin-left: 3em;
-    width: 175px;
+    width: 11em;
     font-size: 1em;
     color: $grey-color-dark;
   }
@@ -88,8 +81,8 @@
     }
   }
   .key_row {
-    height: $key_height;
-    margin-bottom: 5px;
+    height: 4em;
+    margin-bottom: 0.5em;
     margin-left: auto;
     margin-right: auto;
     &:last-of-type {
@@ -100,9 +93,9 @@
   .key_filler {
     display: inline-block;
     position: relative;
-    margin-right: 5px;
-    width: $key_width;
-    height: $key_height;
+    margin-right: 0.5em;
+    width: 4em;
+    height: 4em;
     &:last-of-type {
       margin-right: 0;
     }
@@ -112,23 +105,22 @@
   }
   .key {
     cursor: pointer;
-    border: 1px solid #aaa;
+    border: 0.1em solid #aaa;
     padding-top: 0.25em;
     vertical-align: top;
-    font-size: 1.2em;
     color: #333;
     text-align: center;
     @include prefix-property (border-radius,
-                                            5px,
-                                            ('webkit', 'moz'));
+                    0.5em,
+                    ('webkit', 'moz'));
     @include prefix-property (box-shadow,
-                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2),
-                                            ('webkit', 'moz'));
+                    0.1em 0.1em 0.1em 0 rgba(0, 0, 0, 0.2),
+                    ('webkit', 'moz'));
     background: white;
     @include prefix-function (background-image,
-                                            (-90deg, white 0%, #e3e3e3 100%),
-                                            linear-gradient,
-                                            ('webkit', 'moz', 'o', 'ms'));
+                    (-90deg, white 0%, #e3e3e3 100%),
+                    linear-gradient,
+                    ('webkit', 'moz', 'o', 'ms'));
     &.cheot{
       background: PaleGreen;
     }
@@ -142,35 +134,34 @@
       background: PaleTurquoise;
     }
     &.topress{
-      border: 2px solid #000;
+      border: 0.2em solid #000;
       padding-top: 0.25em;
       vertical-align: top;
-      font-size: 1.2em;
       color: #333;
       text-align: center;
       @include prefix-property (border-radius,
-                                            5px,
-                                            ('webkit', 'moz'));
+                      0.5em,
+                      ('webkit', 'moz'));
       @include prefix-property (box-shadow,
-                                            1px 1px 1px 0 rgba(0, 0, 0, 0.2),
-                                            ('webkit', 'moz'));
+                      0.1em 0.1em 0.1em 0 rgba(0, 0, 0, 0.2),
+                      ('webkit', 'moz'));
       background: white;
       @include prefix-function (background-image,
-                                            (-90deg, white 0%, #e3e3e3 100%),
-                                            linear-gradient,
-                                            ('webkit', 'moz', 'o', 'ms'));
+                      (-90deg, white 0%, #e3e3e3 100%),
+                      linear-gradient,
+                      ('webkit', 'moz', 'o', 'ms'));
         }
     &.pressed,
     &.shift_pressed,
     &.capslock_pressed {
       @include prefix-property (box-shadow,
-                                            inset 1px 1px 1px 0 rgba(0, 0, 0, 0.2),
-                                            ('webkit', 'moz'));
+                      inset 0.1em 0.1em 0.1em 0 rgba(0, 0, 0, 0.2),
+                      ('webkit', 'moz'));
       background: #f3f3f3;
       @include prefix-function (background-image,
-                                            (90deg, #f3f3f3 0%, #dddddd 100%),
-                                            linear-gradient,
-                                            ('webkit', 'moz', 'o', 'ms'));
+                      (90deg, #f3f3f3 0%, #dddddd 100%),
+                      linear-gradient,
+                      ('webkit', 'moz', 'o', 'ms'));
       strong {
         color: #33bbff;
       }
@@ -197,26 +188,26 @@
       }
     }
     &.wide_1 {
-      width: 61px;
+      width: 6.1em;
     }
     &.wide_2 {
-      width: 64px;
+      width: 6.4em;
     }
     &.wide_3 {
-      width: 76px;
+      width: 7.6em;
     }
     &.wide_4 {
-      width: 100px;
+      width: 10em;
     }
     &.wide_5 {
-      width: 274px;
+      width: 27.4em;
     }
     &.wide_6 {
-      width: 85px;
+      width: 8.5em;
     }
     &.tall {
-      height: 85px;
-      line-height: 85px;
+      height: 8.5em;
+      line-height: 8.5em;
     }
     &:hover {
       background: #ccc;
@@ -230,6 +221,7 @@
     .up_key,
     .down_key {
       text-align: center;
+      font-size: 1.2em;
     }
     .en_key {
       float: left;
@@ -267,13 +259,13 @@
       font-size: 0.8em;
       background: black;
       color: white;
-      letter-spacing: -1px;
+      letter-spacing: -0.1em;
     }
     .tag09{
       font-size: 0.9em;
       background: black;
       color: white;
-      letter-spacing: -1px;
+      letter-spacing: -0.1em;
     }
     .tag10{
       font-size: 1em;
@@ -281,18 +273,18 @@
       color: white;
     }
     .triangle {
-      margin: 8px auto;
+      margin: 0.8em auto;
       &.up {
-        top: 2px;
+        top: 0.2em;
       }
       &.down {
-        top: 5px;
+        top: 0.5em;
       }
       &.left {
-        left: -2px;
+        left: -0.2em;
       }
       &.right {
-        left: 2px;
+        left: 0.2em;
       }
     }
     br + .triangle {
@@ -316,23 +308,23 @@
   }
   .triangle {
     position: relative;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     border-style: solid;
     &.up {
-      border-width: 0 8px 10px 8px;
+      border-width: 0 0.8em 1em 0.8em;
       border-color: transparent transparent #555555 transparent;
     }
     &.down {
-      border-width: 10px 8px 0 8px;
+      border-width: 1em 0.8em 0 0.8em;
       border-color: #555555 transparent transparent transparent;
     }
     &.right {
-      border-width: 8px 0 8px 10px;
+      border-width: 0.8em 0 0.8em 1em;
       border-color: transparent transparent transparent #555555;
     }
     &.left {
-      border-width: 8px 8px 10px 0;
+      border-width: 0.8em 0.8em 1em 0;
       border-color: transparent #555555 transparent transparent;
     }
   }
