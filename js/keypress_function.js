@@ -166,12 +166,11 @@ $(document).ready(function(){
     var on_up;
     var on_shift_down;
     var on_shift_up;
-    keyboard_msg_node = $('.keyboard .message');
+    keyboard_msg_node = $('.keyboard .keycode');
     $('body').bind('keydown', function(e) {
-      return keyboard_msg_node.text(
-        "" + e.keyCode +
-        " => " + e.key +
-        " : keyDown"
+      return keyboard_msg_node.html(
+        "keyDown: " + e.keyCode +
+        " => " + e.key
       );
     //}).bind('keyup', function(e) {
       //return keyboard_msg_node.text(
