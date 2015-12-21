@@ -14,14 +14,7 @@ $(document).ready(function(){
   //var tadak_tadak = false;
   var taja_Q = [];
 
-
-  var bind_keyboard;
-  var combo;
-  var listener;
-  var _i;
-  var _len;
-  var _ref;
-  listener = new window.keypress.Listener();
+  var listener = new window.keypress.Listener();
 
   random_key = function() {
     var keys = Object.keys(table_taja);
@@ -29,10 +22,8 @@ $(document).ready(function(){
   }
 
   reset_taja_key = function(change) {
-    //alert("reset_taja_key change:" + change);
     change = typeof(change != 'undefined') ? change : false;
     if (tadak_tadak == false) {
-      //alert("current_key:" + current_key);
       $('.hand').css("display", "none");
       if (current_key != -1) {
         if (Object.keys(table_taja).length) {
@@ -71,7 +62,7 @@ $(document).ready(function(){
         table_taja = get_taja_hangeul(KO_type);
       }
     }
-    //alert(Object.keys(table_taja).length);
+
     var image = '';
     for (var i = 1; i <= 10; i++) {
       image = '/images/taja/finger_' + i + '_off.png';
@@ -162,10 +153,6 @@ $(document).ready(function(){
     var key_nodes;
     var keyboard_msg_node;
     var keys;
-    var on_down;
-    var on_up;
-    var on_shift_down;
-    var on_shift_up;
     keyboard_msg_node = $('.keyboard .keycode');
     $('body').bind('keydown', function(e) {
       return keyboard_msg_node.html(
@@ -190,33 +177,23 @@ $(document).ready(function(){
       return key_nodes[name] = node;
     });
     on_down = function(node) {
-      if (typeof(node) == 'undefined') {
-        return;
-      }
+      if (typeof(node) == 'undefined') {return;}
       return node.addClass("pressed");
     };
     on_up = function(node) {
-      if (typeof(node) == 'undefined') {
-        return;
-      }
+      if (typeof(node) == 'undefined') {return;}
       return node.removeClass("pressed");
     };
     on_shift_down = function(node) {
-      if (typeof(node) == 'undefined') {
-        return;
-      }
+      if (typeof(node) == 'undefined') {return;}
       return node.addClass("shift_pressed");
     };
     on_shift_up = function(node) {
-      if (typeof(node) == 'undefined') {
-        return;
-      }
+      if (typeof(node) == 'undefined') {return;}
       return node.removeClass("shift_pressed");
     };
     on_capslock_down = function(node) {
-      if (typeof(node) == 'undefined') {
-        return;
-      }
+      if (typeof(node) == 'undefined') {return;}
       if (node.hasClass("capslock_pressed")) {
         return node.removeClass("capslock_pressed");
       } else {
@@ -224,991 +201,1514 @@ $(document).ready(function(){
       }
     };
     on_capslock_up = function(node) {
-      if (typeof(node) == 'undefined') {
-        return;
-      }
+      if (typeof(node) == 'undefined') {return;}
+      //return node.removeClass("capslock_pressed");
+      return;
+    };
+    on_ohi_Hangeul_Process = function(keyCode) {
+      if (tadak_tadak) {return;}
+      ohi_Hangeul_Process(keyCode);
       //return node.removeClass("capslock_pressed");
       return;
     };
     combos = [
+      {keys: "esc",
+        on_keydown: function() {
+          on_ohi_Hangeul_Process(0x1B);
+        },
+        on_keyup: function() {
+          on_ohi_Hangeul_Process(0x00);
+        }
+      },
       {keys: "`",
-        on_keydown: function() {on_down(key_nodes.accent);},
-        on_keyup: function() {on_up(key_nodes.accent);},
+        on_keydown: function() {
+          on_down(key_nodes.accent);
+          on_ohi_Hangeul_Process(0x60);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.accent);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("`");},
-      }, {keys: "~",
-        on_keydown: function() {on_shift_down(key_nodes.accent);},
-        on_keyup: function() {on_shift_up(key_nodes.accent);},
+      },
+      {keys: "~",
+        on_keydown: function() {
+          on_down(key_nodes.accent);
+          on_ohi_Hangeul_Process(0x7E);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.accent);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("~");},
-      }, {keys: "1",
-        on_keydown: function() {on_down(key_nodes.one);},
-        on_keyup: function() {on_up(key_nodes.one);},
+      },
+      {keys: "1",
+        on_keydown: function() {
+          on_down(key_nodes.one);
+          on_ohi_Hangeul_Process(0x31);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.one);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("1");},
-      }, {keys: "!",
-        on_keydown: function() {on_shift_down(key_nodes.one);},
-        on_keyup: function() {on_shift_up(key_nodes.one);},
+      },
+      {keys: "!",
+        on_keydown: function() {
+          on_down(key_nodes.one);
+          on_ohi_Hangeul_Process(0x21);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.one);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("!");},
-      }, {keys: "2",
-        on_keydown: function() {on_down(key_nodes.two);},
-        on_keyup: function() {on_up(key_nodes.two);},
+      },
+      {keys: "2",
+        on_keydown: function() {
+          on_down(key_nodes.two);
+          on_ohi_Hangeul_Process(0x32);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.two);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("2");},
-      }, {keys: "@",
-        on_keydown: function() {on_shift_down(key_nodes.two);},
-        on_keyup: function() {on_shift_up(key_nodes.two);},
+      },
+      {keys: "@",
+        on_keydown: function() {
+          on_down(key_nodes.two);
+          on_ohi_Hangeul_Process(0x40);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.two);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("@");},
-      }, {keys: "3",
-        on_keydown: function() {on_down(key_nodes.three);},
-        on_keyup: function() {on_up(key_nodes.three);},
+      },
+      {keys: "3",
+        on_keydown: function() {
+          on_down(key_nodes.three);
+          on_ohi_Hangeul_Process(0x33);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.three);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("3");},
-      }, {keys: "#",
-        on_keydown: function() {on_shift_down(key_nodes.three);},
-        on_keyup: function() {on_shift_up(key_nodes.three);},
+      },
+      {keys: "#",
+        on_keydown: function() {
+          on_down(key_nodes.three);
+          on_ohi_Hangeul_Process(0x23);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.three);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("#");},
-      }, {keys: "4",
-        on_keydown: function() {on_down(key_nodes.four);},
-        on_keyup: function() {on_up(key_nodes.four);},
+      },
+      {keys: "4",
+        on_keydown: function() {
+          on_down(key_nodes.four);
+          on_ohi_Hangeul_Process(0x34);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.four);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("4");},
-      }, {keys: "$",
-        on_keydown: function() {on_shift_down(key_nodes.four);},
-        on_keyup: function() {on_shift_up(key_nodes.four);},
+      },
+      {keys: "$",
+        on_keydown: function() {
+          on_down(key_nodes.four);
+          on_ohi_Hangeul_Process(0x24);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.four);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("$");},
-      }, {keys: "5",
-        on_keydown: function() {on_down(key_nodes.five);},
-        on_keyup: function() {on_up(key_nodes.five);},
+      },
+      {keys: "5",
+        on_keydown: function() {
+          on_down(key_nodes.five);
+          on_ohi_Hangeul_Process(0x35);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.five);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("5");},
-      }, {keys: "%",
-        on_keydown: function() {on_shift_down(key_nodes.five);},
-        on_keyup: function() {on_shift_up(key_nodes.five);},
+      },
+      {keys: "%",
+        on_keydown: function() {
+          on_down(key_nodes.five);
+          on_ohi_Hangeul_Process(0x25);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.five);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("%");},
-      }, {keys: "6",
-        on_keydown: function() {on_down(key_nodes.six);},
-        on_keyup: function() {on_up(key_nodes.six);},
+      },
+      {keys: "6",
+        on_keydown: function() {
+          on_down(key_nodes.six);
+          on_ohi_Hangeul_Process(0x36);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.six);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("6");},
-      }, {keys: "^",
-        on_keydown: function() {on_shift_down(key_nodes.six);},
-        on_keyup: function() {on_shift_up(key_nodes.six);},
+      },
+      {keys: "^",
+        on_keydown: function() {
+          on_down(key_nodes.six);
+          on_ohi_Hangeul_Process(0x5E);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.six);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("^");},
-      }, {keys: "7",
-        on_keydown: function() {on_down(key_nodes.seven);},
-        on_keyup: function() {on_up(key_nodes.seven);},
+      },
+      {keys: "7",
+        on_keydown: function() {
+          on_down(key_nodes.seven);
+          on_ohi_Hangeul_Process(0x37);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.seven);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("7");},
-      }, {keys: "&",
-        on_keydown: function() {on_shift_down(key_nodes.seven);},
-        on_keyup: function() {on_shift_up(key_nodes.seven);},
+      },
+      {keys: "&",
+        on_keydown: function() {
+          on_down(key_nodes.seven);
+          on_ohi_Hangeul_Process(0x26);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.seven);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("&");},
-      }, {keys: "8",
-        on_keydown: function() {on_down(key_nodes.eight);},
-        on_keyup: function() {on_up(key_nodes.eight);},
+      },
+      {keys: "8",
+        on_keydown: function() {
+          on_down(key_nodes.eight);
+          on_ohi_Hangeul_Process(0x38);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.eight);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("8");},
-      }, {keys: "*",
-        on_keydown: function() {on_shift_down(key_nodes.eight);},
-        on_keyup: function() {on_shift_up(key_nodes.eight);},
+      },
+      {keys: "*",
+        on_keydown: function() {
+          on_down(key_nodes.eight);
+          on_ohi_Hangeul_Process(0x2A);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.eight);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("*");},
-      }, {keys: "9",
-        on_keydown: function() {on_down(key_nodes.nine);},
-        on_keyup: function() {on_up(key_nodes.nine);},
+      },
+      {keys: "9",
+        on_keydown: function() {
+          on_down(key_nodes.nine);
+          on_ohi_Hangeul_Process(0x39);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.nine);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("9");},
-      }, {keys: "(",
-        on_keydown: function() {on_shift_down(key_nodes.nine);},
-        on_keyup: function() {on_shift_up(key_nodes.nine);},
+      },
+      {keys: "(",
+        on_keydown: function() {
+          on_down(key_nodes.nine);
+          on_ohi_Hangeul_Process(0x28);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.nine);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("(");},
-      }, {keys: "0",
-        on_keydown: function() {on_down(key_nodes.zero);},
-        on_keyup: function() {on_up(key_nodes.zero);},
+      },
+      {keys: "0",
+        on_keydown: function() {
+          on_down(key_nodes.zero);
+          on_ohi_Hangeul_Process(0x30);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.zero);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("0");},
-      }, {keys: ")",
-        on_keydown: function() {on_shift_down(key_nodes.zero);},
-        on_keyup: function() {on_shift_up(key_nodes.zero);},
+      },
+      {keys: ")",
+        on_keydown: function() {
+          on_down(key_nodes.zero);
+          on_ohi_Hangeul_Process(0x29);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.zero);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key(")");},
-      }, {keys: "-",
-        on_keydown: function() {on_down(key_nodes.hyphen);},
-        on_keyup: function() {on_up(key_nodes.hyphen);},
+      },
+      {keys: "-",
+        on_keydown: function() {
+          on_down(key_nodes.hyphen);
+          on_ohi_Hangeul_Process(0x2D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.hyphen);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("-");},
-      }, {keys: "_",
-        on_keydown: function() {on_shift_down(key_nodes.hyphen);},
-        on_keyup: function() {on_shift_up(key_nodes.hyphen);},
+      },
+      {keys: "_",
+        on_keydown: function() {
+          on_down(key_nodes.hyphen);
+          on_ohi_Hangeul_Process(0x5F);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.hyphen);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("_");},
-      }, {keys: "=",
-        on_keydown: function() {on_down(key_nodes.equals);},
-        on_keyup: function() {on_up(key_nodes.equals);},
+      },
+      {keys: "=",
+        on_keydown: function() {
+          on_down(key_nodes.equals);
+          on_ohi_Hangeul_Process(0x3D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.equals);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("=");},
-      }, {keys: "+",
-        on_keydown: function() {on_shift_down(key_nodes.equals);},
-        on_keyup: function() {on_shift_up(key_nodes.equals);},
+      },
+      {keys: "+",
+        on_keydown: function() {
+          on_down(key_nodes.equals);
+          on_ohi_Hangeul_Process(0x2B);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.equals);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("+");},
-      }, {keys: "backspace",
-        on_keydown: function() {on_down(key_nodes.backspace);},
-        on_keyup: function() {on_up(key_nodes.backspace);},
-      }, {keys: "tab",
-        on_keydown: function() {on_down(key_nodes.tab);},
-        on_keyup: function() {on_up(key_nodes.tab);},
-      }, {keys: "q",
-        on_keydown: function() {on_down(key_nodes.q);},
-        on_keyup: function() {on_up(key_nodes.q);},
+      },
+      {keys: "backspace",
+        on_keydown: function() {
+          on_down(key_nodes.backspace);
+          on_ohi_Hangeul_Process(0x08);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.backspace);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "tab",
+        on_keydown: function() {
+          on_down(key_nodes.tab);
+          on_ohi_Hangeul_Process(0x09);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.tab);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "q",
+        on_keydown: function() {
+          on_down(key_nodes.q);
+          on_ohi_Hangeul_Process(0x71);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.q);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("q");},
-      }, {keys: "Q",
-        on_keydown: function() {on_down(key_nodes.q);},
-        on_keyup: function() {on_up(key_nodes.q);},
+      },
+      {keys: "Q",
+        on_keydown: function() {
+          on_down(key_nodes.q);
+          on_ohi_Hangeul_Process(0x51);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.q);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("Q");},
-      }, {keys: "w",
-        on_keydown: function() {on_down(key_nodes.w);},
-        on_keyup: function() {on_up(key_nodes.w);},
+      },
+      {keys: "w",
+        on_keydown: function() {
+          on_down(key_nodes.w);
+          on_ohi_Hangeul_Process(0x77);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.w);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("w");},
-      }, {keys: "W",
-        on_keydown: function() {on_down(key_nodes.w);},
-        on_keyup: function() {on_up(key_nodes.w);},
+      },
+      {keys: "W",
+        on_keydown: function() {
+          on_down(key_nodes.w);
+          on_ohi_Hangeul_Process(0x57);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.w);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("W");},
-      }, {keys: "e",
-        on_keydown: function() {on_down(key_nodes.e);},
-        on_keyup: function() {on_up(key_nodes.e);},
+      },
+      {keys: "e",
+        on_keydown: function() {
+          on_down(key_nodes.e);
+          on_ohi_Hangeul_Process(0x65);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.e);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("e");},
-      }, {keys: "E",
-        on_keydown: function() {on_down(key_nodes.e);},
-        on_keyup: function() {on_up(key_nodes.e);},
+      },
+      {keys: "E",
+        on_keydown: function() {
+          on_down(key_nodes.e);
+          on_ohi_Hangeul_Process(0x45);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.e);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("E");},
-      }, {keys: "r",
-        on_keydown: function() {on_down(key_nodes.r);},
-        on_keyup: function() {on_up(key_nodes.r);},
+      },
+      {keys: "r",
+        on_keydown: function() {
+          on_down(key_nodes.r);
+          on_ohi_Hangeul_Process(0x72);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.r);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("r");},
-      }, {keys: "R",
-        on_keydown: function() {on_down(key_nodes.r);},
-        on_keyup: function() {on_up(key_nodes.r);},
+      },
+      {keys: "R",
+        on_keydown: function() {
+          on_down(key_nodes.r);
+          on_ohi_Hangeul_Process(0x52);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.r);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("R");},
-      }, {keys: "t",
-        on_keydown: function() {on_down(key_nodes.t);},
-        on_keyup: function() {on_up(key_nodes.t);},
+      },
+      {keys: "t",
+        on_keydown: function() {
+          on_down(key_nodes.t);
+          on_ohi_Hangeul_Process(0x74);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.t);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("t");},
-      }, {keys: "T",
-        on_keydown: function() {on_down(key_nodes.t);},
-        on_keyup: function() {on_up(key_nodes.t);},
+      },
+      {keys: "T",
+        on_keydown: function() {
+          on_down(key_nodes.t);
+          on_ohi_Hangeul_Process(0x54);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.t);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("T");},
-      }, {keys: "y",
-        on_keydown: function() {on_down(key_nodes.y);},
-        on_keyup: function() {on_up(key_nodes.y);},
+      },
+      {keys: "y",
+        on_keydown: function() {
+          on_down(key_nodes.y);
+          on_ohi_Hangeul_Process(0x79);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.y);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("y");},
-      }, {keys: "Y",
-        on_keydown: function() {on_down(key_nodes.y);},
-        on_keyup: function() {on_up(key_nodes.y);},
+      },
+      {keys: "Y",
+        on_keydown: function() {
+          on_down(key_nodes.y);
+          on_ohi_Hangeul_Process(0x59);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.y);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("Y");},
-      }, {keys: "u",
-        on_keydown: function() {on_down(key_nodes.u);},
-        on_keyup: function() {on_up(key_nodes.u);},
+      },
+      {keys: "u",
+        on_keydown: function() {
+          on_down(key_nodes.u);
+          on_ohi_Hangeul_Process(0x75);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.u);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("u");},
-      }, {keys: "U",
-        on_keydown: function() {on_down(key_nodes.u);},
-        on_keyup: function() {on_up(key_nodes.u);},
+      },
+      {keys: "U",
+        on_keydown: function() {
+          on_down(key_nodes.u);
+          on_ohi_Hangeul_Process(0x55);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.u);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("U");},
-      }, {keys: "i",
-        on_keydown: function() {on_down(key_nodes.i);},
-        on_keyup: function() {on_up(key_nodes.i);},
+      },
+      {keys: "i",
+        on_keydown: function() {
+          on_down(key_nodes.i);
+          on_ohi_Hangeul_Process(0x69);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.i);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("i");},
-      }, {keys: "I",
-        on_keydown: function() {on_down(key_nodes.i);},
-        on_keyup: function() {on_up(key_nodes.i);},
+      },
+      {keys: "I",
+        on_keydown: function() {
+          on_down(key_nodes.i);
+          on_ohi_Hangeul_Process(0x49);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.i);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("I");},
-      }, {keys: "o",
-        on_keydown: function() {on_down(key_nodes.o);},
-        on_keyup: function() {on_up(key_nodes.o);},
+      },
+      {keys: "o",
+        on_keydown: function() {
+          on_down(key_nodes.o);
+          on_ohi_Hangeul_Process(0x6F);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.o);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("o");},
-      }, {keys: "O",
-        on_keydown: function() {on_down(key_nodes.o);},
-        on_keyup: function() {on_up(key_nodes.o);},
+      },
+      {keys: "O",
+        on_keydown: function() {
+          on_down(key_nodes.o);
+          on_ohi_Hangeul_Process(0x4F);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.o);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("O");},
-      }, {keys: "p",
-        on_keydown: function() {on_down(key_nodes.p);},
-        on_keyup: function() {on_up(key_nodes.p);},
+      },
+      {keys: "p",
+        on_keydown: function() {
+          on_down(key_nodes.p);
+          on_ohi_Hangeul_Process(0x70);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.p);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("p");},
-      }, {keys: "P",
-        on_keydown: function() {on_down(key_nodes.p);},
-        on_keyup: function() {on_up(key_nodes.p);},
+      },
+      {keys: "P",
+        on_keydown: function() {
+          on_down(key_nodes.p);
+          on_ohi_Hangeul_Process(0x50);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.p);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("P");},
-      }, {keys: "[",
-        on_keydown: function() {on_down(key_nodes.left_bracket);},
-        on_keyup: function() {on_up(key_nodes.left_bracket);},
+      },
+      {keys: "[",
+        on_keydown: function() {
+          on_down(key_nodes.left_bracket);
+          on_ohi_Hangeul_Process(0x5B);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.left_bracket);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("[");},
-      }, {keys: "{",
-        on_keydown: function() {on_shift_down(key_nodes.left_bracket);},
-        on_keyup: function() {on_shift_up(key_nodes.left_bracket);},
+      },
+      {keys: "{",
+        on_keydown: function() {
+          on_down(key_nodes.left_bracket);
+          on_ohi_Hangeul_Process(0x7B);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.left_bracket);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("{");},
-      }, {keys: "]",
-        on_keydown: function() {on_down(key_nodes.right_bracket);},
-        on_keyup: function() {on_up(key_nodes.right_bracket);},
+      },
+      {keys: "]",
+        on_keydown: function() {
+          on_down(key_nodes.right_bracket);
+          on_ohi_Hangeul_Process(0x5D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.right_bracket);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("]");},
-      }, {keys: "}",
-        on_keydown: function() {on_shift_down(key_nodes.right_bracket);},
-        on_keyup: function() {on_shift_up(key_nodes.right_bracket);},
+      },
+      {keys: "}",
+        on_keydown: function() {
+          on_down(key_nodes.right_bracket);
+          on_ohi_Hangeul_Process(0x7D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.right_bracket);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("}");},
-      }, {keys: "\\",
-        on_keydown: function() {on_down(key_nodes.backslash);},
-        on_keyup: function() {on_up(key_nodes.backslash);},
+      },
+      {keys: "\\",
+        on_keydown: function() {
+          on_down(key_nodes.backslash);
+          on_ohi_Hangeul_Process(0x5C);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.backslash);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("\\");},
-      }, {keys: "|",
-        on_keydown: function() {on_shift_down(key_nodes.backslash);},
-        on_keyup: function() {on_shift_up(key_nodes.backslash);},
+      },
+      {keys: "|",
+        on_keydown: function() {
+          on_down(key_nodes.backslash);
+          on_ohi_Hangeul_Process(0x7C);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.backslash);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("|");},
-      }, {keys: "caps_lock",
-        on_keydown: function() {on_capslock_down(key_nodes.caps_lock);},
-        on_keyup: function() {on_capslock_up(key_nodes.caps_lock);},
-      }, {keys: "a",
-        on_keydown: function() {on_down(key_nodes.a);},
-        on_keyup: function() {on_up(key_nodes.a);},
+      },
+      {keys: "caps_lock",
+        on_keydown: function() {
+          on_capslock_down(key_nodes.caps_lock);
+          on_ohi_Hangeul_Process(0x21EA);
+        },
+        on_keyup: function() {
+          on_capslock_up(key_nodes.caps_lock);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "a",
+        on_keydown: function() {
+          on_down(key_nodes.a);
+          on_ohi_Hangeul_Process(0x61);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.a);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("a");},
-      }, {keys: "A",
-        on_keydown: function() {on_down(key_nodes.a);},
-        on_keyup: function() {on_up(key_nodes.a);},
+      },
+      {keys: "A",
+        on_keydown: function() {
+          on_down(key_nodes.a);
+          on_ohi_Hangeul_Process(0x41);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.a);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("A");},
-      }, {keys: "s",
-        on_keydown: function() {on_down(key_nodes.s);},
-        on_keyup: function() {on_up(key_nodes.s);},
+      },
+      {keys: "s",
+        on_keydown: function() {
+          on_down(key_nodes.s);
+          on_ohi_Hangeul_Process(0x73);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.s);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("s");},
-      }, {keys: "S",
-        on_keydown: function() {on_down(key_nodes.s);},
-        on_keyup: function() {on_up(key_nodes.s);},
+      },
+      {keys: "S",
+        on_keydown: function() {
+          on_down(key_nodes.s);
+          on_ohi_Hangeul_Process(0x53);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.s);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("S");},
-      }, {keys: "d",
-        on_keydown: function() {on_down(key_nodes.d);},
-        on_keyup: function() {on_up(key_nodes.d);},
+      },
+      {keys: "d",
+        on_keydown: function() {
+          on_down(key_nodes.d);
+          on_ohi_Hangeul_Process(0x64);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.d);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("d");},
-      }, {keys: "D",
-        on_keydown: function() {on_down(key_nodes.d);},
-        on_keyup: function() {on_up(key_nodes.d);},
+      },
+      {keys: "D",
+        on_keydown: function() {
+          on_down(key_nodes.d);
+          on_ohi_Hangeul_Process(0x44);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.d);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("D");},
-      }, {keys: "f",
-        on_keydown: function() {on_down(key_nodes.f);},
-        on_keyup: function() {on_up(key_nodes.f);},
+      },
+      {keys: "f",
+        on_keydown: function() {
+          on_down(key_nodes.f);
+          on_ohi_Hangeul_Process(0x66);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.f);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("f");},
-      }, {keys: "F",
-        on_keydown: function() {on_down(key_nodes.f);},
-        on_keyup: function() {on_up(key_nodes.f);},
+      },
+      {keys: "F",
+        on_keydown: function() {
+          on_down(key_nodes.f);
+          on_ohi_Hangeul_Process(0x46);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.f);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("F");},
-      }, {keys: "g",
-        on_keydown: function() {on_down(key_nodes.g);},
-        on_keyup: function() {on_up(key_nodes.g);},
+      },
+      {keys: "g",
+        on_keydown: function() {
+          on_down(key_nodes.g);
+          on_ohi_Hangeul_Process(0x67);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.g);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("g");},
-      }, {keys: "G",
-        on_keydown: function() {on_down(key_nodes.g);},
-        on_keyup: function() {on_up(key_nodes.g);},
+      },
+      {keys: "G",
+        on_keydown: function() {
+          on_down(key_nodes.g);
+          on_ohi_Hangeul_Process(0x47);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.g);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("G");},
-      }, {keys: "h",
-        on_keydown: function() {on_down(key_nodes.h);},
-        on_keyup: function() {on_up(key_nodes.h);},
+      },
+      {keys: "h",
+        on_keydown: function() {
+          on_down(key_nodes.h);
+          on_ohi_Hangeul_Process(0x68);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.h);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("h");},
-      }, {keys: "H",
-        on_keydown: function() {on_down(key_nodes.h);},
-        on_keyup: function() {on_up(key_nodes.h);},
+      },
+      {keys: "H",
+        on_keydown: function() {
+          on_down(key_nodes.h);
+          on_ohi_Hangeul_Process(0x48);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.h);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("H");},
-      }, {keys: "j",
-        on_keydown: function() {on_down(key_nodes.j);},
-        on_keyup: function() {on_up(key_nodes.j);},
+      },
+      {keys: "j",
+        on_keydown: function() {
+          on_down(key_nodes.j);
+          on_ohi_Hangeul_Process(0x6A);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.j);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("j");},
-      }, {keys: "J",
-        on_keydown: function() {on_down(key_nodes.j);},
-        on_keyup: function() {on_up(key_nodes.j);},
+      },
+      {keys: "J",
+        on_keydown: function() {
+          on_down(key_nodes.j);
+          on_ohi_Hangeul_Process(0x4A);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.j);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("J");},
-      }, {keys: "k",
-        on_keydown: function() {on_down(key_nodes.k);},
-        on_keyup: function() {on_up(key_nodes.k);},
+      },
+      {keys: "k",
+        on_keydown: function() {
+          on_down(key_nodes.k);
+          on_ohi_Hangeul_Process(0x6B);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.k);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("k");},
-      }, {keys: "K",
-        on_keydown: function() {on_down(key_nodes.k);},
-        on_keyup: function() {on_up(key_nodes.k);},
+      },
+      {keys: "K",
+        on_keydown: function() {
+          on_down(key_nodes.k);
+          on_ohi_Hangeul_Process(0x4B);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.k);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("K");},
-      }, {keys: "l",
-        on_keydown: function() {on_down(key_nodes.l);},
-        on_keyup: function() {on_up(key_nodes.l);},
+      },
+      {keys: "l",
+        on_keydown: function() {
+          on_down(key_nodes.l);
+          on_ohi_Hangeul_Process(0x6C);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.l);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("l");},
-      }, {keys: "L",
-        on_keydown: function() {on_down(key_nodes.l);},
-        on_keyup: function() {on_up(key_nodes.l);},
+      },
+      {keys: "L",
+        on_keydown: function() {
+          on_down(key_nodes.l);
+          on_ohi_Hangeul_Process(0x4C);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.l);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("L");},
-      }, {keys: ";",
-        on_keydown: function() {on_down(key_nodes.semicolon);},
-        on_keyup: function() {on_up(key_nodes.semicolon);},
+      },
+      {keys: ";",
+        on_keydown: function() {
+          on_down(key_nodes.semicolon);
+          on_ohi_Hangeul_Process(0x3B);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.semicolon);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key(";");},
-      }, {keys: ":",
-        on_keydown: function() {on_shift_down(key_nodes.semicolon);},
-        on_keyup: function() {on_shift_up(key_nodes.semicolon);},
+      },
+      {keys: ":",
+        on_keydown: function() {
+          on_down(key_nodes.semicolon);
+          on_ohi_Hangeul_Process(0x3A);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.semicolon);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key(":");},
-      }, {keys: "\'",
-        on_keydown: function() {on_down(key_nodes.apostrophe);},
-        on_keyup: function() {on_up(key_nodes.apostrophe);},
+      },
+      {keys: "\'",
+        on_keydown: function() {
+          on_down(key_nodes.apostrophe);
+          on_ohi_Hangeul_Process(0x27);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.apostrophe);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("\'");},
-      }, {keys: "\"",
-        on_keydown: function() {on_shift_down(key_nodes.apostrophe);},
-        on_keyup: function() {on_shift_up(key_nodes.apostrophe);},
+      },
+      {keys: "\"",
+        on_keydown: function() {
+          on_down(key_nodes.apostrophe);
+          on_ohi_Hangeul_Process(0x22);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.apostrophe);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("\"");},
-      }, {keys: "enter",
-        on_keydown: function() {on_down(key_nodes.enter);},
-        on_keyup: function() {on_up(key_nodes.enter);},
-      }, {keys: "shift",
-        on_keydown: function() {on_down(key_nodes.left_shift);on_down(key_nodes.right_shift);},
-        on_keyup: function() {on_up(key_nodes.left_shift);on_up(key_nodes.right_shift);}
-      }, {keys: "z",
-        on_keydown: function() {on_down(key_nodes.z);},
-        on_keyup: function() {on_up(key_nodes.z);},
+      },
+      {keys: "enter",
+        on_keydown: function() {
+          on_down(key_nodes.enter);
+          on_ohi_Hangeul_Process(0x0D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.enter);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "shift",
+        on_keydown: function() {
+          on_shift_down(key_nodes.left_shift);
+          on_shift_down(key_nodes.right_shift);
+          on_ohi_Hangeul_Process(0x0F);
+        },
+        on_keyup: function() {
+          on_shift_up(key_nodes.left_shift);
+          on_shift_up(key_nodes.right_shift);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "z",
+        on_keydown: function() {
+          on_down(key_nodes.z);
+          on_ohi_Hangeul_Process(0x7A);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.z);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("z");},
-      }, {keys: "Z",
-        on_keydown: function() {on_down(key_nodes.z);},
-        on_keyup: function() {on_up(key_nodes.z);},
+      },
+      {keys: "Z",
+        on_keydown: function() {
+          on_down(key_nodes.z);
+          on_ohi_Hangeul_Process(0x5A);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.z);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("Z");},
-      }, {keys: "x",
-        on_keydown: function() {on_down(key_nodes.x);},
-        on_keyup: function() {on_up(key_nodes.x);},
+      },
+      {keys: "x",
+        on_keydown: function() {
+          on_down(key_nodes.x);
+          on_ohi_Hangeul_Process(0x78);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.x);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("x");},
-      }, {keys: "X",
-        on_keydown: function() {on_down(key_nodes.x);},
-        on_keyup: function() {on_up(key_nodes.x);},
+      },
+      {keys: "X",
+        on_keydown: function() {
+          on_down(key_nodes.x);
+          on_ohi_Hangeul_Process(0x58);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.x);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("X");},
-      }, {keys: "c",
-        on_keydown: function() {on_down(key_nodes.c);},
-        on_keyup: function() {on_up(key_nodes.c);},
+      },
+      {keys: "c",
+        on_keydown: function() {
+          on_down(key_nodes.c);
+          on_ohi_Hangeul_Process(0x63);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.c);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("c");},
-      }, {keys: "C",
-        on_keydown: function() {on_down(key_nodes.c);},
-        on_keyup: function() {on_up(key_nodes.c);},
+      },
+      {keys: "C",
+        on_keydown: function() {
+          on_down(key_nodes.c);
+          on_ohi_Hangeul_Process(0x43);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.c);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("C");},
-      }, {keys: "v",
-        on_keydown: function() {on_down(key_nodes.v);},
-        on_keyup: function() {on_up(key_nodes.v);},
+      },
+      {keys: "v",
+        on_keydown: function() {
+          on_down(key_nodes.v);
+          on_ohi_Hangeul_Process(0x76);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.v);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("v");},
-      }, {keys: "V",
-        on_keydown: function() {on_down(key_nodes.v);},
-        on_keyup: function() {on_up(key_nodes.v);},
+      },
+      {keys: "V",
+        on_keydown: function() {
+          on_down(key_nodes.v);
+          on_ohi_Hangeul_Process(0x56);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.v);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("V");},
-      }, {keys: "b",
-        on_keydown: function() {on_down(key_nodes.b);},
-        on_keyup: function() {on_up(key_nodes.b);},
+      },
+      {keys: "b",
+        on_keydown: function() {
+          on_down(key_nodes.b);
+          on_ohi_Hangeul_Process(0x62);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.b);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("b");},
-      }, {keys: "B",
-        on_keydown: function() {on_down(key_nodes.b);},
-        on_keyup: function() {on_up(key_nodes.b);},
+      },
+      {keys: "B",
+        on_keydown: function() {
+          on_down(key_nodes.b);
+          on_ohi_Hangeul_Process(0x42);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.b);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("B");},
-      }, {keys: "n",
-        on_keydown: function() {on_down(key_nodes.n);},
-        on_keyup: function() {on_up(key_nodes.n);},
+      },
+      {keys: "n",
+        on_keydown: function() {
+          on_down(key_nodes.n);
+          on_ohi_Hangeul_Process(0x6E);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.n);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("n");},
-      }, {keys: "N",
-        on_keydown: function() {on_down(key_nodes.n);},
-        on_keyup: function() {on_up(key_nodes.n);},
+      },
+      {keys: "N",
+        on_keydown: function() {
+          on_down(key_nodes.n);
+          on_ohi_Hangeul_Process(0x4E);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.n);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("N");},
-      }, {keys: "m",
-        on_keydown: function() {on_down(key_nodes.m);},
-        on_keyup: function() {on_up(key_nodes.m);},
+      },
+      {keys: "m",
+        on_keydown: function() {
+          on_down(key_nodes.m);
+          on_ohi_Hangeul_Process(0x6D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.m);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("m");},
-      }, {keys: "M",
-        on_keydown: function() {on_down(key_nodes.m);},
-        on_keyup: function() {on_up(key_nodes.m);},
+      },
+      {keys: "M",
+        on_keydown: function() {
+          on_down(key_nodes.m);
+          on_ohi_Hangeul_Process(0x4D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.m);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("M");},
-      }, {keys: ",",
-        on_keydown: function() {on_down(key_nodes.comma);},
-        on_keyup: function() {on_up(key_nodes.comma);},
+      },
+      {keys: ",",
+        on_keydown: function() {
+          on_down(key_nodes.comma);
+          on_ohi_Hangeul_Process(0x2C);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.comma);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key(",");},
-      }, {keys: "<",
-        on_keydown: function() {on_shift_down(key_nodes.comma);},
-        on_keyup: function() {on_shift_up(key_nodes.comma);},
+      },
+      {keys: "<",
+        on_keydown: function() {
+          on_down(key_nodes.comma);
+          on_ohi_Hangeul_Process(0x3C);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.comma);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("<");},
-      }, {keys: ".",
-        on_keydown: function() {on_down(key_nodes.period);},
-        on_keyup: function() {on_up(key_nodes.period);},
+      },
+      {keys: ".",
+        on_keydown: function() {
+          on_down(key_nodes.period);
+          on_ohi_Hangeul_Process(0x2E);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.period);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key(".");},
-      }, {keys: ">",
-        on_keydown: function() {on_shift_down(key_nodes.period);},
-        on_keyup: function() {on_shift_up(key_nodes.period);},
+      },
+      {keys: ">",
+        on_keydown: function() {
+          on_down(key_nodes.period);
+          on_ohi_Hangeul_Process(0x3E);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.period);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key(">");},
-      }, {keys: "/",
-        on_keydown: function() {on_down(key_nodes.forwardslash);},
-        on_keyup: function() {on_up(key_nodes.forwardslash);},
+      },
+      {keys: "/",
+        on_keydown: function() {
+          on_down(key_nodes.forwardslash);
+          on_ohi_Hangeul_Process(0x2F);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.forwardslash);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("/");},
-      }, {keys: "?",
-        on_keydown: function() {on_shift_down(key_nodes.forwardslash);},
-        on_keyup: function() {on_shift_up(key_nodes.forwardslash);},
+      },
+      {keys: "?",
+        on_keydown: function() {
+          on_down(key_nodes.forwardslash);
+          on_ohi_Hangeul_Process(0x3F);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.forwardslash);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("?");},
-      }, {keys: "ctrl",
-        on_keydown: function() {on_down(key_nodes.left_ctrl);on_down(key_nodes.right_ctrl);},
-        on_keyup: function() {on_up(key_nodes.left_ctrl);on_up(key_nodes.right_ctrl);}
-      }, {keys: "alt",
-        on_keydown: function() {on_down(key_nodes.left_alt);on_down(key_nodes.right_alt);},
-        on_keyup: function() {on_up(key_nodes.left_alt);on_up(key_nodes.right_alt);}
-      }, {keys: "cmd",
-        on_keydown: function() {on_down(key_nodes.left_cmd);on_down(key_nodes.right_cmd);},
-        on_keyup: function() {on_up(key_nodes.left_cmd);on_up(key_nodes.right_cmd);}
-      }, {keys: "space",
-        on_keydown: function() {on_down(key_nodes.space);},
-        on_keyup: function() {on_up(key_nodes.space);}
-      }, {keys: "up",
-        on_keydown: function() {on_down(key_nodes.up);},
-        on_keyup: function() {on_up(key_nodes.up);}
-      }, {keys: "down",
-        on_keydown: function() {on_down(key_nodes.down);},
-        on_keyup: function() {on_up(key_nodes.down);}
-      }, {keys: "left",
-        on_keydown: function() {on_down(key_nodes.left);},
-        on_keyup: function() {on_up(key_nodes.left);}
-      }, {keys: "right",
-        on_keydown: function() {on_down(key_nodes.right);},
-        on_keyup: function() {on_up(key_nodes.right);}
-      }, {keys: "print",
-        on_keydown: function(e) {on_down(key_nodes.print);},
-        on_keyup: function() {on_up(key_nodes.print);}
-      }, {keys: "scroll",
-        on_keydown: function() {on_down(key_nodes.scroll_lock);},
-        on_keyup: function() {on_up(key_nodes.scroll_lock);}
-      }, {keys: "pause",
-        on_keydown: function() {on_down(key_nodes.pause_break);},
-        on_keyup: function() {on_up(key_nodes.pause_break);}
-      }, {keys: "insert",
-        on_keydown: function() {on_down(key_nodes.insert);},
-        on_keyup: function() {on_up(key_nodes.insert);}
-      }, {keys: "home",
-        on_keydown: function() {on_down(key_nodes.home);},
-        on_keyup: function() {on_up(key_nodes.home);}
-      }, {keys: "pageup",
-        on_keydown: function() {on_down(key_nodes.page_up);},
-        on_keyup: function() {on_up(key_nodes.page_up);}
-      }, {keys: "delete",
-        on_keydown: function() {on_down(key_nodes["delete"]);},
-        on_keyup: function() {on_up(key_nodes["delete"]);}
-      }, {keys: "end",
-        on_keydown: function() {on_down(key_nodes.end);},
-        on_keyup: function() {on_up(key_nodes.end);}
-      }, {keys: "pagedown",
-        on_keydown: function() {on_down(key_nodes.page_down);},
-        on_keyup: function() {on_up(key_nodes.page_down);}
-      }, {keys: "num",
-        on_keydown: function() {on_down(key_nodes.num_lock);},
-        on_keyup: function() {on_up(key_nodes.num_lock);}
-      }, {keys: "num_divide",
-        on_keydown: function() {on_down(key_nodes.divide);},
-        on_keyup: function() {on_up(key_nodes.divide);},
+      },
+      {keys: "ctrl",
+        on_keydown: function() {
+          on_down(key_nodes.left_ctrl);
+          on_down(key_nodes.right_ctrl);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.left_ctrl);
+          on_up(key_nodes.right_ctrl);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "alt",
+        on_keydown: function() {
+          on_down(key_nodes.left_alt);
+          on_down(key_nodes.right_alt);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.left_alt);
+          on_up(key_nodes.right_alt);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "cmd",
+        on_keydown: function() {
+          on_down(key_nodes.left_cmd);
+          on_down(key_nodes.right_cmd);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.left_cmd);
+          on_up(key_nodes.right_cmd);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "space",
+        on_keydown: function() {
+          on_down(key_nodes.space);
+          on_ohi_Hangeul_Process(0x20);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.space);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "up",
+        on_keydown: function() {
+          on_down(key_nodes.up);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.up);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "down",
+        on_keydown: function() {
+          on_down(key_nodes.down);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.down);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "left",
+        on_keydown: function() {
+          on_down(key_nodes.left);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.left);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "right",
+        on_keydown: function() {
+          on_down(key_nodes.right);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.right);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "print",
+        on_keydown: function(e) {
+          on_down(key_nodes.print);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.print);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "scroll",
+        on_keydown: function() {
+          on_down(key_nodes.scroll_lock);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.scroll_lock);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "pause",
+        on_keydown: function() {
+          on_down(key_nodes.pause_break);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.pause_break);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "insert",
+        on_keydown: function() {
+          on_down(key_nodes.insert);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.insert);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "home",
+        on_keydown: function() {
+          on_down(key_nodes.home);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.home);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "pageup",
+        on_keydown: function() {
+          on_down(key_nodes.page_up);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.page_up);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "delete",
+        on_keydown: function() {
+          on_down(key_nodes["delete"]);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes["delete"]);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "end",
+        on_keydown: function() {
+          on_down(key_nodes.end);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.end);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "pagedown",
+        on_keydown: function() {
+          on_down(key_nodes.page_down);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.page_down);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "num",
+        on_keydown: function() {
+          on_down(key_nodes.num_lock);
+          on_ohi_Hangeul_Process(0x01);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_lock);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "num_divide",
+        on_keydown: function() {
+          on_down(key_nodes.divide);
+          on_ohi_Hangeul_Process(0x2F);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.divide);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("/");},
-      }, {keys: "num_multiply",
-        on_keydown: function() {on_down(key_nodes.multiply);},
-        on_keyup: function() {on_up(key_nodes.multiply);},
+      },
+      {keys: "num_multiply",
+        on_keydown: function() {
+          on_down(key_nodes.multiply);
+          on_ohi_Hangeul_Process(0x2A);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.multiply);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("*");},
-      }, {keys: "num_subtract",
-        on_keydown: function() {on_down(key_nodes.subtract);},
-        on_keyup: function() {on_up(key_nodes.subtract);},
+      },
+      {keys: "num_subtract",
+        on_keydown: function() {
+          on_down(key_nodes.subtract);
+          on_ohi_Hangeul_Process(0x2D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.subtract);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("-");},
-      }, {keys: "num_add",
-        on_keydown: function() {on_down(key_nodes.add);},
-        on_keyup: function() {on_up(key_nodes.add);},
+      },
+      {keys: "num_add",
+        on_keydown: function() {
+          on_down(key_nodes.add);
+          on_ohi_Hangeul_Process(0x2B);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.add);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("+");},
-      }, {keys: "num_enter",
-        on_keydown: function() {on_down(key_nodes.num_enter);},
-        on_keyup: function() {on_up(key_nodes.num_enter);}
-      }, {keys: "num_decimal",
-        on_keydown: function() {on_down(key_nodes.num_decimal);},
-        on_keyup: function() {on_up(key_nodes.num_decimal);},
+      },
+      {keys: "num_enter",
+        on_keydown: function() {
+          on_down(key_nodes.num_enter);
+          on_ohi_Hangeul_Process(0x0D);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_enter);
+          on_ohi_Hangeul_Process(0x00);
+        },
+      },
+      {keys: "num_decimal",
+        on_keydown: function() {
+          on_down(key_nodes.num_decimal);
+          on_ohi_Hangeul_Process(0x2E);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_decimal);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key(".");},
-      }, {keys: "num_0",
-        on_keydown: function() {on_down(key_nodes.num_0);},
-        on_keyup: function() {on_up(key_nodes.num_0);},
+      },
+      {keys: "num_0",
+        on_keydown: function() {
+          on_down(key_nodes.num_0);
+          on_ohi_Hangeul_Process(0x30);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_0);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("0");},
-      }, {keys: "num_1",
-        on_keydown: function() {on_down(key_nodes.num_1);},
-        on_keyup: function() {on_up(key_nodes.num_1);},
+      },
+      {keys: "num_1",
+        on_keydown: function() {
+          on_down(key_nodes.num_1);
+          on_ohi_Hangeul_Process(0x31);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_1);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("1");},
-      }, {keys: "num_2",
-        on_keydown: function() {on_down(key_nodes.num_2);},
-        on_keyup: function() {on_up(key_nodes.num_2);},
+      },
+      {keys: "num_2",
+        on_keydown: function() {
+          on_down(key_nodes.num_2);
+          on_ohi_Hangeul_Process(0x32);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_2);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("2");},
-      }, {keys: "num_3",
-        on_keydown: function() {on_down(key_nodes.num_3);},
-        on_keyup: function() {on_up(key_nodes.num_3);},
+      },
+      {keys: "num_3",
+        on_keydown: function() {
+          on_down(key_nodes.num_3);
+          on_ohi_Hangeul_Process(0x33);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_3);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("3");},
-      }, {keys: "num_4",
-        on_keydown: function() {on_down(key_nodes.num_4);},
-        on_keyup: function() {on_up(key_nodes.num_4);},
+      },
+      {keys: "num_4",
+        on_keydown: function() {
+          on_down(key_nodes.num_4);
+          on_ohi_Hangeul_Process(0x34);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_4);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("4");},
-      }, {keys: "num_5",
-        on_keydown: function() {on_down(key_nodes.num_5);},
-        on_keyup: function() {on_up(key_nodes.num_5);},
+      },
+      {keys: "num_5",
+        on_keydown: function() {
+          on_down(key_nodes.num_5);
+          on_ohi_Hangeul_Process(0x35);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_5);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("5");},
-      }, {keys: "num_6",
-        on_keydown: function() {on_down(key_nodes.num_6);},
-        on_keyup: function() {on_up(key_nodes.num_6);},
+      },
+      {keys: "num_6",
+        on_keydown: function() {
+          on_down(key_nodes.num_6);
+          on_ohi_Hangeul_Process(0x36);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_6);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("6");},
-      }, {keys: "num_7",
-        on_keydown: function() {on_down(key_nodes.num_7);},
-        on_keyup: function() {on_up(key_nodes.num_7);},
+      },
+      {keys: "num_7",
+        on_keydown: function() {
+          on_down(key_nodes.num_7);
+          on_ohi_Hangeul_Process(0x37);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_7);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("7");},
-      }, {keys: "num_8",
-        on_keydown: function() {on_down(key_nodes.num_8);},
-        on_keyup: function() {on_up(key_nodes.num_8);},
+      },
+      {keys: "num_8",
+        on_keydown: function() {
+          on_down(key_nodes.num_8);
+          on_ohi_Hangeul_Process(0x38);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_8);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("8");},
-      }, {keys: "num_9",
-        on_keydown: function() {on_down(key_nodes.num_9);},
-        on_keyup: function() {on_up(key_nodes.num_9);},
+      },
+      {keys: "num_9",
+        on_keydown: function() {
+          on_down(key_nodes.num_9);
+          on_ohi_Hangeul_Process(0x39);
+        },
+        on_keyup: function() {
+          on_up(key_nodes.num_9);
+          on_ohi_Hangeul_Process(0x00);
+        },
         on_release: function() {match_key("9");},
       }
     ];
+
+    for (var i in combos) {
+      if (combos[i].keys != "backspace") {
+        // 글쇠가 눌렸을 때 반복해서 입력되는 것을 막는다
+        combos[i]['prevent_repeat'] = true;
+      }
+      // return true to cancel the default response
+      combos[i]['prevent_default'] = true;
+    }
     return listener.register_many(combos);
   };
-
-  ///****************************************************///
-  ///**************      OHI 한글 입력기      *****************///
-  ///****************************************************///
-  demo_1 = {};
-  //ohi_Hangeul_Process(key);
-  demo_1.combos = [
-    {   keys: "esc",
-      on_keydown: function() { ohi_Hangeul_Process(0x1B); return; },
-      on_keyup: function() {ohi_Hangeul_Process(0x00); return;}
-    }, {   keys: "`",
-      on_keydown: function() { ohi_Hangeul_Process(0x60); return; },
-      on_keyup: function() {ohi_Hangeul_Process(0x00); return;}
-    }, {   keys: "~",
-      on_keydown: function() { ohi_Hangeul_Process(0x7E); return; },
-      on_keyup: function() {ohi_Hangeul_Process(0x00); return;}
-    }, {   keys: "1",
-      on_keydown: function() { ohi_Hangeul_Process(0x31); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {   keys: "!",
-      on_keydown: function() { ohi_Hangeul_Process(0x21); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {   keys: "2",
-      on_keydown: function() { ohi_Hangeul_Process(0x32); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {   keys: "@",
-      on_keydown: function() { ohi_Hangeul_Process(0x40); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "3",
-      on_keydown: function() { ohi_Hangeul_Process(0x33); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "#",
-      on_keydown: function() { ohi_Hangeul_Process(0x23); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "4",
-      on_keydown: function() { ohi_Hangeul_Process(0x34); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "$",
-      on_keydown: function() { ohi_Hangeul_Process(0x24); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "5",
-      on_keydown: function() { ohi_Hangeul_Process(0x35); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "%",
-      on_keydown: function() { ohi_Hangeul_Process(0x25); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "6",
-      on_keydown: function() { ohi_Hangeul_Process(0x36); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "^",
-      on_keydown: function() { ohi_Hangeul_Process(0x5E); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "7",
-      on_keydown: function() { ohi_Hangeul_Process(0x37); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "&",
-      on_keydown: function() { ohi_Hangeul_Process(0x26); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "8",
-      on_keydown: function() { ohi_Hangeul_Process(0x38); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "*",
-      on_keydown: function() { ohi_Hangeul_Process(0x2A); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "9",
-      on_keydown: function() { ohi_Hangeul_Process(0x39); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "(",
-      on_keydown: function() { ohi_Hangeul_Process(0x28); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "0",
-      on_keydown: function() { ohi_Hangeul_Process(0x30); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: ")",
-      on_keydown: function() { ohi_Hangeul_Process(0x29); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "-",
-      on_keydown: function() { ohi_Hangeul_Process(0x2D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "_",
-      on_keydown: function() { ohi_Hangeul_Process(0x5F); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "=",
-      on_keydown: function() { ohi_Hangeul_Process(0x3D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "+",
-      on_keydown: function() { ohi_Hangeul_Process(0x2B); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "backspace",
-      on_keydown: function() { ohi_Hangeul_Process(0x08); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "tab",
-      on_keydown: function() { ohi_Hangeul_Process(0x09); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "q",
-      on_keydown: function() { ohi_Hangeul_Process(0x71); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "Q",
-      on_keydown: function() { ohi_Hangeul_Process(0x51); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "w",
-      on_keydown: function() { ohi_Hangeul_Process(0x77); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "W",
-      on_keydown: function() { ohi_Hangeul_Process(0x57); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "e",
-      on_keydown: function() { ohi_Hangeul_Process(0x65); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "E",
-      on_keydown: function() { ohi_Hangeul_Process(0x45); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "r",
-      on_keydown: function() { ohi_Hangeul_Process(0x72); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "R",
-      on_keydown: function() { ohi_Hangeul_Process(0x52); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "t",
-      on_keydown: function() { ohi_Hangeul_Process(0x74); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "T",
-      on_keydown: function() { ohi_Hangeul_Process(0x54); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "y",
-      on_keydown: function() { ohi_Hangeul_Process(0x79); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "Y",
-      on_keydown: function() { ohi_Hangeul_Process(0x59); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "u",
-      on_keydown: function() { ohi_Hangeul_Process(0x75); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "U",
-      on_keydown: function() { ohi_Hangeul_Process(0x55); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "i",
-      on_keydown: function() { ohi_Hangeul_Process(0x69); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "I",
-      on_keydown: function() { ohi_Hangeul_Process(0x49); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "o",
-      on_keydown: function() { ohi_Hangeul_Process(0x6F); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "O",
-      on_keydown: function() { ohi_Hangeul_Process(0x4F); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "p",
-      on_keydown: function() { ohi_Hangeul_Process(0x70); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "P",
-      on_keydown: function() { ohi_Hangeul_Process(0x50); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "[",
-      on_keydown: function() { ohi_Hangeul_Process(0x5B); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "{",
-      on_keydown: function() { ohi_Hangeul_Process(0x7B); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "]",
-      on_keydown: function() { ohi_Hangeul_Process(0x5D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "}",
-      on_keydown: function() { ohi_Hangeul_Process(0x7D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "\\",
-      on_keydown: function() { ohi_Hangeul_Process(0x5C); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "|",
-      on_keydown: function() { ohi_Hangeul_Process(0x7C); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "caps_lock",
-      on_keydown: function() { ohi_Hangeul_Process(0x21EA); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "a",
-      on_keydown: function() { ohi_Hangeul_Process(0x61); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "A",
-      on_keydown: function() { ohi_Hangeul_Process(0x41); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "s",
-      on_keydown: function() { ohi_Hangeul_Process(0x73); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "S",
-      on_keydown: function() { ohi_Hangeul_Process(0x53); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "d",
-      on_keydown: function() { ohi_Hangeul_Process(0x64); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "D",
-      on_keydown: function() { ohi_Hangeul_Process(0x44); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "f",
-      on_keydown: function() { ohi_Hangeul_Process(0x66); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "F",
-      on_keydown: function() { ohi_Hangeul_Process(0x46); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "g",
-      on_keydown: function() { ohi_Hangeul_Process(0x67); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "G",
-      on_keydown: function() { ohi_Hangeul_Process(0x47); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "h",
-      on_keydown: function() { ohi_Hangeul_Process(0x68); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "H",
-      on_keydown: function() { ohi_Hangeul_Process(0x48); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "j",
-      on_keydown: function() { ohi_Hangeul_Process(0x6A); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "J",
-      on_keydown: function() { ohi_Hangeul_Process(0x4A); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "k",
-      on_keydown: function() { ohi_Hangeul_Process(0x6B); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "K",
-      on_keydown: function() { ohi_Hangeul_Process(0x4B); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "l",
-      on_keydown: function() { ohi_Hangeul_Process(0x6C); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "L",
-      on_keydown: function() { ohi_Hangeul_Process(0x4C); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: ";",
-      on_keydown: function() { ohi_Hangeul_Process(0x3B); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: ":",
-      on_keydown: function() { ohi_Hangeul_Process(0x3A); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "\'",
-      on_keydown: function() { ohi_Hangeul_Process(0x27); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "\"",
-      on_keydown: function() { ohi_Hangeul_Process(0x22); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "enter",
-      on_keydown: function() { ohi_Hangeul_Process(0x0D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "shift",
-      on_keydown: function() { ohi_Hangeul_Process(0x0F); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "z",
-      on_keydown: function() { ohi_Hangeul_Process(0x7A); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "Z",
-      on_keydown: function() { ohi_Hangeul_Process(0x5A); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "x",
-      on_keydown: function() { ohi_Hangeul_Process(0x78); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "X",
-      on_keydown: function() { ohi_Hangeul_Process(0x58); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "c",
-      on_keydown: function() { ohi_Hangeul_Process(0x63); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "C",
-      on_keydown: function() { ohi_Hangeul_Process(0x43); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "v",
-      on_keydown: function() { ohi_Hangeul_Process(0x76); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "V",
-      on_keydown: function() { ohi_Hangeul_Process(0x56); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "b",
-      on_keydown: function() { ohi_Hangeul_Process(0x62); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "B",
-      on_keydown: function() { ohi_Hangeul_Process(0x42); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "n",
-      on_keydown: function() { ohi_Hangeul_Process(0x6E); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "N",
-      on_keydown: function() { ohi_Hangeul_Process(0x4E); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "m",
-      on_keydown: function() { ohi_Hangeul_Process(0x6D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "M",
-      on_keydown: function() { ohi_Hangeul_Process(0x4D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: ",",
-      on_keydown: function() { ohi_Hangeul_Process(0x2C); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "<",
-      on_keydown: function() { ohi_Hangeul_Process(0x3C); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: ".",
-      on_keydown: function() { ohi_Hangeul_Process(0x2E); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: ">",
-      on_keydown: function() { ohi_Hangeul_Process(0x3E); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "/",
-      on_keydown: function() { ohi_Hangeul_Process(0x2F); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "?",
-      on_keydown: function() { ohi_Hangeul_Process(0x3F); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "ctrl",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "alt",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "cmd",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "space",
-      on_keydown: function() { ohi_Hangeul_Process(0x20); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "up",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "down",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "left",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "right",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "print",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "scroll",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "pause",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "insert",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "home",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "pageup",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "delete",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "end",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "pagedown",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num",
-      on_keydown: function() { ohi_Hangeul_Process(0x01); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_divide",
-      on_keydown: function() { ohi_Hangeul_Process(0x2F); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_multiply",
-      on_keydown: function() { ohi_Hangeul_Process(0x2A); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_subtract",
-      on_keydown: function() { ohi_Hangeul_Process(0x2D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_add",
-      on_keydown: function() { ohi_Hangeul_Process(0x2B); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_enter",
-      on_keydown: function() { ohi_Hangeul_Process(0x0D); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_decimal",
-      on_keydown: function() { ohi_Hangeul_Process(0x2E); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_0",
-      on_keydown: function() { ohi_Hangeul_Process(0x30); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_1",
-      on_keydown: function() { ohi_Hangeul_Process(0x31); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_2",
-      on_keydown: function() { ohi_Hangeul_Process(0x32); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_3",
-      on_keydown: function() { ohi_Hangeul_Process(0x33); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_4",
-      on_keydown: function() { ohi_Hangeul_Process(0x34); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_5",
-      on_keydown: function() { ohi_Hangeul_Process(0x35); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_6",
-      on_keydown: function() { ohi_Hangeul_Process(0x36); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_7",
-      on_keydown: function() { ohi_Hangeul_Process(0x37); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_8",
-      on_keydown: function() { ohi_Hangeul_Process(0x38); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }, {    keys: "num_9",
-      on_keydown: function() { ohi_Hangeul_Process(0x39); return; },
-      on_keyup: function() { ohi_Hangeul_Process(0x00); return; }
-    }
-  ];
-
-  _ref = demo_1.combos;
-  for (_i in _ref) {
-    combo = _ref[_i];
-    if (combo.keys != "backspace") {
-      // 글쇠가 눌렸을 때 반복해서 입력되는 것을 막는다
-      combo['prevent_repeat'] = true;
-    }
-    //return true to allow the browser's default response
-    //return false to cancel the default response
-    //combo['prevent_default'] = false;
-  }
-
 
   demos = {
     demo_1: {
       wire: function() {
-        //alert("demo_1 wire");
         // 자리 익히기에서 풀었던 click 을 다시 묶어준다
         tadak_tadak = false;
         mapping_layout_to_html();
         focus_tag_id = 'inputText';
         inputText_focus();
-        demo_1.registered_combos = listener.register_many(demo_1.combos);
         return;
       },
       unwire: function() {
-        //alert("demo_1 unwire");
-        if (typeof(demo_1.registered_combos) !== 'undefined') {
-          listener.unregister_many(demo_1.registered_combos);
-        }
         return;
       }
     },
     demo_2: {
       wire: function() {
-        //alert("demo_2 wire");
         // 자리 익히기에서 풀었던 click 을 다시 묶어준다
         tadak_tadak = false;
         mapping_layout_to_html();
         focus_tag_id = 'searchText';
         inputText_focus();
-        demo_1.registered_combos = listener.register_many(demo_1.combos);
         return;
       },
       unwire: function() {
-        if (typeof(demo_1.registered_combos) !== 'undefined') {
-          listener.unregister_many(demo_1.registered_combos);
-        }
         return;
       }
     },
     demo_3: {
       wire: function() {
-        //alert("demo_3 wire");
         // 자리 익히기에서는 html 글쇠의 click 을 푼다
         tadak_tadak = true;
         mapping_layout_to_html();
@@ -1219,7 +1719,6 @@ $(document).ready(function(){
         return;
       },
       unwire: function() {
-        //alert("demo_3 unwire");
         tadak_tadak = false;
         // false:글판이 바뀌지 않았다
         reset_taja_key(false);
