@@ -10,6 +10,7 @@ layout: default
           <li><a class="demo_link active" data-demo="demo_1">한글 쓰기</a></li>
           <li><a class="demo_link" data-demo="demo_2">한글 찾기</a></li>
           <li><a class="demo_link" data-demo="demo_3">글쇠 익히기</a></li>
+          <li><a class="demo_link" data-demo="demo_4">타자 연습</a></li>
         </ul>
     </div><!-- class="overview" -->
   </div><!-- class="row" -->
@@ -58,6 +59,36 @@ layout: default
         <div class="demo" data-demo="demo_3">
           <div class="jamo_box">
             <div class="jamo_panel" id="jamo_panel"></div>
+          </div>
+        </div>
+        <div class="demo" data-demo="demo_4">
+          <div class="typing_box">
+          	<div class="info_panel">
+          		<div class="info_line">
+                <div class="info_name">타자속도</div>
+          			<div class="info_data"><span id="typing_speed">0</span> 타</div>
+          		</div>
+          		<div class="info_line">
+                <div class="info_name">정확도</div>
+          			<div class="info_data"><span id="typing_accuracy">0</span> %</div>
+          		</div>
+              <div class="info_line">
+                <div class="show_type btn-group" data-toggle="buttons">
+                  <label class="btn btn-default">
+                    <input type="radio" name="show_type" value="word"/> 낱말
+                  </label>
+                  <label class="btn btn-default">
+                    <input type="radio" name="show_type" value="sentence" /> 문장
+                  </label>
+                </div>
+              </div>
+          	</div>
+          	<div class="text_panel">
+              <div id="example_show">&nbsp</div>
+          		<div>
+          			<input id="input_show" class="form-control" type="text" autocomplete="off">
+          		</div>
+          	</div>
           </div>
         </div>
       </div><!-- class="example_window" -->

@@ -1682,19 +1682,19 @@ function ohi_Hangeul_Process(keyCode) {
     // 글쇠가 떼어질 때 0x00 을 넘겨받는다.
     if (shoot_at_once == false) {
       pressing_keys = 0;
-      return;
+      return false;
     } else if (pressing_keys > 1) {
       pressing_keys--;
-      return;
+      return false;
     } else {
       //ohi_Insert(ohiQ, 0);
       //ohiQ = OHIQ_INIT;
       pressing_keys = 0;
-      return;
+      return false;
     }
   } else if (keyCode < 0x21 || keyCode > 0x7E) {
     if(keyCode == 0x0F) { // shift
-      return;
+      return false;
     }
     if (extension_steps > 0) {
       if (keyCode != 0x08) {// Backspace
@@ -1718,7 +1718,7 @@ function ohi_Hangeul_Process(keyCode) {
       ohi_Insert(ohiQ,ohiQ=OHIQ_INIT);
     }
     pressing_keys = 0;
-    return;
+    return false;
   } else if (ohiQ == OHIQ_INIT) {
     pressing_keys = 0;
   }
@@ -1727,7 +1727,7 @@ function ohi_Hangeul_Process(keyCode) {
 
   if(KE_status == 'en') {
     ohi_Roman(keyCode);
-    return;
+    return true;
   }
 
   var charCode = hangeul_layout[keyCode - 0x21];
@@ -1759,7 +1759,7 @@ function ohi_Hangeul_Process(keyCode) {
   $('.keyboard .charcode').html("\t0x" + charCode.toString(16) +
                                 " => " + String.fromCharCode(charCode));
 
-  return;
+  return true;
 }
 
 function inputText_focus() {

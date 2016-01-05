@@ -207,7 +207,19 @@ $(document).ready(function(){
     };
     on_ohi_Hangeul_Process = function(keyCode) {
       if (tadak_tadak) {return;}
-      ohi_Hangeul_Process(keyCode);
+      if (ohi_Hangeul_Process(keyCode)) {
+        cur_time = new Date().getTime();
+        if (last_time) {
+          diff_time = cur_time - last_time;//subtutitue event.timeStamp;
+        }
+        last_time = cur_time;
+        total_time += diff_time;
+      }
+
+      if (keyCode == 0x0D) {  // enter
+        displayResult();
+        resetShow();
+      }
       //return node.removeClass("capslock_pressed");
       return;
     };
@@ -1362,46 +1374,46 @@ $(document).ready(function(){
           on_ohi_Hangeul_Process(0x00);
         },
       },
-      {keys: "down",
-        on_keydown: function() {
-          on_down(key_nodes.down);
-          on_ohi_Hangeul_Process(0x01);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.down);
-          on_ohi_Hangeul_Process(0x00);
-        },
-      },
-      {keys: "left",
-        on_keydown: function() {
-          on_down(key_nodes.left);
-          on_ohi_Hangeul_Process(0x01);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.left);
-          on_ohi_Hangeul_Process(0x00);
-        },
-      },
-      {keys: "right",
-        on_keydown: function() {
-          on_down(key_nodes.right);
-          on_ohi_Hangeul_Process(0x01);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.right);
-          on_ohi_Hangeul_Process(0x00);
-        },
-      },
-      {keys: "print",
-        on_keydown: function(e) {
-          on_down(key_nodes.print);
-          on_ohi_Hangeul_Process(0x01);
-        },
-        on_keyup: function() {
-          on_up(key_nodes.print);
-          on_ohi_Hangeul_Process(0x00);
-        },
-      },
+      //{keys: "down",
+        //on_keydown: function() {
+          //on_down(key_nodes.down);
+          //on_ohi_Hangeul_Process(0x01);
+        //},
+        //on_keyup: function() {
+          //on_up(key_nodes.down);
+          //on_ohi_Hangeul_Process(0x00);
+        //},
+      //},
+      //{keys: "left",
+        //on_keydown: function() {
+          //on_down(key_nodes.left);
+          //on_ohi_Hangeul_Process(0x01);
+        //},
+        //on_keyup: function() {
+          //on_up(key_nodes.left);
+          //on_ohi_Hangeul_Process(0x00);
+        //},
+      //},
+      //{keys: "right",
+        //on_keydown: function() {
+          //on_down(key_nodes.right);
+          //on_ohi_Hangeul_Process(0x01);
+        //},
+        //on_keyup: function() {
+          //on_up(key_nodes.right);
+          //on_ohi_Hangeul_Process(0x00);
+        //},
+      //},
+      //{keys: "print",
+        //on_keydown: function(e) {
+          //on_down(key_nodes.print);
+          //on_ohi_Hangeul_Process(0x01);
+        //},
+        //on_keyup: function() {
+          //on_up(key_nodes.print);
+          //on_ohi_Hangeul_Process(0x00);
+        //},
+      //},
       {keys: "scroll",
         on_keydown: function() {
           on_down(key_nodes.scroll_lock);
@@ -1722,6 +1734,22 @@ $(document).ready(function(){
         tadak_tadak = false;
         // false:글판이 바뀌지 않았다
         reset_taja_key(false);
+        return;
+      }
+    },
+    demo_4: {
+      wire: function() {
+        // 자리 익히기에서 풀었던 click 을 다시 묶어준다
+        tadak_tadak = false;
+        mapping_layout_to_html();
+        focus_tag_id = 'input_show';
+        inputText_focus();
+        resetButton();
+        getResponse().done(resetShow);
+        return;
+      },
+      unwire: function() {
+        csv = [];
         return;
       }
     },

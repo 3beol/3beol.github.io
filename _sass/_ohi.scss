@@ -236,6 +236,34 @@ body {
   }
 }
 
+.typing_box {
+  height: 6.25em;
+  vertical-align: middle;
+  .info_panel {
+    float: right;
+    width: 8.125em;
+    margin-left: 0.6em;
+    .info_line {
+      display: inline-block;
+      width: 100%;
+      .info_name {
+        float: left;
+      }
+      .info_data {
+        float: right;
+      }
+    }
+  }
+  .text_panel {
+    padding: 1em 0.5em;
+    text-align: center;
+    overflow: hidden;
+    #example_show {
+      margin-bottom: 1.4em;
+    }
+  }
+}
+
 .hand {
   display: none;
   margin: 0 auto;
