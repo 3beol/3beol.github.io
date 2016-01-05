@@ -66,7 +66,7 @@ function processData(allText) {
 
   for (var i=1; i<allTextLines.length; i++) {
     var data = allTextLines[i];
-    if (data != '') {
+    if (data) {
       var tarr = [];
       tarr[headers] = data;
       lines.push(tarr);
