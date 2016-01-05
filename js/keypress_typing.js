@@ -77,35 +77,35 @@ function processData(allText) {
 }
 
 function getResponse() {
-  // create a deferred object
-  var r = $.Deferred();
-
+  var done =false;
   var the_url = "";
   if (show_type == "word") {
     the_url = "/한국어+학습용+어휘+목록.csv";
   } else {
     the_url = "/한국어+학습용+문장+목록.csv";
   }
+
   $.ajax({
+    async: false,
     url: the_url,
     type: "GET",
     dataType: "text",
     success: function (data) {
       //var html = jQuery('<div>').html(result);
       processData(data);
+      done = true;
       //alert("success");
     },
     error: function(xhr, ajaxOptions, thrownError) {
       alert("Status: " + xhr.status + "     Error: " + thrownError);
+      done = true;
     }
   });
 
-  setTimeout(function () {
-    // and call `resolve` on the deferred object, once you're done
-    r.resolve();
-  }, 50);
-  // return the deferred object
-  return r;
+  //A loop to check done if ajax call is done.
+  while (!done) {
+    setTimeout(function(){ }, 25); // take a sleep.
+  }
 }
 
 function resetButton() {
@@ -136,7 +136,8 @@ function resetShow() {
     if (show_type != value) {
       show_type = value;
       csv = [];
-      getResponse().done(resetShow);
+      getResponse();
+      resetShow();
     }
   });
 }

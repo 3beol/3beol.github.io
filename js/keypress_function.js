@@ -1745,7 +1745,8 @@ $(document).ready(function(){
         focus_tag_id = 'input_show';
         inputText_focus();
         resetButton();
-        getResponse().done(resetShow);
+        getResponse();
+        resetShow();
         return;
       },
       unwire: function() {
