@@ -80,8 +80,10 @@ function getResponse() {
   var done =false;
   var the_url = "";
   if (show_type == "word") {
+    // http://www.korean.go.kr/front/etcData/etcDataView.do?mn_id=46&etc_seq=71
     the_url = "/한국어+학습용+어휘+목록.csv";
   } else {
+    // https://ko.wikiquote.org/wiki/한국_속담
     the_url = "/한국어+학습용+문장+목록.csv";
   }
 

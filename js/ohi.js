@@ -70,14 +70,14 @@ var layout_list_info_ko = [
     left_bracket_araea: true
   },
   {name: '3-91', full_name: '3-91 (공병우 최종)',
-    position: "팔",
+    position: "머리",
   },
   {name: '3-93-yet', full_name: '3-93 옛한글',
     position: "허리",
     link: 'http://asadal.pnu.kr/data/data_002_006.html'
   },
   {name: '3-2012', full_name: '3-2012',
-    position: "머리",
+    position: "팔",
     left_bracket_araea: true,
     extension_sign_keys: [0, 'v', '8'], // 0:같은 기호 배열
     link: 'http://pat.im/938'
