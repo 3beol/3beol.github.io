@@ -713,7 +713,7 @@ function get_table_combination(type, __yetgeul) {
     [0x11BC11BC,0x11EE], /* jongseong ieung + ieung = ssangyesieung */
     [0x11BC11BF,0x11EF], /* jongseong ieung + ieung = ssangyesieung */
     [0x11BC11C1,0x11F0], /* jongseong ieung + pieup = yesieung */
-    [0x11BC11C2,0xD7F6]/* jongseong ieung + ieung = ssangyesieung */
+    [0x11BC11C2,0xD7F6], /* jongseong ieung + ieung = ssangyesieung */
     [0x11C211C1,0x11F9], /* jongseong hieuh + pieup = yeolinhieuh */
     [0x11C711C1,0x11C8], /* jongseong nieun-sieus + pieup = nieun-yeolinsieus */
     [0x11DD11C1,0x11DF], /* jongseong mieum-sieus + pieup = mieum-yeolinsieus */

@@ -22,7 +22,7 @@ function get_table_galmadeuli(type) {
     [0x11c2, 0x11b2], /* jongseong hieuh (ㅎ):   jongseong rieul-pieup (ㄼ)  */
   ];
 
-  var galmadeuli_3_2015_patal = [
+  var galmadeuli_3_2015p = [
     [0x1161, 0x11c1], /* jungseong a (ㅏ):       jongseong phieuph (ㅍ)        */
     [0x1162, 0x1164], /* jungseong ae (ㅐ):       jungseong yae (ㅒ)        */
     [0x1165, 0x11be], /* jungseong eo (ㅓ):      jongseong chieuch (ㅊ)      */
@@ -30,18 +30,35 @@ function get_table_galmadeuli(type) {
     [0x1167, 0x11bd], /* jungseong yeo (ㅕ):     jongseong cieuc (ㅈ)        */
     [0x1169, 0x11bf], /* jungseong o (ㅗ):       jongseong khiyeok (ㅋ)        */
     [0x1175, 0x11c2], /* jungseong i (ㅣ):       jongseong hieuh (ㅎ)       */
-    //
-    [0x11ab, 0x11ad],  /* jongseong nieun (ㄴ) -> <ㄶ> */
-    [0x11af, 0x11b0],  /* jongseong rieul (ㄹ) -> <ㄺ> */
-    [0x11b7, 0x11b1],  /* jongseong mieum  (ㅁ) -> <ㄻ>   */
-    [0x11ba, 0x11b6],  /* jongseong sios (ㅅ) -> <ㅀ> */
-    [0x11bc, 0x11b9],  /* jongseong ieung (ㅇ) -> <ㅄ> */
+    // 거듭 눌러 넣기
+    [0x11ab, 0x11ad], /* jongseong nieun (ㄴ) -> <ㄶ> */
+    [0x11af, 0x11b0], /* jongseong rieul (ㄹ) -> <ㄺ> */
+    [0x11b7, 0x11b1], /* jongseong mieum  (ㅁ) -> <ㄻ>   */
+    [0x11ba, 0x11b6], /* jongseong sios (ㅅ) -> <ㅀ> */
+    [0x11bc, 0x11b9], /* jongseong ieung (ㅇ) -> <ㅄ> */
     //
     [0x11bd, 0x11ac], /* jongseong cieuc (ㅈ):   jongseong nieun-cieuc (ㄵ)  */
     [0x11be, 0x11b3], /* jongseong chieuch (ㅊ): jongseong rieul-sios (ㄽ)  */
     [0x11bf, 0x11aa], /* jongseong khiyeok (ㅋ):   jongseong kiyeok-sios (ㄳ)  */
     [0x11c0, 0x11b4], /* jongseong thikeuth (ㅌ):   jongseong rieul-thieuth (ㄾ)  */
-    [0x11c1, 0x11b5],  /* jongseong phieuph (ㅍ):   jongseong rieul-phieuph (ㄿ)  */
+    [0x11c1, 0x11b5], /* jongseong phieuph (ㅍ):   jongseong rieul-phieuph (ㄿ)  */
+    [0x11c2, 0x11b2] /* jongseong hieuh (ㅎ):   jongseong rieul-pieup (ㄼ)  */
+  ];
+
+  var galmadeuli_3_p3 = [
+    [0x1161, 0x11c1], /* jungseong a (ㅏ):       jongseong phieuph (ㅍ)        */
+    [0x1162, 0x1164], /* jungseong ae (ㅐ):       jungseong yae (ㅒ)        */
+    [0x1165, 0x11be], /* jungseong eo (ㅓ):      jongseong chieuch (ㅊ)      */
+    [0x1166, 0x11ae], /* jungseong e (ㅔ):       jongseong tikeut (ㄷ)        */
+    [0x1167, 0x11c0], /* jungseong yeo (ㅕ):     jongseong thikeuth (ㅌ)       */
+    [0x1169, 0x11bd], /* jungseong o (ㅗ):       jongseong cieuc (ㅈ)        */
+    [0x1175, 0x11c2], /* jungseong i (ㅣ):       jongseong hieuh (ㅎ)       */
+    //
+    [0x11ae, 0x11aa], /* jongseong tikeut (ㄷ):   jongseong kiyeok-sios (ㄳ)  */
+    [0x11bd, 0x11ac], /* jongseong cieuc (ㅈ):   jongseong nieun-cieuc (ㄵ)  */
+    [0x11be, 0x11b3], /* jongseong chieuch (ㅊ): jongseong rieul-sios (ㄽ)  */
+    [0x11c0, 0x11b4], /* jongseong thikeuth (ㅌ):   jongseong rieul-thieuth (ㄾ)  */
+    [0x11c1, 0x11b5], /* jongseong phieuph (ㅍ):   jongseong rieul-phieuph (ㄿ)  */
     [0x11c2, 0x11b2] /* jongseong hieuh (ㅎ):   jongseong rieul-pieup (ㄼ)  */
   ];
 
@@ -314,8 +331,10 @@ function get_table_galmadeuli(type) {
 
   // array
   switch (true) {
+    case /3-p3/.test(type) :
+      return galmadeuli_3_p3;
     case /3-2015p$/.test(type) :
-      return galmadeuli_3_2015_patal;
+      return galmadeuli_3_2015p;
     case /3-2015$/.test(type) :
       return galmadeuli_3_2015;
     case /3moa-semoe-2014/.test(type) :

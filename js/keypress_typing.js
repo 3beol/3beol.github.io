@@ -20,43 +20,43 @@ var show_type = DEFAULT_TYPE;
 
 
 function charCounter(charCode) {
-	if (charCode < 0xAC00 || 0xD7A3 < charCode) {
-		return 1;
-	}
-	charCode -= 0xAC00;
-	return 1 + GAWIT_COUNT[Math.floor(charCode / 28 % 21)] + GGEUT_COUNT[charCode % 28];
+  if (charCode < 0xAC00 || 0xD7A3 < charCode) {
+    return 1;
+  }
+  charCode -= 0xAC00;
+  return 1 + GAWIT_COUNT[Math.floor(charCode / 28 % 21)] + GGEUT_COUNT[charCode % 28];
 }
 
 function lineCounter(line) {
-	var sum = 0;
-	for ( var index in line) {
-		sum += charCounter(line.charCodeAt(index));
-	}
-	return sum;
+  var sum = 0;
+  for (var index in line) {
+    sum += charCounter(line.charCodeAt(index));
+  }
+  return sum;
 }
 
 function displayResult() {
-	if (total_time < 10 ) {return;}
-	var example_show = $("#example_show").text();
-	var example_count = lineCounter(example_show);
+  if (total_time < 10 ) {return;}
+  var example_show = $("#example_show").text();
+  var example_count = lineCounter(example_show);
   var input_show = $("#input_show").val();
   var input_count = lineCounter(input_show);
   var big_show = example_count > input_count ? example_show : input_show;
   var big_count = example_count > input_count ? example_count : input_count;
-	typing_speed = Math.round(big_count * 60000 / total_time);
-	$("#typing_speed").text(typing_speed);
-	last_time = 0;
+  typing_speed = Math.round(big_count * 60000 / total_time);
+  $("#typing_speed").text(typing_speed);
+  last_time = 0;
   total_time = 0;
 
   input_show = $("#input_show").val().split('');
-	var typing_match = 0;
-	for ( var index in big_show) {
-		if (example_show.charAt(index) == input_show[index]) {
-			typing_match += charCounter(big_show.charCodeAt(index));
-		}
-	}
-	typing_accuracy = Math.round(typing_match * 100 / big_count);
-	$("#typing_accuracy").text(typing_accuracy);
+  var typing_match = 0;
+  for (var index in big_show) {
+    if (example_show.charAt(index) == input_show[index]) {
+      typing_match += charCounter(big_show.charCodeAt(index));
+    }
+  }
+  typing_accuracy = Math.round(typing_match * 100 / big_count);
+  $("#typing_accuracy").text(typing_accuracy);
 }
 
 function processData(allText) {
@@ -64,8 +64,11 @@ function processData(allText) {
   var headers = allTextLines[0];
   var lines = [];
 
-  for (var i=1; i<allTextLines.length; i++) {
-    var data = allTextLines[i];
+  for (var index in allTextLines) {
+    if (!index) {
+      continue;
+    }
+    var data = allTextLines[index];
     if (data) {
       var tarr = [];
       tarr[headers] = data;

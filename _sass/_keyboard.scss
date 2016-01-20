@@ -236,6 +236,9 @@
     .han_key {
       float: right;
       margin-right: 0.5em;
+      &.ko_gyeob_bat_chim {
+        color: #bbb;
+      }
       &.extension_key {
         color: black;
       }

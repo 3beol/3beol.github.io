@@ -77,7 +77,7 @@ var layout_list_info_ko = [
     link: 'http://asadal.pnu.kr/data/data_002_006.html'
   },
   {name: '3-2012', full_name: '3-2012',
-    position: "팔",
+    position: "다리",
     left_bracket_araea: true,
     extension_sign_keys: [0, 'v', '8'], // 0:같은 기호 배열
     link: 'http://pat.im/938'
@@ -99,7 +99,7 @@ var layout_list_info_ko = [
     //link: 'http://cafe.daum.net/3bulsik/JMKX/36'
   //},
   {name: '3-2015p', full_name: '3-2015P',
-    position: "팔",
+    position: "다리",
     right_ou_keys: ['/', '9'],
     left_bracket_araea: true,
     galmadeuli: true,
@@ -113,6 +113,14 @@ var layout_list_info_ko = [
     extension_sign_keys: [1, '/', '9'], //  1:다른 기호 배열
     extension_yetgeul_keys: [1, '7', '8'], //  1:다른 기호 배열
     link: 'http://pat.im/1090'
+  },
+  {name: '3-p3', full_name: '3-P3',
+    position: "머리",
+    right_ou_keys: ['/', '9'],
+    left_bracket_araea: true,
+    galmadeuli: true,
+    extension_sign_keys: [1, '/', '9'], //  1:다른 기호 배열
+    link: 'http://pat.im/1128'
   },
   {name: '3sun-1990', full_name: '순아래 1990',
     position: "다리"
@@ -151,7 +159,7 @@ var layout_list_info_ko = [
     position: "팔",
     right_ou_keys: ['O', 'P'],
     left_bracket_araea: true,
-    galmadeuli: true,
+    galmadeuli: false,
     extension_sign_keys: [0x110B/*ㅇ*/, 'k', 'l', ';']
   },
   {name: '3shin-2012', full_name: '신세벌식 2012',
@@ -190,6 +198,14 @@ var layout_list_info_ko = [
 var galmadeuli_no_display_keys = [
   'key_nine', 'key_y', 'key_u', 'key_i', 'key_o', 'key_p',
   'key_forwardslash', 'key_semicolon', 'key_apostrophe'
+];
+
+var compatibility_hot = [
+  /*ㄱ*/0x3131,/*ㄴ*/0x3134,/*ㄷ*/0x3137,
+  /*ㄹ*/0x3139,/*ㅁ*/0x3141,/*ㅂ*/0x3142,
+  /*ㅅ*/0x3145,/*ㅇ*/0x3147,/*ㅈ*/0x3148,
+  /*ㅊ*/0x314A,/*ㅋ*/0x314B,/*ㅌ*/0x314C,
+  /*ㅍ*/0x314D,/*ㅎ*/0x314E
 ];
 
 // ASCII 0x21 (33) 부터 시작해서 제 값을 얻으려면 33 을 빼줘야 한다
@@ -1863,7 +1879,9 @@ function set_basic_table() {
   var charCode = 0;
   // 배열표에 보여주기 위한 호환 코드
   var compCode = 0;
+  var compString = 0;
   var galmaCode = 0;
+  var galmaString = 0;
   var cheot_gawit_ggeut = 0;
   var key_name;
   var key_up_down;
@@ -1878,7 +1896,7 @@ function set_basic_table() {
       compCode = hangeul_layout[i];
     }
 
-    compCode = String.fromCharCode(compCode);
+    compString = String.fromCharCode(compCode);
 
     if (galmadeuli_layout.length > 0) {
       var galma_no = 0;
@@ -1890,13 +1908,15 @@ function set_basic_table() {
       // 갈마들이를 보여주지 말아야하는 글쇠면 0 을 넣는다
       if (galma_no < galmadeuli_no_display_keys.length) {
         galmaCode = 0;
+        galmaString = 0;
       } else {
         var index =  binarySearch(galmadeuli_layout, hangeul_layout[i]);
         if (index >= 0) {
           galmaCode = jamo_to_compatibility(galmadeuli_layout[index][1]);
-          galmaCode = String.fromCharCode(galmaCode);
+          galmaString = String.fromCharCode(galmaCode);
         } else {
           galmaCode = 0;
+          galmaString = 0;
         }
       }
     }
@@ -1912,7 +1932,11 @@ function set_basic_table() {
       html_table[key_name][key_up_down] = [];
     }
 
-    html_table[key_name][key_up_down] = [charCode, compCode, cheot_gawit_ggeut, galmaCode];
+    html_table[key_name][key_up_down] = [
+      charCode,
+      compString, compCode, cheot_gawit_ggeut,
+      galmaString, galmaCode
+    ];
   }
   // object
   return html_table;
@@ -1997,11 +2021,11 @@ function mapping_layout_to_html(select) {
             //한글의 아랫글쇠에는 아랫글쇠값이 서로 다르면 넣는다
             down_han_key.html(html_table[id]["false"][1]);
             down_en_key.addClass("ko_alpha");
-            if(html_table[id]["false"][2] == 3) {
+            if(html_table[id]["false"][3] == 3) {
               node.addClass("ggeut");
-            } else if(html_table[id]["false"][2] == 2) {
+            } else if(html_table[id]["false"][3] == 2) {
               node.addClass("gawit");
-            } else if(html_table[id]["false"][2] == 1) {
+            } else if(html_table[id]["false"][3] == 1) {
               node.addClass("cheot");
             } else {
                 ;
@@ -2016,6 +2040,14 @@ function mapping_layout_to_html(select) {
               //한글의 윗글쇠에는 아래윗글쇠값이 서로 다르면 넣는다
               up_han_key.html(html_table[id]["true"][1]);
               up_en_key.addClass("ko_alpha");
+              if ((/3-p/.test(KO_type)) &&
+                  (html_table[id]["true"][2] >= 0x3131) &&
+                  (html_table[id]["true"][2] <= 0x314E) &&
+                  (compatibility_hot.indexOf(html_table[id]["true"][2]) < 0)
+                ) {
+                // 겹받침
+                up_han_key.addClass("ko_gyeob_bat_chim");
+              }
             } else {
               up_han_key.html("");
             }
@@ -2025,34 +2057,59 @@ function mapping_layout_to_html(select) {
 
           // 갈마들이
           // 아랫글에 대한 갈마들이가 있고 갈마들이가 한글 윗글쇠와 다르다
-          if (html_table[id]["false"][3] &&
-              (html_table[id]["false"][3] != html_table[id]["true"][1])
+          if (html_table[id]["false"][4] &&
+              (html_table[id]["false"][4] != html_table[id]["true"][1])
               ) {
             // 영문 아랫글쇠에 값이 있으면 한글 윗글쇠를 보고 비었으면 한글 윗글쇠에 넣는다
             if (down_en_key.html()) {
               // 모아치기 글판
               if (!up_han_key.html()) {
-                up_han_key.addClass("galma");
-                up_han_key.html(html_table[id]["false"][3]);
+                up_han_key.html(html_table[id]["false"][4]);
+                if ((/3-p/.test(KO_type)) &&
+                    (html_table[id]["true"][2] >= 0x3131) &&
+                    (html_table[id]["true"][5] <= 0x314E) &&
+                    (compatibility_hot.indexOf(html_table[id]["true"][5]) < 0)
+                  ) {
+                  // 겹받침
+                  up_han_key.addClass("ko_gyeob_bat_chim");
+                } else {
+                  up_han_key.addClass("galma");
+                }
               } else {
                 ;
               }
             } else {
               // 한글 아랫글이 있을 때 넣어주었던 class 를 갈마들이를 넣으면서 빼준다
-              down_en_key.removeClass("ko_alpha");
-              down_en_key.addClass("galma");
-              down_en_key.html(html_table[id]["false"][3]);
+              if ((/3-p/.test(KO_type)) &&
+                  (html_table[id]["true"][2] >= 0x3131) &&
+                  (html_table[id]["true"][5] <= 0x314E) &&
+                  (compatibility_hot.indexOf(html_table[id]["true"][5]) < 0)
+                ) {
+                // ko_alpha 를 가지고 있는다
+              } else {
+                down_en_key.removeClass("ko_alpha");
+                down_en_key.addClass("galma");
+              }
+              down_en_key.html(html_table[id]["false"][4]);
             }
           }
 
           // 윗글에 대한 갈마들이가 있고 갈마들이가 한글 아랫글쇠와 다르다
-          if ( html_table[id]["true"][3] &&
-              (html_table[id]["true"][3] != html_table[id]["false"][1])
+          if ( html_table[id]["true"][4] &&
+              (html_table[id]["true"][4] != html_table[id]["false"][1])
               ) {
             // 한글 아랫글이 있을 때 넣어주었던 class 를 갈마들이를 넣으면서 빼준다
-            down_en_key.removeClass("ko_alpha");
-            down_en_key.addClass("galma");
-            down_en_key.html(html_table[id]["true"][3]);
+            if ((/3-p/.test(KO_type)) &&
+                (html_table[id]["true"][2] >= 0x3131) &&
+                (html_table[id]["true"][5] <= 0x314E) &&
+                (compatibility_hot.indexOf(html_table[id]["true"][5]) < 0)
+              ) {
+              // ko_alpha 를 가지고 있는다
+            } else {
+              down_en_key.removeClass("ko_alpha");
+              down_en_key.addClass("galma");
+            }
+            down_en_key.html(html_table[id]["true"][4]);
           }
         } else {
           down_han_key.html("");
@@ -2109,10 +2166,11 @@ function mapping_layout_to_html(select) {
         node_key = $("#key_eight .down_key .en_key");
         node_key.html(tag_sign0);
         node_key.addClass("tag08");
-      } else if ((KO_type == '3-2011-yet') ||
-                  (KO_type == '3-2012-yet') ||
+      } else if ((/3-2011-yet/.test(KO_type)) ||
+                  (/3-2012-yet/.test(KO_type)) ||
                   (/3-2014/.test(KO_type)) ||
-                  (/3-2015p/.test(KO_type))
+                  (/3-2015p/.test(KO_type)) ||
+                  (/3-p3/.test(KO_type))
                 ) {
         node_key = $("#key_forwardslash .up_key .han_key");
         node_key.html(tag_sign1);
@@ -2136,6 +2194,19 @@ function mapping_layout_to_html(select) {
           node_key.addClass("tag09");
           node_key = $("#key_semicolon .down_key .en_key");
           node_key.html("③");
+          node_key.addClass("tag09");
+        } else if (/-p/.test(KO_type) && yet_hangeul) {
+          node_key = $("#key_f .down_key .en_key");
+          node_key.html("받침");
+          node_key.addClass("tag08");
+          node_key = $("#key_a .down_key .en_key");
+          node_key.html("ㆁ");
+          node_key.addClass("tag09");
+          node_key = $("#key_d .down_key .en_key");
+          node_key.html("ㆆ");
+          node_key.addClass("tag09");
+          node_key = $("#key_q .down_key .en_key");
+          node_key.html("ㅿ");
           node_key.addClass("tag09");
         }
       }
