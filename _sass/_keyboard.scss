@@ -19,7 +19,9 @@
 
   @mixin prefix-function($property, $value, $function, $prefixes: ()) {
     @each $prefix in $prefixes {
-      $property: -#{$prefix}-#{$function}($value);
+      /// #{} interpolation near operators will be simplified in a future version of Sass.
+      /// To preserve the current behavior, use quotes:
+      $property: "-#{$prefix}-#{$function}($value)";
     }
   }
 

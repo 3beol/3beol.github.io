@@ -116,7 +116,7 @@ var layout_list_info_ko = [
   },
   {name: '3-p3', full_name: '3-P3',
     position: "머리",
-    right_ou_keys: ['/', '9'],
+    right_ou_keys: ['8', '/', '9'],
     left_bracket_araea: true,
     galmadeuli: true,
     extension_sign_keys: [1, '/', '9'], //  1:다른 기호 배열
