@@ -2,7 +2,7 @@
 http://ohi.pat.im
 자세한 정보 → http://pat.im/910
 
-◉ 소인배의 타자연습
+◉ 소인배의 타자연습 [도메인 만료]
 http://sebeol.org/beginners.html
 
 ◉ David Mauro 의 Keypress.js
