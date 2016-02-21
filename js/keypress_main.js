@@ -94,6 +94,7 @@ $(document).ready(function(){
   }
 
   match_key = function(key) {
+    key = fromCharCode(convert_english(key.charCodeAt()));
     if (tadak_tadak == false) {
       return;
     }
