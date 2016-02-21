@@ -105,9 +105,13 @@ $(document).ready(function(){
         taja_Q.push(key);
       } else {
         for (var i in taja_Q) {
+          var keyExist = false;
           if (taja_Q[i] == key) {
-            continue;
+            keyExist = true;
+			break;
           }
+        }
+        if (!keyExist) {
           taja_Q.push(key);
           taja_Q.sort();
         }
