@@ -94,6 +94,7 @@ $(document).ready(function(){
   }
 
   match_key = function(key) {
+    key = convert_layout[key - 0x21];
     if (tadak_tadak == false) {
       return;
     }
