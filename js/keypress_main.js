@@ -94,7 +94,7 @@ $(document).ready(function(){
   }
 
   match_key = function(key) {
-    key = convert_layout[key - 0x21];
+    key = fromCharCode(convert_english(key.charCodeAt()));
     if (tadak_tadak == false) {
       return;
     }

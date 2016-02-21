@@ -1687,6 +1687,10 @@ function ohi_Hangeul_3Shin_Shift (keyValue, charCode) {
   return charCode;
 }
 
+function convert_english(keyCode) {
+	return convert_layout[keyCode - 0x21];
+}
+
 // Roman keyboard layouts (Dvorak, Colemak)
 function ohi_Roman(keyCode) {
   ohi_Insert(0, keyCode);
@@ -1741,11 +1745,11 @@ function ohi_Hangeul_Process(keyCode) {
 
   pressing_keys++;
 
-  keyCode = convert_layout[keyCode - 0x21];
   if(KE_status == 'en') {
     ohi_Roman(keyCode);
     return true;
   }
+  keyCode = convert_english(keyCode);
   var charCode = hangeul_layout[keyCode - 0x21];
   var keyValue = String.fromCharCode(keyCode);
 
@@ -1863,7 +1867,7 @@ function set_extension_table(sign_yetgeul) {
 
 function set_basic_table() {
   if (!english_layout.length) {
-    convert_layout = convert_english(EN_type);
+    convert_layout = get_table_convert(EN_type);
     english_layout = get_table_english(EN_type);
   }
   if (!hangeul_layout.length) {
@@ -2411,7 +2415,7 @@ function change_EN_type(type) {
       index = findIndexByKeyValue(layout_list_info_en, 'name', EN_type);
     }
   }
-  convert_layout = convert_english(EN_type);
+  convert_layout = get_table_convert(EN_type);
   english_layout = get_table_english(EN_type);
   mapping_layout_to_html(0);
 
