@@ -714,6 +714,7 @@ function get_taja_hangeul(type) {
     '<strong class="gawit">ㅖ [모음⇧ , ㅔ]</strong>': [['c','v'], [3,2], ["key_c","key_v"]],
     '<strong class="gawit">ㅗ</strong>': ['v', 2, "key_v"],
     '<strong class="gawit">ㅘ [ㅗ , ㅏ]</strong>': [['f','p'], [2,10], ["key_f","key_p"]],
+	'<strong class="gawit">ㅙ [ㅗ , ㅏ , ㅣ]</strong': [['d', 'f', 'p'], [2,3,10], ["key_d","key_f","key_p"]],
     //'<strong class="gawit">ㅙ[ㅏ,ㅚ]</strong>': [['f','v'], [2,2], ["key_f","key_v"]],
     //'<strong class="gawit">ㅙ[ㅐ,ㅗ]</strong>': [['f','v'], [2,2], ["key_f","key_v"]],
     //'<strong class="gawit">ㅙ[ㅘ,ㅣ]</strong>': [['f','v'], [2,2], ["key_f","key_v"]],
