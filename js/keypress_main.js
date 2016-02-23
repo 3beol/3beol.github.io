@@ -94,7 +94,7 @@ $(document).ready(function(){
   }
 
   match_key = function(key) {
-    key = String.fromCharCode(convert_english(key.charCodeAt()));
+    key = String.fromCharCode(convert_english(key.charCodeAt(), 1));
     if (tadak_tadak == false) {
       return;
     }
@@ -108,7 +108,7 @@ $(document).ready(function(){
           var keyExist = false;
           if (taja_Q[i] == key) {
             keyExist = true;
-			break;
+            break;
           }
         }
         if (!keyExist) {
@@ -239,286 +239,286 @@ $(document).ready(function(){
       },
       {keys: "`",
         on_keydown: function() {
-          on_down(key_nodes.accent);
+          on_down(key_nodes[convert_english(0x60, 2)]);
           on_ohi_Hangeul_Process(0x60);
         },
         on_keyup: function() {
-          on_up(key_nodes.accent);
+          on_up(key_nodes[convert_english(0x60, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("`");},
       },
       {keys: "~",
         on_keydown: function() {
-          on_down(key_nodes.accent);
+          on_down(key_nodes[convert_english(0x7E, 2)]);
           on_ohi_Hangeul_Process(0x7E);
         },
         on_keyup: function() {
-          on_up(key_nodes.accent);
+          on_up(key_nodes[convert_english(0x7E, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("~");},
       },
       {keys: "1",
         on_keydown: function() {
-          on_down(key_nodes.one);
+          on_down(key_nodes[convert_english(0x31, 2)]);
           on_ohi_Hangeul_Process(0x31);
         },
         on_keyup: function() {
-          on_up(key_nodes.one);
+          on_up(key_nodes[convert_english(0x31, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("1");},
       },
       {keys: "!",
         on_keydown: function() {
-          on_down(key_nodes.one);
+          on_down(key_nodes[convert_english(0x21, 2)]);
           on_ohi_Hangeul_Process(0x21);
         },
         on_keyup: function() {
-          on_up(key_nodes.one);
+          on_up(key_nodes[convert_english(0x21, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("!");},
       },
       {keys: "2",
         on_keydown: function() {
-          on_down(key_nodes.two);
+          on_down(key_nodes[convert_english(0x32, 2)]);
           on_ohi_Hangeul_Process(0x32);
         },
         on_keyup: function() {
-          on_up(key_nodes.two);
+          on_up(key_nodes[convert_english(0x32, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("2");},
       },
       {keys: "@",
         on_keydown: function() {
-          on_down(key_nodes.two);
+          on_down(key_nodes[convert_english(0x40, 2)]);
           on_ohi_Hangeul_Process(0x40);
         },
         on_keyup: function() {
-          on_up(key_nodes.two);
+          on_up(key_nodes[convert_english(0x40, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("@");},
       },
       {keys: "3",
         on_keydown: function() {
-          on_down(key_nodes.three);
+          on_down(key_nodes[convert_english(0x33, 2)]);
           on_ohi_Hangeul_Process(0x33);
         },
         on_keyup: function() {
-          on_up(key_nodes.three);
+          on_up(key_nodes[convert_english(0x33, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("3");},
       },
       {keys: "#",
         on_keydown: function() {
-          on_down(key_nodes.three);
+          on_down(key_nodes[convert_english(0x23, 2)]);
           on_ohi_Hangeul_Process(0x23);
         },
         on_keyup: function() {
-          on_up(key_nodes.three);
+          on_up(key_nodes[convert_english(0x23, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("#");},
       },
       {keys: "4",
         on_keydown: function() {
-          on_down(key_nodes.four);
+          on_down(key_nodes[convert_english(0x34, 2)]);
           on_ohi_Hangeul_Process(0x34);
         },
         on_keyup: function() {
-          on_up(key_nodes.four);
+          on_up(key_nodes[convert_english(0x34, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("4");},
       },
       {keys: "$",
         on_keydown: function() {
-          on_down(key_nodes.four);
+          on_down(key_nodes[convert_english(0x24, 2)]);
           on_ohi_Hangeul_Process(0x24);
         },
         on_keyup: function() {
-          on_up(key_nodes.four);
+          on_up(key_nodes[convert_english(0x24, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("$");},
       },
       {keys: "5",
         on_keydown: function() {
-          on_down(key_nodes.five);
+          on_down(key_nodes[convert_english(0x35, 2)]);
           on_ohi_Hangeul_Process(0x35);
         },
         on_keyup: function() {
-          on_up(key_nodes.five);
+          on_up(key_nodes[convert_english(0x35, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("5");},
       },
       {keys: "%",
         on_keydown: function() {
-          on_down(key_nodes.five);
+          on_down(key_nodes[convert_english(0x25, 2)]);
           on_ohi_Hangeul_Process(0x25);
         },
         on_keyup: function() {
-          on_up(key_nodes.five);
+          on_up(key_nodes[convert_english(0x25, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("%");},
       },
       {keys: "6",
         on_keydown: function() {
-          on_down(key_nodes.six);
+          on_down(key_nodes[convert_english(0x36, 2)]);
           on_ohi_Hangeul_Process(0x36);
         },
         on_keyup: function() {
-          on_up(key_nodes.six);
+          on_up(key_nodes[convert_english(0x36, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("6");},
       },
       {keys: "^",
         on_keydown: function() {
-          on_down(key_nodes.six);
+          on_down(key_nodes[convert_english(0x5E, 2)]);
           on_ohi_Hangeul_Process(0x5E);
         },
         on_keyup: function() {
-          on_up(key_nodes.six);
+          on_up(key_nodes[convert_english(0x5E, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("^");},
       },
       {keys: "7",
         on_keydown: function() {
-          on_down(key_nodes.seven);
+          on_down(key_nodes[convert_english(0x37, 2)]);
           on_ohi_Hangeul_Process(0x37);
         },
         on_keyup: function() {
-          on_up(key_nodes.seven);
+          on_up(key_nodes[convert_english(0x37, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("7");},
       },
       {keys: "&",
         on_keydown: function() {
-          on_down(key_nodes.seven);
+          on_down(key_nodes[convert_english(0x26, 2)]);
           on_ohi_Hangeul_Process(0x26);
         },
         on_keyup: function() {
-          on_up(key_nodes.seven);
+          on_up(key_nodes[convert_english(0x26, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("&");},
       },
       {keys: "8",
         on_keydown: function() {
-          on_down(key_nodes.eight);
+          on_down(key_nodes[convert_english(0x38, 2)]);
           on_ohi_Hangeul_Process(0x38);
         },
         on_keyup: function() {
-          on_up(key_nodes.eight);
+          on_up(key_nodes[convert_english(0x38, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("8");},
       },
       {keys: "*",
         on_keydown: function() {
-          on_down(key_nodes.eight);
+          on_down(key_nodes[convert_english(0x2A, 2)]);
           on_ohi_Hangeul_Process(0x2A);
         },
         on_keyup: function() {
-          on_up(key_nodes.eight);
+          on_up(key_nodes[convert_english(0x2A, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("*");},
       },
       {keys: "9",
         on_keydown: function() {
-          on_down(key_nodes.nine);
+          on_down(key_nodes[convert_english(0x39, 2)]);
           on_ohi_Hangeul_Process(0x39);
         },
         on_keyup: function() {
-          on_up(key_nodes.nine);
+          on_up(key_nodes[convert_english(0x39, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("9");},
       },
       {keys: "(",
         on_keydown: function() {
-          on_down(key_nodes.nine);
+          on_down(key_nodes[convert_english(0x28, 2)]);
           on_ohi_Hangeul_Process(0x28);
         },
         on_keyup: function() {
-          on_up(key_nodes.nine);
+          on_up(key_nodes[convert_english(0x28, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("(");},
       },
       {keys: "0",
         on_keydown: function() {
-          on_down(key_nodes.zero);
+          on_down(key_nodes[convert_english(0x30, 2)]);
           on_ohi_Hangeul_Process(0x30);
         },
         on_keyup: function() {
-          on_up(key_nodes.zero);
+          on_up(key_nodes[convert_english(0x30, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("0");},
       },
       {keys: ")",
         on_keydown: function() {
-          on_down(key_nodes.zero);
+          on_down(key_nodes[convert_english(0x29, 2)]);
           on_ohi_Hangeul_Process(0x29);
         },
         on_keyup: function() {
-          on_up(key_nodes.zero);
+          on_up(key_nodes[convert_english(0x29, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key(")");},
       },
       {keys: "-",
         on_keydown: function() {
-          on_down(key_nodes.hyphen);
+          on_down(key_nodes[convert_english(0x2D, 2)]);
           on_ohi_Hangeul_Process(0x2D);
         },
         on_keyup: function() {
-          on_up(key_nodes.hyphen);
+          on_up(key_nodes[convert_english(0x2D, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("-");},
       },
       {keys: "_",
         on_keydown: function() {
-          on_down(key_nodes.hyphen);
+          on_down(key_nodes[convert_english(0x5F, 2)]);
           on_ohi_Hangeul_Process(0x5F);
         },
         on_keyup: function() {
-          on_up(key_nodes.hyphen);
+          on_up(key_nodes[convert_english(0x5F, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("_");},
       },
       {keys: "=",
         on_keydown: function() {
-          on_down(key_nodes.equals);
+          on_down(key_nodes[convert_english(0x3D, 2)]);
           on_ohi_Hangeul_Process(0x3D);
         },
         on_keyup: function() {
-          on_up(key_nodes.equals);
+          on_up(key_nodes[convert_english(0x3D, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("=");},
       },
       {keys: "+",
         on_keydown: function() {
-          on_down(key_nodes.equals);
+          on_down(key_nodes[convert_english(0x2B, 2)]);
           on_ohi_Hangeul_Process(0x2B);
         },
         on_keyup: function() {
-          on_up(key_nodes.equals);
+          on_up(key_nodes[convert_english(0x2B, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("+");},
@@ -545,286 +545,286 @@ $(document).ready(function(){
       },
       {keys: "q",
         on_keydown: function() {
-          on_down(key_nodes.q);
+          on_down(key_nodes[convert_english(0x71, 2)]);
           on_ohi_Hangeul_Process(0x71);
         },
         on_keyup: function() {
-          on_up(key_nodes.q);
+          on_up(key_nodes[convert_english(0x71, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("q");},
       },
       {keys: "Q",
         on_keydown: function() {
-          on_down(key_nodes.q);
+          on_down(key_nodes[convert_english(0x51, 2)]);
           on_ohi_Hangeul_Process(0x51);
         },
         on_keyup: function() {
-          on_up(key_nodes.q);
+          on_up(key_nodes[convert_english(0x51, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("Q");},
       },
       {keys: "w",
         on_keydown: function() {
-          on_down(key_nodes.w);
+          on_down(key_nodes[convert_english(0x77, 2)]);
           on_ohi_Hangeul_Process(0x77);
         },
         on_keyup: function() {
-          on_up(key_nodes.w);
+          on_up(key_nodes[convert_english(0x77, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("w");},
       },
       {keys: "W",
         on_keydown: function() {
-          on_down(key_nodes.w);
+          on_down(key_nodes[convert_english(0x57, 2)]);
           on_ohi_Hangeul_Process(0x57);
         },
         on_keyup: function() {
-          on_up(key_nodes.w);
+          on_up(key_nodes[convert_english(0x57, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("W");},
       },
       {keys: "e",
         on_keydown: function() {
-          on_down(key_nodes.e);
+          on_down(key_nodes[convert_english(0x65, 2)]);
           on_ohi_Hangeul_Process(0x65);
         },
         on_keyup: function() {
-          on_up(key_nodes.e);
+          on_up(key_nodes[convert_english(0x65, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("e");},
       },
       {keys: "E",
         on_keydown: function() {
-          on_down(key_nodes.e);
+          on_down(key_nodes[convert_english(0x45, 2)]);
           on_ohi_Hangeul_Process(0x45);
         },
         on_keyup: function() {
-          on_up(key_nodes.e);
+          on_up(key_nodes[convert_english(0x45, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("E");},
       },
       {keys: "r",
         on_keydown: function() {
-          on_down(key_nodes.r);
+          on_down(key_nodes[convert_english(0x72, 2)]);
           on_ohi_Hangeul_Process(0x72);
         },
         on_keyup: function() {
-          on_up(key_nodes.r);
+          on_up(key_nodes[convert_english(0x72, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("r");},
       },
       {keys: "R",
         on_keydown: function() {
-          on_down(key_nodes.r);
+          on_down(key_nodes[convert_english(0x52, 2)]);
           on_ohi_Hangeul_Process(0x52);
         },
         on_keyup: function() {
-          on_up(key_nodes.r);
+          on_up(key_nodes[convert_english(0x52, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("R");},
       },
       {keys: "t",
         on_keydown: function() {
-          on_down(key_nodes.t);
+          on_down(key_nodes[convert_english(0x74, 2)]);
           on_ohi_Hangeul_Process(0x74);
         },
         on_keyup: function() {
-          on_up(key_nodes.t);
+          on_up(key_nodes[convert_english(0x74, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("t");},
       },
       {keys: "T",
         on_keydown: function() {
-          on_down(key_nodes.t);
+          on_down(key_nodes[convert_english(0x54, 2)]);
           on_ohi_Hangeul_Process(0x54);
         },
         on_keyup: function() {
-          on_up(key_nodes.t);
+          on_up(key_nodes[convert_english(0x54, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("T");},
       },
       {keys: "y",
         on_keydown: function() {
-          on_down(key_nodes.y);
+          on_down(key_nodes[convert_english(0x79, 2)]);
           on_ohi_Hangeul_Process(0x79);
         },
         on_keyup: function() {
-          on_up(key_nodes.y);
+          on_up(key_nodes[convert_english(0x79, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("y");},
       },
       {keys: "Y",
         on_keydown: function() {
-          on_down(key_nodes.y);
+          on_down(key_nodes[convert_english(0x59, 2)]);
           on_ohi_Hangeul_Process(0x59);
         },
         on_keyup: function() {
-          on_up(key_nodes.y);
+          on_up(key_nodes[convert_english(0x59, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("Y");},
       },
       {keys: "u",
         on_keydown: function() {
-          on_down(key_nodes.u);
+          on_down(key_nodes[convert_english(0x75, 2)]);
           on_ohi_Hangeul_Process(0x75);
         },
         on_keyup: function() {
-          on_up(key_nodes.u);
+          on_up(key_nodes[convert_english(0x75, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("u");},
       },
       {keys: "U",
         on_keydown: function() {
-          on_down(key_nodes.u);
+          on_down(key_nodes[convert_english(0x55, 2)]);
           on_ohi_Hangeul_Process(0x55);
         },
         on_keyup: function() {
-          on_up(key_nodes.u);
+          on_up(key_nodes[convert_english(0x55, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("U");},
       },
       {keys: "i",
         on_keydown: function() {
-          on_down(key_nodes.i);
+          on_down(key_nodes[convert_english(0x69, 2)]);
           on_ohi_Hangeul_Process(0x69);
         },
         on_keyup: function() {
-          on_up(key_nodes.i);
+          on_up(key_nodes[convert_english(0x69, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("i");},
       },
       {keys: "I",
         on_keydown: function() {
-          on_down(key_nodes.i);
+          on_down(key_nodes[convert_english(0x49, 2)]);
           on_ohi_Hangeul_Process(0x49);
         },
         on_keyup: function() {
-          on_up(key_nodes.i);
+          on_up(key_nodes[convert_english(0x49, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("I");},
       },
       {keys: "o",
         on_keydown: function() {
-          on_down(key_nodes.o);
+          on_down(key_nodes[convert_english(0x6F, 2)]);
           on_ohi_Hangeul_Process(0x6F);
         },
         on_keyup: function() {
-          on_up(key_nodes.o);
+          on_up(key_nodes[convert_english(0x6F, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("o");},
       },
       {keys: "O",
         on_keydown: function() {
-          on_down(key_nodes.o);
+          on_down(key_nodes[convert_english(0x4F, 2)]);
           on_ohi_Hangeul_Process(0x4F);
         },
         on_keyup: function() {
-          on_up(key_nodes.o);
+          on_up(key_nodes[convert_english(0x4F, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("O");},
       },
       {keys: "p",
         on_keydown: function() {
-          on_down(key_nodes.p);
+          on_down(key_nodes[convert_english(0x70, 2)]);
           on_ohi_Hangeul_Process(0x70);
         },
         on_keyup: function() {
-          on_up(key_nodes.p);
+          on_up(key_nodes[convert_english(0x70, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("p");},
       },
       {keys: "P",
         on_keydown: function() {
-          on_down(key_nodes.p);
+          on_down(key_nodes[convert_english(0x50, 2)]);
           on_ohi_Hangeul_Process(0x50);
         },
         on_keyup: function() {
-          on_up(key_nodes.p);
+          on_up(key_nodes[convert_english(0x50, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("P");},
       },
       {keys: "[",
         on_keydown: function() {
-          on_down(key_nodes.left_bracket);
+          on_down(key_nodes[convert_english(0x5B, 2)]);
           on_ohi_Hangeul_Process(0x5B);
         },
         on_keyup: function() {
-          on_up(key_nodes.left_bracket);
+          on_up(key_nodes[convert_english(0x5B, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("[");},
       },
       {keys: "{",
         on_keydown: function() {
-          on_down(key_nodes.left_bracket);
+          on_down(key_nodes[convert_english(0x7B, 2)]);
           on_ohi_Hangeul_Process(0x7B);
         },
         on_keyup: function() {
-          on_up(key_nodes.left_bracket);
+          on_up(key_nodes[convert_english(0x7B, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("{");},
       },
       {keys: "]",
         on_keydown: function() {
-          on_down(key_nodes.right_bracket);
+          on_down(key_nodes[convert_english(0x5D, 2)]);
           on_ohi_Hangeul_Process(0x5D);
         },
         on_keyup: function() {
-          on_up(key_nodes.right_bracket);
+          on_up(key_nodes[convert_english(0x5D, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("]");},
       },
       {keys: "}",
         on_keydown: function() {
-          on_down(key_nodes.right_bracket);
+          on_down(key_nodes[convert_english(0x7D, 2)]);
           on_ohi_Hangeul_Process(0x7D);
         },
         on_keyup: function() {
-          on_up(key_nodes.right_bracket);
+          on_up(key_nodes[convert_english(0x7D, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("}");},
       },
       {keys: "\\",
         on_keydown: function() {
-          on_down(key_nodes.backslash);
+          on_down(key_nodes[convert_english(0x5C, 2)]);
           on_ohi_Hangeul_Process(0x5C);
         },
         on_keyup: function() {
-          on_up(key_nodes.backslash);
+          on_up(key_nodes[convert_english(0x5C, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("\\");},
       },
       {keys: "|",
         on_keydown: function() {
-          on_down(key_nodes.backslash);
+          on_down(key_nodes[convert_english(0x7C, 2)]);
           on_ohi_Hangeul_Process(0x7C);
         },
         on_keyup: function() {
-          on_up(key_nodes.backslash);
+          on_up(key_nodes[convert_english(0x7C, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("|");},
@@ -841,242 +841,242 @@ $(document).ready(function(){
       },
       {keys: "a",
         on_keydown: function() {
-          on_down(key_nodes.a);
+          on_down(key_nodes[convert_english(0x61, 2)]);
           on_ohi_Hangeul_Process(0x61);
         },
         on_keyup: function() {
-          on_up(key_nodes.a);
+          on_up(key_nodes[convert_english(0x61, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("a");},
       },
       {keys: "A",
         on_keydown: function() {
-          on_down(key_nodes.a);
+          on_down(key_nodes[convert_english(0x41, 2)]);
           on_ohi_Hangeul_Process(0x41);
         },
         on_keyup: function() {
-          on_up(key_nodes.a);
+          on_up(key_nodes[convert_english(0x41, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("A");},
       },
       {keys: "s",
         on_keydown: function() {
-          on_down(key_nodes.s);
+          on_down(key_nodes[convert_english(0x73, 2)]);
           on_ohi_Hangeul_Process(0x73);
         },
         on_keyup: function() {
-          on_up(key_nodes.s);
+          on_up(key_nodes[convert_english(0x73, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("s");},
       },
       {keys: "S",
         on_keydown: function() {
-          on_down(key_nodes.s);
+          on_down(key_nodes[convert_english(0x53, 2)]);
           on_ohi_Hangeul_Process(0x53);
         },
         on_keyup: function() {
-          on_up(key_nodes.s);
+          on_up(key_nodes[convert_english(0x53, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("S");},
       },
       {keys: "d",
         on_keydown: function() {
-          on_down(key_nodes.d);
+          on_down(key_nodes[convert_english(0x64, 2)]);
           on_ohi_Hangeul_Process(0x64);
         },
         on_keyup: function() {
-          on_up(key_nodes.d);
+          on_up(key_nodes[convert_english(0x64, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("d");},
       },
       {keys: "D",
         on_keydown: function() {
-          on_down(key_nodes.d);
+          on_down(key_nodes[convert_english(0x44, 2)]);
           on_ohi_Hangeul_Process(0x44);
         },
         on_keyup: function() {
-          on_up(key_nodes.d);
+          on_up(key_nodes[convert_english(0x44, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("D");},
       },
       {keys: "f",
         on_keydown: function() {
-          on_down(key_nodes.f);
+          on_down(key_nodes[convert_english(0x66, 2)]);
           on_ohi_Hangeul_Process(0x66);
         },
         on_keyup: function() {
-          on_up(key_nodes.f);
+          on_up(key_nodes[convert_english(0x66, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("f");},
       },
       {keys: "F",
         on_keydown: function() {
-          on_down(key_nodes.f);
+          on_down(key_nodes[convert_english(0x46, 2)]);
           on_ohi_Hangeul_Process(0x46);
         },
         on_keyup: function() {
-          on_up(key_nodes.f);
+          on_up(key_nodes[convert_english(0x46, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("F");},
       },
       {keys: "g",
         on_keydown: function() {
-          on_down(key_nodes.g);
+          on_down(key_nodes[convert_english(0x67, 2)]);
           on_ohi_Hangeul_Process(0x67);
         },
         on_keyup: function() {
-          on_up(key_nodes.g);
+          on_up(key_nodes[convert_english(0x67, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("g");},
       },
       {keys: "G",
         on_keydown: function() {
-          on_down(key_nodes.g);
+          on_down(key_nodes[convert_english(0x47, 2)]);
           on_ohi_Hangeul_Process(0x47);
         },
         on_keyup: function() {
-          on_up(key_nodes.g);
+          on_up(key_nodes[convert_english(0x47, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("G");},
       },
       {keys: "h",
         on_keydown: function() {
-          on_down(key_nodes.h);
+          on_down(key_nodes[convert_english(0x68, 2)]);
           on_ohi_Hangeul_Process(0x68);
         },
         on_keyup: function() {
-          on_up(key_nodes.h);
+          on_up(key_nodes[convert_english(0x68, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("h");},
       },
       {keys: "H",
         on_keydown: function() {
-          on_down(key_nodes.h);
+          on_down(key_nodes[convert_english(0x48, 2)]);
           on_ohi_Hangeul_Process(0x48);
         },
         on_keyup: function() {
-          on_up(key_nodes.h);
+          on_up(key_nodes[convert_english(0x48, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("H");},
       },
       {keys: "j",
         on_keydown: function() {
-          on_down(key_nodes.j);
+          on_down(key_nodes[convert_english(0x6A, 2)]);
           on_ohi_Hangeul_Process(0x6A);
         },
         on_keyup: function() {
-          on_up(key_nodes.j);
+          on_up(key_nodes[convert_english(0x6A, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("j");},
       },
       {keys: "J",
         on_keydown: function() {
-          on_down(key_nodes.j);
+          on_down(key_nodes[convert_english(0x4A, 2)]);
           on_ohi_Hangeul_Process(0x4A);
         },
         on_keyup: function() {
-          on_up(key_nodes.j);
+          on_up(key_nodes[convert_english(0x4A, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("J");},
       },
       {keys: "k",
         on_keydown: function() {
-          on_down(key_nodes.k);
+          on_down(key_nodes[convert_english(0x6B, 2)]);
           on_ohi_Hangeul_Process(0x6B);
         },
         on_keyup: function() {
-          on_up(key_nodes.k);
+          on_up(key_nodes[convert_english(0x6B, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("k");},
       },
       {keys: "K",
         on_keydown: function() {
-          on_down(key_nodes.k);
+          on_down(key_nodes[convert_english(0x4B, 2)]);
           on_ohi_Hangeul_Process(0x4B);
         },
         on_keyup: function() {
-          on_up(key_nodes.k);
+          on_up(key_nodes[convert_english(0x4B, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("K");},
       },
       {keys: "l",
         on_keydown: function() {
-          on_down(key_nodes.l);
+          on_down(key_nodes[convert_english(0x6C, 2)]);
           on_ohi_Hangeul_Process(0x6C);
         },
         on_keyup: function() {
-          on_up(key_nodes.l);
+          on_up(key_nodes[convert_english(0x6C, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("l");},
       },
       {keys: "L",
         on_keydown: function() {
-          on_down(key_nodes.l);
+          on_down(key_nodes[convert_english(0x4C, 2)]);
           on_ohi_Hangeul_Process(0x4C);
         },
         on_keyup: function() {
-          on_up(key_nodes.l);
+          on_up(key_nodes[convert_english(0x4C, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("L");},
       },
       {keys: ";",
         on_keydown: function() {
-          on_down(key_nodes.semicolon);
+          on_down(key_nodes[convert_english(0x3B, 2)]);
           on_ohi_Hangeul_Process(0x3B);
         },
         on_keyup: function() {
-          on_up(key_nodes.semicolon);
+          on_up(key_nodes[convert_english(0x3B, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key(";");},
       },
       {keys: ":",
         on_keydown: function() {
-          on_down(key_nodes.semicolon);
+          on_down(key_nodes[convert_english(0x3A, 2)]);
           on_ohi_Hangeul_Process(0x3A);
         },
         on_keyup: function() {
-          on_up(key_nodes.semicolon);
+          on_up(key_nodes[convert_english(0x3A, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key(":");},
       },
       {keys: "\'",
         on_keydown: function() {
-          on_down(key_nodes.apostrophe);
+          on_down(key_nodes[convert_english(0x27, 2)]);
           on_ohi_Hangeul_Process(0x27);
         },
         on_keyup: function() {
-          on_up(key_nodes.apostrophe);
+          on_up(key_nodes[convert_english(0x27, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("\'");},
       },
       {keys: "\"",
         on_keydown: function() {
-          on_down(key_nodes.apostrophe);
+          on_down(key_nodes[convert_english(0x22, 2)]);
           on_ohi_Hangeul_Process(0x22);
         },
         on_keyup: function() {
-          on_up(key_nodes.apostrophe);
+          on_up(key_nodes[convert_english(0x22, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("\"");},
@@ -1105,220 +1105,220 @@ $(document).ready(function(){
       },
       {keys: "z",
         on_keydown: function() {
-          on_down(key_nodes.z);
+          on_down(key_nodes[convert_english(0x7A, 2)]);
           on_ohi_Hangeul_Process(0x7A);
         },
         on_keyup: function() {
-          on_up(key_nodes.z);
+          on_up(key_nodes[convert_english(0x7A, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("z");},
       },
       {keys: "Z",
         on_keydown: function() {
-          on_down(key_nodes.z);
+          on_down(key_nodes[convert_english(0x5A, 2)]);
           on_ohi_Hangeul_Process(0x5A);
         },
         on_keyup: function() {
-          on_up(key_nodes.z);
+          on_up(key_nodes[convert_english(0x5A, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("Z");},
       },
       {keys: "x",
         on_keydown: function() {
-          on_down(key_nodes.x);
+          on_down(key_nodes[convert_english(0x78, 2)]);
           on_ohi_Hangeul_Process(0x78);
         },
         on_keyup: function() {
-          on_up(key_nodes.x);
+          on_up(key_nodes[convert_english(0x78, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("x");},
       },
       {keys: "X",
         on_keydown: function() {
-          on_down(key_nodes.x);
+          on_down(key_nodes[convert_english(0x58, 2)]);
           on_ohi_Hangeul_Process(0x58);
         },
         on_keyup: function() {
-          on_up(key_nodes.x);
+          on_up(key_nodes[convert_english(0x58, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("X");},
       },
       {keys: "c",
         on_keydown: function() {
-          on_down(key_nodes.c);
+          on_down(key_nodes[convert_english(0x63, 2)]);
           on_ohi_Hangeul_Process(0x63);
         },
         on_keyup: function() {
-          on_up(key_nodes.c);
+          on_up(key_nodes[convert_english(0x63, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("c");},
       },
       {keys: "C",
         on_keydown: function() {
-          on_down(key_nodes.c);
+          on_down(key_nodes[convert_english(0x43, 2)]);
           on_ohi_Hangeul_Process(0x43);
         },
         on_keyup: function() {
-          on_up(key_nodes.c);
+          on_up(key_nodes[convert_english(0x43, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("C");},
       },
       {keys: "v",
         on_keydown: function() {
-          on_down(key_nodes.v);
+          on_down(key_nodes[convert_english(0x76, 2)]);
           on_ohi_Hangeul_Process(0x76);
         },
         on_keyup: function() {
-          on_up(key_nodes.v);
+          on_up(key_nodes[convert_english(0x76, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("v");},
       },
       {keys: "V",
         on_keydown: function() {
-          on_down(key_nodes.v);
+          on_down(key_nodes[convert_english(0x56, 2)]);
           on_ohi_Hangeul_Process(0x56);
         },
         on_keyup: function() {
-          on_up(key_nodes.v);
+          on_up(key_nodes[convert_english(0x56, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("V");},
       },
       {keys: "b",
         on_keydown: function() {
-          on_down(key_nodes.b);
+          on_down(key_nodes[convert_english(0x62, 2)]);
           on_ohi_Hangeul_Process(0x62);
         },
         on_keyup: function() {
-          on_up(key_nodes.b);
+          on_up(key_nodes[convert_english(0x62, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("b");},
       },
       {keys: "B",
         on_keydown: function() {
-          on_down(key_nodes.b);
+          on_down(key_nodes[convert_english(0x42, 2)]);
           on_ohi_Hangeul_Process(0x42);
         },
         on_keyup: function() {
-          on_up(key_nodes.b);
+          on_up(key_nodes[convert_english(0x42, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("B");},
       },
       {keys: "n",
         on_keydown: function() {
-          on_down(key_nodes.n);
+          on_down(key_nodes[convert_english(0x6E, 2)]);
           on_ohi_Hangeul_Process(0x6E);
         },
         on_keyup: function() {
-          on_up(key_nodes.n);
+          on_up(key_nodes[convert_english(0x6E, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("n");},
       },
       {keys: "N",
         on_keydown: function() {
-          on_down(key_nodes.n);
+          on_down(key_nodes[convert_english(0x4E, 2)]);
           on_ohi_Hangeul_Process(0x4E);
         },
         on_keyup: function() {
-          on_up(key_nodes.n);
+          on_up(key_nodes[convert_english(0x4E, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("N");},
       },
       {keys: "m",
         on_keydown: function() {
-          on_down(key_nodes.m);
+          on_down(key_nodes[convert_english(0x6D, 2)]);
           on_ohi_Hangeul_Process(0x6D);
         },
         on_keyup: function() {
-          on_up(key_nodes.m);
+          on_up(key_nodes[convert_english(0x6D, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("m");},
       },
       {keys: "M",
         on_keydown: function() {
-          on_down(key_nodes.m);
+          on_down(key_nodes[convert_english(0x4D, 2)]);
           on_ohi_Hangeul_Process(0x4D);
         },
         on_keyup: function() {
-          on_up(key_nodes.m);
+          on_up(key_nodes[convert_english(0x4D, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("M");},
       },
       {keys: ",",
         on_keydown: function() {
-          on_down(key_nodes.comma);
+          on_down(key_nodes[convert_english(0x2C, 2)]);
           on_ohi_Hangeul_Process(0x2C);
         },
         on_keyup: function() {
-          on_up(key_nodes.comma);
+          on_up(key_nodes[convert_english(0x2C, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key(",");},
       },
       {keys: "<",
         on_keydown: function() {
-          on_down(key_nodes.comma);
+          on_down(key_nodes[convert_english(0x3C, 2)]);
           on_ohi_Hangeul_Process(0x3C);
         },
         on_keyup: function() {
-          on_up(key_nodes.comma);
+          on_up(key_nodes[convert_english(0x3C, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("<");},
       },
       {keys: ".",
         on_keydown: function() {
-          on_down(key_nodes.period);
+          on_down(key_nodes[convert_english(0x2E, 2)]);
           on_ohi_Hangeul_Process(0x2E);
         },
         on_keyup: function() {
-          on_up(key_nodes.period);
+          on_up(key_nodes[convert_english(0x2E, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key(".");},
       },
       {keys: ">",
         on_keydown: function() {
-          on_down(key_nodes.period);
+          on_down(key_nodes[convert_english(0x3E, 2)]);
           on_ohi_Hangeul_Process(0x3E);
         },
         on_keyup: function() {
-          on_up(key_nodes.period);
+          on_up(key_nodes[convert_english(0x3E, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key(">");},
       },
       {keys: "/",
         on_keydown: function() {
-          on_down(key_nodes.forwardslash);
+          on_down(key_nodes[convert_english(0x2F, 2)]);
           on_ohi_Hangeul_Process(0x2F);
         },
         on_keyup: function() {
-          on_up(key_nodes.forwardslash);
+          on_up(key_nodes[convert_english(0x2F, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("/");},
       },
       {keys: "?",
         on_keydown: function() {
-          on_down(key_nodes.forwardslash);
+          on_down(key_nodes[convert_english(0x3F, 2)]);
           on_ohi_Hangeul_Process(0x3F);
         },
         on_keyup: function() {
-          on_up(key_nodes.forwardslash);
+          on_up(key_nodes[convert_english(0x3F, 2)]);
           on_ohi_Hangeul_Process(0x00);
         },
         on_release: function() {match_key("?");},

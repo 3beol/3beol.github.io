@@ -209,7 +209,6 @@ var compatibility_hot = [
 ];
 
 // ASCII 0x21 (33) 부터 시작해서 제 값을 얻으려면 33 을 빼줘야 한다
-var convert_layout = [];
 var english_layout = [];
 var hangeul_layout = [];
 var hangeul_combination = [];
@@ -1687,8 +1686,8 @@ function ohi_Hangeul_3Shin_Shift (keyValue, charCode) {
   return charCode;
 }
 
-function convert_english(keyCode) {
-	return convert_layout[keyCode - 0x21];
+function convert_english(keyCode, index) {
+	return english_layout[keyCode - 0x21][index];
 }
 
 // Roman keyboard layouts (Dvorak, Colemak)
@@ -1749,7 +1748,7 @@ function ohi_Hangeul_Process(keyCode) {
     ohi_Roman(keyCode);
     return true;
   }
-  keyCode = convert_english(keyCode);
+  keyCode = convert_english(keyCode, 1);
   var charCode = hangeul_layout[keyCode - 0x21];
   var keyValue = String.fromCharCode(keyCode);
 
@@ -1848,7 +1847,7 @@ function set_extension_table(sign_yetgeul) {
       extensionCode = 0;
     }
 
-    charCode = String.fromCharCode(english_layout[i]);
+    charCode = String.fromCharCode(english_layout[i][0]);
 
     key_name = html_map_layout[i][0]
     key_up_down = html_map_layout[i][1]
@@ -1867,7 +1866,6 @@ function set_extension_table(sign_yetgeul) {
 
 function set_basic_table() {
   if (!english_layout.length) {
-    convert_layout = get_table_convert(EN_type);
     english_layout = get_table_english(EN_type);
   }
   if (!hangeul_layout.length) {
@@ -1926,7 +1924,7 @@ function set_basic_table() {
       }
     }
 
-    charCode = String.fromCharCode(english_layout[i]);
+    charCode = String.fromCharCode(english_layout[i][0]);
 
     key_name = html_map_layout[i][0]
     key_up_down = html_map_layout[i][1]
@@ -2415,7 +2413,7 @@ function change_EN_type(type) {
       index = findIndexByKeyValue(layout_list_info_en, 'name', EN_type);
     }
   }
-  convert_layout = get_table_convert(EN_type);
+
   english_layout = get_table_english(EN_type);
   mapping_layout_to_html(0);
 
