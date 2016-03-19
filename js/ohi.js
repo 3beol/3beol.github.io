@@ -1975,6 +1975,7 @@ function mapping_layout_to_html(select) {
   $(".tag07").removeClass("tag07");
   $(".tag08").removeClass("tag08");
   $(".tag09").removeClass("tag09");
+  $(".black").removeClass("black");
   $(".ko_alpha").removeClass("ko_alpha");
   $(".extension_key").removeClass("extension_key");
 
@@ -2165,10 +2166,10 @@ function mapping_layout_to_html(select) {
       if ((KO_type == '3-2011') || (KO_type == '3-2012')) {
         node_key = $("#key_v .down_key .en_key");
         node_key.html(tag_sign0);
-        node_key.addClass("tag08");
+        node_key.addClass("tag08 black");
         node_key = $("#key_eight .down_key .en_key");
         node_key.html(tag_sign0);
-        node_key.addClass("tag08");
+        node_key.addClass("tag08 black");
       } else if ((/3-2011-yet/.test(KO_type)) ||
                   (/3-2012-yet/.test(KO_type)) ||
                   (/3-2014/.test(KO_type)) ||
@@ -2177,10 +2178,10 @@ function mapping_layout_to_html(select) {
                 ) {
         node_key = $("#key_forwardslash .up_key .han_key");
         node_key.html(tag_sign1);
-        node_key.addClass("tag08");
+        node_key.addClass("tag08 black");
         node_key = $("#key_nine .up_key .han_key");
         node_key.html(tag_sign2);
-        node_key.addClass("tag08");
+        node_key.addClass("tag08 black");
       } else if (/3shin/.test(KO_type)) {
         if ((/2003/.test(KO_type)) ||
             (/2012/.test(KO_type)) ||
@@ -2188,29 +2189,37 @@ function mapping_layout_to_html(select) {
             ) {
           node_key = $("#key_j .down_key .en_key");
           node_key.html(tag_sign0);
-          node_key.addClass("tag08");
+          node_key.addClass("tag07 black");
           node_key = $("#key_k .down_key .en_key");
           node_key.html("①");
-          node_key.addClass("tag09");
+          node_key.addClass("tag09 black");
           node_key = $("#key_l .down_key .en_key");
           node_key.html("②");
-          node_key.addClass("tag09");
+          node_key.addClass("tag09 black");
           node_key = $("#key_semicolon .down_key .en_key");
           node_key.html("③");
-          node_key.addClass("tag09");
+          node_key.addClass("tag09 black");
         } else if (/-p/.test(KO_type) && yet_hangeul) {
           node_key = $("#key_f .down_key .en_key");
           node_key.html("받침");
-          node_key.addClass("tag08");
+          node_key.addClass("tag07 black");
           node_key = $("#key_a .down_key .en_key");
           node_key.html("ㆁ");
           node_key.addClass("tag09");
+          node_key.removeClass("ko_alpha");
           node_key = $("#key_d .down_key .en_key");
           node_key.html("ㆆ");
           node_key.addClass("tag09");
+          node_key.removeClass("ko_alpha");
           node_key = $("#key_q .down_key .en_key");
           node_key.html("ㅿ");
           node_key.addClass("tag09");
+          node_key.removeClass("ko_alpha");
+
+          node_key = $("#key_u .up_key .han_key");
+          node_key.addClass("tag07");
+          node_key = $("#key_y .up_key .han_key");
+          node_key.addClass("tag07");
         }
       }
 
@@ -2222,10 +2231,10 @@ function mapping_layout_to_html(select) {
           ) {
         node_key = $("#key_seven .up_key .han_key");
         node_key.html(tag_yet1);
-        node_key.addClass("tag08");
+        node_key.addClass("tag08 black");
         node_key = $("#key_eight .up_key .han_key");
         node_key.html(tag_yet2);
-        node_key.addClass("tag08");
+        node_key.addClass("tag08 black");
         node_key = $("#key_seven .down_key .han_key");
         node_key.html("(ㅣ)");
         node_key.addClass("font08");
@@ -2540,7 +2549,8 @@ function change_KO_type(type) {
   $("#toggle_yet_hangeul").change(function(){
     yet_hangeul = $(this).is(":checked");
     ohi_Insert(ohiQ, 0);
-    // 요즘한글, 옛한글의 상태가 바뀌면 조합규칙을 새로 불러온다
+    // 요즘한글, 옛한글의 상태가 바뀌면 배열과 조합규칙을 새로 불러온다
+    hangeul_layout = get_table_hangeul(KO_type, yet_hangeul);
     hangeul_combination = get_table_combination(KO_type, yet_hangeul);
     mapping_layout_to_html(0);
   });

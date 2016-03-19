@@ -1,4 +1,6 @@
-function get_table_hangeul(type) {
+function get_table_hangeul(type, __change_to_yet) {
+  __change_to_yet = typeof(__change_to_yet != 'undefined') ? __change_to_yet : false;
+
   var K2_ksx5002 = [
     0x0021,     /* 0x21 exclam:       exclamation mark               */
     0x0022,     /* 0x22 quotedbl:     quotation mark                 */
@@ -1982,6 +1984,10 @@ function get_table_hangeul(type) {
     case /3shin-m-shift/.test(type) :
       return K3_3shin_m;
     case /3shin-p/.test(type) :
+      if (__change_to_yet) {
+        K3_3shin_p[52] = 0x302E; /* 0x55 U: hangeul single dot tone mark */
+        K3_3shin_p[56] = 0x302F; /* 0x59 Y: hangeul double dot tone mark */
+      }
       return K3_3shin_p;
     case /2-kps9256/.test(type) :
       return K2_kps9256;

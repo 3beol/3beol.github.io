@@ -265,21 +265,27 @@
     }
     .tag07 {
       font-size: 0.7em;
-      background: black;
-      color: white;
       letter-spacing: -0.1em;
+      &.black {
+        color: white;
+        background: black;
+      }
     }
     .tag08 {
       font-size: 0.8em;
-      background: black;
-      color: white;
       letter-spacing: -0.1em;
+      &.black {
+        color: white;
+        background: black;
+      }
     }
     .tag09 {
       font-size: 0.9em;
-      background: black;
-      color: white;
       letter-spacing: -0.1em;
+      &.black {
+        color: white;
+        background: black;
+      }
     }
     .triangle {
       margin: 0.8em auto;
