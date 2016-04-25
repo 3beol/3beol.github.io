@@ -139,10 +139,18 @@ var layout_list_info_ko = [
     galmadeuli: true,
     link: 'http://ssg.wo.tc/220239514856'
   },
-  {name: '3moa-semoe-2015', full_name: '세모이',
-    position: "머리",
+  {name: '3moa-semoe-2015', full_name: '세모이 2015',
+    position: "다리",
     right_ou_keys: ['p', '\''],
     galmadeuli: true,
+    link: 'http://ssg.wo.tc/220239514856'
+  },
+    {name: '3moa-semoe-2016', full_name: '세모이',
+    position: "머리",
+    right_ou_keys: ['p', '['],
+    galmadeuli: true,
+    extension_sign_keys: ['J', 'K', 'L', ':'],
+    shortening : true,
     link: 'http://ssg.wo.tc/220239514856'
   },
   {name: '3shin-1995', full_name: '신세벌식 1995 (신광조)',
@@ -197,7 +205,8 @@ var layout_list_info_ko = [
 // 이름은 keyboard_mapping_layout_html.js 의 첫째값들을 쓴다
 var galmadeuli_no_display_keys = [
   'key_nine', 'key_y', 'key_u', 'key_i', 'key_o', 'key_p',
-  'key_forwardslash', 'key_semicolon', 'key_apostrophe'
+  'key_forwardslash', 'key_semicolon', 'key_apostrophe',
+  'key_left_bracket'
 ];
 
 var compatibility_hot = [
@@ -222,6 +231,12 @@ var extension_sign_keys = [];
 var extension_sign_layout = [];
 var extension_yetgeul_keys = [];
 var extension_yetgeul_layout = [];
+var shortening = false;
+var shortening_action = 0;
+var shortening_hangeul_keys = [];
+var shortening_english_keys = [];
+var shortening_layout = {};
+
 
 var shift_on = false;
 var caps_lock_on = false;// 아직 안 했다
@@ -266,6 +281,7 @@ function browser_detect() {
 // backspace 글쇠를 누르지 않았을 때에 backspace 동작을 하게 함
 function ohi_html_Backspace () {
   var focus = inputText_focus();
+
   if (document.selection && browser == 'MSIE' && browser_ver < 9) {
     var selection = document.selection.createRange ();
     var text = selection.text;
@@ -295,7 +311,8 @@ function ohi_html_Backspace () {
   }
 }
 
-function ohi_Backspace () {
+function ohi_Backspace (__shortening_exe) {
+  __shortening_exe = typeof(__shortening_exe != 'undefined') ? __shortening_exe : false;
   if (shoot_at_once && (ohiQ != OHIQ_INIT)) {
     ohi_Insert(0, ohiQ = OHIQ_INIT);
   } else if(ohiQ[0] || ohiQ[1] || ohiQ[2] || ohiQ[3]) {
@@ -322,6 +339,17 @@ function ohi_Backspace () {
     ohi_Insert(0, ohiQ);
   } else {
     ohi_html_Backspace();
+    if (__shortening_exe) {
+    } else {
+      if (shortening_action > 0) {
+        for (;shortening_action-- > 1;) {
+          ohi_html_Backspace ();
+        }
+      }
+      shortening_action = 0;
+      shortening_english_keys = [];
+      shortening_hangeul_keys = [];
+    }
   }
 }
 
@@ -826,7 +854,56 @@ function ohi_Hangeul_3 (keyValue, charCode) {
   var galmadeuli_cheot_gawit_ggeut = 0;
   var cheot_gawit_ggeut = is_cheot_gawit_ggeut(charCode) & 0x07;
 
-  if (keyValue) {
+  if (/3moa-semoe/.test(KO_type)) {
+    if (keyValue) { // 줄여넣기로 호출할 때 (keyValue == 0) 는 건너뛴다.
+      // ohi_Hangeul_3Moa 에 있는 코드와 같다. 나중에 하나로 모으자
+      if (extension_sign_keys.length) {
+        var extension_start = 0;
+        // 확장 배열로 들어가는 조건이다.
+        if (!extension_steps) {
+          if (extension_pressed_key) {
+            if (keyValue == extension_sign_keys[1]) {
+              extension_start = 1;
+            } else if (keyValue == extension_sign_keys[2]) {
+              extension_start = 2;
+            } else if (keyValue == extension_sign_keys[3]) {
+              extension_start = 3;
+            }
+          } else {
+            if (keyValue == extension_sign_keys[0]) {
+              extension_pressed_key = keyValue
+              return 0;
+            }
+          }
+        }
+
+        if (extension_start > 0 && extension_start < 4) {
+          // 확장 기호를 넣을 조건을 갖추었을 될 때
+          // 1 단은 ㄱ, 2 단은 ㄴ, 3 단은 ㄷ 으로 나타낸다
+          extension_steps = extension_start;
+          mapping_layout_to_html(1);
+          return charCode;
+        } else if (extension_steps) {// 확장 기호를 넣을 때
+          if (extension_sign_layout.length > 0) {
+            var index =  keyValue.charCodeAt(0) - 0x21;
+            var signCode = 0;
+            if (index >= 0) {
+              signCode = extension_sign_layout[index][extension_steps - 1];
+            }
+          }
+          ohi_Backspace ();
+          ohi_Insert (0, signCode);
+          extension_steps = 0;
+          extension_pressed_key = 0;
+          // html 의 글쇠들을 기본 배열의 값으로 바꾸어 준다
+          mapping_layout_to_html(0);
+          return signCode;
+        } else {
+          extension_pressed_key = 0;
+        }
+      }
+    }
+  } else {
     if (extension_sign_keys.length) {
       var extension_start = 0;
       var sign_index = extension_sign_keys.indexOf(keyValue);
@@ -1220,46 +1297,67 @@ function ohi_Hangeul_3 (keyValue, charCode) {
 }
 
 function ohi_Hangeul_3Moa (keyValue, charCode) {
-  if (shoot_at_once && Object.keys(extension_sign_layout).length) {
-    // 줄여넣기를 다룬다
-    if (pressing_keys == 1) {
-      extension_sign_keys = [];
-      extension_sign_keys.push(charCode);
-      ohiQ_backup = ohiQ;
-      ohi_Insert(ohiQ, ohiQ=OHIQ_INIT);
-    } else if (pressing_keys > 1) {
-      extension_sign_keys.push(charCode);
-      extension_sign_keys.sort();
-      var string = '0x';
-      for (var i in extension_sign_keys) {
-        string += extension_sign_keys[i].toString(16).toUpperCase();
+  if (extension_sign_keys.length) {
+    var extension_start = 0;
+    // 확장 배열로 들어가는 조건이다.
+    if (!extension_steps) {
+      if (extension_pressed_key) {
+        if (keyValue == extension_sign_keys[1]) {
+          extension_start = 1;
+        } else if (keyValue == extension_sign_keys[2]) {
+          extension_start = 2;
+        } else if (keyValue == extension_sign_keys[3]) {
+          extension_start = 3;
+        }
+      } else {
+        if (keyValue == extension_sign_keys[0]) {
+          extension_pressed_key = keyValue
+          return 0;
+        }
       }
-      var shorting = extension_sign_layout[string];
-      if (typeof(shorting) != 'undefined') {
-        var count = 0;
-        for (var i in ohiQ) {
-          if (ohiQ[i]) {
-            count++;
-          }
+    }
+
+    if (extension_start > 0 && extension_start < 4) {
+      // 확장 기호를 넣을 조건을 갖추었을 될 때
+      // 1 단은 ㄱ, 2 단은 ㄴ, 3 단은 ㄷ 으로 나타낸다
+      extension_steps = extension_start;
+      mapping_layout_to_html(1);
+      return charCode;
+    } else if (extension_steps) {// 확장 기호를 넣을 때
+      if (extension_sign_layout.length > 0) {
+        var index =  keyValue.charCodeAt(0) - 0x21;
+        var signCode = 0;
+        if (index >= 0) {
+          signCode = extension_sign_layout[index][extension_steps - 1];
         }
-        if (pressing_keys - count > 1) {
-          ohi_Backspace();
-        }
-        if (ohiQ_backup != OHIQ_INIT) {
-          ohi_Backspace();
-        }
-        ohi_Backspace();
-        ohiQ = ohiQ_backup;
-        ohiQ_backup = OHIQ_INIT;
-        ohi_Insert(0, ohiQ);
-        hangeul_combination = [];
-        for (var i in shorting) {
-          ohi_Hangeul_3(0, shorting[i]);
-        }
-        hangeul_combination = get_table_combination(KO_type);
-        ohi_Insert(ohiQ, 0);
-        return 0;
       }
+      ohi_Backspace ();
+      ohi_Insert (0, signCode);
+      extension_steps = 0;
+      extension_pressed_key = 0;
+      // html 의 글쇠들을 기본 배열의 값으로 바꾸어 준다
+      mapping_layout_to_html(0);
+      return signCode;
+    } else {
+      extension_pressed_key = 0;
+    }
+  }
+
+  if (pressing_keys == 1) {
+    shortening_action = 0;
+    shortening_english_keys = [];
+    shortening_hangeul_keys = [];
+    shortening_english_keys.push(keyValue);
+    shortening_hangeul_keys.push(charCode);
+    ohiQ_backup = ohiQ;
+    ohi_Insert(ohiQ, ohiQ=OHIQ_INIT);
+  } else if (pressing_keys > 1) {
+    if (shortening && Object.keys(shortening_layout).length) {
+      // 줄여넣기를 다룬다
+      shortening_english_keys.push(keyValue);
+      shortening_hangeul_keys.push(charCode);
+      shortening_english_keys.sort();
+      shortening_hangeul_keys.sort();
     }
   }
 
@@ -1709,6 +1807,50 @@ function ohi_Hangeul_Process(keyCode) {
       //ohi_Insert(ohiQ, 0);
       //ohiQ = OHIQ_INIT;
       pressing_keys = 0;
+
+      if (shortening && Object.keys(shortening_layout).length) {
+        // 줄여넣기를 다룬다
+        var string = [];
+        for (var i in shortening_layout.english) {
+          if (shortening_english_keys.toString() == shortening_layout.english[i].keys.toString()) {
+            string = shortening_layout.english[i].chars;
+            shortening_action = shortening_layout.english[i].count;
+          }
+        }
+        if (!string.length) {
+          for (var i in shortening_layout.hangeul) {
+            if (shortening_hangeul_keys.toString() == shortening_layout.hangeul[i].keys.toString()) {
+              string = shortening_layout.hangeul[i].chars;
+              shortening_action = shortening_layout.hangeul[i].count;
+            }
+          }
+        }
+
+        if (string.length) {
+          var count = 0;
+          for (var i in ohiQ) {
+            if (ohiQ[i]) {
+              count++;
+            }
+          }
+          if (pressing_keys - count > 1) {
+            ohi_Backspace(true);
+          }
+          if (ohiQ_backup != OHIQ_INIT) {
+            ohi_Backspace(true);
+          }
+          ohi_Backspace(true);
+          ohiQ = ohiQ_backup;
+          ohiQ_backup = OHIQ_INIT;
+          ohi_Insert(0, ohiQ);
+          for (var i in string) {
+            ohi_Hangeul_3(0, string[i]);
+          }
+          ohi_Insert(ohiQ, 0);
+          return 0;
+        }
+      }
+
       return false;
     }
   } else if (keyCode < 0x21 || keyCode > 0x7E) {
@@ -2221,6 +2363,21 @@ function mapping_layout_to_html(select) {
           node_key = $("#key_y .up_key .han_key");
           node_key.addClass("tag07");
         }
+      } else if (/3moa/.test(KO_type)) {
+        if ((/semoe-2016/.test(KO_type))) {
+          node_key = $("#key_j .down_key .en_key");
+          node_key.html(tag_sign0);
+          node_key.addClass("tag07 black");
+          node_key = $("#key_k .down_key .en_key");
+          node_key.html("①");
+          node_key.addClass("tag09 black");
+          node_key = $("#key_l .down_key .en_key");
+          node_key.html("②");
+          node_key.addClass("tag09 black");
+          node_key = $("#key_semicolon .down_key .en_key");
+          node_key.html("③");
+          node_key.addClass("tag09 black");
+        }
       }
 
       if ((/yet/.test(KO_type)) &&
@@ -2249,13 +2406,25 @@ function mapping_layout_to_html(select) {
         node_key = $("#key_semicolon .down_key .han_key");
         node_key.html(tag_moa_ggeut_shift);
         node_key.addClass("tag09");
-      } else {
+      } else if (KO_type == '3moa-semoe-2015') {
         node_key = $("#key_p .up_key .han_key");
         node_key.html(tag_moa_gawit_shift);
         node_key.addClass("tag09");
         node_key = $("#key_v .up_key .en_key");
         node_key.html(tag_moa_gawit_shift);
         node_key.addClass("tag09");
+        node_key.removeClass("ko_alpha");
+        node_key = $("#key_semicolon .up_key .han_key");
+        node_key.html(tag_moa_ggeut_shift);
+        node_key.addClass("tag09");
+      } else {
+        node_key = $("#key_left_bracket .up_key .han_key");
+        node_key.html(tag_moa_gawit_shift);
+        node_key.addClass("tag09");
+        node_key = $("#key_v .up_key .en_key");
+        node_key.html(tag_moa_gawit_shift);
+        node_key.addClass("tag09");
+        node_key.removeClass("ko_alpha");
         node_key = $("#key_semicolon .up_key .han_key");
         node_key.html(tag_moa_ggeut_shift);
         node_key.addClass("tag09");
@@ -2516,6 +2685,17 @@ function change_KO_type(type) {
     extension_yetgeul_keys = [];
     extension_yetgeul_layout = [];
   }
+
+  // 글판의 줄여넣기를 불러온다
+
+  if (layout_list_info_ko[index].shortening == true) {
+    shortening = true;
+    shortening_layout = get_table_shortening(KO_type);
+  } else {
+    shortening = false;
+    shortening_layout = {};
+  }
+
   // 필요한 값을 모두 얻은 뒤에 html 글판을 새로 고친다
   mapping_layout_to_html(0);
 
@@ -2531,7 +2711,6 @@ function change_KO_type(type) {
     $("#toggle_shoot_at_once").bootstrapToggle('enable');
     $('#toggle_shoot_at_once').prop('checked', true).change()
     shoot_at_once = $('#toggle_shoot_at_once').is(":checked");
-    extension_sign_layout = get_table_shortening(KO_type);
     $(".documentation div.3moa").removeClass('hidden');
   } else if (/3shin-p/.test(KO_type)) {
     // 켠 뒤에 바꾼다
