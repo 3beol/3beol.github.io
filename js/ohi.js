@@ -24,6 +24,7 @@
 var EN_type = 'qwerty';
 var KO_type = '3shin-p';
 var KE_status = 'ko';// en, ko
+
 // 두벌식 code, offset, code, offset, code, offset
 //          홑닿소리, 값차이, ......
 // 세벌식 dCode, sCode, dCode, sCode, dCode, sCode
@@ -35,8 +36,7 @@ var KE_status = 'ko';// en, ko
 //  다시 앞자리로 옮겨준다 ohiQ[0] = ohiQ[1]
 const OHIQ_INIT = [0,0,0,0,0,0];
 var ohiQ = OHIQ_INIT;
-// 줄여넣기에서 앞선 ohiQ 의 값을 알기위해서 쓰인다
-var ohiQ_backup = OHIQ_INIT;
+
 // 옛한글을 조합할 때,
 // 낱자가 더해질 때는 앞선 preedit 의 낱자가 하나 적으니 -1
 // 낱자가 빠질 때는 앞선 preedit 의 낱자가 하나 많으니 1
@@ -1296,7 +1296,7 @@ function ohi_Hangeul_3 (keyValue, charCode) {
   return charCode;
 }
 
-function ohi_Hangeul_3Moa (keyValue, charCode) {
+function ohi_Hangeul_3Moa_Begin (keyValue, charCode) {
   if (extension_sign_keys.length) {
     var extension_start = 0;
     // 확장 배열로 들어가는 조건이다.
@@ -1331,7 +1331,7 @@ function ohi_Hangeul_3Moa (keyValue, charCode) {
           signCode = extension_sign_layout[index][extension_steps - 1];
         }
       }
-      ohi_Backspace ();
+
       ohi_Insert (0, signCode);
       extension_steps = 0;
       extension_pressed_key = 0;
@@ -1343,24 +1343,13 @@ function ohi_Hangeul_3Moa (keyValue, charCode) {
     }
   }
 
-  if (pressing_keys == 1) {
-    shortening_action = 0;
-    shortening_english_keys = [];
-    shortening_hangeul_keys = [];
-    shortening_english_keys.push(keyValue);
-    shortening_hangeul_keys.push(charCode);
-    ohiQ_backup = ohiQ;
-    ohi_Insert(ohiQ, ohiQ=OHIQ_INIT);
-  } else if (pressing_keys > 1) {
-    if (shortening && Object.keys(shortening_layout).length) {
-      // 줄여넣기를 다룬다
-      shortening_english_keys.push(keyValue);
-      shortening_hangeul_keys.push(charCode);
-      shortening_english_keys.sort();
-      shortening_hangeul_keys.sort();
-    }
-  }
+  shortening_english_keys.push(keyValue);
+  shortening_hangeul_keys.push(charCode);
 
+  return charCode;
+}
+
+function ohi_Hangeul_3Moa_End (keyValue, charCode) {
   // right_ou_keys 가 있으면 오른쪽 ㅗㅜ
   if (right_ou_keys.length) {
     if (right_ou_keys.indexOf(keyValue) >= 0) {
@@ -1803,69 +1792,64 @@ function ohi_Hangeul_Process(keyCode) {
     } else if (pressing_keys > 1) {
       pressing_keys--;
       return false;
+    } else if (pressing_keys < 1) {
+      pressing_keys = 0;
+      return false;
     } else {
-      //ohi_Insert(ohiQ, 0);
-      //ohiQ = OHIQ_INIT;
       pressing_keys = 0;
 
+      var string = [];
       if (shortening && Object.keys(shortening_layout).length) {
         // 줄여넣기를 다룬다
-        var string = [];
+        var input_keys = shortening_english_keys;
+        input_keys.sort();
         for (var i in shortening_layout.english) {
-          if (shortening_english_keys.toString() == shortening_layout.english[i].keys.toString()) {
+          if (input_keys.toString() == shortening_layout.english[i].keys.toString()) {
             string = shortening_layout.english[i].chars;
             shortening_action = shortening_layout.english[i].count;
           }
         }
         if (!string.length) {
+          var input_keys = shortening_hangeul_keys;
+          input_keys.sort();
           for (var i in shortening_layout.hangeul) {
-            if (shortening_hangeul_keys.toString() == shortening_layout.hangeul[i].keys.toString()) {
+            if (input_keys.toString() == shortening_layout.hangeul[i].keys.toString()) {
               string = shortening_layout.hangeul[i].chars;
               shortening_action = shortening_layout.hangeul[i].count;
             }
           }
         }
+      }
 
-        if (string.length) {
-          var count = 0;
-          for (var i in ohiQ) {
-            if (ohiQ[i]) {
-              count++;
-            }
-          }
-          if (pressing_keys - count > 1) {
-            ohi_Backspace(true);
-          }
-          if (ohiQ_backup != OHIQ_INIT) {
-            ohi_Backspace(true);
-          }
-          ohi_Backspace(true);
-          ohiQ = ohiQ_backup;
-          ohiQ_backup = OHIQ_INIT;
-          ohi_Insert(0, ohiQ);
-          for (var i in string) {
-            ohi_Hangeul_3(0, string[i]);
-          }
-          ohi_Insert(ohiQ, 0);
-          return 0;
+      if (string.length) {
+        for (var i in string) {
+          ohi_Hangeul_3(0, string[i]);
+        }
+        ohi_Insert(ohiQ, 0);
+      } else {
+        ohi_Insert(ohiQ, 0);
+        for (var index in shortening_hangeul_keys) {
+          ohi_Hangeul_3Moa_End(shortening_english_keys[index], shortening_hangeul_keys[index]);
         }
       }
+
+      shortening_english_keys = [];
+      shortening_hangeul_keys = [];
 
       return false;
     }
   } else if (keyCode < 0x21 || keyCode > 0x7E) {
-    if(keyCode == 0x0F) { // shift
-      return false;
-    }
     if (extension_steps > 0) {
-      if (keyCode != 0x08) {// Backspace
-        ohi_Backspace();
+      if(keyCode != 0x0F) { // !shift
+        if (keyCode != 0x08) {// !Backspace
+          ohi_Backspace();
+        }
+
+        extension_steps = 0;
+        mapping_layout_to_html(0);
+        ohiQ = OHIQ_INIT;
       }
-      extension_steps = 0;
-      mapping_layout_to_html(0);
-      ohiQ = OHIQ_INIT;
-    }
-    if(keyCode == 0x08) {    // Backspace
+    } else if(keyCode == 0x08) {    // Backspace
       ohi_Backspace();
     } else if ( (keyCode == 0x09) ||  // Tab
                 (keyCode == 0x20) //Space
@@ -1878,10 +1862,11 @@ function ohi_Hangeul_Process(keyCode) {
     } else {
       ohi_Insert(ohiQ,ohiQ=OHIQ_INIT);
     }
+
     pressing_keys = 0;
+    shortening_action = 0;
+
     return false;
-  } else if (ohiQ == OHIQ_INIT) {
-    pressing_keys = 0;
   }
 
   pressing_keys++;
@@ -1900,7 +1885,7 @@ function ohi_Hangeul_Process(keyCode) {
       break;
     case /3moa/.test(KO_type) :
       if (shoot_at_once) {
-        charCode = ohi_Hangeul_3Moa(keyValue, charCode);
+        charCode = ohi_Hangeul_3Moa_Begin(keyValue, charCode);
       } else {
         charCode = ohi_Hangeul_3(keyValue, charCode);
       }
