@@ -350,6 +350,7 @@ function get_table_galmadeuli(type) {
 
   // array
   switch (true) {
+    case /3-p2/.test(type) :
     case /3-p3/.test(type) :
       return galmadeuli_3_p3;
     case /3-2015p$/.test(type) :

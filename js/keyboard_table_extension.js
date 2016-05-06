@@ -521,6 +521,8 @@ function get_table_extension(sign_yetgeul, type) {
         return K3_sign_3_2012;
       case /3-2015$/.test(type) :
         return [];
+      case /3-p2/.test(type) :
+        return K3_sign_3_2012_yet;
       case /3-p3/.test(type) :
         return K3_sign_3_p3;
       case /3-2/.test(type) :

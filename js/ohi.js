@@ -114,6 +114,14 @@ var layout_list_info_ko = [
     extension_yetgeul_keys: [1, '7', '8'], //  1:다른 기호 배열
     link: 'http://pat.im/1090'
   },
+  {name: '3-p2', full_name: '3-P2',
+    position: "다리",
+    right_ou_keys: ['8', '/', '9'],
+    left_bracket_araea: true,
+    galmadeuli: true,
+    extension_sign_keys: [1, '/', '9'], //  1:다른 기호 배열
+    link: 'http://pat.im/1128'
+  },
   {name: '3-p3', full_name: '3-P3',
     position: "머리",
     right_ou_keys: ['8', '/', '9'],
@@ -2301,6 +2309,7 @@ function mapping_layout_to_html(select) {
                   (/3-2012-yet/.test(KO_type)) ||
                   (/3-2014/.test(KO_type)) ||
                   (/3-2015p/.test(KO_type)) ||
+                  (/3-p2/.test(KO_type)) ||
                   (/3-p3/.test(KO_type))
                 ) {
         node_key = $("#key_forwardslash .up_key .han_key");
