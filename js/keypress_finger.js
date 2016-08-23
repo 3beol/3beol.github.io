@@ -630,7 +630,7 @@ function get_taja_hangeul(type) {
     '<strong class="ggeut">ㅎ</strong>': ['C', 3, "key_c", 'c'],
   };
 
-  var K3_3shin_P = {
+  var K3_3shin_p1 = {
     '<strong class="cheot">ㄱ</strong>':  ['k', 8, "key_k"],
     '<strong class="cheot">ㄴ</strong>':  ['h', 7, "key_h"],
     '<strong class="cheot">ㄷ</strong>':  ['u', 7, "key_u"],
@@ -893,8 +893,8 @@ function get_taja_hangeul(type) {
       return K3_3shin_2015;
     case /3shin-m/.test(KO_type) :
       return K3_3shin_M;
-    case /3shin-p/.test(KO_type) :
-      return K3_3shin_P;
+    case /3shin-p1/.test(KO_type) :
+      return K3_3shin_p1;
     case /2-ksx5002/.test(KO_type) :
       return K2_2_ksx5002;
     case /2sun-ksx5002/.test(KO_type) :

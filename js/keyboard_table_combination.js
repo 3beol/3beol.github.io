@@ -824,7 +824,7 @@ function get_table_combination(type, __yetgeul) {
     case /3moa-semoe-2016/.test(type) :
       array_default = K3_3moa_semoe_2016;
       break;
-    case (__yetgeul && /3shin-p/.test(type)) :
+    case (__yetgeul && /3shin-p1/.test(type)) :
       array_specific = K3_3shin_p_yet;
       break;
     case /3shin-2015-shift/.test(type) :

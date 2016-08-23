@@ -22,7 +22,7 @@
  */
 
 var EN_type = 'qwerty';
-var KO_type = '3shin-p';
+var KO_type = '3shin-p2';
 var KE_status = 'ko';// en, ko
 
 // 두벌식 code, offset, code, offset, code, offset
@@ -198,12 +198,19 @@ var layout_list_info_ko = [
     galmadeuli: true,
     link: 'http://cafe.daum.net/3bulsik/JMKX/77'
   },
-  {name: '3shin-p', full_name: '신세벌식 P',
-    position: "머리",
+  {name: '3shin-p1', full_name: '신세벌식 P',
+    position: "팔",
     right_ou_keys: ['I', 'O', 'P'],
     galmadeuli: true,
     extension_sign_keys: [0x110B/*ㅇ*/, 'k', 'l', ';'],
     link: 'http://pat.im/1110'
+  },
+    {name: '3shin-p2', full_name: '신세벌식 P2',
+    position: "머리",
+    right_ou_keys: ['I', 'O', 'P'],
+    galmadeuli: true,
+    extension_sign_keys: [0x110B/*ㅇ*/, 'k', 'l', ';'],
+    link: 'http://pat.im/1136'
   },
 ];
 
@@ -574,7 +581,7 @@ function ohi_Insert(commit, charCode) {
   if (charCode.length != 6) {
     ohiQ = OHIQ_INIT;
   } else {
-    var commit = commit || OHIQ_INIT;
+    commit = commit || OHIQ_INIT;
     // 두벌식에서 1, 3, 5 의 값은 offset 이기 때문에
     // 이 것을 앞의 값에 더해준다
     var cheot = charCode[0] + charCode[1];
@@ -789,7 +796,7 @@ function get_combination_value(ohiqCode, charCode, swap) {
 // 두벌식을 다룬다
 function ohi_Hangeul_2(charCode){
   // 두벌식은 호환 자모를 쓴다
-  var charCode = jamo_to_compatibility(charCode);
+  charCode = jamo_to_compatibility(charCode);
 
   if(!/2-ksx/.test(KO_type)) {
     // 두벌식 순아래, 조선 국규
@@ -2279,7 +2286,7 @@ function mapping_layout_to_html(select) {
         node_key.addClass("gawit_right");
         node_key.addClass("font08");
       }
-      //if (/3shin-p/.test(KO_type)) {
+      //if (/3shin-p1/.test(KO_type)) {
         //node_key = $("#key_forwardslash .up_key .han_key");
         // ㅋ 자리의 ㆍ(아래아) 를 다룬다
         //node_key.html("(ㆍ)");
@@ -2706,11 +2713,13 @@ function change_KO_type(type) {
     $('#toggle_shoot_at_once').prop('checked', true).change()
     shoot_at_once = $('#toggle_shoot_at_once').is(":checked");
     $(".documentation div.3moa").removeClass('hidden');
-  } else if (/3shin-p/.test(KO_type)) {
+  } else if (/3shin-p1/.test(KO_type)) {
     // 켠 뒤에 바꾼다
     $("#toggle_yet_hangeul").bootstrapToggle('enable');
     $('#toggle_yet_hangeul').prop('checked', false).change()
     $(".documentation div.3shin").removeClass('hidden');
+  } else if (/3shin-p2/.test(KO_type)) {
+	$(".documentation div.3shin").removeClass('hidden');
   } else {
     $(".documentation div.general").removeClass('hidden');
   }
