@@ -153,9 +153,17 @@ var layout_list_info_ko = [
     galmadeuli: true,
     link: 'http://ssg.wo.tc/220239514856'
   },
-    {name: '3moa-semoe-2016', full_name: '세모이',
-    position: "머리",
+    {name: '3moa-semoe-2016', full_name: '세모이 2016',
+    position: "다리",
     right_ou_keys: ['p', '['],
+    galmadeuli: true,
+    extension_sign_keys: ['J', 'K', 'L', ':'],
+    shortening : true,
+    link: 'http://ssg.wo.tc/220239514856'
+  },
+    {name: '3moa-semoe-2017', full_name: '세모이',
+    position: "머리",
+    right_ou_keys: ['p', '.'],
     galmadeuli: true,
     extension_sign_keys: ['J', 'K', 'L', ':'],
     shortening : true,
@@ -2378,6 +2386,19 @@ function mapping_layout_to_html(select) {
           node_key = $("#key_semicolon .down_key .en_key");
           node_key.html("③");
           node_key.addClass("tag09 black");
+        } else if ((/semoe-2017/.test(KO_type))) {
+          node_key = $("#key_j .down_key .en_key");
+          node_key.html(tag_sign0);
+          node_key.addClass("tag07 black");
+          node_key = $("#key_k .down_key .en_key");
+          node_key.html("①");
+          node_key.addClass("tag09 black");
+          node_key = $("#key_l .down_key .en_key");
+          node_key.html("②");
+          node_key.addClass("tag09 black");
+          node_key = $("#key_semicolon .down_key .en_key");
+          node_key.html("③");
+          node_key.addClass("tag09 black");
         }
       }
 
@@ -2418,8 +2439,19 @@ function mapping_layout_to_html(select) {
         node_key = $("#key_semicolon .up_key .han_key");
         node_key.html(tag_moa_ggeut_shift);
         node_key.addClass("tag09");
-      } else {
+      } else if (KO_type == '3moa-semoe-2016') {
         node_key = $("#key_left_bracket .up_key .han_key");
+        node_key.html(tag_moa_gawit_shift);
+        node_key.addClass("tag09");
+        node_key = $("#key_v .up_key .en_key");
+        node_key.html(tag_moa_gawit_shift);
+        node_key.addClass("tag09");
+        node_key.removeClass("ko_alpha");
+        node_key = $("#key_semicolon .up_key .han_key");
+        node_key.html(tag_moa_ggeut_shift);
+        node_key.addClass("tag09");
+      } else {
+        node_key = $("#key_period .up_key .han_key");
         node_key.html(tag_moa_gawit_shift);
         node_key.addClass("tag09");
         node_key = $("#key_v .up_key .en_key");
