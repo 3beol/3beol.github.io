@@ -2276,14 +2276,20 @@ function get_table_hangeul(type, __change_to_yet) {
     0x1161,	/* 0x46 F: jungseong a */
     0x1173,	/* 0x47 G: jungseong eu */
     0x25A1,	/* 0x48 H: white squre */
-    0x1173,	/* 0x49 I: jungseong eu */
+    //0x1173,	/* 0x49 I: jungseong eu */
+    0x0000,	/* 0x49 I:  */
     0x0027,	/* 0x4A J: apostrophe */
-    0x00B7,	/* 0x4B K: middle dot */
-    0x003b,	/* 0x4C L: semicolon */
-    0x0022,	/* 0x4D M: quotatioin mark */
+    //0x00B7,	/* 0x4B K: middle dot */
+    //0x003b,	/* 0x4C L: semicolon */
+    //0x0022,	/* 0x4D M: quotatioin mark */
+    0x0022,	/* 0x4B K: quotatioin mark */
+		0x00B7,	/* 0x4C L: middle dot */
+		0x2026,	/* 0x4D M: horizontal epllipsis */
     0x2015,	/* 0x4E N: horizontal bar */
-    0x116e,	/* 0x4F O: jungseong u */
-    0x119e,	/* 0x50 P: jungseong araea */
+    //0x116e,	/* 0x4F O: jungseong u */
+    //0x119e,	/* 0x50 P: jungseong araea */
+    0x0000,	/* 0x4F O:  */
+		0x003b,	/* 0x50 P: semicolon */
     0x1164,	/* 0x51 Q: jungseong yae */
     0x1165,	/* 0x52 R: jungseong eo */
     0x1168,	/* 0x53 S: jungseong ye */
