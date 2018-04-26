@@ -2311,17 +2311,17 @@ function mapping_layout_to_html(select) {
         node_key.addClass("font08");
         if (/3shin-p2/.test(KO_type)) {
           // ㅁ 자리의 ㅡ 를 다룬다
-          node_key = $("#key_i .down_key .down_key");
+          node_key = $("#key_i .down_key .en_key");
           node_key.html("(ㅡ)");
           node_key.addClass("gawit_right");
           node_key.addClass("font08");
           // ㅊ 자리의 ㅜ 를 다룬다
-          node_key = $("#key_o .down_key .down_key");
+          node_key = $("#key_o .down_key .en_key");
           node_key.html("(ㅜ)");
           node_key.addClass("gawit_right");
           node_key.addClass("font08");
           // ㅍ 자리의 ㆍ 아래아 를 다룬다
-          node_key = $("#key_p .down_key .down_key");
+          node_key = $("#key_p .down_key .en_key");
           node_key.html("(ㆍ)");
           node_key.addClass("gawit_right");
           node_key.addClass("font08");
